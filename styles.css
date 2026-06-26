@@ -15,14 +15,22 @@
   --glass-border: rgba(255, 255, 255, 0.22);
   --glass-focus: rgba(255, 255, 255, 0.28);
   --overlay: rgba(8, 18, 36, 0.18);
+  --bg-fallback: #1a2a3a;
+  --page-bg:
+    linear-gradient(90deg, rgba(255, 160, 70, 0.18) 0%, transparent 42%),
+    url("images/background.jpg") center / cover no-repeat;
 }
 
-html,
+html {
+  height: 100%;
+  background: var(--bg-fallback);
+}
+
 body {
   min-height: 100%;
-}
-
-body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background: var(--bg-fallback);
   font-family: "Inter", system-ui, sans-serif;
   color: var(--white);
   -webkit-font-smoothing: antialiased;
@@ -30,16 +38,17 @@ body {
 
 .page {
   position: relative;
-  min-height: 100vh;
+  min-height: 100%;
+  min-height: 100svh;
   min-height: 100dvh;
-  background:
-    linear-gradient(90deg, rgba(255, 160, 70, 0.18) 0%, transparent 42%),
-    url("images/background.jpg") center / cover no-repeat fixed;
+  background: var(--page-bg);
+  background-attachment: scroll;
 }
 
 .page__overlay {
   position: absolute;
   inset: 0;
+  min-height: 100%;
   background: var(--overlay);
   pointer-events: none;
 }
@@ -51,9 +60,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
-  padding: 2.5rem 1.25rem 2rem;
+  padding:
+    max(2.5rem, env(safe-area-inset-top, 0px))
+    max(1.25rem, env(safe-area-inset-right, 0px))
+    max(2rem, env(safe-area-inset-bottom, 0px))
+    max(1.25rem, env(safe-area-inset-left, 0px));
   text-align: center;
 }
 
@@ -275,6 +288,12 @@ body {
 
 .form-status--error {
   color: #ffb4b4;
+}
+
+@media (min-width: 1024px) {
+  .page {
+    background-attachment: fixed;
+  }
 }
 
 @media (min-width: 640px) {
