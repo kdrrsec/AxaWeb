@@ -1,0 +1,342 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue: #2b7fe8;
+  --blue-hover: #1f6fd4;
+  --white: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.82);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.22);
+  --glass-focus: rgba(255, 255, 255, 0.28);
+  --overlay: rgba(8, 18, 36, 0.18);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background:
+    linear-gradient(90deg, rgba(255, 160, 70, 0.18) 0%, transparent 42%),
+    url("images/background.jpg") center / cover no-repeat fixed;
+}
+
+.page__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--overlay);
+  pointer-events: none;
+}
+
+.landing {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 2.5rem 1.25rem 2rem;
+  text-align: center;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.brand__logo {
+  display: block;
+  width: min(320px, 82vw);
+  height: auto;
+}
+
+.brand__tagline {
+  margin-top: 0.65rem;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--text-muted);
+}
+
+.brand__line {
+  width: 2.75rem;
+  height: 2px;
+  margin-top: 0.85rem;
+  border-radius: 999px;
+  background: var(--blue);
+}
+
+.contact {
+  width: 100%;
+  max-width: 26rem;
+}
+
+.contact__title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.contact__lead {
+  margin-top: 0.55rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.contact-form {
+  margin-top: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  text-align: left;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.field label span {
+  color: var(--blue);
+}
+
+.field__input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  border: 1px solid var(--glass-border);
+  border-radius: 0.55rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0 0.85rem;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field__input-wrap--textarea {
+  align-items: flex-start;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+.field__input-wrap:hover {
+  border-color: var(--glass-focus);
+}
+
+.field__input-wrap:focus-within {
+  border-color: rgba(43, 127, 232, 0.75);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 3px rgba(43, 127, 232, 0.18);
+}
+
+.field--error .field__input-wrap {
+  border-color: rgba(255, 120, 120, 0.85);
+}
+
+.field__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.field__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.field__icon--textarea {
+  margin-top: 0.1rem;
+}
+
+.field input,
+.field textarea {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--white);
+  font: inherit;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.field input {
+  padding: 0.72rem 0;
+}
+
+.field textarea {
+  min-height: 5.5rem;
+  padding: 0;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+}
+
+.field--error input,
+.field--error textarea {
+  color: var(--white);
+}
+
+.field__error {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: #ffb4b4;
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.78rem 1rem;
+  border: none;
+  border-radius: 0.55rem;
+  background: var(--blue);
+  color: var(--white);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+}
+
+.submit-btn svg,
+.submit-btn__icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.submit-btn:hover {
+  background: var(--blue-hover);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+.submit-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(43, 127, 232, 0.35);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-status {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.form-status--success {
+  color: #b8f5c8;
+}
+
+.form-status--error {
+  color: #ffb4b4;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+
+.social a {
+  display: inline-flex;
+  color: rgba(255, 255, 255, 0.88);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social a:hover,
+.social a:focus-visible {
+  color: var(--white);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.social svg {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+@media (min-width: 640px) {
+  .brand__tagline {
+    font-size: 0.68rem;
+  }
+
+  .contact__title {
+    font-size: 1.15rem;
+  }
+
+  .contact__lead {
+    font-size: 0.88rem;
+  }
+
+  .field label {
+    font-size: 0.82rem;
+  }
+
+  .field input,
+  .field textarea {
+    font-size: 0.88rem;
+  }
+
+  .submit-btn {
+    font-size: 0.92rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    background-attachment: scroll;
+  }
+
+  .submit-btn,
+  .social a {
+    transition: none;
+  }
+}
