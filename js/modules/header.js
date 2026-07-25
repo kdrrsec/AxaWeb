@@ -11,6 +11,7 @@ export function initHeader() {
     toggle.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
     mobileNav.classList.toggle("is-open", open);
     mobileNav.hidden = !open;
+    mobileNav.setAttribute("aria-hidden", String(!open));
     document.body.classList.toggle("nav-open", open);
   };
 

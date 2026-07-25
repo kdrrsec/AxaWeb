@@ -128,28 +128,17 @@
   position: fixed;
   inset: var(--header-height) 0 0;
   z-index: 99;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0.35rem;
   padding: 1.25rem;
-  background: rgba(6, 16, 29, 0.96);
+  background: rgba(6, 16, 29, 0.98);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  transform: translateY(-0.5rem);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity 0.25s var(--ease),
-    transform 0.25s var(--ease),
-    visibility 0.25s;
 }
 
 .mobile-nav.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
+  display: flex;
 }
 
 .mobile-nav a {
@@ -190,8 +179,12 @@ body.nav-open {
     display: inline-flex;
   }
 
-  .menu-toggle,
-  .mobile-nav {
+  .menu-toggle {
+    display: none;
+  }
+
+  .mobile-nav,
+  .mobile-nav.is-open {
     display: none;
   }
 }
