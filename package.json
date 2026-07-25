@@ -1,0 +1,16 @@
+{
+  "name": "axaweb",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AxaWeb official website",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint \"js/**/*.js\" \"scripts/**/*.js\"",
+    "typecheck": "node scripts/typecheck.js",
+    "build": "node scripts/build.js",
+    "test:static": "node scripts/build.js && node scripts/typecheck.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.31.0"
+  }
+}

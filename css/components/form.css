@@ -1,0 +1,184 @@
+.contact-layout {
+  display: grid;
+  gap: 2rem;
+}
+
+.contact-info {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.contact-info__item {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.contact-info__item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-info__label {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-info__value {
+  color: var(--text);
+  font-size: 1.02rem;
+  font-weight: 500;
+}
+
+.contact-info__value a:hover {
+  color: var(--accent);
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: rgba(12, 26, 42, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.form-row {
+  display: grid;
+  gap: 1rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.field label .req {
+  color: var(--accent);
+}
+
+.field label .opt {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.field__control {
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 1rem;
+  transition:
+    border-color 0.2s var(--ease),
+    background 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.field textarea.field__control {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.field select.field__control {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.15rem) calc(50% - 0.15rem),
+    calc(100% - 0.75rem) calc(50% - 0.15rem);
+  background-size: 0.4rem 0.4rem, 0.4rem 0.4rem;
+  background-repeat: no-repeat;
+  padding-right: 2.4rem;
+}
+
+.field__control::placeholder {
+  color: rgba(184, 195, 209, 0.55);
+}
+
+.field__control:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.field__control:focus {
+  outline: none;
+  border-color: rgba(35, 139, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--focus);
+}
+
+.field--error .field__control {
+  border-color: rgba(255, 120, 120, 0.85);
+}
+
+.field__error {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: #ffb4b4;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.checkbox input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15rem;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.checkbox a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.form-status {
+  font-size: 0.9rem;
+  text-align: left;
+  color: var(--text-secondary);
+}
+
+.form-status--success {
+  color: #b8f5c8;
+}
+
+.form-status--error {
+  color: #ffb4b4;
+}
+
+.form-status--info {
+  color: var(--accent-hover);
+}
+
+@media (min-width: 720px) {
+  .form-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .contact-layout {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
