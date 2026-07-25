@@ -9,7 +9,7 @@ export const navLinks = [
 export const heroUsps = [
   {
     label: "Maatwerk voor jouw bedrijf",
-    icon: "spark",
+    icon: "craft",
   },
   {
     label: "Snel en professioneel gebouwd",

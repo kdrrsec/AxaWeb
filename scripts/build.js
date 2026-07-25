@@ -90,7 +90,10 @@ staticCopies.forEach((file) => {
   cpSync(join(root, file), join(dist, file));
 });
 
-cpSync(join(root, "images"), join(dist, "images"), { recursive: true });
+mkdirSync(join(dist, "images"), { recursive: true });
+["background.jpg", "background.webp"].forEach((file) => {
+  cpSync(join(root, "images", file), join(dist, "images", file));
+});
 cpSync(join(root, "js"), join(dist, "js"), { recursive: true });
 cpSync(join(root, "css"), join(dist, "css"), { recursive: true });
 

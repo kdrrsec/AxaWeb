@@ -19,7 +19,7 @@ export function renderPageContent() {
       .map(
         (item) => `
         <li class="hero__usp">
-          <span class="hero__usp-icon">${icon(item.icon)}</span>
+          <span class="icon-box icon-box--sm">${icon(item.icon)}</span>
           <span>${item.label}</span>
         </li>`
       )
@@ -32,7 +32,7 @@ export function renderPageContent() {
       .map(
         (service) => `
         <article class="card reveal" data-spotlight>
-          <div class="card__icon">${icon(service.icon)}</div>
+          <div class="icon-box card__icon">${icon(service.icon)}</div>
           <h3 class="card__title">${service.title}</h3>
           <p class="card__text">${service.text}</p>
           <ul class="card__list">

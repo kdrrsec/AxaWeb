@@ -1,7 +1,10 @@
 .site-footer {
   border-top: 1px solid var(--border);
   background: #040b14;
-  padding: clamp(3rem, 6vw, 4.5rem) 0 1.75rem;
+  padding:
+    clamp(3rem, 6vw, 4.5rem)
+    0
+    calc(1.75rem + env(safe-area-inset-bottom, 0px));
 }
 
 .site-footer__grid {
@@ -39,11 +42,17 @@
 .site-footer__links a {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  transition: color 0.2s var(--ease);
+  border-radius: 2px;
+  transition: color var(--dur-fast) var(--ease);
 }
 
 .site-footer__links a:hover {
   color: var(--text);
+}
+
+.site-footer__links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .site-footer__bottom {

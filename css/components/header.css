@@ -2,7 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  height: var(--header-height);
+  height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
   border-bottom: 1px solid transparent;
   background: transparent;
   transition:
@@ -174,7 +175,7 @@
 
 .mobile-nav {
   position: fixed;
-  inset: var(--header-height) 0 0;
+  inset: calc(var(--header-height) + env(safe-area-inset-top, 0px)) 0 0;
   z-index: 99;
   display: none;
   flex-direction: column;
