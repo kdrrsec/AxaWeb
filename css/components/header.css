@@ -6,16 +6,35 @@
   border-bottom: 1px solid transparent;
   background: transparent;
   transition:
-    background 0.3s var(--ease),
-    border-color 0.3s var(--ease),
-    backdrop-filter 0.3s var(--ease);
+    background var(--dur-med) var(--ease),
+    border-color var(--dur-med) var(--ease),
+    backdrop-filter var(--dur-med) var(--ease);
 }
 
 .site-header.is-scrolled {
-  background: rgba(6, 16, 29, 0.82);
+  background: rgba(6, 16, 29, 0.78);
   border-bottom-color: var(--border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+
+/* Dunne leesvoortgangslijn onderin de header */
+.scroll-progress {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease);
+  pointer-events: none;
+}
+
+.site-header.is-scrolled .scroll-progress {
+  opacity: 1;
 }
 
 .site-header__inner {
@@ -30,6 +49,11 @@
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
+  transition: opacity var(--dur-fast) var(--ease);
+}
+
+.site-header__logo:hover {
+  opacity: 0.85;
 }
 
 .site-header__logo img {
@@ -40,22 +64,41 @@
 .site-nav {
   display: none;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
 
 .site-nav a {
-  padding: 0.55rem 0.8rem;
-  border-radius: var(--radius-sm);
+  position: relative;
+  padding: 0.55rem 0.85rem;
   color: var(--text-secondary);
   font-size: 0.92rem;
   font-weight: 500;
-  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+/* Onderstreping die ingroeit bij hover en actieve sectie */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.25rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-fast) var(--ease);
 }
 
 .site-nav a:hover,
-.site-nav a[aria-current="true"] {
+.site-nav a.is-active {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
+}
+
+.site-nav a:hover::after,
+.site-nav a.is-active::after {
+  transform: scaleX(1);
 }
 
 .site-header__actions {
@@ -78,6 +121,11 @@
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+
+.menu-toggle:hover {
+  border-color: var(--border-strong);
 }
 
 .menu-toggle__bars,
@@ -88,7 +136,7 @@
   height: 2px;
   border-radius: 999px;
   background: currentColor;
-  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+  transition: transform 0.3s var(--ease-spring), opacity 0.2s var(--ease);
 }
 
 .menu-toggle__bars {
@@ -131,24 +179,41 @@
   display: none;
   flex-direction: column;
   gap: 0.35rem;
-  padding: 1.25rem;
-  background: rgba(6, 16, 29, 0.98);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  padding: 1.5rem 1.25rem;
+  background: rgba(6, 16, 29, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .mobile-nav.is-open {
   display: flex;
 }
 
+.mobile-nav.is-open a {
+  animation: mobile-link-in 0.45s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 0.06s);
+}
+
+@keyframes mobile-link-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .mobile-nav a {
   display: block;
-  padding: 0.95rem 1rem;
+  padding: 1rem 1.1rem;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 500;
+  transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
 }
 
 .mobile-nav a:hover,
@@ -159,7 +224,7 @@
 }
 
 .mobile-nav .btn {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 
 body.nav-open {
@@ -186,5 +251,11 @@ body.nav-open {
   .mobile-nav,
   .mobile-nav.is-open {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav.is-open a {
+    animation: none;
   }
 }

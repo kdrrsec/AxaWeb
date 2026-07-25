@@ -31,7 +31,7 @@ export function renderPageContent() {
     servicesRoot.innerHTML = services
       .map(
         (service) => `
-        <article class="card reveal">
+        <article class="card reveal" data-spotlight>
           <div class="card__icon">${icon(service.icon)}</div>
           <h3 class="card__title">${service.title}</h3>
           <p class="card__text">${service.text}</p>
@@ -51,10 +51,13 @@ export function renderPageContent() {
   if (whyRoot) {
     whyRoot.innerHTML = whyItems
       .map(
-        (item) => `
+        (item, index) => `
         <article class="why-item reveal">
-          <h3 class="why-item__title">${item.title}</h3>
-          <p class="why-item__text">${item.text}</p>
+          <span class="why-item__num" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
+          <div>
+            <h3 class="why-item__title">${item.title}</h3>
+            <p class="why-item__text">${item.text}</p>
+          </div>
         </article>`
       )
       .join("");
@@ -80,7 +83,7 @@ export function renderPageContent() {
       .map(
         (project) => `
         <article class="project-card reveal">
-          <div class="project-card__media" aria-hidden="true">Projectpreview</div>
+          <div class="project-card__media" aria-hidden="true"><span>Projectpreview</span></div>
           <div class="project-card__body">
             <p class="project-card__category">${project.category}</p>
             <h3 class="project-card__title">${project.title}</h3>
@@ -103,7 +106,7 @@ export function renderPageContent() {
           <p class="pricing-card__price">${pkg.price}</p>
           <p class="pricing-card__audience">${pkg.audience}</p>
           <ul class="pricing-card__list">
-            ${pkg.features.map((feature) => `<li>${feature}</li>`).join("")}
+            ${pkg.features.map((feature) => `<li>${icon("check")} <span>${feature}</span></li>`).join("")}
           </ul>
           <a class="btn ${pkg.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${pkg.href}">
             ${pkg.cta}
@@ -170,6 +173,10 @@ export function renderPageContent() {
       budgetSelect.appendChild(option);
     });
   }
+
+  document.querySelectorAll(".mobile-nav a").forEach((link, index) => {
+    link.style.setProperty("--i", String(index));
+  });
 
   const year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
