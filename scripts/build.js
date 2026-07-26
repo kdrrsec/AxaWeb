@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { generateServicePages } from "./generate-service-pages.js";
+import { generatePages } from "./generate-pages.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "public");
@@ -18,7 +18,15 @@ const cssFiles = [
   "css/components/footer.css",
 ];
 
-const serviceSlugs = ["diensten", "websites", "webshops", "hosting", "onderhoud"];
+const pageSlugs = [
+  "diensten",
+  "websites",
+  "webshops",
+  "hosting",
+  "onderhoud",
+  "projecten",
+  "contact",
+];
 
 const requiredFiles = [
   "index.html",
@@ -33,7 +41,7 @@ const requiredFiles = [
   "images/background.jpg",
   "images/background.webp",
   "js/main.js",
-  "js/service-main.js",
+  "js/page-main.js",
   "css/main.css",
 ];
 
@@ -74,15 +82,15 @@ function validateHtml(filePath) {
   }
 }
 
-generateServicePages();
+generatePages();
 
 requiredFiles.forEach(assertExists);
-serviceSlugs.forEach((slug) => assertExists(`${slug}.html`));
+pageSlugs.forEach((slug) => assertExists(`${slug}.html`));
 
 validateHtml("index.html");
 validateHtml("privacy.html");
 validateHtml("algemene-voorwaarden.html");
-serviceSlugs.forEach((slug) => validateHtml(`${slug}.html`));
+pageSlugs.forEach((slug) => validateHtml(`${slug}.html`));
 
 if (existsSync(dist)) {
   rmSync(dist, { recursive: true, force: true });
@@ -100,7 +108,7 @@ const staticCopies = [
   "apple-touch-icon.png",
   "logo.png",
   "logo@2x.png",
-  ...serviceSlugs.map((slug) => `${slug}.html`),
+  ...pageSlugs.map((slug) => `${slug}.html`),
 ];
 
 staticCopies.forEach((file) => {
@@ -127,7 +135,7 @@ function useBundleCss(fileName) {
 }
 
 useBundleCss("index.html");
-serviceSlugs.forEach((slug) => useBundleCss(`${slug}.html`));
+pageSlugs.forEach((slug) => useBundleCss(`${slug}.html`));
 
 console.log("Build completed successfully.");
 console.log(`Output: ${dist}`);

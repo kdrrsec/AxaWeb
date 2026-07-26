@@ -1,67 +1,55 @@
-/* Compacte page-hero voor dienstpagina's — zelfde design language */
-.page-hero {
+/*
+ * Componenten voor subpagina's: paginakoppen (varianten) en de unieke
+ * secties per pagina (vergelijking, tijdlijn, integraties, specs, SLA,
+ * portfolio, contact). De homepage gebruikt deze componenten niet.
+ */
+
+/* --- Paginakop (geen fotohero: subpagina's hebben een eigen, rustiger kop) --- */
+.page-head {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   padding:
-    calc(var(--header-height) + env(safe-area-inset-top, 0px) + clamp(2.5rem, 6vw, 4.5rem))
+    calc(var(--header-height) + env(safe-area-inset-top, 0px) + clamp(2.75rem, 7vw, 5rem))
     0
-    clamp(3rem, 6vw, 4.5rem);
-}
-
-.page-hero__media {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-}
-
-.page-hero__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
-  opacity: 0.45;
-}
-
-.page-hero__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+    clamp(2.75rem, 6vw, 4.5rem);
+  border-bottom: 1px solid var(--border);
   background:
-    linear-gradient(105deg, rgba(6, 16, 29, 0.96) 0%, rgba(6, 16, 29, 0.88) 48%, rgba(6, 16, 29, 0.72) 100%),
-    linear-gradient(180deg, transparent 40%, var(--bg) 100%);
+    radial-gradient(70% 90% at 85% -20%, rgba(35, 139, 255, 0.1), transparent 60%),
+    radial-gradient(50% 70% at 10% 110%, rgba(35, 139, 255, 0.05), transparent 55%),
+    var(--bg-secondary);
 }
 
-.page-hero__inner {
+.page-head__inner {
   width: min(100% - (var(--gutter) * 2), var(--container));
   margin-inline: auto;
 }
 
-.page-hero__breadcrumb {
+.page-head__breadcrumb {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.45rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   color: var(--text-muted);
   font-size: 0.85rem;
 }
 
-.page-hero__breadcrumb a {
+.page-head__breadcrumb a {
   color: var(--text-secondary);
   transition: color var(--dur-fast) var(--ease);
 }
 
-.page-hero__breadcrumb a:hover {
+.page-head__breadcrumb a:hover {
   color: var(--text);
 }
 
-.page-hero__breadcrumb [aria-current="page"] {
+.page-head__breadcrumb [aria-current="page"] {
   color: var(--text-secondary);
 }
 
-.page-hero__title {
-  max-width: 18ch;
+.page-head__title {
+  max-width: 20ch;
   font-size: clamp(2rem, 4.5vw, 3.15rem);
   font-weight: 700;
   line-height: 1.08;
@@ -69,52 +57,828 @@
   text-wrap: balance;
 }
 
-.page-hero__text {
-  max-width: 36rem;
+.page-head__text {
+  max-width: 38rem;
   margin-top: 1.1rem;
   color: var(--text-secondary);
   font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.7;
 }
 
-.page-hero__actions {
+.page-head__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  margin-top: 1.75rem;
+  margin-top: 1.85rem;
 }
 
 @media (max-width: 639px) {
-  .page-hero__actions .btn {
+  .page-head__actions .btn {
     width: 100%;
   }
 }
 
-.related-links {
+/* Variant: gecentreerd (overzichtspagina's) */
+.page-head--center .page-head__inner {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.related-links a {
+.page-head--center .page-head__breadcrumb {
+  justify-content: center;
+}
+
+.page-head--center .section__eyebrow::before {
+  display: none;
+}
+
+.page-head--center .page-head__title,
+.page-head--center .page-head__text {
+  margin-inline: auto;
+}
+
+/* Variant: split met feitenpaneel (dienstpagina's) */
+.page-head__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.page-head__facts {
+  align-self: center;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(11, 26, 43, 0.66);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.page-head__facts-title {
+  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.page-head__facts ul {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.page-head__facts li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.page-head__facts svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.18rem;
+  color: var(--accent-hover);
+  flex-shrink: 0;
+}
+
+@media (min-width: 900px) {
+  .page-head__grid {
+    grid-template-columns: 1.35fr 0.9fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+}
+
+/* Variant: met statistiekenband (hosting) */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(2rem, 4.5vw, 3rem);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  border-top: 1px solid var(--border);
+}
+
+.stat__value {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+
+.stat__label {
+  margin-top: 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+@media (min-width: 720px) {
+  .stat-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* --- Dienstenrijen (/diensten): redactionele rijen i.p.v. cards --- */
+.service-rows {
+  display: grid;
+  gap: 0;
+}
+
+.service-row {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.75rem, 4vw, 2.5rem) 0;
+  border-top: 1px solid var(--border);
+}
+
+.service-row:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.service-row__intro {
+  position: relative;
+}
+
+.service-row__num {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.service-row__title {
+  margin-top: 1.1rem;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.service-row__text {
+  margin-top: 0.6rem;
+  max-width: 34rem;
+  color: var(--text-secondary);
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+
+.service-row__intro .card__link {
+  margin-top: 1.1rem;
+}
+
+.service-row__points {
+  display: grid;
+  gap: 0.75rem;
+  align-content: center;
+}
+
+.service-row__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.service-row__points svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.18rem;
+  color: var(--accent-hover);
+  flex-shrink: 0;
+}
+
+@media (min-width: 860px) {
+  .service-row {
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3rem;
+  }
+}
+
+/* --- Vergelijkingstabel (/diensten) en SLA-tabel (/onderhoud) --- */
+.compare-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  -webkit-overflow-scrolling: touch;
+}
+
+.compare-wrap:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.compare-table--sla {
+  min-width: 34rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.95rem 1.15rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.55;
+}
+
+.compare-table thead th,
+.compare-table thead td {
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.compare-table tbody th {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.compare-table tbody td {
+  color: var(--text-secondary);
+}
+
+.compare-table tbody tr:last-child th,
+.compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.section-note {
+  margin-top: 1.5rem;
+  max-width: 44rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.section-note--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* --- Featurelijst (dienstpagina's): icoon naast tekst, geen cards --- */
+.feature-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 1.35rem 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.feature__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.feature__text {
+  margin-top: 0.45rem;
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 720px) {
+  .feature-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .feature-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* --- Verticale tijdlijn (/websites): ander ritme dan gridsecties --- */
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 0;
+  max-width: 46rem;
+}
+
+.timeline__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.4rem;
+  padding-bottom: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.timeline__step::before {
+  content: "";
+  position: absolute;
+  top: 2.4rem;
+  left: 1.19rem;
+  bottom: 0.35rem;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(35, 139, 255, 0.4), var(--border));
+}
+
+.timeline__step:last-child {
+  padding-bottom: 0;
+}
+
+.timeline__step:last-child::before {
+  display: none;
+}
+
+.timeline__marker {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.65rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text-secondary);
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(35, 139, 255, 0.35);
+  background: radial-gradient(circle at 35% 30%, rgba(35, 139, 255, 0.28), rgba(35, 139, 255, 0.06));
+  color: var(--accent-hover);
   font-size: 0.92rem;
-  font-weight: 500;
-  transition:
-    color var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease),
-    background var(--dur-fast) var(--ease);
+  font-weight: 700;
 }
 
-.related-links a:hover {
-  color: var(--text);
-  border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.03);
+.timeline__meta {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.timeline__title {
+  margin-top: 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.timeline__text {
+  margin-top: 0.5rem;
+  max-width: 36rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* --- Cases (websites/webshops): resultaatgerichte rijen --- */
+.case-list {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.case {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3.5vw, 2.25rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 45%),
+    var(--bg-elevated);
+  box-shadow: var(--shadow-card);
+}
+
+.case__tag {
+  color: var(--accent-hover);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case__title {
+  margin-top: 0.55rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.case__text {
+  margin-top: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.case__results {
+  display: grid;
+  gap: 0.7rem;
+  align-content: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.case__results li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.case__results svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.16rem;
+  color: var(--accent-hover);
+  flex-shrink: 0;
+}
+
+@media (min-width: 860px) {
+  .case {
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .case__results {
+    padding-top: 0;
+    padding-left: 2.5rem;
+    border-top: none;
+    border-left: 1px solid var(--border);
+  }
+}
+
+/* --- Integraties (/webshops) --- */
+.integration-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.integration {
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+
+.integration:hover {
+  border-color: rgba(35, 139, 255, 0.3);
+  background: rgba(35, 139, 255, 0.04);
+}
+
+.integration__title {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.integration__text {
+  margin-top: 0.35rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 640px) {
+  .integration-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .integration-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* --- Specificaties (/hosting): definitierijen --- */
+.spec-list {
+  display: grid;
+  gap: 0;
+  max-width: 52rem;
+}
+
+.spec {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.1rem 0.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.spec:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.spec dt {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.spec dd {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 720px) {
+  .spec {
+    grid-template-columns: 13rem 1fr;
+    gap: 2rem;
+    align-items: baseline;
+  }
+}
+
+/* --- Panelen (hosting: veiligheid / back-ups / support) --- */
+.panel-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.panel {
+  height: 100%;
+  padding: 1.6rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-card);
+}
+
+.panel__title {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.panel__points {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+
+.panel__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.panel__points svg {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.18rem;
+  color: var(--accent-hover);
+  flex-shrink: 0;
+}
+
+@media (min-width: 860px) {
+  .panel-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* --- Checklists (/onderhoud) --- */
+.check-columns {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 56rem;
+}
+
+.check-group {
+  padding: 1.6rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+}
+
+.check-group__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.check-group ul {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.check-group li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.check-group svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.18rem;
+  color: var(--accent-hover);
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .check-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* --- Portfolio (/projecten): groter raster dan de homepage-preview --- */
+.portfolio-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.portfolio-item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-card);
+  transition:
+    border-color var(--dur-med) var(--ease),
+    transform var(--dur-med) var(--ease),
+    box-shadow var(--dur-med) var(--ease);
+}
+
+.portfolio-item:hover {
+  border-color: rgba(35, 139, 255, 0.32);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.portfolio-item__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.portfolio-item__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(35, 139, 255, 0.2), transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(74, 160, 255, 0.1), transparent 50%),
+    linear-gradient(165deg, #10263d, #081625);
+  transition: transform 0.7s var(--ease);
+}
+
+.portfolio-item:hover .portfolio-item__media::before {
+  transform: scale(1.05);
+}
+
+.portfolio-item__num {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 0.6rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
+  user-select: none;
+}
+
+.portfolio-item__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.portfolio-item__category {
+  color: var(--accent-hover);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.portfolio-item__title {
+  margin-top: 0.55rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.portfolio-item__text {
+  margin-top: 0.55rem;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.portfolio-item__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.15rem;
+}
+
+.portfolio-item__tags li {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+/* --- Contactpagina: infoblok + vervolgstappen naast het formulier --- */
+.contact-side {
+  display: grid;
+  gap: 2rem;
+  align-content: start;
+}
+
+.next-steps {
+  padding: 1.5rem 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+}
+
+.next-steps__title {
+  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.next-steps ol {
+  display: grid;
+  gap: 0.9rem;
+  counter-reset: steps;
+}
+
+.next-steps li {
+  position: relative;
+  padding-left: 2.4rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  counter-increment: steps;
+}
+
+.next-steps li::before {
+  content: counter(steps);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(35, 139, 255, 0.35);
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* --- Prijsperiode (hosting/onderhoud) --- */
+.pricing-card__period {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--text-muted);
 }

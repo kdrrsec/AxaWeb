@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Onderhoud | AxaWeb — Updates, monitoring en support</title>
-  <meta name="description" content="Website-onderhoud door AxaWeb: updates, monitoring, beveiliging en technische ondersteuning met een vast aanspreekpunt." />
+  <title>Website onderhoud | AxaWeb</title>
+  <meta name="description" content="Onderhoudsabonnementen vanaf €39 per maand: updates, monitoring en duidelijke SLA-reactietijden. Zo blijft je website snel, veilig en betrouwbaar." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://axaweb.nl/onderhoud" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="nl_NL" />
   <meta property="og:site_name" content="AxaWeb" />
-  <meta property="og:title" content="Onderhoud | AxaWeb — Updates, monitoring en support" />
-  <meta property="og:description" content="Website-onderhoud door AxaWeb: updates, monitoring, beveiliging en technische ondersteuning met een vast aanspreekpunt." />
+  <meta property="og:title" content="Website onderhoud | AxaWeb" />
+  <meta property="og:description" content="Onderhoudsabonnementen vanaf €39 per maand: updates, monitoring en duidelijke SLA-reactietijden. Zo blijft je website snel, veilig en betrouwbaar." />
   <meta property="og:url" content="https://axaweb.nl/onderhoud" />
   <meta property="og:image" content="https://axaweb.nl/images/background.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Onderhoud | AxaWeb — Updates, monitoring en support" />
-  <meta name="twitter:description" content="Website-onderhoud door AxaWeb: updates, monitoring, beveiliging en technische ondersteuning met een vast aanspreekpunt." />
+  <meta name="twitter:title" content="Website onderhoud | AxaWeb" />
+  <meta name="twitter:description" content="Onderhoudsabonnementen vanaf €39 per maand: updates, monitoring en duidelijke SLA-reactietijden. Zo blijft je website snel, veilig en betrouwbaar." />
   <meta name="twitter:image" content="https://axaweb.nl/images/background.jpg" />
 
   <meta name="theme-color" content="#06101D" />
@@ -40,13 +40,11 @@
       </a>
       <nav class="site-nav" aria-label="Hoofdnavigatie">
         <a href="/diensten" aria-current="page" class="is-active">Diensten</a>
-        <a href="/#werkwijze">Werkwijze</a>
-        <a href="/#projecten">Projecten</a>
-        <a href="/#pakketten">Pakketten</a>
-        <a href="/#contact">Contact</a>
+        <a href="/projecten">Projecten</a>
+        <a href="/contact">Contact</a>
       </nav>
       <div class="site-header__actions">
-        <a class="btn btn--primary site-header__cta" href="/#contact">Offerte aanvragen</a>
+        <a class="btn btn--primary site-header__cta" href="/contact">Offerte aanvragen</a>
         <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
           <span class="menu-toggle__bars" aria-hidden="true"></span>
         </button>
@@ -56,261 +54,196 @@
 
   <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobiele navigatie" hidden>
     <a href="/diensten" aria-current="page" class="is-active">Diensten</a>
-        <a href="/#werkwijze">Werkwijze</a>
-        <a href="/#projecten">Projecten</a>
-        <a href="/#pakketten">Pakketten</a>
-        <a href="/#contact">Contact</a>
-    <a class="btn btn--primary" href="/#contact">Offerte aanvragen</a>
+        <a href="/projecten">Projecten</a>
+        <a href="/contact">Contact</a>
+    <a class="btn btn--primary" href="/contact">Offerte aanvragen</a>
   </nav>
 
   <main id="main">
-    <section class="page-hero" aria-labelledby="page-hero-title">
-      <div class="page-hero__media" aria-hidden="true">
-        <picture>
-          <source srcset="/images/background.webp" type="image/webp" />
-          <img src="/images/background.jpg" alt="" width="1920" height="1280" decoding="async" />
-        </picture>
-      </div>
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__inner">
-        <nav class="page-hero__breadcrumb" aria-label="Broodkruimel">
-          <a href="/">Home</a>
-          <span aria-hidden="true">/</span>
-          <a href="/diensten">Diensten</a><span aria-hidden="true">/</span><span aria-current="page">Onderhoud</span>
-        </nav>
-        <h1 id="page-hero-title" class="page-hero__title reveal is-visible">Onderhoud dat je website gezond houdt.</h1>
-        <p class="page-hero__text reveal is-visible">Updates, monitoring en snelle support — zodat kleine problemen niet uitgroeien tot stilstand of veiligheidsrisico’s.</p>
-        <div class="page-hero__actions reveal is-visible">
-          <a class="btn btn--primary" href="/#contact">Vraag onderhoud aan</a>
-          <a class="btn btn--secondary" href="/hosting">Bekijk hosting</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" id="introductie" aria-labelledby="intro-title">
-      <div class="container">
-        <header class="section__header reveal">
+    <section class="page-head page-head--split" aria-labelledby="page-title">
+      <div class="page-head__inner page-head__grid">
+        <div>
+          <nav class="page-head__breadcrumb" aria-label="Broodkruimel"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/diensten">Diensten</a><span aria-hidden="true">/</span><span aria-current="page">Onderhoud</span></nav>
           <p class="section__eyebrow">Onderhoud</p>
-          <h2 id="intro-title" class="section__title">Techniek die op orde blijft, ook na livegang.</h2>
-          <p class="section__intro">Een website is geen eenmalig project. Plugins, systemen en beveiliging vragen aandacht. Met AxaWeb-onderhoud houd je grip zonder zelf technisch specialist te hoeven zijn.</p>
-        </header>
-        
-        <div class="related-links reveal">
-          <a href="/hosting">Hosting <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a href="/websites">Websites <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a href="/webshops">Webshops <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <h1 id="page-title" class="page-head__title">Onderhoud dat problemen vóór is.</h1>
+          <p class="page-head__text">Websites hebben onderhoud nodig om snel, veilig en betrouwbaar te blijven. Wij regelen updates, monitoring en support, met duidelijke afspraken.</p>
+          <div class="page-head__actions">
+          <a class="btn btn--primary" href="#abonnementen">Bekijk abonnementen</a>
+          <a class="btn btn--secondary" href="/contact">Stel een vraag</a>
         </div>
+        </div>
+        <aside class="page-head__facts" aria-label="In het kort">
+          <p class="page-head__facts-title">In het kort</p>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Updates zonder omkijken</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Monitoring met directe signalering</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Vaste reactietijden via SLA</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Maandelijks opzegbaar</span></li>
+          </ul>
+        </aside>
       </div>
     </section>
 
-    <section class="section" id="voordelen" aria-labelledby="voordelen-title">
+    <section class="section section--alt" id="abonnementen" aria-labelledby="abonnementen-title">
+      <div class="container">
+        <header class="section__header section__header--center reveal">
+          <p class="section__eyebrow">Abonnementen</p>
+          <h2 id="abonnementen-title" class="section__title">Onderhoud dat past bij jouw website.</h2>
+        </header>
+        <div class="pricing stagger">
+        <article class="pricing-card reveal">
+          
+          <h3 class="pricing-card__name">Basis</h3>
+          <p class="pricing-card__price">Vanaf €39 <span class="pricing-card__period">per maand</span></p>
+          <p class="pricing-card__audience">Voor websites die up-to-date en veilig moeten blijven.</p>
+          <ul class="pricing-card__list">
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Periodieke updates van CMS en plugins</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Controle van back-ups</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Maandelijkse gezondheidscheck</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Support via e-mail</span></li>
+          </ul>
+          <a class="btn btn--secondary btn--full" href="/contact">Kies Basis</a>
+        </article>
+        <article class="pricing-card pricing-card--featured reveal">
+          <span class="pricing-card__badge">Meest gekozen</span>
+          <h3 class="pricing-card__name">Zakelijk</h3>
+          <p class="pricing-card__price">Vanaf €79 <span class="pricing-card__period">per maand</span></p>
+          <p class="pricing-card__audience">Voor bedrijven die op hun website moeten kunnen rekenen.</p>
+          <ul class="pricing-card__list">
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Alles uit Basis</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Uptime- en foutmonitoring</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Prioriteit bij storingen</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Klein onderhoud en aanpassingen (1 uur per maand)</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Kwartaalrapportage</span></li>
+          </ul>
+          <a class="btn btn--primary btn--full" href="/contact">Kies Zakelijk</a>
+        </article>
+        <article class="pricing-card reveal">
+          
+          <h3 class="pricing-card__name">Op maat</h3>
+          <p class="pricing-card__price">Op aanvraag</p>
+          <p class="pricing-card__audience">Voor maatwerkplatforms en organisaties met specifieke eisen.</p>
+          <ul class="pricing-card__list">
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Alles uit Zakelijk</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>SLA met vaste reactietijden</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Vast aantal ontwikkeluren</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Direct contact met je beheerder</span></li>
+          </ul>
+          <a class="btn btn--secondary btn--full" href="/contact">Bespreek jouw situatie</a>
+        </article>
+        </div>
+        <p class="pricing-note reveal">Alle bedragen zijn vanafprijzen, afgestemd op de omvang en techniek van je website. Maandelijks opzegbaar.</p>
+      </div>
+    </section>
+
+    <section class="section" id="updates" aria-labelledby="updates-title">
       <div class="container">
         <header class="section__header reveal">
-          <p class="section__eyebrow">Voordelen</p>
-          <h2 id="voordelen-title" class="section__title">Wat onderhoud concreet oplevert.</h2>
+          <p class="section__eyebrow">Updates</p>
+          <h2 id="updates-title" class="section__title">Wat we voor je bijhouden.</h2>
         </header>
-        <div class="grid-4 stagger">
-          
-        <article class="card reveal" data-spotlight>
-          <div class="icon-box card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
-          <h3 class="card__title">Periodieke updates</h3>
-          <p class="card__text">We houden kernsystemen en relevante onderdelen bij, met oog voor stabiliteit.</p>
-          
-        </article>
-        <article class="card reveal" data-spotlight>
-          <div class="icon-box card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
-          <h3 class="card__title">Controle en monitoring</h3>
-          <p class="card__text">We houden de site in de gaten en grijpen in wanneer iets afwijkends speelt.</p>
-          
-        </article>
-        <article class="card reveal" data-spotlight>
-          <div class="icon-box card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
-          <h3 class="card__title">Snel aanspreekpunt</h3>
-          <p class="card__text">Bij vragen of storingen weet je wie je bereikt — zonder omwegen.</p>
-          
-        </article>
-        <article class="card reveal">
-          <div class="icon-box card__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></div>
-          <h3 class="card__title">Past bij hosting</h3>
-          <p class="card__text">Onderhoud combineert goed met AxaWeb-hosting, maar is ook apart af te nemen.</p>
-          <a class="card__link" href="/hosting">Meer informatie <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        </article>
+        <div class="check-columns">
+        <div class="check-group reveal">
+          <h3 class="check-group__title">Wat we updaten</h3>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>CMS en plugins</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Beveiligingspatches</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>PHP- en serversoftware</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Compatibiliteit na iedere update</span></li>
+          </ul>
+        </div>
+        <div class="check-group reveal">
+          <h3 class="check-group__title">Hoe we te werk gaan</h3>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Altijd eerst een verse back-up</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Updates getest na installatie</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Direct teruggedraaid bij problemen</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span>Korte terugkoppeling van wat er is gedaan</span></li>
+          </ul>
+        </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--alt" id="werkwijze" aria-labelledby="werkwijze-title">
+    <section class="section section--alt" id="monitoring" aria-labelledby="monitoring-title">
       <div class="container">
         <header class="section__header reveal">
-          <p class="section__eyebrow">Werkwijze</p>
-          <h2 id="werkwijze-title" class="section__title">Zo pakken we onderhoud aan.</h2>
+          <p class="section__eyebrow">Monitoring</p>
+          <h2 id="monitoring-title" class="section__title">Wij zien het voordat jij het merkt.</h2>
         </header>
-        <div class="process stagger">
-          
-        <article class="process__step reveal">
-          <div class="process__number">01</div>
-          <h3 class="process__title">Intake</h3>
-          <p class="process__text">We bekijken je huidige site, stack en waar de risico’s of knelpunten liggen.</p>
+        <div class="feature-list stagger">
+        <article class="feature reveal">
+          <div class="icon-box icon-box--sm"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg></div>
+          <div>
+            <h3 class="feature__title">Uptime-monitoring</h3>
+            <p class="feature__text">Continue controle of je website bereikbaar is, met directe signalering bij storingen.</p>
+          </div>
         </article>
-        <article class="process__step reveal">
-          <div class="process__number">02</div>
-          <h3 class="process__title">Afspraken</h3>
-          <p class="process__text">We leggen vast wat onderhoud inhoudt: frequentie, scope en bereikbaarheid.</p>
+        <article class="feature reveal">
+          <div class="icon-box icon-box--sm"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
+          <div>
+            <h3 class="feature__title">Prestaties</h3>
+            <p class="feature__text">Periodieke controle van snelheid en laadtijden, zodat de site vlot blijft aanvoelen.</p>
+          </div>
         </article>
-        <article class="process__step reveal">
-          <div class="process__number">03</div>
-          <h3 class="process__title">Uitvoering</h3>
-          <p class="process__text">Updates, controles en fixes gebeuren gepland — met melding wanneer relevant.</p>
-        </article>
-        <article class="process__step reveal">
-          <div class="process__number">04</div>
-          <h3 class="process__title">Doorlopend</h3>
-          <p class="process__text">Je houdt één partner voor vragen, verbeteringen en technische rust.</p>
+        <article class="feature reveal">
+          <div class="icon-box icon-box--sm"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <div>
+            <h3 class="feature__title">Beveiliging en certificaten</h3>
+            <p class="feature__text">Signalering van verdachte activiteit en van verlopende SSL-certificaten of domeinen.</p>
+          </div>
         </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="waarom" aria-labelledby="waarom-title">
+    <section class="section" id="sla" aria-labelledby="sla-title">
       <div class="container">
         <header class="section__header reveal">
-          <p class="section__eyebrow">Waarom AxaWeb</p>
-          <h2 id="waarom-title" class="section__title">Geen losse leverancier, maar een digitale partner.</h2>
-          <p class="section__intro">Wij denken mee vanaf het eerste idee en blijven ook na de oplevering bereikbaar voor hosting, onderhoud en technische ondersteuning.</p>
+          <p class="section__eyebrow">SLA</p>
+          <h2 id="sla-title" class="section__title">Duidelijke reactietijden, zwart op wit.</h2>
         </header>
-        <div class="why-grid stagger">
-          
-        <article class="why-item reveal">
-          <span class="why-item__num" aria-hidden="true">01</span>
-          <div>
-            <h3 class="why-item__title">Maatwerk</h3>
-            <p class="why-item__text">Geen generieke templates, maar een oplossing die aansluit op het bedrijf, de doelgroep en de ambities.</p>
-          </div>
-        </article>
-        <article class="why-item reveal">
-          <span class="why-item__num" aria-hidden="true">02</span>
-          <div>
-            <h3 class="why-item__title">Snelheid</h3>
-            <p class="why-item__text">Websites worden gebouwd met aandacht voor prestaties, gebruiksgemak en technische kwaliteit.</p>
-          </div>
-        </article>
-        <article class="why-item reveal">
-          <span class="why-item__num" aria-hidden="true">03</span>
-          <div>
-            <h3 class="why-item__title">Betrouwbaarheid</h3>
-            <p class="why-item__text">Heldere afspraken, veilige hosting, back-ups en ondersteuning wanneer dat nodig is.</p>
-          </div>
-        </article>
-        <article class="why-item reveal">
-          <span class="why-item__num" aria-hidden="true">04</span>
-          <div>
-            <h3 class="why-item__title">Persoonlijke aanpak</h3>
-            <p class="why-item__text">Eén vast aanspreekpunt, korte lijnen en duidelijke communicatie gedurende het hele traject.</p>
-          </div>
-        </article>
+        <div class="compare-wrap reveal" role="region" aria-label="Reactietijden" tabindex="0">
+          <table class="compare-table compare-table--sla">
+            <thead>
+              <tr>
+                <th scope="col">Prioriteit</th>
+                <th scope="col">Voorbeeld</th>
+                <th scope="col">Reactietijd</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">Kritiek</th>
+              <td>Website offline of onbruikbaar</td>
+              <td>Reactie binnen 4 uur</td>
+            </tr>
+            <tr>
+              <th scope="row">Hoog</th>
+              <td>Belangrijke functie werkt niet</td>
+              <td>Reactie binnen 1 werkdag</td>
+            </tr>
+            <tr>
+              <th scope="row">Normaal</th>
+              <td>Kleine aanpassing of vraag</td>
+              <td>Reactie binnen 2 werkdagen</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
+        <p class="section-note reveal">Reactietijden gelden op werkdagen en zijn onderdeel van de abonnementen Zakelijk en Op maat.</p>
       </div>
     </section>
 
-    <section class="section section--alt" id="faq" aria-labelledby="faq-title">
-      <div class="container">
-        <header class="section__header reveal">
-          <p class="section__eyebrow">Veelgestelde vragen</p>
-          <h2 id="faq-title" class="section__title">Duidelijke antwoorden vooraf.</h2>
-        </header>
-        <div class="faq-list reveal">
-          
-          <div class="faq-item" data-faq-item>
-            <h3>
-              <button
-                class="faq-item__button"
-                type="button"
-                id="faq-button-0"
-                data-faq-button
-                aria-expanded="false"
-                aria-controls="faq-panel-0"
-              >
-                <span>Is onderhoud verplicht?</span>
-                <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-              </button>
-            </h3>
-            <div class="faq-item__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" data-faq-panel hidden>
-              <div class="faq-item__content">
-                <p>Nee. Onderhoud is optioneel en hangt af van je pakket en wensen. Voor webshops en bedrijfskritische sites raden we het wel sterk aan.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq-item" data-faq-item>
-            <h3>
-              <button
-                class="faq-item__button"
-                type="button"
-                id="faq-button-1"
-                data-faq-button
-                aria-expanded="false"
-                aria-controls="faq-panel-1"
-              >
-                <span>Wat valt er onder onderhoud?</span>
-                <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-              </button>
-            </h3>
-            <div class="faq-item__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" data-faq-panel hidden>
-              <div class="faq-item__content">
-                <p>Denk aan updates, monitoring, beveiligingscontroles en technische support. Exacte inhoud stemmen we af in de overeenkomst — zonder vage beloftes.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq-item" data-faq-item>
-            <h3>
-              <button
-                class="faq-item__button"
-                type="button"
-                id="faq-button-2"
-                data-faq-button
-                aria-expanded="false"
-                aria-controls="faq-panel-2"
-              >
-                <span>Onderhouden jullie ook sites die elders gehost worden?</span>
-                <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-              </button>
-            </h3>
-            <div class="faq-item__panel" id="faq-panel-2" role="region" aria-labelledby="faq-button-2" data-faq-panel hidden>
-              <div class="faq-item__content">
-                <p>In veel gevallen wel, afhankelijk van toegang en techniek. Tijdens de intake bepalen we of dat verantwoord en efficiënt kan.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq-item" data-faq-item>
-            <h3>
-              <button
-                class="faq-item__button"
-                type="button"
-                id="faq-button-3"
-                data-faq-button
-                aria-expanded="false"
-                aria-controls="faq-panel-3"
-              >
-                <span>Hoe snel reageren jullie bij problemen?</span>
-                <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-              </button>
-            </h3>
-            <div class="faq-item__panel" id="faq-panel-3" role="region" aria-labelledby="faq-button-3" data-faq-panel hidden>
-              <div class="faq-item__content">
-                <p>Je hebt een vast aanspreekpunt en we reageren zo snel mogelijk binnen de afgesproken kaders. Prioriteit hangt af van de ernst van het probleem.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="cta" aria-labelledby="cta-title">
+    <section class="section" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta-banner reveal">
           <div>
             <p class="section__eyebrow">Volgende stap</p>
-            <h2 id="cta-title" class="cta-banner__title">Wil je technische rust na livegang?</h2>
-            <p class="cta-banner__text">Vertel ons over je huidige website. We geven een helder voorstel voor onderhoud — alleen wat je echt nodig hebt.</p>
+            <h2 id="cta-title" class="cta-banner__title">Nooit meer omkijken naar updates?</h2>
+            <p class="cta-banner__text">Vertel ons welke website je hebt. We adviseren het abonnement dat daarbij past.</p>
           </div>
-          <a class="btn btn--primary" href="/#contact">Vraag een voorstel aan</a>
+          <a class="btn btn--primary" href="/contact">Vraag onderhoud aan</a>
         </div>
       </div>
     </section>
@@ -326,19 +259,20 @@
           <p class="site-footer__note">AxaWeb is onderdeel van AxaNet.</p>
         </div>
         <div>
-          <p class="site-footer__title">Navigatie</p>
+          <p class="site-footer__title">Diensten</p>
           <ul class="site-footer__links">
-            <li><a href="/diensten">Diensten</a></li>
             <li><a href="/websites">Websites</a></li>
             <li><a href="/webshops">Webshops</a></li>
             <li><a href="/hosting">Hosting</a></li>
             <li><a href="/onderhoud">Onderhoud</a></li>
-            <li><a href="/#contact">Contact</a></li>
           </ul>
         </div>
         <div>
-          <p class="site-footer__title">Juridisch</p>
+          <p class="site-footer__title">Navigatie</p>
           <ul class="site-footer__links">
+            <li><a href="/diensten">Diensten</a></li>
+            <li><a href="/projecten">Projecten</a></li>
+            <li><a href="/contact">Contact</a></li>
             <li><a href="/privacy.html">Privacyverklaring</a></li>
             <li><a href="/algemene-voorwaarden.html">Algemene voorwaarden</a></li>
           </ul>
@@ -358,6 +292,6 @@
     </div>
   </footer>
 
-  <script type="module" src="/js/service-main.js"></script>
+  <script type="module" src="/js/page-main.js"></script>
 </body>
 </html>

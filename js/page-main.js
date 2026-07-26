@@ -1,5 +1,6 @@
 import { initHeader } from "./modules/header.js";
 import { initFaq } from "./modules/faq.js";
+import { initContactForm } from "./modules/form.js";
 import { initAnimations } from "./modules/animations.js";
 
 function initYear() {
@@ -16,6 +17,7 @@ function initMobileLinkDelay() {
 function init() {
   initHeader();
   initFaq();
+  initContactForm();
   initAnimations();
   initYear();
   initMobileLinkDelay();
