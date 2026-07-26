@@ -33,7 +33,6 @@ export const pages = {
         title: "Vier diensten, één aanspreekpunt.",
         rows: [
           {
-            icon: "layout",
             title: "Websites",
             text: "Maatwerkwebsites die vertrouwen uitstralen en bezoekers omzetten in aanvragen.",
             points: [
@@ -44,7 +43,6 @@ export const pages = {
             link: { label: "Alles over websites", href: "/websites" },
           },
           {
-            icon: "cart",
             title: "Webshops",
             text: "Conversiegerichte webshops met soepel beheer en betrouwbare betalingen.",
             points: [
@@ -55,7 +53,6 @@ export const pages = {
             link: { label: "Alles over webshops", href: "/webshops" },
           },
           {
-            icon: "server",
             title: "Hosting",
             text: "Snelle en veilige hosting met alles erop en eraan, zonder technisch gedoe.",
             points: [
@@ -66,7 +63,6 @@ export const pages = {
             link: { label: "Alles over hosting", href: "/hosting" },
           },
           {
-            icon: "wrench",
             title: "Onderhoud",
             text: "Updates, monitoring en support die problemen vóór zijn in plaats van achteraf oplossen.",
             points: [
@@ -198,7 +194,7 @@ export const pages = {
             text: "Contactformulieren, kaarten of planningskoppelingen, afgestemd op jouw werkwijze.",
           },
           {
-            icon: "bolt",
+            icon: "trend",
             title: "Klaar voor groei",
             text: "Schaalbare opzet waardoor extra pagina's en functionaliteiten later eenvoudig toe te voegen zijn.",
           },
@@ -850,8 +846,7 @@ export const pages = {
         id: "formulier",
         info: [
           { icon: "mail", label: "E-mail", value: "info@axaweb.nl", href: "mailto:info@axaweb.nl" },
-          { icon: "pin", label: "Locatie", value: "Dieren, Nederland" },
-          { icon: "bolt", label: "Reactietijd", value: "Binnen één werkdag" },
+          { icon: "clock", label: "Reactietijd", value: "Binnen één werkdag" },
         ],
         steps: {
           title: "Wat je kunt verwachten",

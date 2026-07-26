@@ -98,7 +98,7 @@ function footerMarkup() {
           <p class="site-footer__title">Contact</p>
           <ul class="site-footer__links">
             <li><a href="mailto:info@axaweb.nl">info@axaweb.nl</a></li>
-            <li>Dieren, Nederland</li>
+            <li>Reactie binnen één werkdag</li>
           </ul>
         </div>
       </div>
@@ -220,7 +220,6 @@ function renderServiceRows(section, alt) {
         <article class="service-row reveal">
           <div class="service-row__intro">
             <span class="service-row__num" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
-            <div class="icon-box">${icon(row.icon)}</div>
             <h3 class="service-row__title">${escapeHtml(row.title)}</h3>
             <p class="service-row__text">${escapeHtml(row.text)}</p>
             <a class="card__link" href="${row.link.href}">${escapeHtml(row.link.label)} ${icon("arrow", "icon")}</a>

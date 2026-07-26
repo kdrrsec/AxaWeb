@@ -41,10 +41,6 @@ export function renderPageContent() {
       .join("");
   }
 
-  document.querySelectorAll("[data-icon]").forEach((el) => {
-    el.innerHTML = icon(el.dataset.icon);
-  });
-
   document.querySelectorAll(".mobile-nav a").forEach((link, index) => {
     link.style.setProperty("--i", String(index));
   });
