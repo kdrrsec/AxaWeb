@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/main.css" />
   <style>
     .legal {
-      padding: calc(var(--header-height) + 2.5rem) 0 4rem;
+      padding: calc(var(--header-height) + env(safe-area-inset-top, 0px) + 2.5rem) 0 4rem;
     }
     .legal__content {
       max-width: 46rem;

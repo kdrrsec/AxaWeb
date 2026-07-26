@@ -6,26 +6,12 @@ import {
   packages,
   hostingFeatures,
   faqs,
-  heroUsps,
   projectTypes,
   budgetOptions,
 } from "../data/content.js";
 import { icon } from "./icons.js";
 
 export function renderPageContent() {
-  const usps = document.querySelector("[data-hero-usps]");
-  if (usps) {
-    usps.innerHTML = heroUsps
-      .map(
-        (item) => `
-        <li class="hero__usp">
-          <span class="icon-box icon-box--sm">${icon(item.icon)}</span>
-          <span>${item.label}</span>
-        </li>`
-      )
-      .join("");
-  }
-
   const servicesRoot = document.querySelector("[data-services]");
   if (servicesRoot) {
     servicesRoot.innerHTML = services

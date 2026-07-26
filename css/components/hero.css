@@ -1,9 +1,11 @@
 .hero {
   position: relative;
-  min-height: calc(100svh - var(--header-height));
-  min-height: calc(100dvh - var(--header-height));
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
+  /* Ruimte onder de fixed header — content centreert in het resterende vlak */
+  padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0px));
   overflow: hidden;
   isolation: isolate;
 }
@@ -48,10 +50,7 @@
 .hero__inner {
   width: min(100% - (var(--gutter) * 2), var(--container));
   margin-inline: auto;
-  padding:
-    clamp(3rem, 8vw, 5.5rem)
-    0
-    clamp(3.5rem, 8vw, 5.5rem);
+  padding: clamp(2.25rem, 6vw, 4rem) 0 clamp(3.25rem, 7vw, 5rem);
 }
 
 .hero__content {
@@ -86,7 +85,7 @@
 
 .hero__text {
   max-width: 34rem;
-  margin-top: 1.2rem;
+  margin-top: 1.25rem;
   color: var(--text-secondary);
   font-size: clamp(0.98rem, 1.5vw, 1.1rem);
   line-height: 1.7;
@@ -96,32 +95,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  margin-top: 1.85rem;
-}
-
-.hero__usps {
-  display: grid;
-  gap: 0.85rem;
-  margin-top: 2.5rem;
-  max-width: 40rem;
-}
-
-.hero__usp {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  font-weight: 500;
-}
-
-.hero__usp .icon-box {
-  transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
-}
-
-.hero__usp:hover .icon-box {
-  transform: translateY(-1px);
-  background: rgba(35, 139, 255, 0.16);
+  margin-top: 1.75rem;
 }
 
 .hero__scroll-hint {
@@ -159,15 +133,19 @@
   }
 }
 
-@media (min-width: 640px) {
-  .hero__usps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 639px) {
   .hero {
     min-height: auto;
+    /* Genoeg verticale adem zonder lege USP-ruimte */
+    padding-bottom: 2.5rem;
+  }
+
+  .hero__inner {
+    padding: clamp(1.75rem, 7vw, 2.75rem) 0 1.5rem;
+  }
+
+  .hero__actions {
+    margin-top: 1.5rem;
   }
 
   .hero__actions .btn {

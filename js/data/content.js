@@ -6,25 +6,6 @@ export const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const heroUsps = [
-  {
-    label: "Maatwerk voor jouw bedrijf",
-    icon: "craft",
-  },
-  {
-    label: "Snel en professioneel gebouwd",
-    icon: "bolt",
-  },
-  {
-    label: "Hosting en onderhoud geregeld",
-    icon: "shield",
-  },
-  {
-    label: "Persoonlijk contact",
-    icon: "user",
-  },
-];
-
 export const services = [
   {
     id: "websites",

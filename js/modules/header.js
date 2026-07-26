@@ -31,9 +31,15 @@ export function initHeader() {
   });
 
   const onScroll = () => {
-    header.classList.toggle("is-scrolled", window.scrollY > 12);
+    /* Direct vanaf 1px: voorkomt gap vóór is-scrolled op mobiel */
+    header.classList.toggle("is-scrolled", window.scrollY > 1);
   };
 
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", onScroll, { passive: true });
+    window.visualViewport.addEventListener("scroll", onScroll, { passive: true });
+  }
 }

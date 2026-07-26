@@ -1,41 +1,50 @@
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 100;
+  margin: 0;
+  padding: 0;
   padding-top: env(safe-area-inset-top, 0px);
   border-bottom: 1px solid transparent;
   background: transparent;
-  /* Voorkomt verspringen: vaste inhoudshoogte, safe-area alleen als padding */
+  /* Geen transform/translateY: voorkomt layout shifts en fixed-descendant issues */
   transition:
     background-color var(--dur-med) var(--ease),
     border-color var(--dur-med) var(--ease),
     backdrop-filter var(--dur-med) var(--ease);
 }
 
-/* Vult rubber-band / statusbalk-gap boven de sticky header */
+/*
+  Vult elke pixel boven de header (rubber-band, statusbalk, visual-viewport gap).
+  Vastgeplakt aan top:0 van de fixed header — geen sticky-offset, geen gap.
+*/
 .site-header::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 100%;
-  height: 100vh;
-  background: var(--bg);
+  height: max(100vh, 100dvh);
+  background: rgba(6, 16, 29, 0.98);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-med) var(--ease);
 }
 
 .site-header.is-scrolled {
-  background-color: rgba(6, 16, 29, 0.94);
+  background-color: rgba(6, 16, 29, 0.98);
   border-bottom-color: var(--border);
   backdrop-filter: blur(16px) saturate(1.2);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  /* Extra vulling omhoog voor iOS Safari / Android Chrome overscroll */
+  box-shadow: 0 -2px 0 2px rgba(6, 16, 29, 0.98);
 }
 
 .site-header.is-scrolled::before {
   opacity: 1;
-  background: rgba(6, 16, 29, 0.94);
 }
 
 .scroll-progress {
