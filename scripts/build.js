@@ -24,6 +24,7 @@ const pageSlugs = [
   "webshops",
   "hosting",
   "onderhoud",
+  "pakketten",
   "projecten",
   "contact",
 ];

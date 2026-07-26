@@ -166,6 +166,90 @@
   }
 }
 
+/* --- Pakketten-teaser (homepage): compacte prijsteaser, geen volledige tabel --- */
+.package-teasers {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.package-teaser {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.6rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%),
+    var(--bg-elevated);
+  box-shadow: var(--shadow-card);
+  transition:
+    border-color var(--dur-med) var(--ease),
+    transform var(--dur-med) var(--ease),
+    box-shadow var(--dur-med) var(--ease);
+}
+
+.package-teaser:hover {
+  border-color: rgba(35, 139, 255, 0.32);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.package-teaser--featured {
+  border-color: rgba(35, 139, 255, 0.45);
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(35, 139, 255, 0.14), transparent 60%),
+    var(--bg-elevated);
+}
+
+.package-teaser__badge {
+  position: absolute;
+  top: 1.35rem;
+  right: 1.5rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(35, 139, 255, 0.35);
+  color: var(--accent-hover);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.package-teaser__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+.package-teaser__price {
+  margin-top: 0.55rem;
+  font-size: clamp(1.5rem, 2.6vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.package-teaser__text {
+  margin-top: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.package-teaser .card__link {
+  margin-top: 1.15rem;
+}
+
+@media (min-width: 768px) {
+  .package-teasers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* --- Projectcards --- */
 .project-card {
   position: relative;

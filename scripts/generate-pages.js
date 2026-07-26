@@ -88,6 +88,7 @@ function footerMarkup() {
           <p class="site-footer__title">Navigatie</p>
           <ul class="site-footer__links">
             <li><a href="/diensten">Diensten</a></li>
+            <li><a href="/pakketten">Pakketten</a></li>
             <li><a href="/projecten">Projecten</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/privacy.html">Privacyverklaring</a></li>
@@ -340,12 +341,18 @@ function renderPricing(section, alt) {
     )
     .join("");
 
+  const footer = section.footerLink
+    ? `\n        <div class="section__footer reveal">
+          <a class="btn btn--secondary" href="${section.footerLink.href}">${escapeHtml(section.footerLink.label)}</a>
+        </div>`
+    : "";
+
   return `    <section class="section${alt}" id="${section.id}" aria-labelledby="${section.id}-title">
       <div class="container">
         ${sectionHeader(section, { center: true })}
         <div class="pricing stagger">${plans}
         </div>
-        <p class="pricing-note reveal">${escapeHtml(section.note)}</p>
+        <p class="pricing-note reveal">${escapeHtml(section.note)}</p>${footer}
       </div>
     </section>`;
 }

@@ -1,4 +1,4 @@
-import { services, projects } from "../data/content.js";
+import { services, packagesPreview, projects } from "../data/content.js";
 import { icon } from "./icons.js";
 
 export function renderPageContent() {
@@ -16,6 +16,25 @@ export function renderPageContent() {
           </ul>
           <a class="card__link" href="${service.href}">
             ${service.cta}
+            ${icon("arrow", "icon")}
+          </a>
+        </article>`
+      )
+      .join("");
+  }
+
+  const packagesRoot = document.querySelector("[data-packages-preview]");
+  if (packagesRoot) {
+    packagesRoot.innerHTML = packagesPreview
+      .map(
+        (pkg) => `
+        <article class="package-teaser${pkg.featured ? " package-teaser--featured" : ""} reveal">
+          ${pkg.badge ? `<span class="package-teaser__badge">${pkg.badge}</span>` : ""}
+          <h3 class="package-teaser__name">${pkg.name}</h3>
+          <p class="package-teaser__price">${pkg.price}</p>
+          <p class="package-teaser__text">${pkg.text}</p>
+          <a class="card__link" href="/pakketten">
+            Meer informatie
             ${icon("arrow", "icon")}
           </a>
         </article>`
