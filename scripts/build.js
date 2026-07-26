@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { generateServicePages } from "./generate-service-pages.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "public");
@@ -11,10 +12,13 @@ const cssFiles = [
   "css/layout.css",
   "css/components/header.css",
   "css/components/hero.css",
+  "css/components/page.css",
   "css/components/sections.css",
   "css/components/form.css",
   "css/components/footer.css",
 ];
+
+const serviceSlugs = ["diensten", "websites", "webshops", "hosting", "onderhoud"];
 
 const requiredFiles = [
   "index.html",
@@ -29,6 +33,7 @@ const requiredFiles = [
   "images/background.jpg",
   "images/background.webp",
   "js/main.js",
+  "js/service-main.js",
   "css/main.css",
 ];
 
@@ -54,6 +59,7 @@ function validateHtml(filePath) {
     [/lang="nl"/, "Missing lang=nl"],
     [/<title>.+<\/title>/, "Missing title"],
     [/meta name="description"/, "Missing meta description"],
+    [/<h1[\s>]/, "Missing H1"],
   ];
 
   checks.forEach(([pattern, message]) => {
@@ -61,12 +67,22 @@ function validateHtml(filePath) {
       throw new Error(`${filePath}: ${message}`);
     }
   });
+
+  const h1Count = (html.match(/<h1[\s>]/g) || []).length;
+  if (h1Count !== 1) {
+    throw new Error(`${filePath}: Expected exactly one H1, found ${h1Count}`);
+  }
 }
 
+generateServicePages();
+
 requiredFiles.forEach(assertExists);
+serviceSlugs.forEach((slug) => assertExists(`${slug}.html`));
+
 validateHtml("index.html");
 validateHtml("privacy.html");
 validateHtml("algemene-voorwaarden.html");
+serviceSlugs.forEach((slug) => validateHtml(`${slug}.html`));
 
 if (existsSync(dist)) {
   rmSync(dist, { recursive: true, force: true });
@@ -84,6 +100,7 @@ const staticCopies = [
   "apple-touch-icon.png",
   "logo.png",
   "logo@2x.png",
+  ...serviceSlugs.map((slug) => `${slug}.html`),
 ];
 
 staticCopies.forEach((file) => {
@@ -101,11 +118,16 @@ const bundledCss = bundleCss();
 mkdirSync(join(dist, "css"), { recursive: true });
 writeFileSync(join(dist, "css/bundle.css"), bundledCss, "utf8");
 
-const indexHtml = readFileSync(join(dist, "index.html"), "utf8").replace(
-  'href="css/main.css"',
-  'href="css/bundle.css"'
-);
-writeFileSync(join(dist, "index.html"), indexHtml, "utf8");
+function useBundleCss(fileName) {
+  const htmlPath = join(dist, fileName);
+  const html = readFileSync(htmlPath, "utf8")
+    .replace('href="css/main.css"', 'href="css/bundle.css"')
+    .replace('href="/css/main.css"', 'href="/css/bundle.css"');
+  writeFileSync(htmlPath, html, "utf8");
+}
+
+useBundleCss("index.html");
+serviceSlugs.forEach((slug) => useBundleCss(`${slug}.html`));
 
 console.log("Build completed successfully.");
 console.log(`Output: ${dist}`);

@@ -1,5 +1,5 @@
 export const navLinks = [
-  { label: "Diensten", href: "#diensten" },
+  { label: "Diensten", href: "/diensten" },
   { label: "Werkwijze", href: "#werkwijze" },
   { label: "Projecten", href: "#projecten" },
   { label: "Pakketten", href: "#pakketten" },
@@ -32,8 +32,7 @@ export const services = [
     text: "Professionele maatwerkwebsites die vertrouwen uitstralen, snel laden en bezoekers overtuigen.",
     benefits: ["Uniek ontwerp", "Responsive", "Technisch geoptimaliseerd"],
     cta: "Meer over websites",
-    href: "#contact",
-    futureRoute: "/websites",
+    href: "/websites",
     icon: "layout",
   },
   {
@@ -42,8 +41,7 @@ export const services = [
     text: "Gebruiksvriendelijke webshops waarmee ondernemers hun producten en diensten professioneel online verkopen.",
     benefits: ["Conversiegericht", "Overzichtelijk beheer", "Schaalbaar opgebouwd"],
     cta: "Meer over webshops",
-    href: "#contact",
-    futureRoute: "/webshops",
+    href: "/webshops",
     icon: "cart",
   },
   {
@@ -52,8 +50,7 @@ export const services = [
     text: "Snelle en veilige hosting met SSL, back-ups, zakelijke e-mail en persoonlijke ondersteuning.",
     benefits: ["Betrouwbare infrastructuur", "Beveiliging", "Ondersteuning"],
     cta: "Meer over hosting",
-    href: "#hosting",
-    futureRoute: "/hosting",
+    href: "/hosting",
     icon: "server",
   },
   {
@@ -62,8 +59,7 @@ export const services = [
     text: "Updates, monitoring, beveiliging en technische ondersteuning om jouw website gezond en betrouwbaar te houden.",
     benefits: ["Periodieke updates", "Controle en monitoring", "Snel aanspreekpunt"],
     cta: "Meer over onderhoud",
-    href: "#contact",
-    futureRoute: "/onderhoud",
+    href: "/onderhoud",
     icon: "wrench",
   },
 ];

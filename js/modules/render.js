@@ -38,7 +38,7 @@ export function renderPageContent() {
           <ul class="card__list">
             ${service.benefits.map((benefit) => `<li>${benefit}</li>`).join("")}
           </ul>
-          <a class="card__link" href="${service.href}" data-future-route="${service.futureRoute}">
+          <a class="card__link" href="${service.href}">
             ${service.cta}
             ${icon("arrow", "icon")}
           </a>
