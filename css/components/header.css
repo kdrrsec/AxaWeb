@@ -1,25 +1,28 @@
+/*
+  Header: altijd fixed op top 0 met een volledig dekkende achtergrond.
+  Bewust géén transparante beginstand, géén background-transition en géén
+  backdrop-filter: dat zijn precies de dingen die op iOS Safari doorschijnende
+  content of een open ruimte boven de header veroorzaken.
+*/
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
   margin: 0;
   padding: 0;
   padding-top: env(safe-area-inset-top, 0px);
   border-bottom: 1px solid transparent;
-  background: transparent;
+  background: var(--bg);
   /* Geen transform/translateY: voorkomt layout shifts en fixed-descendant issues */
-  transition:
-    background-color var(--dur-med) var(--ease),
-    border-color var(--dur-med) var(--ease),
-    backdrop-filter var(--dur-med) var(--ease);
+  transition: border-color var(--dur-med) var(--ease);
 }
 
 /*
-  Vult elke pixel boven de header (rubber-band, statusbalk, visual-viewport gap).
-  Vastgeplakt aan top:0 van de fixed header — geen sticky-offset, geen gap.
+  Dekt permanent elke pixel boven de header af (rubber-band/overscroll,
+  statusbalk, visual-viewport verschuivingen door de iOS-adresbalk).
 */
 .site-header::before {
   content: "";
@@ -28,23 +31,12 @@
   right: 0;
   bottom: 100%;
   height: max(100vh, 100dvh);
-  background: rgba(6, 16, 29, 0.98);
-  opacity: 0;
+  background: var(--bg);
   pointer-events: none;
-  transition: opacity var(--dur-med) var(--ease);
 }
 
 .site-header.is-scrolled {
-  background-color: rgba(6, 16, 29, 0.98);
   border-bottom-color: var(--border);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  /* Extra vulling omhoog voor iOS Safari / Android Chrome overscroll */
-  box-shadow: 0 -2px 0 2px rgba(6, 16, 29, 0.98);
-}
-
-.site-header.is-scrolled::before {
-  opacity: 1;
 }
 
 .scroll-progress {
@@ -204,15 +196,14 @@
 .mobile-nav {
   position: fixed;
   inset: calc(var(--header-height) + env(safe-area-inset-top, 0px)) 0 0;
-  z-index: 99;
+  z-index: 990;
   display: none;
   flex-direction: column;
   gap: 0.35rem;
   padding: 1.5rem 1.25rem;
   padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
-  background: rgba(6, 16, 29, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* Volledig dekkend: geen doorschijnende content achter het menu op iOS */
+  background: var(--bg);
 }
 
 .mobile-nav.is-open {
