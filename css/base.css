@@ -9,6 +9,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0px) + 1rem);
+  overscroll-behavior-y: none;
   background: var(--bg);
   color-scheme: dark;
 }

@@ -42,7 +42,7 @@ function initHeroTitle() {
 
 function initHeroParallax() {
   const media = document.querySelector(".hero__media");
-  if (!media || reduceMotion()) return;
+  if (!media || reduceMotion() || window.matchMedia("(hover: none)").matches) return;
 
   let ticking = false;
   let active = false;

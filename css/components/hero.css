@@ -133,6 +133,13 @@
   }
 }
 
+@media (max-width: 959px) {
+  /* Geen negatieve inset op touch: voorkomt hero-beeld boven de header tijdens scroll */
+  .hero__media {
+    inset: 0;
+  }
+}
+
 @media (max-width: 639px) {
   .hero {
     min-height: auto;
