@@ -339,9 +339,11 @@ function renderPricing(section, alt) {
           </div>`;
     }
 
-    return `<p class="pricing-card__price">${escapeHtml(plan.price)}${
+    return `<div class="pricing-card__pricing">
+            <p class="pricing-card__price">${escapeHtml(plan.price)}${
       plan.period ? ` <span class="pricing-card__period">${escapeHtml(plan.period)}</span>` : ""
-    }</p>`;
+    }</p>${plan.price !== "Op aanvraag" ? `\n            <p class="pricing-card__vat">Excl. 21% btw</p>` : ""}
+          </div>`;
   };
 
   const plans = section.plans

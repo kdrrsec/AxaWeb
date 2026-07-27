@@ -70,8 +70,7 @@ const webPlans = [
 const hostingPlans = [
   {
     name: "Essentieel",
-    priceWas: "€119",
-    priceIntro: "€99",
+    price: "€99",
     period: "per jaar",
     audience: "Voor websites die betrouwbaar online moeten staan.",
     featured: false,
@@ -87,8 +86,7 @@ const hostingPlans = [
   },
   {
     name: "Zakelijk",
-    priceWas: "€239",
-    priceIntro: "€199",
+    price: "€199",
     period: "per jaar",
     audience: "Voor bedrijven waar de website een belangrijke rol speelt.",
     featured: true,
@@ -123,8 +121,7 @@ const hostingPlans = [
 const onderhoudPlans = [
   {
     name: "Basis",
-    priceWas: "€49",
-    priceIntro: "€39",
+    price: "€39",
     period: "per maand",
     audience: "Voor websites die up-to-date en veilig moeten blijven.",
     featured: false,
@@ -139,8 +136,7 @@ const onderhoudPlans = [
   },
   {
     name: "Zakelijk",
-    priceWas: "€99",
-    priceIntro: "€79",
+    price: "€79",
     period: "per maand",
     audience: "Voor bedrijven die op hun website moeten kunnen rekenen.",
     featured: true,
@@ -614,7 +610,7 @@ export const pages = {
         eyebrow: "Pakketten",
         title: "Kies de hosting die bij je past.",
         plans: hostingPlans,
-        note: "Alle bedragen zijn vanafprijzen. Je ontvangt altijd vooraf een duidelijk voorstel.",
+        note: "Alle bedragen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel.",
       },
       {
         type: "specs",
@@ -712,7 +708,7 @@ export const pages = {
         eyebrow: "Abonnementen",
         title: "Onderhoud dat past bij jouw website.",
         plans: onderhoudPlans,
-        note: "Alle bedragen zijn vanafprijzen, afgestemd op de omvang en techniek van je website. Maandelijks opzegbaar.",
+        note: "Alle bedragen zijn exclusief 21% btw. Minimale looptijd van twaalf maanden; daarna maandelijks opzegbaar.",
       },
       {
         type: "checklists",
@@ -789,14 +785,14 @@ export const pages = {
     navKey: "pakketten",
     title: "Pakketten en prijzen | AxaWeb",
     description:
-      "Compleet overzicht van alle AxaWeb-pakketten: webpakketten vanaf €395, hosting vanaf €99 per jaar en onderhoud vanaf €39 per maand. Introductieprijzen, exclusief 21% btw.",
+      "Compleet overzicht van alle AxaWeb-pakketten: webpakketten vanaf €395 (introductieprijs), hosting vanaf €99 per jaar en onderhoud vanaf €39 per maand. Exclusief 21% btw.",
     canonical: "https://axaweb.nl/pakketten",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Pakketten" }],
     head: {
       variant: "center",
       eyebrow: "Pakketten",
       title: "Alle pakketten en prijzen op één plek.",
-      text: "Van een eerste website tot hosting en onderhoud: ieder pakket heeft een duidelijke prijs en inhoud. Introductieprijzen zijn exclusief 21% btw.",
+      text: "Van een eerste website tot hosting en onderhoud: ieder pakket heeft een duidelijke prijs en inhoud. Webpakketten met introductieprijs; alle prijzen exclusief 21% btw.",
     },
     sections: [
       {
@@ -816,7 +812,7 @@ export const pages = {
         title: "Hosting per jaar, zonder omkijken.",
         intro: "Jaarlijkse pakketten voor een snelle, veilige en goed onderhouden omgeving.",
         plans: hostingPlans,
-        note: "Introductieprijzen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel.",
+        note: "Prijzen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel.",
         footerLink: { label: "Alles over hosting", href: "/hosting" },
       },
       {
@@ -826,7 +822,7 @@ export const pages = {
         title: "Onderhoud als maandabonnement.",
         intro: "Doorlopende zorg voor updates, monitoring en support.",
         plans: onderhoudPlans,
-        note: "Introductieprijzen zijn exclusief 21% btw. Minimale looptijd van twaalf maanden voor abonnementen.",
+        note: "Prijzen zijn exclusief 21% btw. Minimale looptijd van twaalf maanden voor abonnementen.",
         footerLink: { label: "Alles over onderhoud", href: "/onderhoud" },
       },
       {
