@@ -15,8 +15,8 @@ export const siteNav = [
 const webPlans = [
   {
     name: "Start",
-    priceWas: "€595",
-    priceIntro: "€495",
+    priceWas: "€495",
+    priceIntro: "€395",
     audience: "Voor starters en kleine ondernemingen.",
     featured: false,
     features: [
@@ -32,8 +32,8 @@ const webPlans = [
   },
   {
     name: "Business",
-    priceWas: "€995",
-    priceIntro: "€895",
+    priceWas: "€795",
+    priceIntro: "€695",
     audience: "Voor bedrijven die uitgebreider en professioneler online zichtbaar willen zijn.",
     featured: true,
     badge: "Meest gekozen",
@@ -50,8 +50,8 @@ const webPlans = [
   },
   {
     name: "Premium",
-    priceWas: "€1.950",
-    priceIntro: "€1.750",
+    priceWas: "€1.695",
+    priceIntro: "€1.495",
     audience: "Voor uitgebreide websites, maatwerkfunctionaliteiten en groeiende organisaties.",
     featured: false,
     features: [
@@ -273,7 +273,7 @@ export const pages = {
           },
           {
             label: "Vanafprijs",
-            values: ["€495 eenmalig", "Op aanvraag", "€99 per jaar", "€39 per maand"],
+            values: ["€395 eenmalig", "Op aanvraag", "€99 per jaar", "€39 per maand"],
           },
           {
             label: "Doorlooptijd",
@@ -305,7 +305,7 @@ export const pages = {
     navKey: "diensten",
     title: "Websites op maat | AxaWeb",
     description:
-      "Maatwerkwebsites die vertrouwen wekken en klanten opleveren. Bekijk functionaliteiten, het proces, prijzen vanaf €495 en cases.",
+      "Maatwerkwebsites die vertrouwen wekken en klanten opleveren. Bekijk functionaliteiten, het proces, prijzen vanaf €395 en cases.",
     canonical: "https://axaweb.nl/websites",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -327,7 +327,7 @@ export const pages = {
           "100% maatwerk, geen standaardthema's",
           "Responsive op ieder scherm",
           "SEO- en performancebasis inbegrepen",
-          "Pakketten vanaf €495",
+          "Pakketten vanaf €395",
         ],
       },
     },
@@ -789,7 +789,7 @@ export const pages = {
     navKey: "pakketten",
     title: "Pakketten en prijzen | AxaWeb",
     description:
-      "Compleet overzicht van alle AxaWeb-pakketten: webpakketten vanaf €495, hosting vanaf €99 per jaar en onderhoud vanaf €39 per maand. Introductieprijzen, exclusief 21% btw.",
+      "Compleet overzicht van alle AxaWeb-pakketten: webpakketten vanaf €395, hosting vanaf €99 per jaar en onderhoud vanaf €39 per maand. Introductieprijzen, exclusief 21% btw.",
     canonical: "https://axaweb.nl/pakketten",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Pakketten" }],
     head: {
@@ -963,7 +963,7 @@ export const pages = {
           {
             question: "Wat kost een website of webshop?",
             answer:
-              "Websites starten vanaf €495. De uiteindelijke investering hangt af van ontwerp, omvang en functionaliteiten. Je ontvangt altijd vooraf een duidelijke offerte.",
+              "Websites starten vanaf €395. De uiteindelijke investering hangt af van ontwerp, omvang en functionaliteiten. Je ontvangt altijd vooraf een duidelijke offerte.",
           },
           {
             question: "Kan ik ook alleen hosting of onderhoud afnemen?",
