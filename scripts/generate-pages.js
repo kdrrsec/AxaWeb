@@ -326,15 +326,31 @@ function renderTimeline(section, alt) {
 }
 
 function renderPricing(section, alt) {
+  const renderPlanPrice = (plan) => {
+    if (plan.priceIntro && plan.priceWas) {
+      const period = plan.period
+        ? ` <span class="pricing-card__period">${escapeHtml(plan.period)}</span>`
+        : "";
+      return `<div class="pricing-card__pricing">
+            <p class="pricing-card__price-was"><s>${escapeHtml(plan.priceWas)}</s></p>
+            <p class="pricing-card__price">${escapeHtml(plan.priceIntro)}${period}</p>
+            <p class="pricing-card__intro-label">Introductieprijs</p>
+            <p class="pricing-card__vat">Excl. 21% btw</p>
+          </div>`;
+    }
+
+    return `<p class="pricing-card__price">${escapeHtml(plan.price)}${
+      plan.period ? ` <span class="pricing-card__period">${escapeHtml(plan.period)}</span>` : ""
+    }</p>`;
+  };
+
   const plans = section.plans
     .map(
       (plan) => `
         <article class="pricing-card${plan.featured ? " pricing-card--featured" : ""} reveal">
           ${plan.badge ? `<span class="pricing-card__badge">${escapeHtml(plan.badge)}</span>` : ""}
           <h3 class="pricing-card__name">${escapeHtml(plan.name)}</h3>
-          <p class="pricing-card__price">${escapeHtml(plan.price)}${
-            plan.period ? ` <span class="pricing-card__period">${escapeHtml(plan.period)}</span>` : ""
-          }</p>
+          ${renderPlanPrice(plan)}
           <p class="pricing-card__audience">${escapeHtml(plan.audience)}</p>
           <ul class="pricing-card__list">
             ${plan.features.map((feature) => `<li>${icon("check")} <span>${escapeHtml(feature)}</span></li>`).join("\n            ")}
@@ -694,12 +710,33 @@ function renderCta(section) {
     </section>`;
 }
 
+function renderPricingTerms(section, alt) {
+  const items = section.items
+    .map((item) => `<li>${escapeHtml(item)}</li>`)
+    .join("\n          ");
+
+  return `    <section class="section${alt}" aria-labelledby="pricing-terms-title">
+      <div class="container">
+        <aside class="pricing-info reveal">
+          <div class="pricing-info__head">
+            ${icon("info")}
+            <h2 id="pricing-terms-title" class="pricing-info__title">${escapeHtml(section.title)}</h2>
+          </div>
+          <ul class="pricing-info__list">
+          ${items}
+          </ul>
+        </aside>
+      </div>
+    </section>`;
+}
+
 const sectionRenderers = {
   serviceRows: renderServiceRows,
   compare: renderCompare,
   features: renderFeatures,
   timeline: renderTimeline,
   pricing: renderPricing,
+  pricingTerms: renderPricingTerms,
   cases: renderCases,
   integrations: renderIntegrations,
   specs: renderSpecs,

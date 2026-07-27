@@ -414,11 +414,48 @@
   color: var(--text-secondary);
 }
 
-.pricing-card__price {
+.pricing-card__pricing {
   margin-top: 0.7rem;
+}
+
+.pricing-card__price-was {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-muted);
+}
+
+.pricing-card__price-was s {
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(184, 195, 209, 0.45);
+}
+
+.pricing-card__price {
+  margin-top: 0.15rem;
   font-size: clamp(1.85rem, 3.2vw, 2.25rem);
   font-weight: 700;
   letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.pricing-card__intro-label {
+  margin-top: 0.4rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-hover);
+}
+
+.pricing-card__vat {
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.pricing-card__pricing + .pricing-card__audience,
+.pricing-card__price + .pricing-card__audience {
+  margin-top: 0.6rem;
 }
 
 .pricing-card__audience {
@@ -463,9 +500,64 @@
   line-height: 1.6;
 }
 
+.pricing-info {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 1.5rem 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 55%),
+    rgba(8, 22, 37, 0.55);
+}
+
+.pricing-info__head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.pricing-info__head svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--accent-hover);
+  flex-shrink: 0;
+}
+
+.pricing-info__title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.pricing-info__list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.pricing-info__list li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.pricing-info__list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
 @media (min-width: 960px) {
   .pricing {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pricing-info {
+    padding: 1.65rem 1.5rem;
   }
 }
 

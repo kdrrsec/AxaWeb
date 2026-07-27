@@ -15,7 +15,8 @@ export const siteNav = [
 const webPlans = [
   {
     name: "Start",
-    price: "Vanaf €495",
+    priceWas: "€595",
+    priceIntro: "€495",
     audience: "Voor starters en kleine ondernemingen.",
     featured: false,
     features: [
@@ -31,7 +32,8 @@ const webPlans = [
   },
   {
     name: "Business",
-    price: "Vanaf €995",
+    priceWas: "€995",
+    priceIntro: "€895",
     audience: "Voor bedrijven die uitgebreider en professioneler online zichtbaar willen zijn.",
     featured: true,
     badge: "Meest gekozen",
@@ -48,7 +50,8 @@ const webPlans = [
   },
   {
     name: "Premium",
-    price: "Vanaf €1.750",
+    priceWas: "€1.950",
+    priceIntro: "€1.750",
     audience: "Voor uitgebreide websites, maatwerkfunctionaliteiten en groeiende organisaties.",
     featured: false,
     features: [
@@ -67,7 +70,8 @@ const webPlans = [
 const hostingPlans = [
   {
     name: "Essentieel",
-    price: "Vanaf €99",
+    priceWas: "€119",
+    priceIntro: "€99",
     period: "per jaar",
     audience: "Voor websites die betrouwbaar online moeten staan.",
     featured: false,
@@ -83,7 +87,8 @@ const hostingPlans = [
   },
   {
     name: "Zakelijk",
-    price: "Vanaf €199",
+    priceWas: "€239",
+    priceIntro: "€199",
     period: "per jaar",
     audience: "Voor bedrijven waar de website een belangrijke rol speelt.",
     featured: true,
@@ -118,7 +123,8 @@ const hostingPlans = [
 const onderhoudPlans = [
   {
     name: "Basis",
-    price: "Vanaf €39",
+    priceWas: "€49",
+    priceIntro: "€39",
     period: "per maand",
     audience: "Voor websites die up-to-date en veilig moeten blijven.",
     featured: false,
@@ -133,7 +139,8 @@ const onderhoudPlans = [
   },
   {
     name: "Zakelijk",
-    price: "Vanaf €79",
+    priceWas: "€99",
+    priceIntro: "€79",
     period: "per maand",
     audience: "Voor bedrijven die op hun website moeten kunnen rekenen.",
     featured: true,
@@ -162,6 +169,15 @@ const onderhoudPlans = [
     cta: "Bespreek jouw situatie",
     href: "/contact",
   },
+];
+
+const pricingTermsItems = [
+  "Alle genoemde prijzen zijn exclusief 21% btw.",
+  "De websiteprijs is een eenmalige investering.",
+  "Hosting en onderhoud worden maandelijks gefactureerd indien afgenomen.",
+  "Voor hosting- en onderhoudsabonnementen geldt een minimale looptijd van 12 maanden. Daarna zijn deze maandelijks opzegbaar.",
+  "Eventuele maatwerkfunctionaliteiten worden vooraf geoffreerd.",
+  "Na oplevering ontvang je volledige uitleg over jouw website.",
 ];
 
 export const pages = {
@@ -773,14 +789,14 @@ export const pages = {
     navKey: "pakketten",
     title: "Pakketten en prijzen | AxaWeb",
     description:
-      "Compleet overzicht van alle AxaWeb-pakketten: webpakketten vanaf €495, hosting vanaf €99 per jaar en onderhoud vanaf €39 per maand. Inclusief alles wat inbegrepen is.",
+      "Compleet overzicht van alle AxaWeb-pakketten: webpakketten vanaf €495, hosting vanaf €99 per jaar en onderhoud vanaf €39 per maand. Introductieprijzen, exclusief 21% btw.",
     canonical: "https://axaweb.nl/pakketten",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Pakketten" }],
     head: {
       variant: "center",
       eyebrow: "Pakketten",
       title: "Alle pakketten en prijzen op één plek.",
-      text: "Van een eerste website tot hosting en onderhoud: ieder pakket heeft een vaste vanafprijs en een duidelijke inhoud. Geen verrassingen achteraf.",
+      text: "Van een eerste website tot hosting en onderhoud: ieder pakket heeft een duidelijke prijs en inhoud. Introductieprijzen zijn exclusief 21% btw.",
     },
     sections: [
       {
@@ -790,7 +806,7 @@ export const pages = {
         title: "Websites met een vaste vanafprijs.",
         intro: "Eenmalige investering voor het ontwerpen en bouwen van je website.",
         plans: webPlans,
-        note: "Alle bedragen zijn vanafprijzen en afhankelijk van ontwerp, omvang en functionaliteiten.",
+        note: "Introductieprijzen zijn exclusief 21% btw. Definitieve prijs hangt af van ontwerp, omvang en functionaliteiten.",
         footerLink: { label: "Alles over websites", href: "/websites" },
       },
       {
@@ -800,7 +816,7 @@ export const pages = {
         title: "Hosting per jaar, zonder omkijken.",
         intro: "Jaarlijkse pakketten voor een snelle, veilige en goed onderhouden omgeving.",
         plans: hostingPlans,
-        note: "Alle bedragen zijn vanafprijzen. Je ontvangt altijd vooraf een duidelijk voorstel.",
+        note: "Introductieprijzen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel.",
         footerLink: { label: "Alles over hosting", href: "/hosting" },
       },
       {
@@ -808,10 +824,15 @@ export const pages = {
         id: "onderhoud",
         eyebrow: "Onderhoud",
         title: "Onderhoud als maandabonnement.",
-        intro: "Doorlopende zorg voor updates, monitoring en support. Maandelijks opzegbaar.",
+        intro: "Doorlopende zorg voor updates, monitoring en support.",
         plans: onderhoudPlans,
-        note: "Alle bedragen zijn vanafprijzen, afgestemd op de omvang en techniek van je website.",
+        note: "Introductieprijzen zijn exclusief 21% btw. Minimale looptijd van twaalf maanden voor abonnementen.",
         footerLink: { label: "Alles over onderhoud", href: "/onderhoud" },
+      },
+      {
+        type: "pricingTerms",
+        title: "Goed om te weten",
+        items: pricingTermsItems,
       },
       {
         type: "cta",
