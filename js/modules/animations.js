@@ -1,3 +1,5 @@
+import { getScrollY, getScrollMax, onScroll } from "./scroll-root.js";
+
 const reduceMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -49,7 +51,7 @@ function initHeroParallax() {
 
   const update = () => {
     ticking = false;
-    const y = window.scrollY;
+    const y = getScrollY();
     if (y > window.innerHeight) {
       if (active) {
         media.classList.remove("is-parallaxing");
@@ -65,8 +67,7 @@ function initHeroParallax() {
     media.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
   };
 
-  window.addEventListener(
-    "scroll",
+  onScroll(
     () => {
       if (!ticking) {
         ticking = true;
@@ -97,14 +98,13 @@ function initScrollProgress() {
 
   const update = () => {
     ticking = false;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    const max = getScrollMax();
+    const progress = max > 0 ? Math.min(getScrollY() / max, 1) : 0;
     bar.style.setProperty("--scroll-progress", String(progress));
   };
 
   update();
-  window.addEventListener(
-    "scroll",
+  onScroll(
     () => {
       if (!ticking) {
         ticking = true;

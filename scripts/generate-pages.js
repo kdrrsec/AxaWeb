@@ -41,7 +41,8 @@ function breadcrumbMarkup(breadcrumb) {
 }
 
 function headerMarkup(navKey) {
-  return `  <header class="site-header" data-header>
+  return `  <div class="app-shell">
+  <header class="site-header" data-header>
     <span class="scroll-progress" data-scroll-progress aria-hidden="true"></span>
     <div class="container site-header__inner">
       <a class="site-header__logo" href="/" aria-label="AxaWeb home">
@@ -62,7 +63,9 @@ function headerMarkup(navKey) {
   <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobiele navigatie" hidden>
     ${navMarkup(navKey)}
     <a class="btn btn--primary" href="/contact">Offerte aanvragen</a>
-  </nav>`;
+  </nav>
+
+  <div class="app-shell__scroll" data-scroll-root>`;
 }
 
 function footerMarkup() {
@@ -770,6 +773,9 @@ ${renderSections(page.sections)}
   </main>
 
 ${footerMarkup()}
+
+  </div>
+  </div>
 
   <script type="module" src="/js/page-main.js"></script>
 </body>
