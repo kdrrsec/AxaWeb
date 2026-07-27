@@ -102,7 +102,6 @@ function footerMarkup() {
           <p class="site-footer__title">Contact</p>
           <ul class="site-footer__links">
             <li><a href="mailto:info@axaweb.nl">info@axaweb.nl</a></li>
-            <li>Reactie binnen één werkdag</li>
           </ul>
         </div>
       </div>
