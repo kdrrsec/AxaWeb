@@ -48,12 +48,24 @@ export function renderPageContent() {
       .map(
         (project) => `
         <article class="project-card reveal">
-          <div class="project-card__media" aria-hidden="true"><span>Projectpreview</span></div>
+          <div class="project-card__media">
+            <picture>
+              <source srcset="${project.images.desktop}" type="image/webp" />
+              <img
+                src="${project.images.desktopJpg}"
+                alt="${project.images.altDesktop}"
+                width="800"
+                height="500"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
           <div class="project-card__body">
             <p class="project-card__category">${project.category}</p>
-            <h3 class="project-card__title">${project.title}</h3>
-            <p class="project-card__text">${project.text}</p>
-            <a class="btn btn--ghost" href="${project.href}">Bekijk project</a>
+            <h3 class="project-card__title">${project.name}</h3>
+            <p class="project-card__text">${project.summary}</p>
+            <a class="btn btn--ghost" href="/projecten/${project.slug}">Bekijk project</a>
           </div>
         </article>`
       )
