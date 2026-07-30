@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "",
+    "description": "",
+    "ogImageAlt": "",
+    "organizationDescription": ""
+  },
+  "hero": {
+    "title": "",
+    "text": "",
+    "scroll": ""
+  },
+  "intro": {
+    "eyebrow": "",
+    "title": "",
+    "p1": "",
+    "p2": "",
+    "facts": [
+      {
+        "title": "",
+        "text": ""
+      },
+      {
+        "title": "",
+        "text": ""
+      },
+      {
+        "title": "",
+        "text": ""
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "",
+    "title": "",
+    "intro": ""
+  },
+  "packages": {
+    "eyebrow": "",
+    "title": "",
+    "intro": ""
+  },
+  "projects": {
+    "eyebrow": "",
+    "title": "",
+    "intro": ""
+  },
+  "cta": {
+    "eyebrow": "",
+    "title": "",
+    "text": "",
+    "button": ""
+  },
+  "noscript": {
+    "title": "",
+    "text": ""
+  }
+}

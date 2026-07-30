@@ -1,7 +1,15 @@
 import { services, packagesPreview, projects } from "../data/content.js";
 import { icon } from "./icons.js";
+import { t } from "./i18n.js";
 
 export function renderPageContent() {
+  const moreInfo =
+    t("common.cta.moreInfo") === "common.cta.moreInfo" ? "Meer informatie" : t("common.cta.moreInfo");
+  const viewProject =
+    t("common.cta.viewProject") === "common.cta.viewProject"
+      ? "Bekijk project"
+      : t("common.cta.viewProject");
+
   const servicesRoot = document.querySelector("[data-services]");
   if (servicesRoot) {
     servicesRoot.innerHTML = services
@@ -34,7 +42,7 @@ export function renderPageContent() {
           <p class="package-teaser__price">${pkg.price}</p>
           <p class="package-teaser__text">${pkg.text}</p>
           <a class="card__link" href="/pakketten">
-            Meer informatie
+            ${moreInfo}
             ${icon("arrow", "icon")}
           </a>
         </article>`
@@ -65,7 +73,7 @@ export function renderPageContent() {
             <p class="project-card__category">${project.category}</p>
             <h3 class="project-card__title">${project.name}</h3>
             <p class="project-card__text">${project.summary}</p>
-            <a class="btn btn--ghost" href="/projecten/${project.slug}">Bekijk project</a>
+            <a class="btn btn--ghost" href="/projecten/${project.slug}">${viewProject}</a>
           </div>
         </article>`
       )

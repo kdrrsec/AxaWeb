@@ -4,13 +4,21 @@
  * De native <select> blijft de form-waarde; de UI is een combobox/listbox.
  */
 
+import { t } from "./i18n.js";
+
 function getOptionLabel(option) {
   return option.textContent.trim();
 }
 
+function defaultSelectPlaceholder() {
+  const value = t("form.selectPlaceholder");
+  return value === "form.selectPlaceholder" ? "Selecteer een optie" : value;
+}
+
 function syncTrigger(select, trigger) {
   const selected = select.selectedOptions[0];
-  const placeholder = select.options[0]?.value === "" ? getOptionLabel(select.options[0]) : "Selecteer een optie";
+  const placeholder =
+    select.options[0]?.value === "" ? getOptionLabel(select.options[0]) : defaultSelectPlaceholder();
   const label = selected && selected.value !== "" ? getOptionLabel(selected) : placeholder;
   trigger.textContent = label;
   trigger.classList.toggle("custom-select__trigger--placeholder", !selected || selected.value === "");

@@ -1,17 +1,30 @@
 /*
  * Genereert de subpagina's van de multipage-site.
- * Iedere pagina definieert eigen secties (js/data/pages.js); per sectietype
- * bestaat hier een eigen renderer, zodat geen pagina dezelfde opbouw deelt.
+ * Iedere pagina definieert eigen secties (content/{locale}/pages.js); per sectietype
+ * bestaat hier een eigen renderer. UI-chrome komt uit messages/{locale}.
  */
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-const { pages, siteNav } = await import(pathToFileURL(join(root, "js/data/pages.js")).href);
-const { projects, getNextProject } = await import(pathToFileURL(join(root, "js/data/projects.js")).href);
+const { getPages, getSiteNav } = await import(pathToFileURL(join(root, "js/data/pages.js")).href);
+const { getProjects, getNextProject } = await import(pathToFileURL(join(root, "js/data/projects.js")).href);
 const { icon } = await import(pathToFileURL(join(root, "js/modules/icons.js")).href);
+const { defaultLocale, languageSwitcherEnabled, englishLocaleLive, siteUrl } = await import(
+  pathToFileURL(join(root, "i18n/config.js")).href
+);
+const { getMessages, createTranslator } = await import(pathToFileURL(join(root, "i18n/dictionary.js")).href);
+const { localizedPath } = await import(pathToFileURL(join(root, "i18n/routing.js")).href);
+const { renderHreflangLinks, localeMeta, canonicalUrl } = await import(pathToFileURL(join(root, "i18n/seo.js")).href);
+
+const locale = defaultLocale;
+const messages = getMessages(locale);
+const t = createTranslator(messages, "common");
+const pages = getPages(locale);
+const siteNav = getSiteNav(locale);
+const projects = getProjects(locale);
 
 function escapeHtml(value) {
   return String(value)
@@ -21,13 +34,48 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+function pathFor(href) {
+  return localizedPath(href, locale);
+}
+
+function pagePathname(page) {
+  if (page.path) return page.path;
+  if (page.canonical?.startsWith(siteUrl)) {
+    const path = page.canonical.slice(siteUrl.length) || "/";
+    return path.startsWith("/") ? path : `/${path}`;
+  }
+  return page.slug ? `/${page.slug}` : "/";
+}
+
+function languageSwitcherMarkup(pathname = "/") {
+  const enabled = languageSwitcherEnabled ? "true" : "false";
+  const enDisabled = englishLocaleLive ? "false" : "true";
+  return `<div class="language-switcher" data-language-switcher data-enabled="${enabled}" hidden aria-hidden="true">
+        <nav aria-label="${escapeHtml(t("languageSwitcher.ariaLabel"))}">
+          <a href="${localizedPath(pathname, "nl")}" data-locale="nl" hreflang="nl" aria-current="true">${escapeHtml(t("languageSwitcher.nl"))}</a>
+          <a href="${localizedPath(pathname, "en")}" data-locale="en" hreflang="en" aria-disabled="${enDisabled}">${escapeHtml(t("languageSwitcher.en"))}</a>
+        </nav>
+      </div>`;
+}
+
+function clientMessagesScript() {
+  const payload = {
+    locale,
+    common: messages.common,
+    form: messages.form,
+    home: messages.home,
+  };
+  return `<script type="application/json" id="i18n-messages">${JSON.stringify(payload).replace(/</g, "\\u003c")}</script>`;
+}
+
 /* ---------- Gedeelde schil (header, footer, breadcrumb) ---------- */
 
 function navMarkup(navKey) {
   return siteNav
     .map((link) => {
+      const label = t(`nav.${link.key}`) || link.label;
       const attrs = link.key === navKey ? ' aria-current="page" class="is-active"' : "";
-      return `<a href="${link.href}"${attrs}>${escapeHtml(link.label)}</a>`;
+      return `<a href="${pathFor(link.href)}"${attrs}>${escapeHtml(label)}</a>`;
     })
     .join("\n        ");
 }
@@ -36,34 +84,35 @@ function breadcrumbMarkup(breadcrumb) {
   const parts = breadcrumb.map((crumb, index) => {
     const isLast = index === breadcrumb.length - 1;
     if (isLast) return `<span aria-current="page">${escapeHtml(crumb.label)}</span>`;
-    return `<a href="${crumb.href}">${escapeHtml(crumb.label)}</a><span aria-hidden="true">/</span>`;
+    return `<a href="${pathFor(crumb.href)}">${escapeHtml(crumb.label)}</a><span aria-hidden="true">/</span>`;
   });
-  return `<nav class="page-head__breadcrumb" aria-label="Broodkruimel">${parts.join("")}</nav>`;
+  return `<nav class="page-head__breadcrumb" aria-label="${escapeHtml(t("breadcrumb.ariaLabel"))}">${parts.join("")}</nav>`;
 }
 
-function headerMarkup(navKey) {
+function headerMarkup(navKey, pathname = "/") {
   return `  <div class="app-shell">
   <header class="site-header" data-header>
     <span class="scroll-progress" data-scroll-progress aria-hidden="true"></span>
     <div class="container site-header__inner">
-      <a class="site-header__logo" href="/" aria-label="AxaWeb home">
+      <a class="site-header__logo" href="${pathFor("/")}" aria-label="${escapeHtml(t("nav.homeAria"))}">
         <img src="/logo.png?v=5" srcset="/logo.png?v=5 1x, /logo@2x.png?v=5 2x" alt="AxaWeb" width="320" height="59" decoding="async" />
       </a>
-      <nav class="site-nav" aria-label="Hoofdnavigatie">
+      <nav class="site-nav" aria-label="${escapeHtml(t("nav.ariaLabel"))}">
         ${navMarkup(navKey)}
       </nav>
       <div class="site-header__actions">
-        <a class="btn btn--primary site-header__cta" href="/contact">Offerte aanvragen</a>
-        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+        ${languageSwitcherMarkup(pathname)}
+        <a class="btn btn--primary site-header__cta" href="${pathFor("/contact")}">${escapeHtml(t("cta.requestQuote"))}</a>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="${escapeHtml(t("nav.menuOpen"))}">
           <span class="menu-toggle__bars" aria-hidden="true"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobiele navigatie" hidden>
+  <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="${escapeHtml(t("nav.mobileAriaLabel"))}" hidden>
     ${navMarkup(navKey)}
-    <a class="btn btn--primary" href="/contact">Offerte aanvragen</a>
+    <a class="btn btn--primary" href="${pathFor("/contact")}">${escapeHtml(t("cta.requestQuote"))}</a>
   </nav>
 
   <div class="app-shell__scroll" data-scroll-root>`;
@@ -74,41 +123,41 @@ function footerMarkup() {
     <div class="container">
       <div class="site-footer__grid">
         <div class="site-footer__brand">
-          <a href="/" aria-label="AxaWeb home">
+          <a href="${pathFor("/")}" aria-label="${escapeHtml(t("nav.homeAria"))}">
             <img src="/logo.png?v=5" srcset="/logo.png?v=5 1x, /logo@2x.png?v=5 2x" alt="AxaWeb" width="320" height="59" loading="lazy" decoding="async" />
           </a>
-          <p class="site-footer__note">Websites, webshops, hosting en onderhoud. Alles onder één dak, met één vast aanspreekpunt.</p>
+          <p class="site-footer__note">${escapeHtml(t("footer.note"))}</p>
         </div>
         <div>
-          <p class="site-footer__title">Diensten</p>
+          <p class="site-footer__title">${escapeHtml(t("footer.servicesTitle"))}</p>
           <ul class="site-footer__links">
-            <li><a href="/websites">Websites</a></li>
-            <li><a href="/webshops">Webshops</a></li>
-            <li><a href="/hosting">Hosting</a></li>
-            <li><a href="/onderhoud">Onderhoud</a></li>
+            <li><a href="${pathFor("/websites")}">${escapeHtml(t("footer.websites"))}</a></li>
+            <li><a href="${pathFor("/webshops")}">${escapeHtml(t("footer.webshops"))}</a></li>
+            <li><a href="${pathFor("/hosting")}">${escapeHtml(t("footer.hosting"))}</a></li>
+            <li><a href="${pathFor("/onderhoud")}">${escapeHtml(t("footer.onderhoud"))}</a></li>
           </ul>
         </div>
         <div>
-          <p class="site-footer__title">Navigatie</p>
+          <p class="site-footer__title">${escapeHtml(t("footer.navTitle"))}</p>
           <ul class="site-footer__links">
-            <li><a href="/diensten">Diensten</a></li>
-            <li><a href="/pakketten">Pakketten</a></li>
-            <li><a href="/projecten">Projecten</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/privacy.html">Privacyverklaring</a></li>
-            <li><a href="/algemene-voorwaarden.html">Algemene voorwaarden</a></li>
+            <li><a href="${pathFor("/diensten")}">${escapeHtml(t("nav.diensten"))}</a></li>
+            <li><a href="${pathFor("/pakketten")}">${escapeHtml(t("nav.pakketten"))}</a></li>
+            <li><a href="${pathFor("/projecten")}">${escapeHtml(t("nav.projecten"))}</a></li>
+            <li><a href="${pathFor("/contact")}">${escapeHtml(t("nav.contact"))}</a></li>
+            <li><a href="/privacy.html">${escapeHtml(t("footer.privacy"))}</a></li>
+            <li><a href="/algemene-voorwaarden.html">${escapeHtml(t("footer.terms"))}</a></li>
           </ul>
         </div>
         <div>
-          <p class="site-footer__title">Contact</p>
+          <p class="site-footer__title">${escapeHtml(t("footer.contactTitle"))}</p>
           <ul class="site-footer__links">
             <li><a href="mailto:info@axaweb.nl">info@axaweb.nl</a></li>
           </ul>
         </div>
       </div>
       <div class="site-footer__bottom">
-        <p>© <span data-year></span> AxaWeb. Alle rechten voorbehouden.</p>
-        <p>Digitale partner voor ondernemers</p>
+        <p>© <span data-year></span> AxaWeb. ${escapeHtml(t("footer.rights"))}</p>
+        <p>${escapeHtml(t("footer.tagline"))}</p>
       </div>
     </div>
   </footer>`;
@@ -802,22 +851,31 @@ function renderSections(sections) {
 /* ---------- Pagina ---------- */
 
 function renderPage(page) {
+  const pathname = pagePathname(page);
+  const meta = localeMeta(locale);
+  const canonical = page.canonical || canonicalUrl(pathname, locale);
+  const ogAlternates = meta.ogLocaleAlternates
+    .map((value) => `<meta property="og:locale:alternate" content="${value}" />`)
+    .join("\n  ");
+
   return `<!DOCTYPE html>
-<html lang="nl">
+<html lang="${meta.htmlLang}" data-locale="${locale}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>${escapeHtml(page.title)}</title>
   <meta name="description" content="${escapeHtml(page.description)}" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="${page.canonical}" />
+  <link rel="canonical" href="${canonical}" />
+  ${renderHreflangLinks(pathname)}
 
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:locale" content="${meta.ogLocale}" />
+  ${ogAlternates}
   <meta property="og:site_name" content="AxaWeb" />
   <meta property="og:title" content="${escapeHtml(page.title)}" />
   <meta property="og:description" content="${escapeHtml(page.description)}" />
-  <meta property="og:url" content="${page.canonical}" />
+  <meta property="og:url" content="${canonical}" />
   <meta property="og:image" content="${page.ogImage || "https://axaweb.nl/images/background.jpg"}" />
 
   <meta name="twitter:card" content="summary_large_image" />
@@ -833,11 +891,12 @@ function renderPage(page) {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/main.css" />
   ${page.jsonLd ? `<script type="application/ld+json">\n    ${page.jsonLd}\n  </script>` : ""}
+  ${clientMessagesScript()}
 </head>
 <body data-page="${page.slug}">
-  <a class="skip-link" href="#main">Ga naar inhoud</a>
+  <a class="skip-link" href="#main">${escapeHtml(t("skipToContent"))}</a>
 
-${headerMarkup(page.navKey)}
+${headerMarkup(page.navKey, pathname)}
 
   <main id="main">
 ${page.head ? `${renderHead(page)}\n\n` : ""}${page.customMain || renderSections(page.sections)}
@@ -883,17 +942,17 @@ function renderCaseMain(project) {
 
   return `    <section class="case-hero" aria-labelledby="page-title">
       <div class="container">
-        <nav class="page-head__breadcrumb reveal" aria-label="Broodkruimel">
-          <a href="/">Home</a><span aria-hidden="true">/</span>
-          <a href="/projecten">Projecten</a><span aria-hidden="true">/</span>
+        <nav class="page-head__breadcrumb reveal" aria-label="${escapeHtml(t("breadcrumb.ariaLabel"))}">
+          <a href="${pathFor("/")}">${escapeHtml(t("breadcrumb.home"))}</a><span aria-hidden="true">/</span>
+          <a href="${pathFor("/projecten")}">${escapeHtml(t("nav.projecten"))}</a><span aria-hidden="true">/</span>
           <span aria-current="page">${escapeHtml(project.name)}</span>
         </nav>
         <p class="section__eyebrow reveal">${escapeHtml(project.eyebrow)}</p>
         <h1 id="page-title" class="case-hero__title reveal">${escapeHtml(project.title)}</h1>
         <p class="case-hero__intro reveal">${escapeHtml(project.intro)}</p>
         <div class="case-hero__meta reveal">
-          <p><span>Categorie</span> ${escapeHtml(project.category)}</p>
-          <p><span>Live</span> <a href="${project.url}" rel="noopener noreferrer" target="_blank">${escapeHtml(project.url.replace(/^https?:\/\//, ""))}</a></p>
+          <p><span>${escapeHtml(t("case.category"))}</span> ${escapeHtml(project.category)}</p>
+          <p><span>${escapeHtml(t("case.live"))}</span> <a href="${project.url}" rel="noopener noreferrer" target="_blank">${escapeHtml(project.url.replace(/^https?:\/\//, ""))}</a></p>
         </div>
         <ul class="case-hero__services reveal">
           ${project.services.map((service) => `<li>${escapeHtml(service)}</li>`).join("\n          ")}
@@ -934,29 +993,29 @@ function renderCaseMain(project) {
       </div>
     </section>
 
-${block({ id: "klant", eyebrow: "Klant", ...project.client }, " section--alt")}
+${block({ id: "klant", eyebrow: t("case.client"), ...project.client }, " section--alt")}
 
-${block({ id: "uitdaging", eyebrow: "Context", ...project.challenge })}
+${block({ id: "uitdaging", eyebrow: t("case.context"), ...project.challenge })}
 
-${block({ id: "aanpak", eyebrow: "Aanpak", ...project.approach }, " section--alt")}
+${block({ id: "aanpak", eyebrow: t("case.approach"), ...project.approach }, " section--alt")}
 
-${block({ id: "design", eyebrow: "Design", ...project.design })}
+${block({ id: "design", eyebrow: t("case.design"), ...project.design })}
 
-${block({ id: "ontwikkeling", eyebrow: "Ontwikkeling", ...project.development }, " section--alt")}
+${block({ id: "ontwikkeling", eyebrow: t("case.development"), ...project.development }, " section--alt")}
 
-${block({ id: "responsive", eyebrow: "Responsive", ...project.responsive })}
+${block({ id: "responsive", eyebrow: t("case.responsive"), ...project.responsive })}
 
-${block({ id: "techniek", eyebrow: "Techniek", ...project.tech }, " section--alt")}
+${block({ id: "techniek", eyebrow: t("case.tech"), ...project.tech }, " section--alt")}
 
-${project.hosting ? block({ id: "hosting", eyebrow: "Hosting", ...project.hosting }) : ""}
+${project.hosting ? block({ id: "hosting", eyebrow: t("case.hosting"), ...project.hosting }) : ""}
 
-${block({ id: "resultaat", eyebrow: "Resultaat", ...project.result }, project.hosting ? " section--alt" : "")}
+${block({ id: "resultaat", eyebrow: t("case.result"), ...project.result }, project.hosting ? " section--alt" : "")}
 
     <section class="section" aria-labelledby="screenshots-title">
       <div class="container">
         <header class="section__header section__header--center reveal">
-          <p class="section__eyebrow">Screenshots</p>
-          <h2 id="screenshots-title" class="section__title">Desktop en mobiel, zoals live te zien.</h2>
+          <p class="section__eyebrow">${escapeHtml(t("case.screenshots"))}</p>
+          <h2 id="screenshots-title" class="section__title">${escapeHtml(t("case.screenshotsTitle"))}</h2>
         </header>
         <div class="case-shots">
           <figure class="case-shot reveal">
@@ -969,7 +1028,7 @@ ${block({ id: "resultaat", eyebrow: "Resultaat", ...project.result }, project.ho
                 </picture>
               </div>
             </div>
-            <figcaption>Desktop - detailsectie</figcaption>
+            <figcaption>${escapeHtml(t("case.captionDesktop"))}</figcaption>
           </figure>
           <figure class="case-shot reveal">
             <div class="device device--mobile device--shot">
@@ -980,7 +1039,7 @@ ${block({ id: "resultaat", eyebrow: "Resultaat", ...project.result }, project.ho
                 </picture>
               </div>
             </div>
-            <figcaption>Mobiel - homepage</figcaption>
+            <figcaption>${escapeHtml(t("case.captionMobile"))}</figcaption>
           </figure>
         </div>
       </div>
@@ -990,12 +1049,12 @@ ${block({ id: "resultaat", eyebrow: "Resultaat", ...project.result }, project.ho
       <div class="container">
         <article class="case-next reveal">
           <div>
-            <p class="section__eyebrow">Volgende project</p>
+            <p class="section__eyebrow">${escapeHtml(t("case.nextProject"))}</p>
             <h2 id="next-project-title" class="case-next__title">${escapeHtml(next.name)}</h2>
             <p class="case-next__text">${escapeHtml(next.summary)}</p>
-            <a class="btn btn--secondary" href="/projecten/${next.slug}">Bekijk ${escapeHtml(next.name)}</a>
+            <a class="btn btn--secondary" href="${pathFor(`/projecten/${next.slug}`)}">${escapeHtml(t("case.viewNamed", { name: next.name }))}</a>
           </div>
-          <a class="case-next__preview" href="/projecten/${next.slug}" tabindex="-1" aria-hidden="true">
+          <a class="case-next__preview" href="${pathFor(`/projecten/${next.slug}`)}" tabindex="-1" aria-hidden="true">
             <picture>
               <source srcset="${next.images.desktop}" type="image/webp" />
               <img src="${next.images.desktopJpg}" alt="" width="800" height="500" loading="lazy" decoding="async" />
@@ -1009,11 +1068,11 @@ ${block({ id: "resultaat", eyebrow: "Resultaat", ...project.result }, project.ho
       <div class="container">
         <div class="cta-banner reveal">
           <div>
-            <p class="section__eyebrow">Volgende stap</p>
-            <h2 id="cta-title" class="cta-banner__title">Ook een website die zo overtuigt?</h2>
-            <p class="cta-banner__text">Vertel ons over je project. We denken vrijblijvend mee over aanpak, planning en investering.</p>
+            <p class="section__eyebrow">${escapeHtml(t("case.nextStep"))}</p>
+            <h2 id="cta-title" class="cta-banner__title">${escapeHtml(t("case.ctaTitle"))}</h2>
+            <p class="cta-banner__text">${escapeHtml(t("case.ctaLead"))}</p>
           </div>
-          <a class="btn btn--primary" href="/contact">Vraag een offerte aan</a>
+          <a class="btn btn--primary" href="${pathFor("/contact")}">${escapeHtml(t("case.ctaButton"))}</a>
         </div>
       </div>
     </section>`;
@@ -1051,6 +1110,30 @@ function buildCasePage(project) {
   });
 }
 
+/**
+ * Injecteert/update het client-side messages-blok in index.html
+ * zodat homepage JS (form/header/render) dezelfde dictionary gebruikt.
+ */
+function syncIndexMessages() {
+  const indexPath = join(root, "index.html");
+  let html = readFileSync(indexPath, "utf8");
+  const script = clientMessagesScript();
+  const pattern = /<script type="application\/json" id="i18n-messages">[\s\S]*?<\/script>\n?/;
+
+  if (pattern.test(html)) {
+    html = html.replace(pattern, `${script}\n`);
+  } else {
+    html = html.replace("</head>", `  ${script}\n</head>`);
+  }
+
+  if (!html.includes('data-locale="')) {
+    html = html.replace("<html lang=\"nl\">", '<html lang="nl" data-locale="nl">');
+  }
+
+  writeFileSync(indexPath, html, "utf8");
+  console.log("Synced i18n messages into index.html");
+}
+
 export function generatePages() {
   Object.values(pages).forEach((page) => {
     const filePath = join(root, `${page.slug}.html`);
@@ -1065,6 +1148,8 @@ export function generatePages() {
     writeFileSync(filePath, buildCasePage(project), "utf8");
     console.log(`Generated projecten/${project.slug}.html`);
   });
+
+  syncIndexMessages();
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {

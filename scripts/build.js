@@ -133,6 +133,13 @@ cpSync(join(root, "images", "projects"), join(dist, "images", "projects"), { rec
 cpSync(join(root, "projecten"), join(dist, "projecten"), { recursive: true });
 cpSync(join(root, "js"), join(dist, "js"), { recursive: true });
 cpSync(join(root, "css"), join(dist, "css"), { recursive: true });
+/* Locale-content + browser-safe i18n helpers (homepage data loaders) */
+cpSync(join(root, "content"), join(dist, "content"), { recursive: true });
+mkdirSync(join(dist, "i18n"), { recursive: true });
+["config.js", "routing.js"].forEach((file) => {
+  cpSync(join(root, "i18n", file), join(dist, "i18n", file));
+});
+cpSync(join(root, "messages"), join(dist, "messages"), { recursive: true });
 
 const bundledCss = bundleCss();
 mkdirSync(join(dist, "css"), { recursive: true });

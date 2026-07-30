@@ -5,7 +5,7 @@
   "description": "AxaWeb official website",
   "type": "module",
   "scripts": {
-    "lint": "eslint \"js/**/*.js\" \"scripts/**/*.js\"",
+    "lint": "eslint \"js/**/*.js\" \"scripts/**/*.js\" \"i18n/**/*.js\"",
     "typecheck": "node scripts/typecheck.js",
     "generate:pages": "node scripts/generate-pages.js",
     "build": "node scripts/build.js",
