@@ -9,6 +9,8 @@ export default [
         document: "readonly",
         fetch: "readonly",
         IntersectionObserver: "readonly",
+        MutationObserver: "readonly",
+        Event: "readonly",
         console: "readonly",
         process: "readonly",
       },

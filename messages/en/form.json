@@ -1,0 +1,17 @@
+{
+  "nameRequired": "",
+  "emailRequired": "",
+  "emailInvalid": "",
+  "phoneInvalid": "",
+  "projectRequired": "",
+  "messageRequired": "",
+  "privacyRequired": "",
+  "sending": "",
+  "success": "",
+  "error": "",
+  "selectPlaceholder": "",
+  "notProvided": "",
+  "budgetUndecided": "",
+  "privacyAccepted": "",
+  "emailSubject": ""
+}

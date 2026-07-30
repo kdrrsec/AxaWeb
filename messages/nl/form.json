@@ -1,0 +1,17 @@
+{
+  "nameRequired": "Vul je naam in.",
+  "emailRequired": "Vul je e-mailadres in.",
+  "emailInvalid": "Vul een geldig e-mailadres in.",
+  "phoneInvalid": "Vul een geldig telefoonnummer in.",
+  "projectRequired": "Selecteer een type project.",
+  "messageRequired": "Vul een bericht in.",
+  "privacyRequired": "Bevestig dat je akkoord gaat met de privacyverklaring.",
+  "sending": "Bericht wordt verzonden…",
+  "success": "Bedankt! We nemen zo snel mogelijk contact met je op.",
+  "error": "Er ging iets mis. Probeer het later opnieuw of mail naar info@axaweb.nl.",
+  "selectPlaceholder": "Selecteer een optie",
+  "notProvided": "Niet opgegeven",
+  "budgetUndecided": "Nog niet bepaald",
+  "privacyAccepted": "Akkoord",
+  "emailSubject": "Nieuw bericht via axaweb.nl"
+}

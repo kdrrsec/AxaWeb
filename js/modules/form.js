@@ -1,15 +1,10 @@
-const messages = {
-  nameRequired: "Vul je naam in.",
-  emailRequired: "Vul je e-mailadres in.",
-  emailInvalid: "Vul een geldig e-mailadres in.",
-  phoneInvalid: "Vul een geldig telefoonnummer in.",
-  projectRequired: "Selecteer een type project.",
-  messageRequired: "Vul een bericht in.",
-  privacyRequired: "Bevestig dat je akkoord gaat met de privacyverklaring.",
-  sending: "Bericht wordt verzonden…",
-  success: "Bedankt! We nemen zo snel mogelijk contact met je op.",
-  error: "Er ging iets mis. Probeer het later opnieuw of mail naar info@axaweb.nl.",
-};
+import { initCustomSelects, focusSelectControl } from "./select.js";
+import { t } from "./i18n.js";
+
+function formMessage(key) {
+  const value = t(`form.${key}`);
+  return value === `form.${key}` ? "" : value;
+}
 
 function setFieldError(field, errorEl, message) {
   const wrap = field.closest(".field") || field.closest(".checkbox")?.parentElement;
@@ -48,6 +43,8 @@ function setStatus(statusEl, message, type) {
 export function initContactForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;
+
+  initCustomSelects(form);
 
   const fields = {
     name: form.querySelector("#name"),
@@ -99,45 +96,45 @@ export function initContactForm() {
     const privacy = fields.privacy.checked;
 
     if (!name) {
-      setFieldError(fields.name, errors.name, messages.nameRequired);
+      setFieldError(fields.name, errors.name, formMessage("nameRequired"));
       valid = false;
     } else {
       setFieldError(fields.name, errors.name, "");
     }
 
     if (!email) {
-      setFieldError(fields.email, errors.email, messages.emailRequired);
+      setFieldError(fields.email, errors.email, formMessage("emailRequired"));
       valid = false;
     } else if (!validateEmail(email)) {
-      setFieldError(fields.email, errors.email, messages.emailInvalid);
+      setFieldError(fields.email, errors.email, formMessage("emailInvalid"));
       valid = false;
     } else {
       setFieldError(fields.email, errors.email, "");
     }
 
     if (!validatePhone(phone)) {
-      setFieldError(fields.phone, errors.phone, messages.phoneInvalid);
+      setFieldError(fields.phone, errors.phone, formMessage("phoneInvalid"));
       valid = false;
     } else {
       setFieldError(fields.phone, errors.phone, "");
     }
 
     if (!projectType) {
-      setFieldError(fields.projectType, errors.projectType, messages.projectRequired);
+      setFieldError(fields.projectType, errors.projectType, formMessage("projectRequired"));
       valid = false;
     } else {
       setFieldError(fields.projectType, errors.projectType, "");
     }
 
     if (!message) {
-      setFieldError(fields.message, errors.message, messages.messageRequired);
+      setFieldError(fields.message, errors.message, formMessage("messageRequired"));
       valid = false;
     } else {
       setFieldError(fields.message, errors.message, "");
     }
 
     if (!privacy) {
-      setFieldError(fields.privacy, errors.privacy, messages.privacyRequired);
+      setFieldError(fields.privacy, errors.privacy, formMessage("privacyRequired"));
       valid = false;
     } else {
       setFieldError(fields.privacy, errors.privacy, "");
@@ -152,23 +149,24 @@ export function initContactForm() {
 
     if (!validate()) {
       const firstInvalid = form.querySelector("[aria-invalid='true']");
-      firstInvalid?.focus();
+      if (firstInvalid?.tagName === "SELECT") focusSelectControl(firstInvalid);
+      else firstInvalid?.focus();
       return;
     }
 
     submitBtn.disabled = true;
-    setStatus(statusEl, messages.sending, "info");
+    setStatus(statusEl, formMessage("sending"), "info");
 
     const payload = {
       name: fields.name.value.trim(),
-      company: fields.company.value.trim() || "Niet opgegeven",
+      company: fields.company.value.trim() || formMessage("notProvided"),
       email: fields.email.value.trim(),
-      phone: fields.phone.value.trim() || "Niet opgegeven",
+      phone: fields.phone.value.trim() || formMessage("notProvided"),
       projectType: fields.projectType.value,
-      budget: fields.budget.value || "Nog niet bepaald",
+      budget: fields.budget.value || formMessage("budgetUndecided"),
       message: fields.message.value.trim(),
-      privacy: "Akkoord",
-      _subject: "Nieuw bericht via axaweb.nl",
+      privacy: formMessage("privacyAccepted"),
+      _subject: formMessage("emailSubject"),
       _replyto: fields.email.value.trim(),
       _template: "table",
     };
@@ -186,9 +184,9 @@ export function initContactForm() {
       if (!response.ok) throw new Error("Request failed");
 
       form.reset();
-      setStatus(statusEl, messages.success, "success");
+      setStatus(statusEl, formMessage("success"), "success");
     } catch {
-      setStatus(statusEl, messages.error, "error");
+      setStatus(statusEl, formMessage("error"), "error");
     } finally {
       submitBtn.disabled = false;
     }
