@@ -969,7 +969,7 @@ ${block({ id: "resultaat", eyebrow: "Resultaat", ...project.result }, project.ho
                 </picture>
               </div>
             </div>
-            <figcaption>Desktop — detailsectie</figcaption>
+            <figcaption>Desktop - detailsectie</figcaption>
           </figure>
           <figure class="case-shot reveal">
             <div class="device device--mobile device--shot">
@@ -980,7 +980,7 @@ ${block({ id: "resultaat", eyebrow: "Resultaat", ...project.result }, project.ho
                 </picture>
               </div>
             </div>
-            <figcaption>Mobiel — homepage</figcaption>
+            <figcaption>Mobiel - homepage</figcaption>
           </figure>
         </div>
       </div>

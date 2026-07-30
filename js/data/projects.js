@@ -1,6 +1,6 @@
 /*
  * Echte, live AxaWeb-projecten.
- * Teksten gebaseerd op zichtbare analyse van de websites — geen verzonnen KPI’s.
+ * Teksten gebaseerd op zichtbare analyse van de websites - geen verzonnen KPI’s.
  */
 
 export const projects = [
@@ -13,7 +13,7 @@ export const projects = [
     summary:
       "Een heldere B2C-website voor een online bandenassortiment, met snelle route naar offerte en telefonisch advies.",
     eyebrow: "Case",
-    title: "Bandendepot — online warenhuis voor banden",
+    title: "Bandendepot - online warenhuis voor banden",
     intro:
       "Bandendepot presenteert zich als online warenhuis voor kwaliteitsbanden. De website combineert een duidelijke belofte, een zichtbaar assortimentstraject en een laagdrempelig offerteformulier voor Nederland en België.",
     client: {
@@ -22,7 +22,7 @@ export const projects = [
     },
     challenge: {
       title: "Uitdaging",
-      text: "Bezoekers moeten snel begrijpen wat Bandendepot aanbiedt en hoe ze verder kunnen — zonder een complex productcatalogus-traject te forceren. De site moet vertrouwen wekken in een prijsgevoelige markt en de stap naar offerte of telefonisch advies zo kort mogelijk maken.",
+      text: "Bezoekers moeten snel begrijpen wat Bandendepot aanbiedt en hoe ze verder kunnen - zonder een complex productcatalogus-traject te forceren. De site moet vertrouwen wekken in een prijsgevoelige markt en de stap naar offerte of telefonisch advies zo kort mogelijk maken.",
     },
     approach: {
       title: "Onze aanpak",
@@ -79,7 +79,7 @@ export const projects = [
     meta: {
       title: "Bandendepot case | AxaWeb projecten",
       description:
-        "Case: website voor Bandendepot — online warenhuis voor banden met offerteformulier, duidelijke navigatie en conversiegerichte opbouw.",
+        "Case: website voor Bandendepot - online warenhuis voor banden met offerteformulier, duidelijke navigatie en conversiegerichte opbouw.",
     },
   },
   {
@@ -91,7 +91,7 @@ export const projects = [
     summary:
       "Een rustige, premium website voor IT-beheer en support, met nadruk op vertrouwen, diensten en kennismaking.",
     eyebrow: "Case",
-    title: "Axanet — IT-beheer en support",
+    title: "Axanet - IT-beheer en support",
     intro:
       "Axanet positioneert zich als partner voor IT-beheer, servicedesk, werkplekbeheer en Microsoft 365. De website is bewust rustig gehouden: weinig ruis, sterke hiërarchie en een directe route naar een kennismaking.",
     client: {
@@ -100,7 +100,7 @@ export const projects = [
     },
     challenge: {
       title: "Uitdaging",
-      text: "IT-diensten zijn abstract. De website moest daarom zonder buzzwords uitleggen wat Axanet doet, voor wie, en hoe je de volgende stap zet — met een uitstraling die past bij serieuze B2B-dienstverlening.",
+      text: "IT-diensten zijn abstract. De website moest daarom zonder buzzwords uitleggen wat Axanet doet, voor wie, en hoe je de volgende stap zet - met een uitstraling die past bij serieuze B2B-dienstverlening.",
     },
     approach: {
       title: "Onze aanpak",
@@ -157,7 +157,7 @@ export const projects = [
     meta: {
       title: "Axanet case | AxaWeb projecten",
       description:
-        "Case: website voor Axanet — IT-beheer, servicedesk en Microsoft 365, met premium design en duidelijke kennismakingsflow.",
+        "Case: website voor Axanet - IT-beheer, servicedesk en Microsoft 365, met premium design en duidelijke kennismakingsflow.",
     },
   },
   {
@@ -169,7 +169,7 @@ export const projects = [
     summary:
       "Een donkere, energieke marketingwebsite voor short-form content op TikTok en Instagram Reels.",
     eyebrow: "Case",
-    title: "ViralOn — social media marketing",
+    title: "ViralOn - social media marketing",
     intro:
       "ViralOn is een social media marketing agency gericht op short-form content. De website vertaalt dat naar een donkere, premium ervaring met sterke CTA’s, een driestappenproces en ruimte voor FAQ en kennismaking.",
     client: {
@@ -192,7 +192,7 @@ export const projects = [
     },
     design: {
       title: "Design",
-      text: "Plus Jakarta, diepzwart als basis en een paars-naar-blauw gradient op kernwoorden en knoppen. Grote witruimte, gecentreerde hero en subtiele motion geven de site een modern media-agency gevoel — zonder overvolle UI.",
+      text: "Plus Jakarta, diepzwart als basis en een paars-naar-blauw gradient op kernwoorden en knoppen. Grote witruimte, gecentreerde hero en subtiele motion geven de site een modern media-agency gevoel - zonder overvolle UI.",
     },
     development: {
       title: "Ontwikkeling",
@@ -235,7 +235,7 @@ export const projects = [
     meta: {
       title: "ViralOn case | AxaWeb projecten",
       description:
-        "Case: website voor ViralOn — social media marketing voor TikTok en Instagram Reels, met dark premium design en duidelijke kennismakingsflow.",
+        "Case: website voor ViralOn - social media marketing voor TikTok en Instagram Reels, met dark premium design en duidelijke kennismakingsflow.",
     },
   },
 ];

@@ -844,7 +844,7 @@ export const pages = {
     navKey: "projecten",
     title: "Projecten | AxaWeb",
     description:
-      "Bekijk live projecten van AxaWeb: Bandendepot, Axanet en ViralOn — websites met premium design, duidelijke structuur en focus op resultaat.",
+      "Bekijk live projecten van AxaWeb: Bandendepot, Axanet en ViralOn - websites met premium design, duidelijke structuur en focus op resultaat.",
     canonical: "https://axaweb.nl/projecten",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Projecten" }],
     head: {
