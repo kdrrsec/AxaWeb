@@ -1,36 +1,43 @@
 import { initCustomSelects, focusSelectControl } from "./select.js";
 import { t } from "./i18n.js";
+import {
+  validateContactPayload,
+  isValidEmail,
+  isValidPhone,
+  MESSAGE_MIN_LENGTH,
+} from "../lib/contact-validation.js";
 
-function formMessage(key) {
-  const value = t(`form.${key}`);
-  return value === `form.${key}` ? "" : value;
+function formMessage(path) {
+  const value = t(`form.${path}`);
+  return value === `form.${path}` ? "" : value;
+}
+
+function errorText(code) {
+  if (!code) return "";
+  return formMessage(`errors.${code}`) || formMessage(code) || code;
 }
 
 function setFieldError(field, errorEl, message) {
   const wrap = field.closest(".field") || field.closest(".checkbox")?.parentElement;
   if (!errorEl) return;
 
+  const customTrigger = field.id
+    ? document.getElementById(`${field.id}-button`)
+    : null;
+
   if (message) {
     wrap?.classList.add("field--error");
     errorEl.textContent = message;
     errorEl.hidden = false;
     field.setAttribute("aria-invalid", "true");
+    customTrigger?.setAttribute("aria-invalid", "true");
   } else {
     wrap?.classList.remove("field--error");
     errorEl.textContent = "";
     errorEl.hidden = true;
     field.removeAttribute("aria-invalid");
+    customTrigger?.removeAttribute("aria-invalid");
   }
-}
-
-function validateEmail(value) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
-
-function validatePhone(value) {
-  if (!value) return true;
-  const digits = value.replace(/\D/g, "");
-  return digits.length >= 10;
 }
 
 function setStatus(statusEl, message, type) {
@@ -40,11 +47,79 @@ function setStatus(statusEl, message, type) {
   if (type) statusEl.classList.add(`form-status--${type}`);
 }
 
+function setSubmitting(form, submitBtn, isSubmitting) {
+  form.setAttribute("aria-busy", String(isSubmitting));
+  submitBtn.disabled = isSubmitting;
+  submitBtn.classList.toggle("is-loading", isSubmitting);
+  const defaultLabel = submitBtn.dataset.labelDefault || formMessage("actions.submit");
+  const loadingLabel = submitBtn.dataset.labelLoading || formMessage("actions.submitting");
+  submitBtn.textContent = isSubmitting ? loadingLabel : defaultLabel;
+}
+
+function focusStatus(statusEl) {
+  try {
+    statusEl.focus({ preventScroll: false });
+  } catch {
+    statusEl.focus();
+  }
+  statusEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function collectPayload(fields, form) {
+  return {
+    name: fields.name.value,
+    company: fields.company.value,
+    email: fields.email.value,
+    phone: fields.phone.value,
+    projectType: fields.projectType.value,
+    budget: fields.budget.value,
+    message: fields.message.value,
+    privacy: fields.privacy.checked,
+    website: form.querySelector("#website")?.value || "",
+    formStartedAt: Number(form.querySelector("#formStartedAt")?.value || 0),
+    sourcePage: form.querySelector("#sourcePage")?.value || window.location.pathname || "/contact",
+  };
+}
+
+function applyClientFieldChecks(fields, errors) {
+  const payload = {
+    name: fields.name.value,
+    company: fields.company.value,
+    email: fields.email.value,
+    phone: fields.phone.value,
+    projectType: fields.projectType.value,
+    budget: fields.budget.value,
+    message: fields.message.value,
+    privacy: fields.privacy.checked,
+    website: "",
+    formStartedAt: Date.now() - 10_000,
+  };
+
+  const result = validateContactPayload(payload);
+  const fieldMap = result.ok ? {} : result.fields;
+
+  Object.entries(errors).forEach(([key, errorEl]) => {
+    const field = fields[key];
+    if (!field || !errorEl) return;
+    setFieldError(field, errorEl, errorText(fieldMap[key]));
+  });
+
+  return result.ok;
+}
+
 export function initContactForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;
 
   initCustomSelects(form);
+
+  const startedAt = form.querySelector("#formStartedAt");
+  if (startedAt) startedAt.value = String(Date.now());
+
+  const sourcePage = form.querySelector("#sourcePage");
+  if (sourcePage && !sourcePage.value) {
+    sourcePage.value = window.location.pathname || "/contact";
+  }
 
   const fields = {
     name: form.querySelector("#name"),
@@ -62,6 +137,7 @@ export function initContactForm() {
     email: form.querySelector("#emailError"),
     phone: form.querySelector("#phoneError"),
     projectType: form.querySelector("#projectTypeError"),
+    budget: form.querySelector("#budgetError"),
     message: form.querySelector("#messageError"),
     privacy: form.querySelector("#privacyError"),
   };
@@ -74,6 +150,7 @@ export function initContactForm() {
     ["email", "email"],
     ["phone", "phone"],
     ["projectType", "projectType"],
+    ["budget", "budget"],
     ["message", "message"],
     ["privacy", "privacy"],
   ];
@@ -86,93 +163,42 @@ export function initContactForm() {
     field.addEventListener(eventName, () => setFieldError(field, errorEl, ""));
   });
 
-  const validate = () => {
-    let valid = true;
-    const name = fields.name.value.trim();
-    const email = fields.email.value.trim();
-    const phone = fields.phone.value.trim();
-    const projectType = fields.projectType.value;
-    const message = fields.message.value.trim();
-    const privacy = fields.privacy.checked;
-
-    if (!name) {
-      setFieldError(fields.name, errors.name, formMessage("nameRequired"));
-      valid = false;
-    } else {
-      setFieldError(fields.name, errors.name, "");
-    }
-
-    if (!email) {
-      setFieldError(fields.email, errors.email, formMessage("emailRequired"));
-      valid = false;
-    } else if (!validateEmail(email)) {
-      setFieldError(fields.email, errors.email, formMessage("emailInvalid"));
-      valid = false;
-    } else {
-      setFieldError(fields.email, errors.email, "");
-    }
-
-    if (!validatePhone(phone)) {
-      setFieldError(fields.phone, errors.phone, formMessage("phoneInvalid"));
-      valid = false;
-    } else {
-      setFieldError(fields.phone, errors.phone, "");
-    }
-
-    if (!projectType) {
-      setFieldError(fields.projectType, errors.projectType, formMessage("projectRequired"));
-      valid = false;
-    } else {
-      setFieldError(fields.projectType, errors.projectType, "");
-    }
-
-    if (!message) {
-      setFieldError(fields.message, errors.message, formMessage("messageRequired"));
-      valid = false;
-    } else {
-      setFieldError(fields.message, errors.message, "");
-    }
-
-    if (!privacy) {
-      setFieldError(fields.privacy, errors.privacy, formMessage("privacyRequired"));
-      valid = false;
-    } else {
-      setFieldError(fields.privacy, errors.privacy, "");
-    }
-
-    return valid;
-  };
-
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     setStatus(statusEl, "");
 
-    if (!validate()) {
+    if (!applyClientFieldChecks(fields, errors)) {
       const firstInvalid = form.querySelector("[aria-invalid='true']");
       if (firstInvalid?.tagName === "SELECT") focusSelectControl(firstInvalid);
       else firstInvalid?.focus();
       return;
     }
 
-    submitBtn.disabled = true;
-    setStatus(statusEl, formMessage("sending"), "info");
+    /* Extra snelle client-check voor UX (message length hint) */
+    const message = fields.message.value.trim();
+    if (message.length > 0 && message.length < MESSAGE_MIN_LENGTH) {
+      setFieldError(fields.message, errors.message, errorText("messageTooShort"));
+      fields.message.focus();
+      return;
+    }
+    if (fields.email.value.trim() && !isValidEmail(fields.email.value.trim())) {
+      setFieldError(fields.email, errors.email, errorText("emailInvalid"));
+      fields.email.focus();
+      return;
+    }
+    if (fields.phone.value.trim() && !isValidPhone(fields.phone.value.trim())) {
+      setFieldError(fields.phone, errors.phone, errorText("phoneInvalid"));
+      fields.phone.focus();
+      return;
+    }
 
-    const payload = {
-      name: fields.name.value.trim(),
-      company: fields.company.value.trim() || formMessage("notProvided"),
-      email: fields.email.value.trim(),
-      phone: fields.phone.value.trim() || formMessage("notProvided"),
-      projectType: fields.projectType.value,
-      budget: fields.budget.value || formMessage("budgetUndecided"),
-      message: fields.message.value.trim(),
-      privacy: formMessage("privacyAccepted"),
-      _subject: formMessage("emailSubject"),
-      _replyto: fields.email.value.trim(),
-      _template: "table",
-    };
+    setSubmitting(form, submitBtn, true);
+    setStatus(statusEl, formMessage("status.sending") || formMessage("sending"), "info");
+
+    const payload = collectPayload(fields, form);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/info@axaweb.nl", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -181,14 +207,51 @@ export function initContactForm() {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error("Request failed");
+      let data = {};
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
+
+      if (response.status === 429) {
+        setStatus(statusEl, formMessage("status.rateLimited") || formMessage("error"), "error");
+        focusStatus(statusEl);
+        return;
+      }
+
+      if (response.status === 503 || data.error === "config_error") {
+        setStatus(statusEl, formMessage("status.configError") || formMessage("error"), "error");
+        focusStatus(statusEl);
+        return;
+      }
+
+      if (response.status === 400 && data.fields) {
+        Object.entries(data.fields).forEach(([key, code]) => {
+          if (fields[key] && errors[key]) {
+            setFieldError(fields[key], errors[key], errorText(code));
+          }
+        });
+        const firstInvalid = form.querySelector("[aria-invalid='true']");
+        if (firstInvalid?.tagName === "SELECT") focusSelectControl(firstInvalid);
+        else firstInvalid?.focus();
+        setStatus(statusEl, "", "");
+        return;
+      }
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error || "request_failed");
+      }
 
       form.reset();
-      setStatus(statusEl, formMessage("success"), "success");
+      if (startedAt) startedAt.value = String(Date.now());
+      setStatus(statusEl, formMessage("status.success") || formMessage("success"), "success");
+      focusStatus(statusEl);
     } catch {
-      setStatus(statusEl, formMessage("error"), "error");
+      setStatus(statusEl, formMessage("status.error") || formMessage("error"), "error");
+      focusStatus(statusEl);
     } finally {
-      submitBtn.disabled = false;
+      setSubmitting(form, submitBtn, false);
     }
   });
 }

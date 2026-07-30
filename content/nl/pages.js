@@ -898,14 +898,6 @@ export const pages = {
             "Heldere offerte met vaste vanafprijzen",
           ],
         },
-        projectTypes: ["Website", "Webshop", "Hosting", "Onderhoud", "Maatwerkoplossing", "Anders"],
-        budgetOptions: [
-          "Nog niet bepaald",
-          "Tot €1.000",
-          "€1.000 – €2.500",
-          "€2.500 – €5.000",
-          "Vanaf €5.000",
-        ],
       },
       {
         type: "faq",

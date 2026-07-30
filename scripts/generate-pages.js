@@ -22,6 +22,7 @@ const { renderHreflangLinks, localeMeta, canonicalUrl } = await import(pathToFil
 const locale = defaultLocale;
 const messages = getMessages(locale);
 const t = createTranslator(messages, "common");
+const tf = createTranslator(messages, "form");
 const pages = getPages(locale);
 const siteNav = getSiteNav(locale);
 const projects = getProjects(locale);
@@ -640,6 +641,7 @@ function renderPortfolio(section, alt) {
 }
 
 function renderContact(section, alt) {
+  const formMessages = messages.form;
   const info = section.info
     .map(
       (item) => `
@@ -659,19 +661,33 @@ function renderContact(section, alt) {
     .map((step) => `<li>${escapeHtml(step)}</li>`)
     .join("\n              ");
 
-  const projectOptions = section.projectTypes
-    .map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`)
+  const projectOptions = (formMessages.options?.projectTypes || [])
+    .map(
+      (item) =>
+        `<option value="${escapeHtml(item.value)}">${escapeHtml(item.label)}</option>`
+    )
     .join("\n                  ");
 
-  const budgetOptions = section.budgetOptions
-    .map((option) => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`)
+  const budgetOptions = (formMessages.options?.budget || [])
+    .map(
+      (item) =>
+        `<option value="${escapeHtml(item.value)}">${escapeHtml(item.label)}</option>`
+    )
     .join("\n                  ");
 
-  return `    <section class="section${alt}" id="${section.id}" aria-label="Contactformulier">
+  const privacyHtml = escapeHtml(tf("labels.privacy")).replace(
+    "{privacyLink}",
+    `<a href="/privacy.html">${escapeHtml(tf("labels.privacyLink"))}</a>`
+  );
+
+  const reqMark = `<span class="req" aria-hidden="true">${escapeHtml(tf("labels.required"))}</span>`;
+  const optMark = `<span class="opt">${escapeHtml(tf("labels.optional"))}</span>`;
+
+  return `    <section class="section${alt}" id="${section.id}" aria-label="${escapeHtml(tf("aria.form"))}">
       <div class="container">
         <div class="contact-layout">
           <div class="contact-side">
-            <aside class="contact-info reveal" aria-label="Contactgegevens">${info}
+            <aside class="contact-info reveal" aria-label="${escapeHtml(tf("aria.contactInfo"))}">${info}
             </aside>
             <div class="next-steps reveal">
               <p class="next-steps__title">${escapeHtml(section.steps.title)}</p>
@@ -681,67 +697,77 @@ function renderContact(section, alt) {
             </div>
           </div>
 
-          <form class="contact-form reveal" id="contactForm" novalidate>
+          <form class="contact-form reveal" id="contactForm" novalidate data-contact-form>
+            <input type="hidden" name="formStartedAt" id="formStartedAt" value="" />
+            <input type="hidden" name="sourcePage" id="sourcePage" value="/contact" />
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
             <div class="form-row">
               <div class="field">
-                <label for="name">Naam <span class="req" aria-hidden="true">*</span></label>
-                <input class="field__control" type="text" id="name" name="name" autocomplete="name" required />
-                <p class="field__error" id="nameError" hidden></p>
+                <label for="name">${escapeHtml(tf("labels.name"))} ${reqMark}</label>
+                <input class="field__control" type="text" id="name" name="name" autocomplete="name" required maxlength="120" aria-required="true" aria-describedby="nameError" />
+                <p class="field__error" id="nameError" role="alert" hidden></p>
               </div>
               <div class="field">
-                <label for="company">Bedrijfsnaam <span class="opt">(optioneel)</span></label>
-                <input class="field__control" type="text" id="company" name="company" autocomplete="organization" />
+                <label for="company">${escapeHtml(tf("labels.company"))} ${optMark}</label>
+                <input class="field__control" type="text" id="company" name="company" autocomplete="organization" maxlength="160" />
               </div>
             </div>
 
             <div class="form-row">
               <div class="field">
-                <label for="email">E-mailadres <span class="req" aria-hidden="true">*</span></label>
-                <input class="field__control" type="email" id="email" name="email" autocomplete="email" inputmode="email" required />
-                <p class="field__error" id="emailError" hidden></p>
+                <label for="email">${escapeHtml(tf("labels.email"))} ${reqMark}</label>
+                <input class="field__control" type="email" id="email" name="email" autocomplete="email" inputmode="email" required maxlength="254" aria-required="true" aria-describedby="emailError" />
+                <p class="field__error" id="emailError" role="alert" hidden></p>
               </div>
               <div class="field">
-                <label for="phone">Telefoonnummer <span class="opt">(optioneel)</span></label>
-                <input class="field__control" type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" />
-                <p class="field__error" id="phoneError" hidden></p>
+                <label for="phone">${escapeHtml(tf("labels.phone"))} ${optMark}</label>
+                <input class="field__control" type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="40" aria-describedby="phoneError" />
+                <p class="field__error" id="phoneError" role="alert" hidden></p>
               </div>
             </div>
 
             <div class="form-row">
               <div class="field">
-                <label for="projectType">Type project <span class="req" aria-hidden="true">*</span></label>
-                <select class="field__control" id="projectType" name="projectType" required>
-                  <option value="">Selecteer een optie</option>
+                <label for="projectType">${escapeHtml(tf("labels.projectType"))} ${reqMark}</label>
+                <select class="field__control" id="projectType" name="projectType" required aria-required="true" aria-describedby="projectTypeError">
+                  <option value="">${escapeHtml(tf("placeholders.select"))}</option>
                   ${projectOptions}
                 </select>
-                <p class="field__error" id="projectTypeError" hidden></p>
+                <p class="field__error" id="projectTypeError" role="alert" hidden></p>
               </div>
               <div class="field">
-                <label for="budget">Indicatief budget <span class="opt">(optioneel)</span></label>
-                <select class="field__control" id="budget" name="budget">
-                  <option value="">Selecteer een optie</option>
+                <label for="budget">${escapeHtml(tf("labels.budget"))} ${optMark}</label>
+                <select class="field__control" id="budget" name="budget" aria-describedby="budgetError">
+                  <option value="">${escapeHtml(tf("placeholders.select"))}</option>
                   ${budgetOptions}
                 </select>
+                <p class="field__error" id="budgetError" role="alert" hidden></p>
               </div>
             </div>
 
             <div class="field">
-              <label for="message">Bericht <span class="req" aria-hidden="true">*</span></label>
-              <textarea class="field__control" id="message" name="message" rows="5" placeholder="Vertel ons over jouw project, wensen of vragen..." required></textarea>
-              <p class="field__error" id="messageError" hidden></p>
+              <label for="message">${escapeHtml(tf("labels.message"))} ${reqMark}</label>
+              <textarea class="field__control" id="message" name="message" rows="5" maxlength="5000" placeholder="${escapeHtml(tf("placeholders.message"))}" required aria-required="true" aria-describedby="messageError"></textarea>
+              <p class="field__error" id="messageError" role="alert" hidden></p>
             </div>
 
             <div class="field">
               <label class="checkbox" for="privacy">
-                <input type="checkbox" id="privacy" name="privacy" required />
-                <span>Ik ga akkoord met de <a href="/privacy.html">privacyverklaring</a>.</span>
+                <input type="checkbox" id="privacy" name="privacy" required aria-required="true" aria-describedby="privacyError" />
+                <span>${privacyHtml}</span>
               </label>
-              <p class="field__error" id="privacyError" hidden></p>
+              <p class="field__error" id="privacyError" role="alert" hidden></p>
             </div>
 
-            <button type="submit" class="btn btn--primary btn--full" id="submitBtn">Verstuur bericht</button>
+            <button type="submit" class="btn btn--primary btn--full" id="submitBtn" data-label-default="${escapeHtml(tf("actions.submit"))}" data-label-loading="${escapeHtml(tf("actions.submitting"))}">
+              ${escapeHtml(tf("actions.submit"))}
+            </button>
 
-            <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></p>
           </form>
         </div>
       </div>

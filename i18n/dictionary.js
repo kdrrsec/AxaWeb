@@ -49,7 +49,7 @@ export function createTranslator(messages, namespace = "common") {
     let current = messages;
 
     for (const part of parts) {
-      if (current == null || typeof current !== "object") {
+      if (current === null || current === undefined || typeof current !== "object") {
         current = undefined;
         break;
       }

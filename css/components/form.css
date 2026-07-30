@@ -46,6 +46,7 @@
 }
 
 .contact-form {
+  position: relative;
   display: grid;
   gap: 1rem;
   padding: clamp(1.25rem, 3vw, 1.75rem);
@@ -279,6 +280,34 @@
 
 .form-status--info {
   color: var(--accent-hover);
+}
+
+.form-status:focus {
+  outline: none;
+}
+
+.form-status:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Honeypot: onzichtbaar voor gebruikers, wel in DOM voor bots */
+.hp-field {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.btn.is-loading {
+  opacity: 0.85;
+  cursor: wait;
 }
 
 @media (min-width: 720px) {
