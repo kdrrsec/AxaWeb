@@ -11,7 +11,7 @@ export const projects = [
     category: "Zakelijke website",
     services: ["Website", "Conversiegericht ontwerp", "Offerteformulier"],
     summary:
-      "Een heldere B2C-website voor een online bandenassortiment, met snelle route naar offerte en telefonisch advies.",
+      "Conversiegerichte website voor een online bandenassortiment, met een snelle route naar offerte en advies.",
     eyebrow: "Case",
     title: "Bandendepot - online warenhuis voor banden",
     intro:
@@ -89,7 +89,7 @@ export const projects = [
     category: "Zakelijke website",
     services: ["Website", "Maatwerk design", "Hosting"],
     summary:
-      "Een rustige, premium website voor IT-beheer en support, met nadruk op vertrouwen, diensten en kennismaking.",
+      "Premium B2B-website voor IT-beheer en support, gebouwd rond vertrouwen en een heldere kennismakingsflow.",
     eyebrow: "Case",
     title: "Axanet - IT-beheer en support",
     intro:
@@ -167,7 +167,7 @@ export const projects = [
     category: "Marketing website",
     services: ["Website", "Maatwerk design", "Conversie"],
     summary:
-      "Een donkere, energieke marketingwebsite voor short-form content op TikTok en Instagram Reels.",
+      "Donkere marketingwebsite voor short-form content, met sterke CTA's en een duidelijk groeiproces.",
     eyebrow: "Case",
     title: "ViralOn - social media marketing",
     intro:

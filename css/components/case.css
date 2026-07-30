@@ -54,7 +54,7 @@
 }
 
 .case-card__title {
-  font-size: 1.4rem;
+  font-size: clamp(1.3rem, 2.2vw, 1.5rem);
   font-weight: 650;
   letter-spacing: -0.02em;
 }
@@ -63,6 +63,7 @@
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.65;
+  max-width: 36rem;
 }
 
 .case-card__tags {
@@ -85,7 +86,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
   color: var(--text);
   font-size: 0.92rem;
   font-weight: 600;

@@ -844,26 +844,26 @@ export const pages = {
     navKey: "projecten",
     title: "Projecten | AxaWeb",
     description:
-      "Bekijk live projecten van AxaWeb: Bandendepot, Axanet en ViralOn - websites met premium design, duidelijke structuur en focus op resultaat.",
+      "Bekijk geselecteerd werk van AxaWeb: Bandendepot, Axanet en ViralOn. Live websites met aandacht voor structuur, uitstraling en technische kwaliteit.",
     canonical: "https://axaweb.nl/projecten",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Projecten" }],
     head: {
       variant: "center",
       eyebrow: "Projecten",
-      title: "Werk dat live staat.",
-      text: "Drie live projecten met echte screenshots. Bekijk de websites, de aanpak en de details achter iedere case.",
+      title: "Geselecteerd werk, live in productie.",
+      text: "Websites die we hebben ontworpen en gebouwd. Elk project met aandacht voor structuur, uitstraling en technische kwaliteit.",
     },
     sections: [
       {
         type: "portfolio",
         id: "portfolio",
-        note: "Wil je zien wat we voor jouw merk kunnen bouwen? Tijdens een kennismaking laten we graag relevante voorbeelden zien.",
+        note: "Op zoek naar een vergelijkbaar niveau voor jouw merk? Tijdens een kennismaking laten we graag relevante voorbeelden zien.",
       },
       {
         type: "cta",
         title: "Jouw project als volgende?",
-        text: "Vertel ons over je plannen. We denken vrijblijvend mee over de beste aanpak.",
-        button: { label: "Start een project", href: "/contact" },
+        text: "Vertel ons over je plannen. We adviseren helder over aanpak, planning en investering.",
+        button: { label: "Plan een kennismaking", href: "/contact" },
       },
     ],
   },
