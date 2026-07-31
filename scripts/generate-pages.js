@@ -17,7 +17,21 @@ const { defaultLocale, languageSwitcherEnabled, englishLocaleLive, siteUrl } = a
 );
 const { getMessages, createTranslator } = await import(pathToFileURL(join(root, "i18n/dictionary.js")).href);
 const { localizedPath } = await import(pathToFileURL(join(root, "i18n/routing.js")).href);
-const { renderHreflangLinks, localeMeta, canonicalUrl } = await import(pathToFileURL(join(root, "i18n/seo.js")).href);
+const {
+  renderHreflangLinks,
+  localeMeta,
+  canonicalUrl,
+  renderSocialMeta,
+  renderJsonLdScript,
+  buildJsonLdGraph,
+  buildOrganizationNode,
+  buildWebSiteNode,
+  buildBreadcrumbList,
+  buildFaqPage,
+  buildServiceNode,
+  buildContactPageNode,
+  buildCreativeWorkNode,
+} = await import(pathToFileURL(join(root, "i18n/seo.js")).href);
 const {
   pricing: pricingConfig,
   buildPricingRenderers,
@@ -30,10 +44,71 @@ const messages = getMessages(locale);
 const t = createTranslator(messages, "common");
 const tf = createTranslator(messages, "form");
 const tp = createTranslator(messages, "pricing");
+const seoMessages = messages.seo || {};
 const pricingView = buildPricingRenderers(tp, icon);
 const pages = getPages(locale);
 const siteNav = getSiteNav(locale);
 const projects = getProjects(locale);
+
+const servicePageKeys = new Set(["websites", "webshops", "hosting", "onderhoud"]);
+
+function collectFaqItems(page) {
+  return (page.sections || [])
+    .filter((section) => section.type === "faq")
+    .flatMap((section) => section.items || []);
+}
+
+function buildPageJsonLd(page, pathname, _canonical) {
+  const nodes = [buildOrganizationNode(seoMessages), buildWebSiteNode(seoMessages)];
+
+  if (page.breadcrumb?.length) {
+    const crumbs = page.breadcrumb.map((crumb) => ({
+      label: crumb.label,
+      href: crumb.href || pathname,
+    }));
+    nodes.push(buildBreadcrumbList(crumbs, pathname));
+  }
+
+  if (page.slug === "contact" || page.slug === "offerte") {
+    nodes.push(buildContactPageNode(pathname));
+  }
+
+  if (servicePageKeys.has(page.slug) && seoMessages.services?.[page.slug]) {
+    const service = seoMessages.services[page.slug];
+    nodes.push(
+      buildServiceNode({
+        name: service.name,
+        description: service.description,
+        url: pathname,
+        seoMessages,
+      })
+    );
+  }
+
+  if (page.slug === "diensten" && seoMessages.services) {
+    Object.entries(seoMessages.services).forEach(([key, service]) => {
+      nodes.push(
+        buildServiceNode({
+          name: service.name,
+          description: service.description,
+          url: `/${key}`,
+          seoMessages,
+        })
+      );
+    });
+  }
+
+  const faqItems = collectFaqItems(page);
+  if (faqItems.length) {
+    nodes.push(buildFaqPage(faqItems));
+  }
+
+  if (page.creativeWork) {
+    nodes.push(page.creativeWork);
+  }
+
+  return buildJsonLdGraph(nodes);
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -154,8 +229,8 @@ function footerMarkup() {
             <li><a href="${pathFor("/pakketten")}">${escapeHtml(t("nav.pakketten"))}</a></li>
             <li><a href="${pathFor("/projecten")}">${escapeHtml(t("nav.projecten"))}</a></li>
             <li><a href="${pathFor("/contact")}">${escapeHtml(t("nav.contact"))}</a></li>
-            <li><a href="/privacy.html">${escapeHtml(t("footer.privacy"))}</a></li>
-            <li><a href="/algemene-voorwaarden.html">${escapeHtml(t("footer.terms"))}</a></li>
+            <li><a href="/privacy">${escapeHtml(t("footer.privacy"))}</a></li>
+            <li><a href="/algemene-voorwaarden">${escapeHtml(t("footer.terms"))}</a></li>
           </ul>
         </div>
         <div>
@@ -800,7 +875,7 @@ function renderContact(section, alt) {
 
   const privacyHtml = escapeHtml(tf("labels.privacy")).replace(
     "{privacyLink}",
-    `<a href="/privacy.html">${escapeHtml(tf("labels.privacyLink"))}</a>`
+    `<a href="/privacy">${escapeHtml(tf("labels.privacyLink"))}</a>`
   );
 
   const reqMark = `<span class="req" aria-hidden="true">${escapeHtml(tf("labels.required"))}</span>`;
@@ -987,9 +1062,11 @@ function renderPage(page) {
   const pathname = pagePathname(page);
   const meta = localeMeta(locale);
   const canonical = page.canonical || canonicalUrl(pathname, locale);
-  const ogAlternates = meta.ogLocaleAlternates
-    .map((value) => `<meta property="og:locale:alternate" content="${value}" />`)
-    .join("\n  ");
+  const ogImageAlt = page.ogImageAlt || seoMessages.defaultOgImageAlt || "";
+  const jsonLd =
+    page.jsonLd ||
+    buildPageJsonLd(page, pathname, canonical);
+  const robots = page.robots || "index, follow";
 
   return `<!DOCTYPE html>
 <html lang="${meta.htmlLang}" data-locale="${locale}">
@@ -998,32 +1075,25 @@ function renderPage(page) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>${escapeHtml(page.title)}</title>
   <meta name="description" content="${escapeHtml(page.description)}" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="${escapeHtml(robots)}" />
   <link rel="canonical" href="${canonical}" />
   ${renderHreflangLinks(pathname)}
 
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="${meta.ogLocale}" />
-  ${ogAlternates}
-  <meta property="og:site_name" content="AxaWeb" />
-  <meta property="og:title" content="${escapeHtml(page.title)}" />
-  <meta property="og:description" content="${escapeHtml(page.description)}" />
-  <meta property="og:url" content="${canonical}" />
-  <meta property="og:image" content="${page.ogImage || "https://axaweb.nl/images/background.jpg"}" />
+  ${renderSocialMeta({
+    title: page.title,
+    description: page.description,
+    canonical,
+    ogImage: page.ogImage,
+    ogImageAlt,
+    ogType: page.ogType || "website",
+    locale,
+  })}
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="${escapeHtml(page.title)}" />
-  <meta name="twitter:description" content="${escapeHtml(page.description)}" />
-  <meta name="twitter:image" content="${page.ogImage || "https://axaweb.nl/images/background.jpg"}" />
-
-  <meta name="theme-color" content="#06101D" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=3" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/main.css" />
-  ${page.jsonLd ? `<script type="application/ld+json">\n    ${page.jsonLd}\n  </script>` : ""}
+  ${renderJsonLdScript(jsonLd)}
   ${clientMessagesScript()}
 </head>
 <body data-page="${page.slug}">
@@ -1212,40 +1282,30 @@ ${block({ id: "resultaat", eyebrow: t("case.result"), ...project.result }, proje
 }
 
 function buildCasePage(project) {
-  const jsonLd = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: project.name,
-    description: project.meta.description,
-    url: `https://axaweb.nl/projecten/${project.slug}`,
-    image: project.images.og,
-    creator: {
-      "@type": "Organization",
-      name: "AxaWeb",
-      url: "https://axaweb.nl/",
-    },
-    about: {
-      "@type": "WebSite",
-      name: project.name,
-      url: project.url,
-    },
-  });
+  const pathname = `/projecten/${project.slug}`;
+  const breadcrumb = [
+    { label: t("breadcrumb.home"), href: "/" },
+    { label: t("nav.projecten"), href: "/projecten" },
+    { label: project.name },
+  ];
 
   return renderPage({
     slug: `projecten-${project.slug}`,
     navKey: "projecten",
     title: project.meta.title,
     description: project.meta.description,
-    canonical: `https://axaweb.nl/projecten/${project.slug}`,
+    canonical: canonicalUrl(pathname, locale),
     ogImage: project.images.og,
-    jsonLd,
+    ogImageAlt: project.images.altDesktop || project.meta.title,
+    ogType: "article",
+    breadcrumb,
+    creativeWork: buildCreativeWorkNode(project),
     customMain: renderCaseMain(project),
   });
 }
 
 /**
- * Injecteert/update het client-side messages-blok in index.html
- * zodat homepage JS (form/header/render) dezelfde dictionary gebruikt.
+ * Injecteert/update het client-side messages-blok + SEO-head in index.html.
  */
 function syncIndexMessages() {
   const indexPath = join(root, "index.html");
@@ -1260,11 +1320,97 @@ function syncIndexMessages() {
   }
 
   if (!html.includes('data-locale="')) {
-    html = html.replace("<html lang=\"nl\">", '<html lang="nl" data-locale="nl">');
+    html = html.replace('<html lang="nl">', '<html lang="nl" data-locale="nl">');
   }
 
+  const homeMeta = seoMessages.pages?.home || messages.home?.meta || {};
+  const title = homeMeta.title || messages.home?.meta?.title;
+  const description = homeMeta.description || messages.home?.meta?.description;
+  const ogAlt = seoMessages.defaultOgImageAlt || messages.home?.meta?.ogImageAlt || "";
+  const canonical = canonicalUrl("/", locale);
+
+  if (title) {
+    html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(title)}</title>`);
+  }
+  if (description) {
+    html = html.replace(
+      /<meta name="description" content="[^"]*"\s*\/>/,
+      `<meta name="description" content="${escapeHtml(description)}" />`
+    );
+  }
+
+  html = html.replace(
+    /<link rel="canonical" href="[^"]*"\s*\/>/,
+    `<link rel="canonical" href="${canonical}" />`
+  );
+
+  /* hreflang: vervang bestaande alternate-blok of voeg toe na canonical */
+  if (/<link rel="alternate" hreflang=/.test(html)) {
+    html = html.replace(
+      /(?:\s*<link rel="alternate" hreflang="[^"]+" href="[^"]*"\s*\/>)+/,
+      `\n  ${renderHreflangLinks("/")}`
+    );
+  } else {
+    html = html.replace(
+      /<link rel="canonical"[^>]*>/,
+      (match) => `${match}\n  ${renderHreflangLinks("/")}`
+    );
+  }
+
+  const social = renderSocialMeta({
+    title,
+    description,
+    canonical,
+    ogImageAlt: ogAlt,
+    locale,
+  });
+
+  if (/<meta property="og:type"/.test(html)) {
+    html = html.replace(
+      /<meta property="og:type"[\s\S]*?(?=\n\s*<link rel="preconnect")/,
+      `${social}\n`
+    );
+  }
+
+  /* Remove legacy relative icon tags if absolute variants already exist */
+  if (html.includes('href="/favicon.png')) {
+    html = html.replace(/\n\s*<link rel="icon"[^>]*href="favicon\.png[^"]*"[^>]*>/g, "");
+  }
+  if (html.includes('href="/apple-touch-icon.png')) {
+    html = html.replace(/\n\s*<link rel="apple-touch-icon"[^>]*href="apple-touch-icon\.png[^"]*"[^>]*>/g, "");
+  }
+  if ((html.match(/rel="manifest"/g) || []).length > 1) {
+    let seenManifest = false;
+    html = html.replace(/\n\s*<link rel="manifest"[^>]*>/g, (match) => {
+      if (seenManifest) return "";
+      seenManifest = true;
+      return match;
+    });
+  }
+
+  const homeJsonLd = buildJsonLdGraph([
+    buildOrganizationNode(seoMessages),
+    buildWebSiteNode(seoMessages),
+  ]);
+  const jsonLdScript = renderJsonLdScript(homeJsonLd);
+  if (/<script type="application\/ld\+json">[\s\S]*?<\/script>/.test(html)) {
+    html = html.replace(
+      /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
+      jsonLdScript
+    );
+  } else {
+    html = html.replace("</head>", `  ${jsonLdScript}\n</head>`);
+  }
+
+  /* Footer legal links → clean URLs */
+  html = html
+    .replaceAll('href="privacy.html"', 'href="/privacy"')
+    .replaceAll('href="algemene-voorwaarden.html"', 'href="/algemene-voorwaarden"')
+    .replaceAll('href="/privacy.html"', 'href="/privacy"')
+    .replaceAll('href="/algemene-voorwaarden.html"', 'href="/algemene-voorwaarden"');
+
   writeFileSync(indexPath, html, "utf8");
-  console.log("Synced i18n messages into index.html");
+  console.log("Synced i18n messages and SEO head into index.html");
 }
 
 export function generatePages() {
