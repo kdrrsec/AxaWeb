@@ -1,25 +1,25 @@
 # Contactformulier
 
-Productieklare verwerking via Vercel Serverless Function + Resend.
+Productieklare verwerking via Vercel Serverless Function + FormSubmit.
 
 ## Flow
 
 1. Client valideert (`js/lib/contact-validation.js` + `js/modules/form.js`)
 2. POST naar `/api/contact`
 3. Server herhaalt validatie, spamchecks en rate limiting
-4. E-mail via Resend naar `CONTACT_TO_EMAIL`
+4. E-mail via **FormSubmit** naar `info@axaweb.nl`
 
 ## Environment variables
 
 Zie `.env.example`:
 
-| Variabele | Doel |
-|-----------|------|
-| `RESEND_API_KEY` | API-sleutel van Resend |
-| `CONTACT_TO_EMAIL` | Ontvanger (bijv. `info@axaweb.nl`) |
-| `CONTACT_FROM_EMAIL` | Geverifieerde afzender in Resend |
+| Variabele | Doel | Standaard |
+|-----------|------|-----------|
+| `CONTACT_TO_EMAIL` | Ontvanger FormSubmit | `info@axaweb.nl` |
 
-Stel deze in bij Vercel → Project → Settings → Environment Variables.
+Geen API-sleutel nodig. Optioneel overschrijven in Vercel → Environment Variables.
+
+> Let op: FormSubmit vraagt bij het eerste bericht naar een nieuw adres om activatie via e-mail.
 
 ## Spambeveiliging
 

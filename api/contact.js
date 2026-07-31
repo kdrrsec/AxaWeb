@@ -1,6 +1,6 @@
 /**
  * Vercel Serverless Function: POST /api/contact
- * Valideert de aanvraag, past spamfilters toe en verstuurt via Resend.
+ * Valideert de aanvraag, past spamfilters toe en verstuurt via FormSubmit.
  */
 
 import { validateContactPayload } from "../js/lib/contact-validation.js";
