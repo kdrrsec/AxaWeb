@@ -292,6 +292,7 @@ export function getSitemapEntries({ lastmod } = {}) {
     { path: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: iso },
     { path: "/cookies", changefreq: "yearly", priority: "0.3", lastmod: iso },
     { path: "/algemene-voorwaarden", changefreq: "yearly", priority: "0.3", lastmod: iso },
+    { path: "/disclaimer", changefreq: "yearly", priority: "0.3", lastmod: iso },
   ];
 }
 

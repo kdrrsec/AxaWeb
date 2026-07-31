@@ -38,9 +38,14 @@
     "privacy": "Privacyverklaring",
     "terms": "Algemene voorwaarden",
     "cookiePolicy": "Cookiebeleid",
+    "disclaimer": "Disclaimer",
     "cookieSettings": "Cookievoorkeuren",
+    "relatedTitle": "Gerelateerde documenten",
     "rights": "Alle rechten voorbehouden.",
     "tagline": "Digitale partner voor ondernemers"
+  },
+  "legal": {
+    "relatedTitle": "Gerelateerde documenten"
   },
   "languageSwitcher": {
     "ariaLabel": "Taal kiezen",

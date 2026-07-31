@@ -244,6 +244,7 @@ function footerMarkup() {
             <li><a href="/privacy">${escapeHtml(t("footer.privacy"))}</a></li>
             <li><a href="/cookies">${escapeHtml(t("footer.cookiePolicy"))}</a></li>
             <li><a href="/algemene-voorwaarden">${escapeHtml(t("footer.terms"))}</a></li>
+            <li><a href="/disclaimer">${escapeHtml(t("footer.disclaimer"))}</a></li>
             <li><button type="button" class="site-footer__text-btn" data-open-cookie-settings>${escapeHtml(t("footer.cookieSettings"))}</button></li>
           </ul>
         </div>
@@ -1450,13 +1451,14 @@ function syncIndexMessages() {
     html = html.replace(/\n?\s*<meta name="google-site-verification"[^>]*>/g, "");
   }
 
-  /* Cookie footer controls */
+  /* Cookie + legal footer controls */
   if (!html.includes('data-open-cookie-settings')) {
     html = html.replace(
-      /<li><a href="\/privacy">[^<]*<\/a><\/li>\s*<li><a href="\/algemene-voorwaarden">[^<]*<\/a><\/li>/,
+      /<li><a href="\/privacy">[^<]*<\/a><\/li>\s*(?:<li><a href="\/cookies">[^<]*<\/a><\/li>\s*)?<li><a href="\/algemene-voorwaarden">[^<]*<\/a><\/li>/,
       `<li><a href="/privacy">${escapeHtml(t("footer.privacy"))}</a></li>
             <li><a href="/cookies">${escapeHtml(t("footer.cookiePolicy"))}</a></li>
             <li><a href="/algemene-voorwaarden">${escapeHtml(t("footer.terms"))}</a></li>
+            <li><a href="/disclaimer">${escapeHtml(t("footer.disclaimer"))}</a></li>
             <li><button type="button" class="site-footer__text-btn" data-open-cookie-settings>${escapeHtml(t("footer.cookieSettings"))}</button></li>`
     );
   }

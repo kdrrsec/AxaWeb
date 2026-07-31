@@ -38,9 +38,14 @@
     "privacy": "",
     "terms": "",
     "cookiePolicy": "",
+    "disclaimer": "",
     "cookieSettings": "",
+    "relatedTitle": "",
     "rights": "",
     "tagline": ""
+  },
+  "legal": {
+    "relatedTitle": ""
   },
   "languageSwitcher": {
     "ariaLabel": "",

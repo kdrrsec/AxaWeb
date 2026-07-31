@@ -33,6 +33,8 @@ const sitemap = readFileSync(join(root, "sitemap.xml"), "utf8");
 assert.match(sitemap, /<lastmod>/);
 assert.match(sitemap, /https:\/\/axaweb\.nl\/privacy</);
 assert.match(sitemap, /https:\/\/axaweb\.nl\/cookies</);
+assert.match(sitemap, /https:\/\/axaweb\.nl\/disclaimer</);
+assert.match(sitemap, /https:\/\/axaweb\.nl\/algemene-voorwaarden</);
 
 const diensten = readFileSync(join(root, "diensten.html"), "utf8");
 assert.match(diensten, /application\/ld\+json/);
