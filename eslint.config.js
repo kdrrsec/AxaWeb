@@ -19,11 +19,29 @@ export default [
         IntersectionObserver: "readonly",
         MutationObserver: "readonly",
         Event: "readonly",
+        CustomEvent: "readonly",
+        Element: "readonly",
+        localStorage: "readonly",
         console: "readonly",
         process: "readonly",
       },
     },
     rules: sharedRules,
+  },
+  {
+    files: ["js/consent-default.js"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "script",
+      globals: {
+        window: "readonly",
+        localStorage: "readonly",
+      },
+    },
+    rules: {
+      ...sharedRules,
+      "no-var": "off",
+    },
   },
   {
     files: ["api/**/*.js"],

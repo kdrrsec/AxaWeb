@@ -32,6 +32,7 @@ const {
   buildContactPageNode,
   buildCreativeWorkNode,
 } = await import(pathToFileURL(join(root, "i18n/seo.js")).href);
+const { publicEnv } = await import(pathToFileURL(join(root, "js/config/public-env.js")).href);
 const {
   pricing: pricingConfig,
   buildPricingRenderers,
@@ -149,8 +150,19 @@ function clientMessagesScript() {
     form: messages.form,
     home: messages.home,
     pricing: messages.pricing,
+    cookies: messages.cookies,
   };
   return `<script type="application/json" id="i18n-messages">${JSON.stringify(payload).replace(/</g, "\\u003c")}</script>`;
+}
+
+function siteVerificationMeta() {
+  const token = publicEnv.GOOGLE_SITE_VERIFICATION;
+  if (!token) return "";
+  return `<meta name="google-site-verification" content="${escapeHtml(token)}" />`;
+}
+
+function consentBootstrapScript() {
+  return `<script src="/js/consent-default.js" defer></script>`;
 }
 
 /* ---------- Gedeelde schil (header, footer, breadcrumb) ---------- */
@@ -230,7 +242,9 @@ function footerMarkup() {
             <li><a href="${pathFor("/projecten")}">${escapeHtml(t("nav.projecten"))}</a></li>
             <li><a href="${pathFor("/contact")}">${escapeHtml(t("nav.contact"))}</a></li>
             <li><a href="/privacy">${escapeHtml(t("footer.privacy"))}</a></li>
+            <li><a href="/cookies">${escapeHtml(t("footer.cookiePolicy"))}</a></li>
             <li><a href="/algemene-voorwaarden">${escapeHtml(t("footer.terms"))}</a></li>
+            <li><button type="button" class="site-footer__text-btn" data-open-cookie-settings>${escapeHtml(t("footer.cookieSettings"))}</button></li>
           </ul>
         </div>
         <div>
@@ -896,7 +910,7 @@ function renderContact(section, alt) {
           </div>
 
           <div class="contact-main">
-          <form class="contact-form reveal" id="contactForm" novalidate data-contact-form>
+          <form class="contact-form reveal" id="contactForm" novalidate data-contact-form data-clarity-mask="True">
             <input type="hidden" name="formStartedAt" id="formStartedAt" value="" />
             <input type="hidden" name="sourcePage" id="sourcePage" value="${escapeHtml(sourcePage)}" />
             <div class="hp-field" aria-hidden="true">
@@ -1076,6 +1090,7 @@ function renderPage(page) {
   <title>${escapeHtml(page.title)}</title>
   <meta name="description" content="${escapeHtml(page.description)}" />
   <meta name="robots" content="${escapeHtml(robots)}" />
+  ${siteVerificationMeta()}
   <link rel="canonical" href="${canonical}" />
   ${renderHreflangLinks(pathname)}
 
@@ -1093,6 +1108,7 @@ function renderPage(page) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/main.css" />
+  ${consentBootstrapScript()}
   ${renderJsonLdScript(jsonLd)}
   ${clientMessagesScript()}
 </head>
@@ -1155,7 +1171,7 @@ function renderCaseMain(project) {
         <p class="case-hero__intro reveal">${escapeHtml(project.intro)}</p>
         <div class="case-hero__meta reveal">
           <p><span>${escapeHtml(t("case.category"))}</span> ${escapeHtml(project.category)}</p>
-          <p><span>${escapeHtml(t("case.live"))}</span> <a href="${project.url}" rel="noopener noreferrer" target="_blank">${escapeHtml(project.url.replace(/^https?:\/\//, ""))}</a></p>
+          <p><span>${escapeHtml(t("case.live"))}</span> <a class="case-hero__live" href="${project.url}" rel="noopener noreferrer" target="_blank" data-track="outbound_project">${escapeHtml(project.url.replace(/^https?:\/\//, ""))}</a></p>
         </div>
         <ul class="case-hero__services reveal">
           ${project.services.map((service) => `<li>${escapeHtml(service)}</li>`).join("\n          ")}
@@ -1408,6 +1424,42 @@ function syncIndexMessages() {
     .replaceAll('href="algemene-voorwaarden.html"', 'href="/algemene-voorwaarden"')
     .replaceAll('href="/privacy.html"', 'href="/privacy"')
     .replaceAll('href="/algemene-voorwaarden.html"', 'href="/algemene-voorwaarden"');
+
+  /* Consent Mode bootstrap */
+  if (!html.includes("/js/consent-default.js")) {
+    html = html.replace(
+      /<link rel="stylesheet" href="[^"]*css\/(?:main|bundle)\.css"\s*\/>/,
+      (match) => `${match}\n  ${consentBootstrapScript()}`
+    );
+  }
+
+  /* Google Search Console verification (only when configured) */
+  if (publicEnv.GOOGLE_SITE_VERIFICATION) {
+    if (/name="google-site-verification"/.test(html)) {
+      html = html.replace(
+        /<meta name="google-site-verification" content="[^"]*"\s*\/>/,
+        siteVerificationMeta()
+      );
+    } else {
+      html = html.replace(
+        /<meta name="robots"[^>]*>/,
+        (match) => `${match}\n  ${siteVerificationMeta()}`
+      );
+    }
+  } else {
+    html = html.replace(/\n?\s*<meta name="google-site-verification"[^>]*>/g, "");
+  }
+
+  /* Cookie footer controls */
+  if (!html.includes('data-open-cookie-settings')) {
+    html = html.replace(
+      /<li><a href="\/privacy">[^<]*<\/a><\/li>\s*<li><a href="\/algemene-voorwaarden">[^<]*<\/a><\/li>/,
+      `<li><a href="/privacy">${escapeHtml(t("footer.privacy"))}</a></li>
+            <li><a href="/cookies">${escapeHtml(t("footer.cookiePolicy"))}</a></li>
+            <li><a href="/algemene-voorwaarden">${escapeHtml(t("footer.terms"))}</a></li>
+            <li><button type="button" class="site-footer__text-btn" data-open-cookie-settings>${escapeHtml(t("footer.cookieSettings"))}</button></li>`
+    );
+  }
 
   writeFileSync(indexPath, html, "utf8");
   console.log("Synced i18n messages and SEO head into index.html");

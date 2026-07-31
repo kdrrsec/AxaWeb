@@ -12,8 +12,9 @@
     "test:contact": "node scripts/test-contact-validation.js",
     "test:pricing": "node scripts/test-pricing.js",
     "test:seo": "node scripts/test-seo.js",
+    "test:consent": "node scripts/test-consent.js",
     "audit": "npm audit --audit-level=high",
-    "test:static": "node scripts/build.js && node scripts/typecheck.js && node scripts/test-contact-validation.js && node scripts/test-pricing.js && node scripts/test-seo.js && npm audit --audit-level=high"
+    "test:static": "node scripts/build.js && node scripts/typecheck.js && node scripts/test-contact-validation.js && node scripts/test-pricing.js && node scripts/test-seo.js && node scripts/test-consent.js && npm audit --audit-level=high"
   },
   "devDependencies": {
     "eslint": "^9.31.0"

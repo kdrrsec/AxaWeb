@@ -2,6 +2,7 @@
  * Client-side pricing interactions: model toggle + contractduur selectors.
  */
 import { t } from "./i18n.js";
+import { trackPricingDurationSelect, trackPricingModelSelect } from "./tracking.js";
 
 function formatEuro(amount) {
   const formatted = Number(amount).toLocaleString("nl-NL", {
@@ -100,6 +101,7 @@ function initTermGroup(group) {
   };
 
   const setTerm = (termId) => {
+    trackPricingDurationSelect(termId, group.getAttribute("data-group") || "");
     buttons.forEach((btn) => {
       const active = btn.getAttribute("data-term") === termId;
       btn.classList.toggle("is-active", active);
@@ -138,6 +140,7 @@ function initModelToggle(root) {
   };
 
   const select = (model) => {
+    trackPricingModelSelect(model);
     buttons.forEach((btn) => {
       const active = btn.getAttribute("data-model") === model;
       btn.classList.toggle("is-active", active);
