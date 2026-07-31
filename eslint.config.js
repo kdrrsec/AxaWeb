@@ -8,7 +8,7 @@ const sharedRules = {
 
 export default [
   {
-    files: ["js/**/*.js", "scripts/**/*.js", "i18n/**/*.js"],
+    files: ["js/**/*.js", "scripts/**/*.js", "i18n/**/*.js", "data/**/*.js"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",

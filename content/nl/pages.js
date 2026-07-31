@@ -2,178 +2,22 @@
  * Paginadefinities voor de multipage-site.
  * Iedere pagina heeft een eigen doel, een eigen kop-variant en unieke secties.
  * De generator (scripts/generate-pages.js) rendert per sectietype andere markup.
+ * Prijzen komen uit data/pricing.js (geen hardcoded bedragen hier).
  */
+
+import {
+  formatEuro,
+  getOneTimeFromPrice,
+  getWaasFromPrice,
+  getHostingFromPrice,
+  getMaintenanceFromPrice,
+} from "../../data/pricing.js";
 
 export const siteNav = [
   { label: "Diensten", href: "/diensten", key: "diensten" },
   { label: "Pakketten", href: "/pakketten", key: "pakketten" },
   { label: "Projecten", href: "/projecten", key: "projecten" },
   { label: "Contact", href: "/contact", key: "contact" },
-];
-
-/* Gedeelde pakketdata: één bron voor /websites, /hosting, /onderhoud en /pakketten. */
-const webPlans = [
-  {
-    name: "Start",
-    priceWas: "€495",
-    priceIntro: "€395",
-    audience: "Voor starters en kleine ondernemingen.",
-    featured: false,
-    features: [
-      "Professionele onepage",
-      "Responsive ontwerp",
-      "Contactformulier",
-      "Basis SEO",
-      "SSL-configuratie",
-      "Oplevering vanaf vijf werkdagen",
-    ],
-    cta: "Vraag een offerte aan",
-    href: "/contact",
-  },
-  {
-    name: "Business",
-    priceWas: "€795",
-    priceIntro: "€695",
-    audience: "Voor bedrijven die uitgebreider en professioneler online zichtbaar willen zijn.",
-    featured: true,
-    badge: "Meest gekozen",
-    features: [
-      "Tot vijf pagina's",
-      "Maatwerk ontwerp",
-      "Portfolio- of dienstenoverzicht",
-      "Google Maps-integratie",
-      "Basis SEO",
-      "Performance-optimalisatie",
-    ],
-    cta: "Bespreek jouw website",
-    href: "/contact",
-  },
-  {
-    name: "Premium",
-    priceWas: "€1.695",
-    priceIntro: "€1.495",
-    audience: "Voor uitgebreide websites, maatwerkfunctionaliteiten en groeiende organisaties.",
-    featured: false,
-    features: [
-      "Alles uit Business",
-      "Meer pagina's en content",
-      "Maatwerkfunctionaliteiten",
-      "API-koppelingen mogelijk",
-      "Uitgebreidere animaties",
-      "Prioriteit tijdens ontwikkeling",
-    ],
-    cta: "Vraag maatwerk aan",
-    href: "/contact",
-  },
-];
-
-const hostingPlans = [
-  {
-    name: "Essentieel",
-    price: "€99",
-    period: "per jaar",
-    audience: "Voor websites die betrouwbaar online moeten staan.",
-    featured: false,
-    features: [
-      "SSL-certificaat",
-      "Dagelijkse back-ups",
-      "Zakelijke e-mail",
-      "Snelle SSD-opslag",
-      "Support via e-mail",
-    ],
-    cta: "Vraag Essentieel aan",
-    href: "/contact",
-  },
-  {
-    name: "Zakelijk",
-    price: "€199",
-    period: "per jaar",
-    audience: "Voor bedrijven waar de website een belangrijke rol speelt.",
-    featured: true,
-    badge: "Meest gekozen",
-    features: [
-      "Alles uit Essentieel",
-      "Meer opslag en snelheid",
-      "Uptime-monitoring",
-      "Prioriteit bij support",
-      "Jaarlijkse performancecheck",
-    ],
-    cta: "Vraag Zakelijk aan",
-    href: "/contact",
-  },
-  {
-    name: "Volledig beheerd",
-    price: "Op aanvraag",
-    audience: "Hosting en onderhoud volledig uit handen, inclusief updates en monitoring.",
-    featured: false,
-    features: [
-      "Alles uit Zakelijk",
-      "Updates en onderhoud inbegrepen",
-      "Proactieve monitoring",
-      "Vaste contactpersoon",
-      "SLA-afspraken mogelijk",
-    ],
-    cta: "Bespreek de mogelijkheden",
-    href: "/contact",
-  },
-];
-
-const onderhoudPlans = [
-  {
-    name: "Basis",
-    price: "€39",
-    period: "per maand",
-    audience: "Voor websites die up-to-date en veilig moeten blijven.",
-    featured: false,
-    features: [
-      "Periodieke updates van CMS en plugins",
-      "Controle van back-ups",
-      "Maandelijkse gezondheidscheck",
-      "Support via e-mail",
-    ],
-    cta: "Kies Basis",
-    href: "/contact",
-  },
-  {
-    name: "Zakelijk",
-    price: "€79",
-    period: "per maand",
-    audience: "Voor bedrijven die op hun website moeten kunnen rekenen.",
-    featured: true,
-    badge: "Meest gekozen",
-    features: [
-      "Alles uit Basis",
-      "Uptime- en foutmonitoring",
-      "Prioriteit bij storingen",
-      "Klein onderhoud en aanpassingen (1 uur per maand)",
-      "Kwartaalrapportage",
-    ],
-    cta: "Kies Zakelijk",
-    href: "/contact",
-  },
-  {
-    name: "Op maat",
-    price: "Op aanvraag",
-    audience: "Voor maatwerkplatforms en organisaties met specifieke eisen.",
-    featured: false,
-    features: [
-      "Alles uit Zakelijk",
-      "SLA met vaste reactietijden",
-      "Vast aantal ontwikkeluren",
-      "Direct contact met je beheerder",
-    ],
-    cta: "Bespreek jouw situatie",
-    href: "/contact",
-  },
-];
-
-const pricingTermsItems = [
-  "Alle genoemde prijzen zijn exclusief 21% btw.",
-  "De websiteprijs is een eenmalige investering.",
-  "Hosting en onderhoud worden maandelijks gefactureerd indien afgenomen.",
-  "Voor hosting- en onderhoudsabonnementen geldt een minimale looptijd van 12 maanden. Daarna zijn deze maandelijks opzegbaar.",
-  "Eventuele maatwerkfunctionaliteiten worden vooraf geoffreerd.",
-  "Na oplevering ontvang je volledige uitleg over jouw website.",
 ];
 
 export const pages = {
@@ -247,13 +91,22 @@ export const pages = {
         title: "Welke dienst past bij jouw situatie?",
         intro:
           "In één oogopslag zien waar iedere dienst voor bedoeld is en wat je kunt verwachten.",
-        columns: ["Websites", "Webshops", "Hosting", "Onderhoud"],
+        columns: ["Website", "Website as a Service", "Hosting", "Onderhoud"],
         rows: [
+          {
+            label: "Type",
+            values: [
+              "Eenmalige investering",
+              "Maandelijks abonnement",
+              "Jaarabonnement",
+              "Maandelijks abonnement",
+            ],
+          },
           {
             label: "Voor wie",
             values: [
-              "Bedrijven die online vertrouwen willen wekken",
-              "Ondernemers die online willen verkopen",
+              "Bedrijven die een eigen website willen laten bouwen",
+              "Ondernemers die website, hosting en onderhoud all-inclusive willen",
               "Iedereen met een website of webshop",
               "Eigenaren die zorgeloos online willen zijn",
             ],
@@ -262,14 +115,19 @@ export const pages = {
             label: "Resultaat",
             values: [
               "Professionele website op maat",
-              "Webshop met soepel bestelproces",
+              "Branchegerichte website met hosting en onderhoud",
               "Snelle en veilige omgeving",
               "Stabiele, up-to-date website",
             ],
           },
           {
-            label: "Vanafprijs",
-            values: ["€395 eenmalig", "Op aanvraag", "€99 per jaar", "€39 per maand"],
+            label: "Investering",
+            values: [
+              `Vanaf ${formatEuro(getOneTimeFromPrice())}`,
+              `Vanaf ${formatEuro(getWaasFromPrice())} / maand`,
+              `Vanaf ${formatEuro(getHostingFromPrice())} / jaar`,
+              `Vanaf ${formatEuro(getMaintenanceFromPrice())} / maand`,
+            ],
           },
           {
             label: "Doorlooptijd",
@@ -279,7 +137,7 @@ export const pages = {
             label: "Combineert goed met",
             values: [
               "Hosting en onderhoud",
-              "Hosting en onderhoud",
+              "AxaBook (binnenkort)",
               "Onderhoud",
               "Hosting",
             ],
@@ -403,13 +261,9 @@ export const pages = {
       {
         type: "pricing",
         id: "prijzen",
-        eyebrow: "Prijzen",
-        title: "Heldere pakketten, vaste vanafprijzen.",
-        intro:
-          "Ieder project is anders. Daarom zijn dit vanafprijzen en ontvang je altijd vooraf een duidelijke offerte.",
-        plans: webPlans,
-        note: "Alle bedragen zijn vanafprijzen en afhankelijk van ontwerp, omvang en functionaliteiten.",
-        footerLink: { label: "Bekijk alle pakketten", href: "/pakketten" },
+        catalog: "oneTime",
+        i18nKey: "oneTime",
+        footerLink: { label: "Bekijk alle pakketten", href: "/pakketten", i18nKey: null },
       },
       {
         type: "cases",
@@ -607,10 +461,8 @@ export const pages = {
       {
         type: "pricing",
         id: "pakketten",
-        eyebrow: "Pakketten",
-        title: "Kies de hosting die bij je past.",
-        plans: hostingPlans,
-        note: "Alle bedragen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel.",
+        catalog: "hosting",
+        i18nKey: "hosting",
       },
       {
         type: "specs",
@@ -705,10 +557,8 @@ export const pages = {
       {
         type: "pricing",
         id: "abonnementen",
-        eyebrow: "Abonnementen",
-        title: "Onderhoud dat past bij jouw website.",
-        plans: onderhoudPlans,
-        note: "Alle bedragen zijn exclusief 21% btw. Minimale looptijd van twaalf maanden; daarna maandelijks opzegbaar.",
+        catalog: "maintenance",
+        i18nKey: "maintenance",
       },
       {
         type: "checklists",
@@ -796,39 +646,26 @@ export const pages = {
     },
     sections: [
       {
-        type: "pricing",
-        id: "webpakketten",
-        eyebrow: "Webpakketten",
-        title: "Websites met een vaste vanafprijs.",
-        intro: "Eenmalige investering voor het ontwerpen en bouwen van je website.",
-        plans: webPlans,
-        note: "Introductieprijzen zijn exclusief 21% btw. Definitieve prijs hangt af van ontwerp, omvang en functionaliteiten.",
-        footerLink: { label: "Alles over websites", href: "/websites" },
+        type: "pricingHub",
+        id: "websites",
+        footerLink: { label: "Alles over websites", href: "/websites", i18nKey: "viewWebsites" },
       },
       {
         type: "pricing",
         id: "hosting",
-        eyebrow: "Hosting",
-        title: "Hosting per jaar, zonder omkijken.",
-        intro: "Jaarlijkse pakketten voor een snelle, veilige en goed onderhouden omgeving.",
-        plans: hostingPlans,
-        note: "Prijzen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel.",
-        footerLink: { label: "Alles over hosting", href: "/hosting" },
+        catalog: "hosting",
+        i18nKey: "hosting",
+        footerLink: { label: "Alles over hosting", href: "/hosting", i18nKey: "viewHosting" },
       },
       {
         type: "pricing",
         id: "onderhoud",
-        eyebrow: "Onderhoud",
-        title: "Onderhoud als maandabonnement.",
-        intro: "Doorlopende zorg voor updates, monitoring en support.",
-        plans: onderhoudPlans,
-        note: "Prijzen zijn exclusief 21% btw. Minimale looptijd van twaalf maanden voor abonnementen.",
-        footerLink: { label: "Alles over onderhoud", href: "/onderhoud" },
+        catalog: "maintenance",
+        i18nKey: "maintenance",
+        footerLink: { label: "Alles over onderhoud", href: "/onderhoud", i18nKey: "viewMaintenance" },
       },
       {
         type: "pricingTerms",
-        title: "Goed om te weten",
-        items: pricingTermsItems,
       },
       {
         type: "cta",

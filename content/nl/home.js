@@ -1,5 +1,7 @@
 /* Homepage-content: previews die doorverwijzen naar de eigen pagina's. */
 
+import { formatEuro, getOneTimePlans } from "../../data/pricing.js";
+
 export const services = [
   {
     id: "websites",
@@ -39,26 +41,18 @@ export const services = [
   },
 ];
 
-export const packagesPreview = [
-  {
-    name: "Start",
-    price: "Vanaf €395",
-    text: "Professionele onepage om als starter of klein bedrijf direct zichtbaar te zijn.",
-    featured: false,
-  },
-  {
-    name: "Business",
-    price: "Vanaf €695",
-    text: "Maatwerkwebsite tot vijf pagina's voor bedrijven die professioneel willen groeien.",
-    featured: true,
-    badge: "Meest gekozen",
-  },
-  {
-    name: "Premium",
-    price: "Vanaf €1.495",
-    text: "Uitgebreide website met maatwerkfunctionaliteiten voor groeiende organisaties.",
-    featured: false,
-  },
-];
+const previewCopy = {
+  start: "Professionele onepage om als starter of klein bedrijf direct zichtbaar te zijn.",
+  business: "Maatwerkwebsite tot vijf pagina's voor bedrijven die professioneel willen groeien.",
+  premium: "Uitgebreide website met maatwerkfunctionaliteiten voor groeiende organisaties.",
+};
+
+export const packagesPreview = getOneTimePlans().map((plan) => ({
+  name: plan.id === "start" ? "Start" : plan.id === "business" ? "Business" : "Premium",
+  price: `Vanaf ${formatEuro(plan.price)}`,
+  text: previewCopy[plan.id] || "",
+  featured: Boolean(plan.featured),
+  badge: plan.badgeKey === "mostChosen" ? "Meest gekozen" : undefined,
+}));
 
 export { projects } from "./projects.js";

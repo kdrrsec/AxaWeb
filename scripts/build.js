@@ -141,6 +141,7 @@ mkdirSync(join(dist, "i18n"), { recursive: true });
   cpSync(join(root, "i18n", file), join(dist, "i18n", file));
 });
 cpSync(join(root, "messages"), join(dist, "messages"), { recursive: true });
+cpSync(join(root, "data"), join(dist, "data"), { recursive: true });
 
 const bundledCss = bundleCss();
 mkdirSync(join(dist, "css"), { recursive: true });

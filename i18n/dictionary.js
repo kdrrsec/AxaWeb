@@ -6,7 +6,7 @@ import { defaultLocale, isLocale } from "./config.js";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 /** Message-namespaces die in messages/{locale}/ staan */
-export const namespaces = ["common", "home", "form"];
+export const namespaces = ["common", "home", "form", "pricing"];
 
 function readNamespace(locale, namespace) {
   const file = join(root, "messages", locale, `${namespace}.json`);

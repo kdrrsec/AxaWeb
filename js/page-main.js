@@ -3,6 +3,7 @@ import { initFaq } from "./modules/faq.js";
 import { initContactForm } from "./modules/form.js";
 import { initAnimations } from "./modules/animations.js";
 import { initLanguageSwitcher } from "./modules/language-switcher.js";
+import { initPricingUI } from "./modules/pricing-ui.js";
 
 function initYear() {
   const year = document.querySelector("[data-year]");
@@ -18,6 +19,7 @@ function initMobileLinkDelay() {
 function init() {
   initHeader();
   initLanguageSwitcher();
+  initPricingUI();
   initFaq();
   initContactForm();
   initAnimations();

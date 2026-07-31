@@ -18,11 +18,19 @@ const { defaultLocale, languageSwitcherEnabled, englishLocaleLive, siteUrl } = a
 const { getMessages, createTranslator } = await import(pathToFileURL(join(root, "i18n/dictionary.js")).href);
 const { localizedPath } = await import(pathToFileURL(join(root, "i18n/routing.js")).href);
 const { renderHreflangLinks, localeMeta, canonicalUrl } = await import(pathToFileURL(join(root, "i18n/seo.js")).href);
+const {
+  pricing: pricingConfig,
+  buildPricingRenderers,
+  renderModelToggle,
+  renderSegmentedControl,
+} = await import(pathToFileURL(join(root, "scripts/pricing-render.js")).href);
 
 const locale = defaultLocale;
 const messages = getMessages(locale);
 const t = createTranslator(messages, "common");
 const tf = createTranslator(messages, "form");
+const tp = createTranslator(messages, "pricing");
+const pricingView = buildPricingRenderers(tp, icon);
 const pages = getPages(locale);
 const siteNav = getSiteNav(locale);
 const projects = getProjects(locale);
@@ -65,6 +73,7 @@ function clientMessagesScript() {
     common: messages.common,
     form: messages.form,
     home: messages.home,
+    pricing: messages.pricing,
   };
   return `<script type="application/json" id="i18n-messages">${JSON.stringify(payload).replace(/</g, "\\u003c")}</script>`;
 }
@@ -376,54 +385,146 @@ function renderTimeline(section, alt) {
 }
 
 function renderPricing(section, alt) {
-  const renderPlanPrice = (plan) => {
-    if (plan.priceIntro && plan.priceWas) {
-      const period = plan.period
-        ? ` <span class="pricing-card__period">${escapeHtml(plan.period)}</span>`
-        : "";
-      return `<div class="pricing-card__pricing">
-            <p class="pricing-card__price-was"><s>${escapeHtml(plan.priceWas)}</s></p>
-            <p class="pricing-card__price">${escapeHtml(plan.priceIntro)}${period}</p>
-            <p class="pricing-card__intro-label">Introductieprijs</p>
-            <p class="pricing-card__vat">Excl. 21% btw</p>
-          </div>`;
-    }
+  /* Legacy: websites-pagina toont eenmalige plannen uit centrale config */
+  const catalog = section.catalog || "oneTime";
+  let cards = "";
+  let termsMarkup = "";
 
-    return `<div class="pricing-card__pricing">
-            <p class="pricing-card__price">${escapeHtml(plan.price)}${
-      plan.period ? ` <span class="pricing-card__period">${escapeHtml(plan.period)}</span>` : ""
-    }</p>${plan.price !== "Op aanvraag" ? `\n            <p class="pricing-card__vat">Excl. 21% btw</p>` : ""}
-          </div>`;
-  };
+  if (catalog === "oneTime") {
+    cards = pricingView.renderOneTimeCards();
+  } else if (catalog === "hosting") {
+    termsMarkup = renderSegmentedControl({
+      name: "hosting",
+      ariaLabel: tp("terms.hostingAria"),
+      terms: pricingConfig.hosting.terms,
+      defaultTerm: pricingConfig.hosting.defaultTerm,
+      tp,
+    });
+    cards = pricingView.renderSubscriptionCards("hosting", pricingConfig.hosting.defaultTerm);
+  } else if (catalog === "maintenance") {
+    termsMarkup = renderSegmentedControl({
+      name: "maintenance",
+      ariaLabel: tp("terms.maintenanceAria"),
+      terms: pricingConfig.maintenance.terms,
+      defaultTerm: pricingConfig.maintenance.defaultTerm,
+      tp,
+    });
+    cards = pricingView.renderSubscriptionCards("maintenance", pricingConfig.maintenance.defaultTerm);
+  }
 
-  const plans = section.plans
-    .map(
-      (plan) => `
-        <article class="pricing-card${plan.featured ? " pricing-card--featured" : ""} reveal">
-          ${plan.badge ? `<span class="pricing-card__badge">${escapeHtml(plan.badge)}</span>` : ""}
-          <h3 class="pricing-card__name">${escapeHtml(plan.name)}</h3>
-          ${renderPlanPrice(plan)}
-          <p class="pricing-card__audience">${escapeHtml(plan.audience)}</p>
-          <ul class="pricing-card__list">
-            ${plan.features.map((feature) => `<li>${icon("check")} <span>${escapeHtml(feature)}</span></li>`).join("\n            ")}
-          </ul>
-          <a class="btn ${plan.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${plan.href}">${escapeHtml(plan.cta)}</a>
-        </article>`
-    )
-    .join("");
+  const sectionCopy = section.i18nKey ? {
+    eyebrow: tp(`sections.${section.i18nKey}.eyebrow`),
+    title: tp(`sections.${section.i18nKey}.title`),
+    intro: tp(`sections.${section.i18nKey}.intro`),
+    note: tp(`sections.${section.i18nKey}.note`),
+  } : section;
 
   const footer = section.footerLink
     ? `\n        <div class="section__footer reveal">
-          <a class="btn btn--secondary" href="${section.footerLink.href}">${escapeHtml(section.footerLink.label)}</a>
+          <a class="btn btn--secondary" href="${section.footerLink.href}">${escapeHtml(
+            section.footerLink.i18nKey ? tp(`cta.${section.footerLink.i18nKey}`) : section.footerLink.label
+          )}</a>
         </div>`
     : "";
 
-  return `    <section class="section${alt}" id="${section.id}" aria-labelledby="${section.id}-title">
+  return `    <section class="section${alt}" id="${section.id}" aria-labelledby="${section.id}-title" data-pricing-section data-catalog="${catalog}">
       <div class="container">
-        ${sectionHeader(section, { center: true })}
-        <div class="pricing stagger">${plans}
+        ${sectionHeader({ ...section, ...sectionCopy }, { center: true })}
+        ${termsMarkup ? `<div class="pricing-toolbar reveal">${termsMarkup}</div>` : ""}
+        <div class="pricing stagger" data-pricing-grid>${cards}
         </div>
-        <p class="pricing-note reveal">${escapeHtml(section.note)}</p>${footer}
+        <p class="pricing-note reveal">${escapeHtml(sectionCopy.note || "")}</p>${footer}
+      </div>
+    </section>`;
+}
+
+function renderPricingHub(section, alt) {
+  const copy = {
+    eyebrow: tp("sections.websiteHub.eyebrow"),
+    title: tp("sections.websiteHub.title"),
+    intro: tp("sections.websiteHub.intro"),
+  };
+
+  const oneTimeCopy = {
+    eyebrow: tp("sections.oneTime.eyebrow"),
+    title: tp("sections.oneTime.title"),
+    intro: tp("sections.oneTime.intro"),
+    note: tp("sections.oneTime.note"),
+  };
+
+  const waasCopy = {
+    eyebrow: tp("sections.waas.eyebrow"),
+    title: tp("sections.waas.title"),
+    intro: tp("sections.waas.intro"),
+    note: tp("sections.waas.note"),
+  };
+
+  const waasTerms = renderSegmentedControl({
+    name: "waas",
+    ariaLabel: tp("terms.ariaLabel"),
+    terms: pricingConfig.waas.terms,
+    defaultTerm: pricingConfig.waas.defaultTerm,
+    tp,
+  });
+
+  const footer = section.footerLink
+    ? `\n            <div class="section__footer reveal">
+              <a class="btn btn--secondary" href="${section.footerLink.href}">${escapeHtml(
+                section.footerLink.i18nKey ? tp(`cta.${section.footerLink.i18nKey}`) : section.footerLink.label
+              )}</a>
+            </div>`
+    : "";
+
+  return `    <section class="section${alt}" id="${section.id}" aria-labelledby="${section.id}-title" data-pricing-hub>
+      <div class="container">
+        ${sectionHeader({ id: section.id, ...copy }, { center: true })}
+        ${renderModelToggle(tp)}
+
+        <div class="pricing-panels">
+          <div class="pricing-panel" data-pricing-panel="one-time" hidden>
+            <header class="section__header section__header--center reveal">
+              <p class="section__eyebrow">${escapeHtml(oneTimeCopy.eyebrow)}</p>
+              <h3 class="section__title">${escapeHtml(oneTimeCopy.title)}</h3>
+              <p class="section__intro">${escapeHtml(oneTimeCopy.intro)}</p>
+            </header>
+            <div class="pricing stagger" data-pricing-grid>${pricingView.renderOneTimeCards()}
+            </div>
+            <p class="pricing-note reveal">${escapeHtml(oneTimeCopy.note)}</p>${footer}
+          </div>
+
+          <div class="pricing-panel" data-pricing-panel="waas" hidden>
+            <header class="section__header section__header--center reveal">
+              <p class="section__eyebrow">${escapeHtml(waasCopy.eyebrow)}</p>
+              <h3 class="section__title">${escapeHtml(waasCopy.title)}</h3>
+              <p class="section__intro">${escapeHtml(waasCopy.intro)}</p>
+            </header>
+            <div class="pricing-toolbar reveal">${waasTerms}</div>
+            <div class="pricing pricing--waas stagger" data-pricing-grid data-catalog="waas">${pricingView.renderWaasCards()}
+            </div>
+            <p class="pricing-note reveal">${escapeHtml(waasCopy.note)}</p>
+          </div>
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderPricingTerms(section, alt) {
+  const title = tp("termsInfo.title");
+  const items = (messages.pricing.termsInfo.items || [])
+    .map((item) => `<li>${escapeHtml(item)}</li>`)
+    .join("\n          ");
+
+  return `    <section class="section${alt}" aria-labelledby="pricing-terms-title">
+      <div class="container">
+        <aside class="pricing-info reveal">
+          <div class="pricing-info__head">
+            <span class="icon-box" aria-hidden="true">${icon("info")}</span>
+            <h2 id="pricing-terms-title" class="pricing-info__title">${escapeHtml(title)}</h2>
+          </div>
+          <ul class="pricing-info__list">
+          ${items}
+          </ul>
+        </aside>
       </div>
     </section>`;
 }
@@ -845,32 +946,13 @@ function renderCta(section) {
     </section>`;
 }
 
-function renderPricingTerms(section, alt) {
-  const items = section.items
-    .map((item) => `<li>${escapeHtml(item)}</li>`)
-    .join("\n          ");
-
-  return `    <section class="section${alt}" aria-labelledby="pricing-terms-title">
-      <div class="container">
-        <aside class="pricing-info reveal">
-          <div class="pricing-info__head">
-            ${icon("info")}
-            <h2 id="pricing-terms-title" class="pricing-info__title">${escapeHtml(section.title)}</h2>
-          </div>
-          <ul class="pricing-info__list">
-          ${items}
-          </ul>
-        </aside>
-      </div>
-    </section>`;
-}
-
 const sectionRenderers = {
   serviceRows: renderServiceRows,
   compare: renderCompare,
   features: renderFeatures,
   timeline: renderTimeline,
   pricing: renderPricing,
+  pricingHub: renderPricingHub,
   pricingTerms: renderPricingTerms,
   cases: renderCases,
   integrations: renderIntegrations,

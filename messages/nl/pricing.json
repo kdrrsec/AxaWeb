@@ -1,0 +1,211 @@
+{
+  "modelToggle": {
+    "ariaLabel": "Kies hoe je een website wilt afnemen",
+    "prompt": "Kies hoe je wilt starten",
+    "promptText": "Selecteer een model om de bijbehorende pakketten te bekijken.",
+    "oneTime": "Eenmalige Website",
+    "waas": "Website as a Service"
+  },
+  "labels": {
+    "introPrice": "Introductieprijs",
+    "exclVat": "Excl. 21% btw",
+    "oneTimeInvestment": "Eenmalige investering",
+    "from": "Vanaf",
+    "perMonth": "/ maand",
+    "perYear": "/ jaar",
+    "onRequest": "Op aanvraag",
+    "upcoming": "Binnenkort beschikbaar",
+    "saveYear": "Bespaar {amount} per jaar",
+    "saveTerm": "Bespaar {amount} over {months} maanden"
+  },
+  "badges": {
+    "mostChosen": "Meest gekozen",
+    "recommended": "Aanbevolen",
+    "bestPrice": "Beste prijs",
+    "popular": "Populair"
+  },
+  "terms": {
+    "ariaLabel": "Kies contractduur",
+    "monthly": "Maandelijks",
+    "12": "12 maanden",
+    "24": "24 maanden",
+    "yearly": "Jaarlijks",
+    "hostingAria": "Kies hostingperiode",
+    "maintenanceAria": "Kies onderhoudsperiode"
+  },
+  "sections": {
+    "websiteHub": {
+      "eyebrow": "Websites",
+      "title": "Kies het model dat bij je past.",
+      "intro": "Eenmalige ontwikkeling of Website as a Service: jij bepaalt hoe je wilt starten."
+    },
+    "oneTime": {
+      "eyebrow": "Eenmalige Website",
+      "title": "Websites met een vaste vanafprijs.",
+      "intro": "Eenmalige investering voor het ontwerpen en bouwen van je website.",
+      "note": "Introductieprijzen zijn exclusief 21% btw. Definitieve prijs hangt af van ontwerp, omvang en functionaliteiten."
+    },
+    "waas": {
+      "eyebrow": "Website as a Service",
+      "title": "Branchegerichte websites, all-inclusive.",
+      "intro": "Website, hosting en onderhoud in één maandelijks abonnement — afgestemd op jouw branche.",
+      "note": "Prijzen zijn exclusief 21% btw. Exacte scope stemmen we af tijdens de kennismaking."
+    },
+    "hosting": {
+      "eyebrow": "Hosting",
+      "title": "Hosting per jaar, zonder omkijken.",
+      "intro": "Snelle, veilige hosting met SSL, back-ups en persoonlijke support.",
+      "note": "Prijzen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel."
+    },
+    "maintenance": {
+      "eyebrow": "Onderhoud",
+      "title": "Onderhoud als abonnement.",
+      "intro": "Doorlopende zorg voor updates, monitoring en support.",
+      "note": "Prijzen zijn exclusief 21% btw. Minimale looptijd hangt af van het gekozen contract."
+    }
+  },
+  "oneTime": {
+    "start": {
+      "name": "Start",
+      "audience": "Voor starters en kleine ondernemingen."
+    },
+    "business": {
+      "name": "Business",
+      "audience": "Voor bedrijven die uitgebreider en professioneler online zichtbaar willen zijn."
+    },
+    "premium": {
+      "name": "Premium",
+      "audience": "Voor uitgebreide websites, maatwerkfunctionaliteiten en groeiende organisaties."
+    }
+  },
+  "waas": {
+    "business-site": {
+      "name": "Bedrijfswebsite",
+      "audience": "Voor ondernemers die een professionele, complete online presentatie willen."
+    },
+    "barbershop": {
+      "name": "Barbershop Complete",
+      "audience": "Voor kappers en barbershops die online afspraken en uitstraling willen combineren."
+    },
+    "restaurant": {
+      "name": "Restaurant Complete",
+      "audience": "Voor restaurants die menu, sfeer en reserveringen helder willen presenteren."
+    },
+    "gym": {
+      "name": "Sportschool Complete",
+      "audience": "Voor sportscholen die lidmaatschappen, schema’s en aanmeldingen online willen regelen."
+    },
+    "webshop": {
+      "name": "Webshop Complete",
+      "audience": "Voor ondernemers die producten of diensten professioneel online willen verkopen."
+    }
+  },
+  "hosting": {
+    "essential": {
+      "name": "Essentieel",
+      "audience": "Voor websites die betrouwbaar online moeten staan."
+    },
+    "business": {
+      "name": "Zakelijk",
+      "audience": "Voor bedrijven waar de website een belangrijke rol speelt."
+    },
+    "managed": {
+      "name": "Volledig beheerd",
+      "audience": "Hosting en onderhoud volledig uit handen, inclusief updates en monitoring."
+    }
+  },
+  "maintenance": {
+    "basic": {
+      "name": "Basis",
+      "audience": "Voor websites die up-to-date en veilig moeten blijven."
+    },
+    "business": {
+      "name": "Zakelijk",
+      "audience": "Voor bedrijven die op hun website moeten kunnen rekenen."
+    },
+    "custom": {
+      "name": "Op maat",
+      "audience": "Voor maatwerkplatforms en organisaties met specifieke eisen."
+    }
+  },
+  "features": {
+    "onepage": "Professionele onepage",
+    "responsive": "Responsive ontwerp",
+    "contactForm": "Contactformulier",
+    "basicSeo": "Basis SEO",
+    "ssl": "SSL-certificaat",
+    "delivery": "Oplevering vanaf vijf werkdagen",
+    "upToFivePages": "Tot vijf pagina's",
+    "customDesign": "Maatwerk ontwerp",
+    "portfolio": "Portfolio- of dienstenoverzicht",
+    "maps": "Google Maps-integratie",
+    "performance": "Performance-optimalisatie",
+    "allBusiness": "Alles uit Business",
+    "morePages": "Meer pagina's en content",
+    "customFeatures": "Maatwerkfunctionaliteiten",
+    "api": "API-koppelingen mogelijk",
+    "animations": "Uitgebreidere animaties",
+    "priority": "Prioriteit tijdens ontwikkeling",
+    "customSite": "Website op maat",
+    "hostingIncluded": "Hosting inbegrepen",
+    "maintenanceIncluded": "Onderhoud inbegrepen",
+    "backups": "Back-ups",
+    "support": "Support",
+    "updates": "Updates",
+    "dailyBackups": "Dagelijkse back-ups",
+    "businessEmail": "Zakelijke e-mail",
+    "ssd": "Snelle SSD-opslag",
+    "emailSupport": "Support via e-mail",
+    "allEssential": "Alles uit Essentieel",
+    "moreStorage": "Meer opslag en snelheid",
+    "uptime": "Uptime-monitoring",
+    "prioritySupport": "Prioriteit bij support",
+    "yearlyCheck": "Jaarlijkse performancecheck",
+    "allBusinessHosting": "Alles uit Zakelijk",
+    "updatesIncluded": "Updates en onderhoud inbegrepen",
+    "proactive": "Proactieve monitoring",
+    "fixedContact": "Vaste contactpersoon",
+    "sla": "SLA-afspraken mogelijk",
+    "cmsUpdates": "Periodieke updates van CMS en plugins",
+    "backupCheck": "Controle van back-ups",
+    "healthCheck": "Maandelijkse gezondheidscheck",
+    "allBasic": "Alles uit Basis",
+    "monitoring": "Uptime- en foutmonitoring",
+    "incidentPriority": "Prioriteit bij storingen",
+    "smallEdits": "Klein onderhoud en aanpassingen (1 uur per maand)",
+    "quarterlyReport": "Kwartaalrapportage",
+    "allBusinessMaint": "Alles uit Zakelijk",
+    "slaResponse": "SLA met vaste reactietijden",
+    "devHours": "Vast aantal ontwikkeluren",
+    "directAdmin": "Direct contact met je beheerder"
+  },
+  "upcoming": {
+    "axabook": "AxaBook integratie"
+  },
+  "cta": {
+    "requestQuote": "Vraag offerte aan",
+    "discussWebsite": "Bespreek jouw website",
+    "requestCustom": "Vraag maatwerk aan",
+    "planIntro": "Plan een kennismaking",
+    "requestEssential": "Vraag Essentieel aan",
+    "requestBusiness": "Vraag Zakelijk aan",
+    "discussOptions": "Bespreek de mogelijkheden",
+    "chooseBasic": "Kies Basis",
+    "chooseBusiness": "Kies Zakelijk",
+    "discussSituation": "Bespreek jouw situatie",
+    "viewWebsites": "Alles over websites",
+    "viewHosting": "Alles over hosting",
+    "viewMaintenance": "Alles over onderhoud"
+  },
+  "termsInfo": {
+    "title": "Goed om te weten",
+    "items": [
+      "Alle genoemde prijzen zijn exclusief 21% btw.",
+      "Eenmalige websites zijn een eenmalige investering; Website as a Service is een maandelijks abonnement.",
+      "Hosting wordt jaarlijks gefactureerd; onderhoud volgens het gekozen contract.",
+      "Abonnementen hebben een minimale looptijd volgens de gekozen contractduur. Daarna zijn ze opzegbaar volgens de voorwaarden.",
+      "Eventuele maatwerkfunctionaliteiten worden vooraf geoffreerd.",
+      "Na oplevering ontvang je volledige uitleg over jouw website."
+    ]
+  }
+}
