@@ -3,9 +3,12 @@
  * Valideert de aanvraag, past spamfilters toe en verstuurt via FormSubmit.
  */
 
+import { createHash } from "node:crypto";
 import { validateContactPayload } from "../js/lib/contact-validation.js";
-import { checkRateLimit } from "./lib/rate-limit.js";
+import { checkDuplicateSubmission, checkRateLimit } from "./lib/rate-limit.js";
 import { sendContactEmail } from "./lib/mail.js";
+import { assertTrustedOrigin } from "./lib/origin.js";
+import { sendJson } from "./lib/http.js";
 
 function getClientIp(req) {
   const forwarded = req.headers["x-forwarded-for"];
@@ -21,7 +24,7 @@ function readJson(req) {
     req.on("data", (chunk) => {
       body += chunk;
       if (body.length > 100_000) {
-        reject(new Error("Payload too large"));
+        reject(Object.assign(new Error("Payload too large"), { code: "PAYLOAD" }));
         req.destroy();
       }
     });
@@ -29,7 +32,7 @@ function readJson(req) {
       try {
         resolve(body ? JSON.parse(body) : {});
       } catch {
-        reject(new Error("Invalid JSON"));
+        reject(Object.assign(new Error("Invalid JSON"), { code: "JSON" }));
       }
     });
     req.on("error", reject);
@@ -44,19 +47,35 @@ function mapFieldErrors(fields) {
   return mapped;
 }
 
-export default async function handler(req, res) {
-  res.setHeader("Cache-Control", "no-store");
+function submissionFingerprint(ip, data) {
+  return createHash("sha256")
+    .update(`${ip}|${data.email}|${data.message}`)
+    .digest("hex");
+}
 
+export default async function handler(req, res) {
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
+    res.setHeader("Cache-Control", "no-store");
+    res.setHeader("Allow", "POST, OPTIONS");
     res.end();
     return;
   }
 
   if (req.method !== "POST") {
-    res.statusCode = 405;
-    res.setHeader("Allow", "POST");
-    res.end(JSON.stringify({ ok: false, error: "method_not_allowed" }));
+    sendJson(res, 405, { ok: false, error: "method_not_allowed" }, { Allow: "POST" });
+    return;
+  }
+
+  const contentType = String(req.headers["content-type"] || "");
+  if (contentType && !contentType.includes("application/json")) {
+    sendJson(res, 415, { ok: false, error: "unsupported_media_type" });
+    return;
+  }
+
+  const trust = assertTrustedOrigin(req);
+  if (!trust.ok) {
+    sendJson(res, 403, { ok: false, error: "forbidden" });
     return;
   }
 
@@ -64,9 +83,12 @@ export default async function handler(req, res) {
     const ip = getClientIp(req);
     const rate = checkRateLimit(`contact:${ip}`, { limit: 5, windowMs: 15 * 60 * 1000 });
     if (!rate.allowed) {
-      res.statusCode = 429;
-      res.setHeader("Retry-After", String(rate.retryAfterSec));
-      res.end(JSON.stringify({ ok: false, error: "rate_limited" }));
+      sendJson(
+        res,
+        429,
+        { ok: false, error: "rate_limited" },
+        { "Retry-After": String(rate.retryAfterSec) }
+      );
       return;
     }
 
@@ -76,36 +98,40 @@ export default async function handler(req, res) {
     if (!result.ok) {
       if (result.code === "spam") {
         /* Stil accepteren voor honeypot-bots; geen mail, geen details. */
-        res.statusCode = 200;
-        res.end(JSON.stringify({ ok: true }));
+        sendJson(res, 200, { ok: true });
         return;
       }
 
       if (result.code === "too_fast") {
-        res.statusCode = 429;
-        res.end(JSON.stringify({ ok: false, error: "rate_limited" }));
+        sendJson(res, 429, { ok: false, error: "rate_limited" });
         return;
       }
 
-      res.statusCode = 400;
-      res.end(
-        JSON.stringify({
-          ok: false,
-          error: "validation_failed",
-          fields: mapFieldErrors(result.fields),
-        })
-      );
+      sendJson(res, 400, {
+        ok: false,
+        error: "validation_failed",
+        fields: mapFieldErrors(result.fields),
+      });
+      return;
+    }
+
+    const dedupe = checkDuplicateSubmission(submissionFingerprint(ip, result.data));
+    if (dedupe.duplicate) {
+      /* Idempotent succes: voorkom dubbele mails bij double-click / retry. */
+      sendJson(res, 200, { ok: true });
       return;
     }
 
     await sendContactEmail(result.data);
-
-    res.statusCode = 200;
-    res.end(JSON.stringify({ ok: true }));
+    sendJson(res, 200, { ok: true });
   } catch (error) {
+    if (error?.code === "JSON" || error?.code === "PAYLOAD") {
+      sendJson(res, 400, { ok: false, error: "invalid_request" });
+      return;
+    }
+
     const code = error?.code === "CONFIG" ? "config_error" : "server_error";
     console.error("[contact]", code, error?.status || "");
-    res.statusCode = error?.code === "CONFIG" ? 503 : 500;
-    res.end(JSON.stringify({ ok: false, error: code }));
+    sendJson(res, error?.code === "CONFIG" ? 503 : 500, { ok: false, error: code });
   }
 }

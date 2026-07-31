@@ -9,6 +9,8 @@ export const NAME_MIN_LENGTH = 2;
 export const NAME_MAX_LENGTH = 120;
 export const COMPANY_MAX_LENGTH = 160;
 export const MIN_SUBMIT_MS = 2500;
+export const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
+export const CLOCK_SKEW_MS = 60_000;
 
 export const PROJECT_TYPE_VALUES = [
   "website",
@@ -40,6 +42,14 @@ export function isValidPhone(value) {
   return digits.length >= 10 && digits.length <= 15;
 }
 
+export function isSafeSourcePage(value) {
+  if (!value) return true;
+  if (value.length > 200) return false;
+  if (!value.startsWith("/")) return false;
+  if (value.includes("//") || value.includes("\\") || /:/.test(value)) return false;
+  return /^\/[A-Za-z0-9\-._/~]*$/.test(value);
+}
+
 function looksLikeSpam(text) {
   const value = String(text || "");
   const urlMatches = value.match(/https?:\/\/|www\./gi) || [];
@@ -65,17 +75,26 @@ export function validateContactPayload(input) {
   const privacy = Boolean(input.privacy);
   const honeypot = String(input.website ?? input.faxNumber ?? "").trim();
   const formStartedAt = Number(input.formStartedAt);
-  const sourcePage = String(input.sourcePage ?? "").trim().slice(0, 500);
+  const sourcePageRaw = String(input.sourcePage ?? "").trim().slice(0, 200);
+  const sourcePage = isSafeSourcePage(sourcePageRaw) ? sourcePageRaw : "/";
 
   if (honeypot) {
     return { ok: false, fields: {}, code: "spam" };
   }
 
-  if (Number.isFinite(formStartedAt) && formStartedAt > 0) {
-    const elapsed = Date.now() - formStartedAt;
-    if (elapsed >= 0 && elapsed < MIN_SUBMIT_MS) {
-      return { ok: false, fields: {}, code: "too_fast" };
-    }
+  if (!Number.isFinite(formStartedAt) || formStartedAt <= 0) {
+    return { ok: false, fields: {}, code: "too_fast" };
+  }
+
+  const elapsed = Date.now() - formStartedAt;
+  if (elapsed < MIN_SUBMIT_MS) {
+    return { ok: false, fields: {}, code: "too_fast" };
+  }
+  if (elapsed > MAX_FORM_AGE_MS) {
+    return { ok: false, fields: {}, code: "too_fast" };
+  }
+  if (formStartedAt - Date.now() > CLOCK_SKEW_MS) {
+    return { ok: false, fields: {}, code: "too_fast" };
   }
 
   if (!name) fields.name = "nameRequired";

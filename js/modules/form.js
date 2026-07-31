@@ -163,8 +163,12 @@ export function initContactForm() {
     field.addEventListener(eventName, () => setFieldError(field, errorEl, ""));
   });
 
+  let isSubmitting = false;
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (isSubmitting) return;
+
     setStatus(statusEl, "");
 
     if (!applyClientFieldChecks(fields, errors)) {
@@ -192,6 +196,7 @@ export function initContactForm() {
       return;
     }
 
+    isSubmitting = true;
     setSubmitting(form, submitBtn, true);
     setStatus(statusEl, formMessage("status.sending") || formMessage("sending"), "info");
 
@@ -204,6 +209,7 @@ export function initContactForm() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
+        credentials: "same-origin",
         body: JSON.stringify(payload),
       });
 
@@ -212,6 +218,12 @@ export function initContactForm() {
         data = await response.json();
       } catch {
         data = {};
+      }
+
+      if (response.status === 403) {
+        setStatus(statusEl, formMessage("status.error") || formMessage("error"), "error");
+        focusStatus(statusEl);
+        return;
       }
 
       if (response.status === 429) {
@@ -245,12 +257,16 @@ export function initContactForm() {
 
       form.reset();
       if (startedAt) startedAt.value = String(Date.now());
+      if (sourcePage && !sourcePage.value) {
+        sourcePage.value = window.location.pathname || "/contact";
+      }
       setStatus(statusEl, formMessage("status.success") || formMessage("success"), "success");
       focusStatus(statusEl);
     } catch {
       setStatus(statusEl, formMessage("status.error") || formMessage("error"), "error");
       focusStatus(statusEl);
     } finally {
+      isSubmitting = false;
       setSubmitting(form, submitBtn, false);
     }
   });

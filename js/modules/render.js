@@ -1,4 +1,5 @@
 import { services, packagesPreview, projects } from "../data/content.js";
+import { escapeHtml, safeUrl } from "../lib/escape.js";
 import { icon } from "./icons.js";
 import { t } from "./i18n.js";
 
@@ -17,13 +18,13 @@ export function renderPageContent() {
         (service) => `
         <article class="card reveal" data-spotlight>
           <div class="icon-box card__icon">${icon(service.icon)}</div>
-          <h3 class="card__title">${service.title}</h3>
-          <p class="card__text">${service.text}</p>
+          <h3 class="card__title">${escapeHtml(service.title)}</h3>
+          <p class="card__text">${escapeHtml(service.text)}</p>
           <ul class="card__list">
-            ${service.benefits.map((benefit) => `<li>${benefit}</li>`).join("")}
+            ${service.benefits.map((benefit) => `<li>${escapeHtml(benefit)}</li>`).join("")}
           </ul>
-          <a class="card__link" href="${service.href}">
-            ${service.cta}
+          <a class="card__link" href="${safeUrl(service.href, "/diensten")}">
+            ${escapeHtml(service.cta)}
             ${icon("arrow", "icon")}
           </a>
         </article>`
@@ -37,12 +38,12 @@ export function renderPageContent() {
       .map(
         (pkg) => `
         <article class="package-teaser${pkg.featured ? " package-teaser--featured" : ""} reveal">
-          ${pkg.badge ? `<span class="package-teaser__badge">${pkg.badge}</span>` : ""}
-          <h3 class="package-teaser__name">${pkg.name}</h3>
-          <p class="package-teaser__price">${pkg.price}</p>
-          <p class="package-teaser__text">${pkg.text}</p>
+          ${pkg.badge ? `<span class="package-teaser__badge">${escapeHtml(pkg.badge)}</span>` : ""}
+          <h3 class="package-teaser__name">${escapeHtml(pkg.name)}</h3>
+          <p class="package-teaser__price">${escapeHtml(pkg.price)}</p>
+          <p class="package-teaser__text">${escapeHtml(pkg.text)}</p>
           <a class="card__link" href="/pakketten">
-            ${moreInfo}
+            ${escapeHtml(moreInfo)}
             ${icon("arrow", "icon")}
           </a>
         </article>`
@@ -58,10 +59,10 @@ export function renderPageContent() {
         <article class="project-card reveal">
           <div class="project-card__media">
             <picture>
-              <source srcset="${project.images.desktop}" type="image/webp" />
+              <source srcset="${safeUrl(project.images.desktop, "")}" type="image/webp" />
               <img
-                src="${project.images.desktopJpg}"
-                alt="${project.images.altDesktop}"
+                src="${safeUrl(project.images.desktopJpg, "")}"
+                alt="${escapeHtml(project.images.altDesktop)}"
                 width="800"
                 height="500"
                 loading="lazy"
@@ -70,10 +71,10 @@ export function renderPageContent() {
             </picture>
           </div>
           <div class="project-card__body">
-            <p class="project-card__category">${project.category}</p>
-            <h3 class="project-card__title">${project.name}</h3>
-            <p class="project-card__text">${project.summary}</p>
-            <a class="btn btn--ghost" href="/projecten/${project.slug}">${viewProject}</a>
+            <p class="project-card__category">${escapeHtml(project.category)}</p>
+            <h3 class="project-card__title">${escapeHtml(project.name)}</h3>
+            <p class="project-card__text">${escapeHtml(project.summary)}</p>
+            <a class="btn btn--ghost" href="${safeUrl(`/projecten/${project.slug}`, "/projecten")}">${escapeHtml(viewProject)}</a>
           </div>
         </article>`
       )
