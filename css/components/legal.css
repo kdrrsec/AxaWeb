@@ -1,0 +1,78 @@
+/* Legal document pages — privacy, terms, cookies, disclaimer */
+
+.legal {
+  padding: 2.5rem 0 4rem;
+}
+
+.legal__content {
+  max-width: 46rem;
+}
+
+.legal__meta {
+  color: var(--text-muted, var(--text-secondary));
+  font-size: 0.9375rem;
+  margin: 0 0 1.5rem;
+}
+
+.legal__content h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.legal__content h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.65rem;
+  font-size: 1.15rem;
+}
+
+.legal__content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.legal__content p,
+.legal__content li {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 0.85rem;
+}
+
+.legal__content ul,
+.legal__content ol {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.legal__content ul {
+  list-style: disc;
+}
+
+.legal__content ol {
+  list-style: decimal;
+}
+
+.legal__content a {
+  color: var(--accent, #3b82f6);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.legal__content a:hover {
+  color: var(--text-primary, #fff);
+}
+
+.legal__related {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+}
+
+.legal__related h2 {
+  margin-top: 0;
+}
+
+.legal__actions {
+  margin: 1.25rem 0 0;
+}

@@ -3,7 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { injectPublicEnv } from "./inject-public-env.js";
 import { generatePages } from "./generate-pages.js";
-import { generateCookiesPage } from "./generate-cookies-page.js";
+import { generateLegalPages } from "./generate-legal-pages.js";
 import { generateSitemap } from "./generate-sitemap.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -21,6 +21,7 @@ const cssFiles = [
   "css/components/form.css",
   "css/components/footer.css",
   "css/components/cookie-consent.css",
+  "css/components/legal.css",
 ];
 
 const pageSlugs = [
@@ -42,6 +43,7 @@ const requiredFiles = [
   "privacy.html",
   "cookies.html",
   "algemene-voorwaarden.html",
+  "disclaimer.html",
   "404.html",
   "robots.txt",
   "sitemap.xml",
@@ -108,7 +110,7 @@ function validateHtml(filePath, { allowNoindex = false } = {}) {
 
 injectPublicEnv();
 generatePages();
-generateCookiesPage();
+generateLegalPages();
 generateSitemap();
 
 requiredFiles.forEach(assertExists);
@@ -123,6 +125,7 @@ validateHtml("index.html");
 validateHtml("privacy.html");
 validateHtml("cookies.html");
 validateHtml("algemene-voorwaarden.html");
+validateHtml("disclaimer.html");
 validateHtml("404.html", { allowNoindex: true });
 pageSlugs.forEach((slug) => validateHtml(`${slug}.html`));
 caseSlugs.forEach((slug) => validateHtml(`projecten/${slug}.html`));
@@ -138,6 +141,7 @@ const staticCopies = [
   "privacy.html",
   "cookies.html",
   "algemene-voorwaarden.html",
+  "disclaimer.html",
   "404.html",
   "robots.txt",
   "sitemap.xml",
@@ -187,6 +191,7 @@ useBundleCss("404.html");
 useBundleCss("privacy.html");
 useBundleCss("cookies.html");
 useBundleCss("algemene-voorwaarden.html");
+useBundleCss("disclaimer.html");
 pageSlugs.forEach((slug) => useBundleCss(`${slug}.html`));
 caseSlugs.forEach((slug) => useBundleCss(`projecten/${slug}.html`));
 

@@ -52,11 +52,19 @@
     },
     "privacy": {
       "title": "Privacyverklaring | AxaWeb",
-      "description": "Lees de privacyverklaring van AxaWeb. Zo gaan wij om met persoonsgegevens die je deelt via onze website, formulieren en e-mail. Transparant en veilig."
+      "description": "Privacyverklaring van AxaWeb: welke gegevens we verwerken via formulieren, cookies, Analytics en Clarity, en welke rechten je hebt."
     },
     "terms": {
       "title": "Algemene Voorwaarden | AxaWeb",
-      "description": "Lees de algemene voorwaarden van AxaWeb voor websites, webshops, hosting en onderhoud. Heldere afspraken over samenwerking en dienstverlening."
+      "description": "Algemene voorwaarden van AxaWeb voor websites, webshops, hosting, onderhoud en Website as a Service. Heldere afspraken over samenwerking."
+    },
+    "cookies": {
+      "title": "Cookiebeleid | AxaWeb",
+      "description": "Cookiebeleid van AxaWeb: categorieën, Consent Mode v2, Google Analytics, Microsoft Clarity en hoe je cookietoestemming wijzigt."
+    },
+    "disclaimer": {
+      "title": "Disclaimer | AxaWeb",
+      "description": "Disclaimer van AxaWeb over juistheid van informatie, externe links, aansprakelijkheid, intellectueel eigendom en sitewijzigingen."
     },
     "notFound": {
       "title": "Pagina Niet Gevonden | AxaWeb",
