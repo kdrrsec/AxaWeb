@@ -1,7 +1,7 @@
 import { company, companyIdentityLine, companyContactBlockHtml } from "./company.js";
 
 /**
- * Privacyverklaring AxaWeb — AVG-proof op basis van feitelijke sitefunctionaliteit.
+ * Privacyverklaring AxaWeb: AVG-proof op basis van feitelijke sitefunctionaliteit.
  */
 export const privacyDoc = {
   pageId: "privacy",

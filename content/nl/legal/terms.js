@@ -1,7 +1,7 @@
 import { company, companyIdentityLine, companyContactBlockHtml } from "./company.js";
 
 /**
- * Algemene voorwaarden AxaWeb — productieklaar (NL).
+ * Algemene voorwaarden AxaWeb: productieklaar (NL).
  */
 export const termsDoc = {
   pageId: "terms",
