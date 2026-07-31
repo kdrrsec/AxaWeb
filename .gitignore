@@ -5,3 +5,6 @@ dist/
 public/
 *.log
 .vercel
+.env
+.env.*
+!.env.example

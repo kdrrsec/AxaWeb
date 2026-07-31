@@ -1,4 +1,5 @@
 import { getScrollRoot, getScrollY, onScroll } from "./scroll-root.js";
+import { t } from "./i18n.js";
 
 export function initHeader() {
   const header = document.querySelector("[data-header]");
@@ -8,10 +9,14 @@ export function initHeader() {
 
   const links = mobileNav.querySelectorAll("a");
   const scrollRoot = getScrollRoot();
+  const translatedOpen = t("common.nav.menuOpen");
+  const translatedClose = t("common.nav.menuClose");
+  const labelOpen = translatedOpen === "common.nav.menuOpen" ? "Menu openen" : translatedOpen;
+  const labelClose = translatedClose === "common.nav.menuClose" ? "Menu sluiten" : translatedClose;
 
   const setOpen = (open) => {
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+    toggle.setAttribute("aria-label", open ? labelClose : labelOpen);
     mobileNav.classList.toggle("is-open", open);
     mobileNav.hidden = !open;
     mobileNav.setAttribute("aria-hidden", String(!open));

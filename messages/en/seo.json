@@ -1,0 +1,92 @@
+{
+  "siteName": "",
+  "defaultOgImageAlt": "",
+  "organization": {
+    "name": "",
+    "legalName": "",
+    "description": "",
+    "email": "",
+    "telephone": "",
+    "areaServed": ""
+  },
+  "pages": {
+    "home": {
+      "title": "",
+      "description": ""
+    },
+    "diensten": {
+      "title": "",
+      "description": ""
+    },
+    "websites": {
+      "title": "",
+      "description": ""
+    },
+    "webshops": {
+      "title": "",
+      "description": ""
+    },
+    "hosting": {
+      "title": "",
+      "description": ""
+    },
+    "onderhoud": {
+      "title": "",
+      "description": ""
+    },
+    "pakketten": {
+      "title": "",
+      "description": ""
+    },
+    "projecten": {
+      "title": "",
+      "description": ""
+    },
+    "contact": {
+      "title": "",
+      "description": ""
+    },
+    "offerte": {
+      "title": "",
+      "description": ""
+    },
+    "privacy": {
+      "title": "",
+      "description": ""
+    },
+    "terms": {
+      "title": "",
+      "description": ""
+    },
+    "cookies": {
+      "title": "",
+      "description": ""
+    },
+    "disclaimer": {
+      "title": "",
+      "description": ""
+    },
+    "notFound": {
+      "title": "",
+      "description": ""
+    }
+  },
+  "services": {
+    "websites": {
+      "name": "",
+      "description": ""
+    },
+    "webshops": {
+      "name": "",
+      "description": ""
+    },
+    "hosting": {
+      "name": "",
+      "description": ""
+    },
+    "onderhoud": {
+      "name": "",
+      "description": ""
+    }
+  }
+}

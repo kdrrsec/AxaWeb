@@ -1,0 +1,92 @@
+{
+  "siteName": "AxaWeb",
+  "defaultOgImageAlt": "AxaWeb: premium berglandschap als visuele identiteit",
+  "organization": {
+    "name": "AxaWeb",
+    "legalName": "AxaWeb",
+    "description": "AxaWeb is een digitale partner voor ondernemers. Professionele websites, webshops, hosting, onderhoud en technische ondersteuning.",
+    "email": "info@axaweb.nl",
+    "telephone": "+31629127575",
+    "areaServed": "Nederland"
+  },
+  "pages": {
+    "home": {
+      "title": "AxaWeb | Professionele Websites & Digitale Oplossingen",
+      "description": "Laat je website of webshop maken door AxaWeb. Maatwerk websites, hosting en onderhoud voor ondernemers. Vraag vrijblijvend advies of een offerte aan."
+    },
+    "diensten": {
+      "title": "Diensten | Websites, Webshops, Hosting & Onderhoud | AxaWeb",
+      "description": "Ontdek de diensten van AxaWeb: website laten maken, webshop op maat, hosting en website onderhoud. Eén digitale partner voor jouw online groei."
+    },
+    "websites": {
+      "title": "Website Laten Maken | Websites op Maat | AxaWeb",
+      "description": "Website laten maken door AxaWeb? Professionele websites op maat met SEO-basis, snelle laadtijd en vaste vanafprijzen. Bekijk pakketten en cases."
+    },
+    "webshops": {
+      "title": "Webshop Laten Maken | Conversiegerichte Shops | AxaWeb",
+      "description": "Webshop laten maken door AxaWeb. Conversiegerichte webshops met betalingen, voorraadbeheer en schaalbare structuur. Vraag een vrijblijvende offerte aan."
+    },
+    "hosting": {
+      "title": "Hosting | Snelle & Veilige Website Hosting | AxaWeb",
+      "description": "Betrouwbare website hosting bij AxaWeb: SSL, back-ups, monitoring en persoonlijke support. Stabiele hosting vanaf een vaste jaarprijs. Meer weten?"
+    },
+    "onderhoud": {
+      "title": "Website Onderhoud | Updates, Monitoring & Support | AxaWeb",
+      "description": "Website onderhoud door AxaWeb: updates, monitoring, security en support. Houd je site veilig en actueel met een duidelijk maandabonnement. Meer info."
+    },
+    "pakketten": {
+      "title": "Pakketten & Prijzen | Websites en Abonnementen | AxaWeb",
+      "description": "Bekijk AxaWeb-pakketten voor websites, Website as a Service, hosting en onderhoud. Duidelijke prijzen, geen verrassingen. Vraag vrijblijvend advies."
+    },
+    "projecten": {
+      "title": "Projecten | Bekijk Ons Werk | AxaWeb",
+      "description": "Bekijk ons werk: live websites van AxaWeb zoals Bandendepot, Axanet en ViralOn. Projecten met focus op structuur, uitstraling en technische kwaliteit."
+    },
+    "contact": {
+      "title": "Contact | Vraag Een Offerte Aan | AxaWeb",
+      "description": "Neem contact op met AxaWeb voor een website, webshop, hosting of onderhoud. Persoonlijke reactie binnen één werkdag. Plan vandaag nog een kennismaking."
+    },
+    "offerte": {
+      "title": "Offerte Aanvragen | Website of Webshop | AxaWeb",
+      "description": "Vraag een vrijblijvende offerte aan bij AxaWeb voor je website of webshop. Duidelijke vanafprijzen, persoonlijk advies en snelle, heldere opvolging."
+    },
+    "privacy": {
+      "title": "Privacyverklaring | AxaWeb",
+      "description": "Privacyverklaring van AxaWeb: welke gegevens we verwerken via formulieren, cookies, Analytics en Clarity, en welke rechten je hebt."
+    },
+    "terms": {
+      "title": "Algemene Voorwaarden | AxaWeb",
+      "description": "Algemene voorwaarden van AxaWeb voor websites, webshops, hosting, onderhoud en Website as a Service. Heldere afspraken over samenwerking."
+    },
+    "cookies": {
+      "title": "Cookiebeleid | AxaWeb",
+      "description": "Cookiebeleid van AxaWeb: welke cookiecategorieën we gebruiken, Google Analytics, Microsoft Clarity en hoe je toestemming wijzigt."
+    },
+    "disclaimer": {
+      "title": "Disclaimer | AxaWeb",
+      "description": "Disclaimer van AxaWeb over juistheid van informatie, externe links, aansprakelijkheid, intellectueel eigendom en sitewijzigingen."
+    },
+    "notFound": {
+      "title": "Pagina Niet Gevonden | AxaWeb",
+      "description": "Deze pagina bestaat niet (meer). Ga terug naar de homepage of bekijk onze diensten, projecten of neem contact op met AxaWeb voor snelle hulp."
+    }
+  },
+  "services": {
+    "websites": {
+      "name": "Website ontwikkeling",
+      "description": "Professionele websites op maat voor ondernemers, met SEO-basis, snelle performance en conversiegerichte structuur."
+    },
+    "webshops": {
+      "name": "Webshop ontwikkeling",
+      "description": "Conversiegerichte webshops met online betalingen, productbeheer en schaalbare checkout-flows."
+    },
+    "hosting": {
+      "name": "Website hosting",
+      "description": "Snelle en veilige hosting met SSL, back-ups, monitoring en persoonlijke support."
+    },
+    "onderhoud": {
+      "name": "Website onderhoud",
+      "description": "Doorlopend onderhoud met updates, security-checks, monitoring en technische support."
+    }
+  }
+}

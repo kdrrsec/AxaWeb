@@ -1,0 +1,99 @@
+{
+  "aria": {
+    "form": "Contactformulier",
+    "contactInfo": "Contactgegevens",
+    "sending": "Het formulier wordt verzonden"
+  },
+  "labels": {
+    "name": "Naam",
+    "company": "Bedrijfsnaam",
+    "email": "E-mailadres",
+    "phone": "Telefoonnummer",
+    "projectType": "Type aanvraag",
+    "budget": "Budgetindicatie",
+    "message": "Bericht",
+    "privacy": "Ik ga akkoord met de {privacyLink}.",
+    "privacyLink": "privacyverklaring",
+    "optional": "(optioneel)",
+    "required": "*"
+  },
+  "placeholders": {
+    "select": "Selecteer een optie",
+    "message": "Vertel ons over jouw project, wensen of vragen…"
+  },
+  "actions": {
+    "submit": "Verstuur bericht",
+    "submitting": "Bericht wordt verzonden…"
+  },
+  "status": {
+    "sending": "Bericht wordt verzonden…",
+    "success": "Bedankt! Je aanvraag is ontvangen. We nemen zo snel mogelijk contact met je op.",
+    "error": "Er ging iets mis bij het verzenden. Controleer je verbinding en probeer het opnieuw, of mail naar info@axaweb.nl.",
+    "rateLimited": "Je hebt zojuist al een aanvraag gestuurd. Probeer het over een paar minuten opnieuw.",
+    "configError": "Het contactformulier is tijdelijk niet beschikbaar. Mail ons gerust via info@axaweb.nl.",
+    "activationPending": "Bijna klaar: bevestig de activatielink van FormSubmit in de inbox van info@axaweb.nl (controleer ook spam). Daarna werkt het formulier direct."
+  },
+  "errors": {
+    "nameRequired": "Vul je naam in.",
+    "nameTooShort": "Gebruik minimaal 2 tekens voor je naam.",
+    "emailRequired": "Vul je e-mailadres in.",
+    "emailInvalid": "Vul een geldig e-mailadres in.",
+    "phoneInvalid": "Vul een geldig telefoonnummer in (minimaal 10 cijfers).",
+    "projectRequired": "Selecteer een type aanvraag.",
+    "projectInvalid": "Selecteer een geldig type aanvraag.",
+    "budgetInvalid": "Selecteer een geldige budgetindicatie.",
+    "messageRequired": "Vul een bericht in.",
+    "messageTooShort": "Schrijf iets meer over je aanvraag (minimaal 20 tekens).",
+    "messageTooLong": "Je bericht is te lang (maximaal 5000 tekens).",
+    "privacyRequired": "Bevestig dat je akkoord gaat met de privacyverklaring."
+  },
+  "options": {
+    "projectTypes": [
+      { "value": "website", "label": "Website" },
+      { "value": "webshop", "label": "Webshop" },
+      { "value": "website-as-a-service", "label": "Website as a Service" },
+      { "value": "hosting", "label": "Hosting" },
+      { "value": "onderhoud", "label": "Onderhoud" },
+      { "value": "maatwerk", "label": "Maatwerkoplossing" },
+      { "value": "anders", "label": "Anders" }
+    ],
+    "budget": [
+      { "value": "under-1000", "label": "Minder dan €1.000" },
+      { "value": "1000-2500", "label": "€1.000 – €2.500" },
+      { "value": "2500-5000", "label": "€2.500 – €5.000" },
+      { "value": "5000-10000", "label": "€5.000 – €10.000" },
+      { "value": "over-10000", "label": "Meer dan €10.000" },
+      { "value": "to-discuss", "label": "Nog te bespreken" }
+    ]
+  },
+  "fallbacks": {
+    "notProvided": "Niet opgegeven",
+    "unknown": "Onbekend"
+  },
+  "email": {
+    "subject": "Nieuwe aanvraag via AxaWeb – {identity}",
+    "intro": "Er is een nieuwe aanvraag binnengekomen via het contactformulier op axaweb.nl.",
+    "fields": {
+      "name": "Naam",
+      "company": "Bedrijfsnaam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "projectType": "Type aanvraag",
+      "budget": "Budget",
+      "message": "Bericht",
+      "submittedAt": "Datum en tijd",
+      "sourcePage": "Bronpagina"
+    }
+  },
+  "selectPlaceholder": "Selecteer een optie",
+  "nameRequired": "Vul je naam in.",
+  "emailRequired": "Vul je e-mailadres in.",
+  "emailInvalid": "Vul een geldig e-mailadres in.",
+  "phoneInvalid": "Vul een geldig telefoonnummer in (minimaal 10 cijfers).",
+  "projectRequired": "Selecteer een type aanvraag.",
+  "messageRequired": "Vul een bericht in.",
+  "privacyRequired": "Bevestig dat je akkoord gaat met de privacyverklaring.",
+  "sending": "Bericht wordt verzonden…",
+  "success": "Bedankt! Je aanvraag is ontvangen. We nemen zo snel mogelijk contact met je op.",
+  "error": "Er ging iets mis bij het verzenden. Controleer je verbinding en probeer het opnieuw, of mail naar info@axaweb.nl."
+}

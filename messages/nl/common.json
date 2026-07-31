@@ -1,0 +1,85 @@
+{
+  "skipToContent": "Ga naar inhoud",
+  "nav": {
+    "ariaLabel": "Hoofdnavigatie",
+    "mobileAriaLabel": "Mobiele navigatie",
+    "diensten": "Diensten",
+    "pakketten": "Pakketten",
+    "projecten": "Projecten",
+    "contact": "Contact",
+    "homeAria": "AxaWeb home",
+    "menuOpen": "Menu openen",
+    "menuClose": "Menu sluiten"
+  },
+  "cta": {
+    "requestQuote": "Offerte aanvragen",
+    "viewServices": "Bekijk onze diensten",
+    "viewAllServices": "Bekijk alle diensten",
+    "viewAllPackages": "Bekijk alle pakketten",
+    "viewAllProjects": "Alle projecten bekijken",
+    "viewProject": "Bekijk project",
+    "startProject": "Start een project",
+    "planIntro": "Plan een kennismaking",
+    "moreInfo": "Meer informatie"
+  },
+  "breadcrumb": {
+    "ariaLabel": "Broodkruimel",
+    "home": "Home"
+  },
+  "footer": {
+    "note": "Websites, webshops, hosting en onderhoud. Alles onder één dak, met één vast aanspreekpunt.",
+    "servicesTitle": "Diensten",
+    "navTitle": "Navigatie",
+    "contactTitle": "Contact",
+    "websites": "Websites",
+    "webshops": "Webshops",
+    "hosting": "Hosting",
+    "onderhoud": "Onderhoud",
+    "privacy": "Privacyverklaring",
+    "terms": "Algemene voorwaarden",
+    "cookiePolicy": "Cookiebeleid",
+    "disclaimer": "Disclaimer",
+    "cookieSettings": "Cookievoorkeuren",
+    "relatedTitle": "Gerelateerde documenten",
+    "rights": "Alle rechten voorbehouden.",
+    "tagline": "Digitale partner voor ondernemers"
+  },
+  "legal": {
+    "relatedTitle": "Gerelateerde documenten"
+  },
+  "languageSwitcher": {
+    "ariaLabel": "Taal kiezen",
+    "nl": "Nederlands",
+    "en": "English"
+  },
+  "case": {
+    "category": "Categorie",
+    "live": "Live",
+    "client": "Klant",
+    "context": "Context",
+    "approach": "Aanpak",
+    "design": "Design",
+    "development": "Ontwikkeling",
+    "responsive": "Responsive",
+    "tech": "Techniek",
+    "hosting": "Hosting",
+    "result": "Resultaat",
+    "screenshots": "Screenshots",
+    "screenshotsTitle": "Desktop en mobiel, zoals live te zien.",
+    "captionDesktop": "Desktop - detailsectie",
+    "captionMobile": "Mobiel - homepage",
+    "nextProject": "Volgende project",
+    "viewNamed": "Bekijk {name}",
+    "nextStep": "Volgende stap",
+    "ctaTitle": "Ook een website die zo overtuigt?",
+    "ctaLead": "Vertel ons over je project. We denken vrijblijvend mee over aanpak, planning en investering.",
+    "ctaButton": "Vraag een offerte aan"
+  },
+  "directContact": {
+    "title": "Direct geholpen worden?",
+    "text": "Heeft u liever direct persoonlijk contact of wilt u uw project bespreken? Neem gerust telefonisch contact met ons op.",
+    "phoneDisplay": "06 29 12 75 75",
+    "phoneHref": "tel:+31629127575",
+    "phoneAria": "Bel AxaWeb op 06 29 12 75 75"
+  }
+}
