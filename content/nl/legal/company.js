@@ -26,16 +26,24 @@ export function companyIdentityLine() {
   return `${company.legalLabel} (${company.parentNote})`;
 }
 
-export function companyContactBlockHtml() {
+/**
+ * @param {{ includeRegistry?: boolean }} [options]
+ * includeRegistry: KvK/BTW/adres-placeholders (standaard false)
+ */
+export function companyContactBlockHtml({ includeRegistry = false } = {}) {
+  const registry = includeRegistry
+    ? `
+      <li>KvK: ${company.kvk}</li>
+      <li>BTW: ${company.btw}</li>
+      <li>Adres: ${company.addressLine}, ${company.postalCity}</li>`
+    : "";
+
   return `
     <ul>
       <li>E-mail: <a href="mailto:${company.email}">${company.email}</a></li>
       <li>Telefoon: <a href="${company.phoneHref}">${company.phoneDisplay}</a></li>
       <li>Website: <a href="${company.website}">${company.website}</a></li>
-      <li>Land: ${company.country}</li>
-      <li>KvK: ${company.kvk}</li>
-      <li>BTW: ${company.btw}</li>
-      <li>Adres: ${company.addressLine}, ${company.postalCity}</li>
+      <li>Land: ${company.country}</li>${registry}
     </ul>
   `.trim();
 }
