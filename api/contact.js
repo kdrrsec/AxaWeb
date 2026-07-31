@@ -122,8 +122,21 @@ export default async function handler(req, res) {
       return;
     }
 
-    await sendContactEmail(result.data);
-    sendJson(res, 200, { ok: true });
+    const delivery = await sendContactEmail(result.data);
+
+    if (delivery.mode === "formsubmit_browser") {
+      sendJson(res, 200, {
+        ok: true,
+        delivery: "formsubmit_browser",
+        formsubmit: {
+          endpoint: delivery.endpoint,
+          body: delivery.body,
+        },
+      });
+      return;
+    }
+
+    sendJson(res, 200, { ok: true, delivery: delivery.mode || "resend" });
   } catch (error) {
     if (error?.code === "JSON" || error?.code === "PAYLOAD") {
       sendJson(res, 400, { ok: false, error: "invalid_request" });
@@ -131,7 +144,7 @@ export default async function handler(req, res) {
     }
 
     const code = error?.code === "CONFIG" ? "config_error" : "server_error";
-    console.error("[contact]", code, error?.status || "");
+    console.error("[contact]", code, error?.status || "", error?.detail || "");
     sendJson(res, error?.code === "CONFIG" ? 503 : 500, { ok: false, error: code });
   }
 }

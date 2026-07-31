@@ -30,7 +30,8 @@
     "success": "",
     "error": "",
     "rateLimited": "",
-    "configError": ""
+    "configError": "",
+    "activationPending": ""
   },
   "errors": {
     "nameRequired": "",
