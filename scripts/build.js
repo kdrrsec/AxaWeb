@@ -28,6 +28,7 @@ const pageSlugs = [
   "pakketten",
   "projecten",
   "contact",
+  "offerte",
 ];
 
 const caseSlugs = ["bandendepot", "axanet", "viralon"];

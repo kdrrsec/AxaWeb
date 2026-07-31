@@ -314,7 +314,7 @@ export const pages = {
       title: "Websites die vertrouwen wekken en klanten opleveren.",
       text: "Geen standaardthema dat overal terugkomt, maar een maatwerkwebsite die jouw merk scherp neerzet en bezoekers in beweging brengt.",
       actions: [
-        { label: "Offerte aanvragen", href: "/contact", style: "primary" },
+        { label: "Offerte aanvragen", href: "/offerte", style: "primary" },
         { label: "Bekijk ons werk", href: "/projecten", style: "secondary" },
       ],
       facts: {
@@ -444,7 +444,7 @@ export const pages = {
         type: "cta",
         title: "Klaar voor een website die voor je werkt?",
         text: "Vraag een vrijblijvende offerte aan en ontvang binnen één werkdag een persoonlijke reactie.",
-        button: { label: "Offerte aanvragen", href: "/contact" },
+        button: { label: "Offerte aanvragen", href: "/offerte" },
       },
     ],
   },
@@ -467,7 +467,7 @@ export const pages = {
       title: "Een webshop die verkoopt en makkelijk te beheren is.",
       text: "We bouwen conversiegerichte webshops die prettig werken voor klanten én voor jou als beheerder. Van eerste product tot groeiend assortiment.",
       actions: [
-        { label: "Offerte aanvragen", href: "/contact", style: "primary" },
+        { label: "Offerte aanvragen", href: "/offerte", style: "primary" },
         { label: "Bekijk integraties", href: "#integraties", style: "secondary" },
       ],
       facts: {
@@ -570,7 +570,7 @@ export const pages = {
         type: "cta",
         title: "Klaar om online te verkopen?",
         text: "Vertel ons wat je verkoopt. Wij adviseren de beste opzet voor jouw webshop.",
-        button: { label: "Offerte aanvragen", href: "/contact" },
+        button: { label: "Offerte aanvragen", href: "/offerte" },
       },
     ],
   },
@@ -898,6 +898,7 @@ export const pages = {
             "Heldere offerte met vaste vanafprijzen",
           ],
         },
+        sourcePage: "/contact",
       },
       {
         type: "faq",
@@ -924,6 +925,69 @@ export const pages = {
             question: "Werken jullie ook met bestaande websites?",
             answer:
               "Ja. We kunnen bestaande websites overnemen, verbeteren of migreren naar onze hosting, meestal zonder merkbare onderbreking.",
+          },
+        ],
+      },
+    ],
+  },
+
+  offerte: {
+    slug: "offerte",
+    navKey: "contact",
+    title: "Offerte aanvragen | AxaWeb",
+    description:
+      "Vraag vrijblijvend een offerte aan bij AxaWeb voor een website, webshop, hosting of onderhoud. Duidelijke vanafprijzen en persoonlijk advies.",
+    canonical: "https://axaweb.nl/offerte",
+    breadcrumb: [{ label: "Home", href: "/" }, { label: "Offerte" }],
+    head: {
+      variant: "minimal",
+      eyebrow: "Offerte",
+      title: "Vraag een vrijblijvende offerte aan.",
+      text: "Vertel kort over je plannen. We denken mee over aanpak, planning en investering - en sturen een heldere offerte.",
+    },
+    sections: [
+      {
+        type: "contact",
+        id: "formulier",
+        info: [
+          { icon: "mail", label: "E-mail", value: "info@axaweb.nl", href: "mailto:info@axaweb.nl" },
+          { icon: "clock", label: "Reactietijd", value: "Binnen één werkdag" },
+        ],
+        steps: {
+          title: "Hoe het werkt",
+          items: [
+            "Je deelt je wensen via het formulier of telefonisch",
+            "We reageren binnen één werkdag met gerichte vragen of advies",
+            "Je ontvangt een duidelijke, vrijblijvende offerte",
+          ],
+        },
+        sourcePage: "/offerte",
+      },
+      {
+        type: "faq",
+        id: "faq",
+        eyebrow: "Veelgestelde vragen",
+        title: "Goed om te weten voor je offerte.",
+        items: [
+          {
+            question: "Is de offerte vrijblijvend?",
+            answer:
+              "Ja. Je zit nergens aan vast. We bespreken eerst of de aanpak past, zodat je een realistisch beeld hebt van investering en planning.",
+          },
+          {
+            question: "Hoe snel krijg ik een offerte?",
+            answer:
+              "Na je aanvraag nemen we binnen één werkdag contact op. Een concrete offerte volgt meestal kort daarna, zodra de scope helder is.",
+          },
+          {
+            question: "Wat heb ik nodig om een goede aanvraag te doen?",
+            answer:
+              "Een korte omschrijving van je doel, gewenste pagina’s of functionaliteiten en eventueel een budgetindicatie is voldoende om te starten.",
+          },
+          {
+            question: "Kan ik liever bellen?",
+            answer:
+              "Natuurlijk. Bel ons op 06 29 12 75 75. We denken graag telefonisch mee over jouw project.",
           },
         ],
       },

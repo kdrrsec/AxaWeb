@@ -67,5 +67,12 @@
     "ctaTitle": "",
     "ctaLead": "",
     "ctaButton": ""
+  },
+  "directContact": {
+    "title": "",
+    "text": "",
+    "phoneDisplay": "",
+    "phoneHref": "",
+    "phoneAria": ""
   }
 }

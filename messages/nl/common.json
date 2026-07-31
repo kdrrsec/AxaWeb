@@ -67,5 +67,12 @@
     "ctaTitle": "Ook een website die zo overtuigt?",
     "ctaLead": "Vertel ons over je project. We denken vrijblijvend mee over aanpak, planning en investering.",
     "ctaButton": "Vraag een offerte aan"
+  },
+  "directContact": {
+    "title": "Direct geholpen worden?",
+    "text": "Heeft u liever direct persoonlijk contact of wilt u uw project bespreken? Neem gerust telefonisch contact met ons op.",
+    "phoneDisplay": "06 29 12 75 75",
+    "phoneHref": "tel:+31629127575",
+    "phoneAria": "Bel AxaWeb op 06 29 12 75 75"
   }
 }
