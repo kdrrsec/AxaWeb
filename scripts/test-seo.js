@@ -32,6 +32,7 @@ assert.match(robots, /Disallow:\s*\/api\//);
 const sitemap = readFileSync(join(root, "sitemap.xml"), "utf8");
 assert.match(sitemap, /<lastmod>/);
 assert.match(sitemap, /https:\/\/axaweb\.nl\/privacy</);
+assert.match(sitemap, /https:\/\/axaweb\.nl\/cookies</);
 
 const diensten = readFileSync(join(root, "diensten.html"), "utf8");
 assert.match(diensten, /application\/ld\+json/);

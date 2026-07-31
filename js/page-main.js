@@ -4,6 +4,9 @@ import { initContactForm } from "./modules/form.js";
 import { initAnimations } from "./modules/animations.js";
 import { initLanguageSwitcher } from "./modules/language-switcher.js";
 import { initPricingUI } from "./modules/pricing-ui.js";
+import { initCookieConsent } from "./modules/cookie-consent.js";
+import { initAnalytics } from "./modules/analytics.js";
+import { initTracking } from "./modules/tracking.js";
 
 function initYear() {
   const year = document.querySelector("[data-year]");
@@ -25,6 +28,9 @@ function init() {
   initAnimations();
   initYear();
   initMobileLinkDelay();
+  initCookieConsent();
+  initAnalytics();
+  initTracking();
 }
 
 if (document.readyState === "loading") {

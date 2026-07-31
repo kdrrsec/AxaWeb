@@ -55,6 +55,30 @@
   outline-offset: 3px;
 }
 
+.site-footer__text-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.site-footer__text-btn:hover {
+  color: var(--text);
+}
+
+.site-footer__text-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .site-footer__bottom {
   display: flex;
   flex-direction: column;

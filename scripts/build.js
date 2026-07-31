@@ -1,7 +1,9 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { injectPublicEnv } from "./inject-public-env.js";
 import { generatePages } from "./generate-pages.js";
+import { generateCookiesPage } from "./generate-cookies-page.js";
 import { generateSitemap } from "./generate-sitemap.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -18,6 +20,7 @@ const cssFiles = [
   "css/components/sections.css",
   "css/components/form.css",
   "css/components/footer.css",
+  "css/components/cookie-consent.css",
 ];
 
 const pageSlugs = [
@@ -37,6 +40,7 @@ const caseSlugs = ["bandendepot", "axanet", "viralon"];
 const requiredFiles = [
   "index.html",
   "privacy.html",
+  "cookies.html",
   "algemene-voorwaarden.html",
   "404.html",
   "robots.txt",
@@ -51,6 +55,7 @@ const requiredFiles = [
   "images/background.webp",
   "js/main.js",
   "js/page-main.js",
+  "js/consent-default.js",
   "css/main.css",
 ];
 
@@ -101,7 +106,9 @@ function validateHtml(filePath, { allowNoindex = false } = {}) {
   }
 }
 
+injectPublicEnv();
 generatePages();
+generateCookiesPage();
 generateSitemap();
 
 requiredFiles.forEach(assertExists);
@@ -114,6 +121,7 @@ caseSlugs.forEach((slug) => {
 
 validateHtml("index.html");
 validateHtml("privacy.html");
+validateHtml("cookies.html");
 validateHtml("algemene-voorwaarden.html");
 validateHtml("404.html", { allowNoindex: true });
 pageSlugs.forEach((slug) => validateHtml(`${slug}.html`));
@@ -128,6 +136,7 @@ mkdirSync(dist, { recursive: true });
 const staticCopies = [
   "index.html",
   "privacy.html",
+  "cookies.html",
   "algemene-voorwaarden.html",
   "404.html",
   "robots.txt",
@@ -176,6 +185,7 @@ function useBundleCss(fileName) {
 useBundleCss("index.html");
 useBundleCss("404.html");
 useBundleCss("privacy.html");
+useBundleCss("cookies.html");
 useBundleCss("algemene-voorwaarden.html");
 pageSlugs.forEach((slug) => useBundleCss(`${slug}.html`));
 caseSlugs.forEach((slug) => useBundleCss(`projecten/${slug}.html`));

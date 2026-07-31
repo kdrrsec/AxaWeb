@@ -6,6 +6,7 @@ import {
   isValidPhone,
   MESSAGE_MIN_LENGTH,
 } from "../lib/contact-validation.js";
+import { trackFormSuccess } from "./tracking.js";
 
 function formMessage(path) {
   const value = t(`form.${path}`);
@@ -255,6 +256,7 @@ export function initContactForm() {
         throw new Error(data.error || "request_failed");
       }
 
+      trackFormSuccess(form);
       form.reset();
       if (startedAt) startedAt.value = String(Date.now());
       if (sourcePage && !sourcePage.value) {

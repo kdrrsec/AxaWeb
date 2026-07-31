@@ -85,6 +85,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://axaweb.nl/cookies</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://axaweb.nl/algemene-voorwaarden</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
