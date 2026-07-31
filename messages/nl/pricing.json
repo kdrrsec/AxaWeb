@@ -14,7 +14,7 @@
     "perMonth": "/ maand",
     "perYear": "/ jaar",
     "onRequest": "Op aanvraag",
-    "upcoming": "Binnenkort beschikbaar",
+    "upcoming": "binnenkort beschikbaar",
     "saveYear": "Bespaar {amount} per jaar",
     "saveTerm": "Bespaar {amount} over {months} maanden"
   },
@@ -81,23 +81,23 @@
   "waas": {
     "business-site": {
       "name": "Bedrijfswebsite",
-      "audience": "Voor ondernemers die een professionele, complete online presentatie willen."
+      "audience": "Voor dienstverleners en ondernemingen die professioneel en overtuigend online zichtbaar willen zijn."
     },
     "barbershop": {
       "name": "Barbershop Complete",
-      "audience": "Voor kappers en barbershops die online afspraken en uitstraling willen combineren."
+      "audience": "Voor kappers en barbershops die hun uitstraling, diensten en afspraken professioneel online willen combineren."
     },
     "restaurant": {
       "name": "Restaurant Complete",
-      "audience": "Voor restaurants die menu, sfeer en reserveringen helder willen presenteren."
+      "audience": "Voor restaurants die hun menu, sfeer en reserveringsmogelijkheden professioneel willen presenteren."
     },
     "gym": {
       "name": "Sportschool Complete",
-      "audience": "Voor sportscholen die lidmaatschappen, schema’s en aanmeldingen online willen regelen."
+      "audience": "Voor sportscholen en studio’s die lessen, lidmaatschappen en aanmeldingen overzichtelijk online willen aanbieden."
     },
     "webshop": {
       "name": "Webshop Complete",
-      "audience": "Voor ondernemers die producten of diensten professioneel online willen verkopen."
+      "audience": "Voor ondernemers die producten of diensten professioneel en schaalbaar online willen verkopen."
     }
   },
   "hosting": {
@@ -146,12 +146,6 @@
     "api": "API-koppelingen mogelijk",
     "animations": "Uitgebreidere animaties",
     "priority": "Prioriteit tijdens ontwikkeling",
-    "customSite": "Website op maat",
-    "hostingIncluded": "Hosting inbegrepen",
-    "maintenanceIncluded": "Onderhoud inbegrepen",
-    "backups": "Back-ups",
-    "support": "Support",
-    "updates": "Updates",
     "dailyBackups": "Dagelijkse back-ups",
     "businessEmail": "Zakelijke e-mail",
     "ssd": "Snelle SSD-opslag",
@@ -177,10 +171,36 @@
     "allBusinessMaint": "Alles uit Zakelijk",
     "slaResponse": "SLA met vaste reactietijden",
     "devHours": "Vast aantal ontwikkeluren",
-    "directAdmin": "Direct contact met je beheerder"
+    "directAdmin": "Direct contact met je beheerder",
+    "waasCustomSite": "Website op maat",
+    "waasServicesPages": "Diensten- en bedrijfspagina’s",
+    "waasContactQuoteForm": "Contact- en offerteformulier",
+    "waasBasicSeo": "Basis SEO",
+    "waasHostingMaintenance": "Hosting en onderhoud",
+    "waasSslBackups": "SSL en back-ups",
+    "waasSmallMonthlyEdits": "Kleine maandelijkse wijzigingen",
+    "waasTreatmentsPrices": "Behandelingen en prijslijst",
+    "waasTeamOverview": "Team- of barberoverzicht",
+    "waasPhotoGallery": "Fotogalerij",
+    "waasWhatsapp": "WhatsApp-contact",
+    "waasDigitalMenu": "Digitaal menu",
+    "waasOpeningHours": "Openingstijden",
+    "waasTableReservation": "Tafelreservering of reserveringsaanvraag",
+    "waasAtmospherePhotos": "Foto- en sfeerimpressie",
+    "waasClassSchedule": "Lessenrooster",
+    "waasMemberships": "Lidmaatschappen en tarieven",
+    "waasTrainerOverview": "Traineroverzicht",
+    "waasTrialForm": "Proefles- of inschrijfformulier",
+    "waasCustomShop": "Webshop op maat",
+    "waasProductCategories": "Product- en categoriebeheer",
+    "waasOnlinePayments": "Online betalingen",
+    "waasCartCheckout": "Winkelwagen en checkout",
+    "waasStockOrders": "Voorraad- of orderbeheer",
+    "waasIntegrationsOnRequest": "Koppelingen op aanvraag"
   },
   "upcoming": {
-    "axabook": "AxaBook integratie"
+    "axabookAppointments": "AxaBook Appointments",
+    "axabookRestaurants": "AxaBook Restaurants"
   },
   "cta": {
     "requestQuote": "Vraag offerte aan",

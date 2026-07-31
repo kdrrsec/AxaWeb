@@ -148,12 +148,9 @@ export function buildPricingRenderers(tp, icon) {
         const savings = calcSavings(monthly, current, termMonths);
         const savingsText = savingsLabel(tp, savings);
 
-        const upcoming = (pricing.waas.upcomingKeys || [])
-          .map(
-            (key) =>
-              `<li class="pricing-card__upcoming">${icon("plus")} <span>${escapeHtml(tp(`upcoming.${key}`))} <em>${escapeHtml(tp("labels.upcoming"))}</em></span></li>`
-          )
-          .join("\n            ");
+        const upcoming = branch.upcomingKey
+          ? `<li class="pricing-card__upcoming"><span>${escapeHtml(tp(`upcoming.${branch.upcomingKey}`))} <em>– ${escapeHtml(tp("labels.upcoming"))}</em></span></li>`
+          : "";
 
         return `
         <article
@@ -177,7 +174,7 @@ export function buildPricingRenderers(tp, icon) {
           </div>
           <p class="pricing-card__audience">${escapeHtml(audienceOf("waas", branch.id))}</p>
           <ul class="pricing-card__list">
-            ${featureList(pricing.waas.sharedFeatureKeys, tp, icon)}
+            ${featureList(branch.featureKeys || [], tp, icon)}
             ${upcoming}
           </ul>
           <a class="btn ${branch.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${pricing.waas.href}">${escapeHtml(tp(`cta.${pricing.waas.ctaKey}`))}</a>

@@ -602,13 +602,14 @@
 }
 
 .pricing-card__upcoming {
-  opacity: 0.85;
+  opacity: 0.72;
 }
 
 .pricing-card__upcoming em {
   font-style: normal;
+  font-weight: 400;
   color: var(--text-muted);
-  font-size: 0.85em;
+  font-size: 0.82em;
 }
 
 [data-price-display].is-updating {
