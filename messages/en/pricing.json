@@ -1,0 +1,231 @@
+{
+  "modelToggle": {
+    "ariaLabel": "",
+    "prompt": "",
+    "promptText": "",
+    "oneTime": "",
+    "waas": ""
+  },
+  "labels": {
+    "introPrice": "",
+    "exclVat": "",
+    "oneTimeInvestment": "",
+    "from": "",
+    "perMonth": "",
+    "perYear": "",
+    "onRequest": "",
+    "upcoming": "",
+    "saveYear": "",
+    "saveTerm": ""
+  },
+  "badges": {
+    "mostChosen": "",
+    "recommended": "",
+    "bestPrice": "",
+    "popular": ""
+  },
+  "terms": {
+    "ariaLabel": "",
+    "monthly": "",
+    "12": "",
+    "24": "",
+    "yearly": "",
+    "hostingAria": "",
+    "maintenanceAria": ""
+  },
+  "sections": {
+    "websiteHub": {
+      "eyebrow": "",
+      "title": "",
+      "intro": ""
+    },
+    "oneTime": {
+      "eyebrow": "",
+      "title": "",
+      "intro": "",
+      "note": ""
+    },
+    "waas": {
+      "eyebrow": "",
+      "title": "",
+      "intro": "",
+      "note": ""
+    },
+    "hosting": {
+      "eyebrow": "",
+      "title": "",
+      "intro": "",
+      "note": ""
+    },
+    "maintenance": {
+      "eyebrow": "",
+      "title": "",
+      "intro": "",
+      "note": ""
+    }
+  },
+  "oneTime": {
+    "start": {
+      "name": "",
+      "audience": ""
+    },
+    "business": {
+      "name": "",
+      "audience": ""
+    },
+    "premium": {
+      "name": "",
+      "audience": ""
+    }
+  },
+  "waas": {
+    "business-site": {
+      "name": "",
+      "audience": ""
+    },
+    "barbershop": {
+      "name": "",
+      "audience": ""
+    },
+    "restaurant": {
+      "name": "",
+      "audience": ""
+    },
+    "gym": {
+      "name": "",
+      "audience": ""
+    },
+    "webshop": {
+      "name": "",
+      "audience": ""
+    }
+  },
+  "hosting": {
+    "essential": {
+      "name": "",
+      "audience": ""
+    },
+    "business": {
+      "name": "",
+      "audience": ""
+    },
+    "managed": {
+      "name": "",
+      "audience": ""
+    }
+  },
+  "maintenance": {
+    "basic": {
+      "name": "",
+      "audience": ""
+    },
+    "business": {
+      "name": "",
+      "audience": ""
+    },
+    "custom": {
+      "name": "",
+      "audience": ""
+    }
+  },
+  "features": {
+    "onepage": "",
+    "responsive": "",
+    "contactForm": "",
+    "basicSeo": "",
+    "ssl": "",
+    "delivery": "",
+    "upToFivePages": "",
+    "customDesign": "",
+    "portfolio": "",
+    "maps": "",
+    "performance": "",
+    "allBusiness": "",
+    "morePages": "",
+    "customFeatures": "",
+    "api": "",
+    "animations": "",
+    "priority": "",
+    "dailyBackups": "",
+    "businessEmail": "",
+    "ssd": "",
+    "emailSupport": "",
+    "allEssential": "",
+    "moreStorage": "",
+    "uptime": "",
+    "prioritySupport": "",
+    "yearlyCheck": "",
+    "allBusinessHosting": "",
+    "updatesIncluded": "",
+    "proactive": "",
+    "fixedContact": "",
+    "sla": "",
+    "cmsUpdates": "",
+    "backupCheck": "",
+    "healthCheck": "",
+    "allBasic": "",
+    "monitoring": "",
+    "incidentPriority": "",
+    "smallEdits": "",
+    "quarterlyReport": "",
+    "allBusinessMaint": "",
+    "slaResponse": "",
+    "devHours": "",
+    "directAdmin": "",
+    "waasCustomSite": "",
+    "waasServicesPages": "",
+    "waasContactQuoteForm": "",
+    "waasBasicSeo": "",
+    "waasHostingMaintenance": "",
+    "waasSslBackups": "",
+    "waasSmallMonthlyEdits": "",
+    "waasTreatmentsPrices": "",
+    "waasTeamOverview": "",
+    "waasPhotoGallery": "",
+    "waasWhatsapp": "",
+    "waasDigitalMenu": "",
+    "waasOpeningHours": "",
+    "waasTableReservation": "",
+    "waasAtmospherePhotos": "",
+    "waasClassSchedule": "",
+    "waasMemberships": "",
+    "waasTrainerOverview": "",
+    "waasTrialForm": "",
+    "waasCustomShop": "",
+    "waasProductCategories": "",
+    "waasOnlinePayments": "",
+    "waasCartCheckout": "",
+    "waasStockOrders": "",
+    "waasIntegrationsOnRequest": ""
+  },
+  "upcoming": {
+    "axabookAppointments": "",
+    "axabookRestaurants": ""
+  },
+  "cta": {
+    "requestQuote": "",
+    "discussWebsite": "",
+    "requestCustom": "",
+    "planIntro": "",
+    "requestEssential": "",
+    "requestBusiness": "",
+    "discussOptions": "",
+    "chooseBasic": "",
+    "chooseBusiness": "",
+    "discussSituation": "",
+    "viewWebsites": "",
+    "viewHosting": "",
+    "viewMaintenance": ""
+  },
+  "termsInfo": {
+    "title": "",
+    "items": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  }
+}

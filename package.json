@@ -5,11 +5,13 @@
   "description": "AxaWeb official website",
   "type": "module",
   "scripts": {
-    "lint": "eslint \"js/**/*.js\" \"scripts/**/*.js\"",
+    "lint": "eslint \"js/**/*.js\" \"scripts/**/*.js\" \"i18n/**/*.js\" \"api/**/*.js\" \"data/**/*.js\"",
     "typecheck": "node scripts/typecheck.js",
     "generate:pages": "node scripts/generate-pages.js",
     "build": "node scripts/build.js",
-    "test:static": "node scripts/build.js && node scripts/typecheck.js"
+    "test:contact": "node scripts/test-contact-validation.js",
+    "test:pricing": "node scripts/test-pricing.js",
+    "test:static": "node scripts/build.js && node scripts/typecheck.js && node scripts/test-contact-validation.js && node scripts/test-pricing.js"
   },
   "devDependencies": {
     "eslint": "^9.31.0"

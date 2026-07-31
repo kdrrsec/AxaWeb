@@ -109,6 +109,40 @@
   gap: 0.75rem;
 }
 
+/* Verborgen tot languageSwitcherEnabled=true in i18n/config.js */
+.language-switcher[hidden],
+.language-switcher[data-enabled="false"] {
+  display: none !important;
+}
+
+.language-switcher nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.language-switcher a {
+  color: var(--text-secondary);
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.language-switcher a:hover {
+  color: var(--text);
+}
+
+.language-switcher a[aria-current="true"] {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.language-switcher a[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
 .site-header__cta {
   display: none;
 }

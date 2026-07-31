@@ -1,0 +1,98 @@
+{
+  "aria": {
+    "form": "",
+    "contactInfo": "",
+    "sending": ""
+  },
+  "labels": {
+    "name": "",
+    "company": "",
+    "email": "",
+    "phone": "",
+    "projectType": "",
+    "budget": "",
+    "message": "",
+    "privacy": "",
+    "privacyLink": "",
+    "optional": "",
+    "required": ""
+  },
+  "placeholders": {
+    "select": "",
+    "message": ""
+  },
+  "actions": {
+    "submit": "",
+    "submitting": ""
+  },
+  "status": {
+    "sending": "",
+    "success": "",
+    "error": "",
+    "rateLimited": "",
+    "configError": ""
+  },
+  "errors": {
+    "nameRequired": "",
+    "nameTooShort": "",
+    "emailRequired": "",
+    "emailInvalid": "",
+    "phoneInvalid": "",
+    "projectRequired": "",
+    "projectInvalid": "",
+    "budgetInvalid": "",
+    "messageRequired": "",
+    "messageTooShort": "",
+    "messageTooLong": "",
+    "privacyRequired": ""
+  },
+  "options": {
+    "projectTypes": [
+      { "value": "website", "label": "" },
+      { "value": "webshop", "label": "" },
+      { "value": "website-as-a-service", "label": "" },
+      { "value": "hosting", "label": "" },
+      { "value": "onderhoud", "label": "" },
+      { "value": "maatwerk", "label": "" },
+      { "value": "anders", "label": "" }
+    ],
+    "budget": [
+      { "value": "under-1000", "label": "" },
+      { "value": "1000-2500", "label": "" },
+      { "value": "2500-5000", "label": "" },
+      { "value": "5000-10000", "label": "" },
+      { "value": "over-10000", "label": "" },
+      { "value": "to-discuss", "label": "" }
+    ]
+  },
+  "fallbacks": {
+    "notProvided": "",
+    "unknown": ""
+  },
+  "email": {
+    "subject": "",
+    "intro": "",
+    "fields": {
+      "name": "",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "projectType": "",
+      "budget": "",
+      "message": "",
+      "submittedAt": "",
+      "sourcePage": ""
+    }
+  },
+  "selectPlaceholder": "",
+  "nameRequired": "",
+  "emailRequired": "",
+  "emailInvalid": "",
+  "phoneInvalid": "",
+  "projectRequired": "",
+  "messageRequired": "",
+  "privacyRequired": "",
+  "sending": "",
+  "success": "",
+  "error": ""
+}

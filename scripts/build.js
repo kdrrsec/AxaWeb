@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { generatePages } from "./generate-pages.js";
@@ -13,6 +13,7 @@ const cssFiles = [
   "css/components/header.css",
   "css/components/hero.css",
   "css/components/page.css",
+  "css/components/case.css",
   "css/components/sections.css",
   "css/components/form.css",
   "css/components/footer.css",
@@ -27,7 +28,10 @@ const pageSlugs = [
   "pakketten",
   "projecten",
   "contact",
+  "offerte",
 ];
+
+const caseSlugs = ["bandendepot", "axanet", "viralon"];
 
 const requiredFiles = [
   "index.html",
@@ -87,11 +91,17 @@ generatePages();
 
 requiredFiles.forEach(assertExists);
 pageSlugs.forEach((slug) => assertExists(`${slug}.html`));
+caseSlugs.forEach((slug) => assertExists(`projecten/${slug}.html`));
+caseSlugs.forEach((slug) => {
+  assertExists(`images/projects/${slug}/desktop-hero.webp`);
+  assertExists(`images/projects/${slug}/mobile-hero.webp`);
+});
 
 validateHtml("index.html");
 validateHtml("privacy.html");
 validateHtml("algemene-voorwaarden.html");
 pageSlugs.forEach((slug) => validateHtml(`${slug}.html`));
+caseSlugs.forEach((slug) => validateHtml(`projecten/${slug}.html`));
 
 if (existsSync(dist)) {
   rmSync(dist, { recursive: true, force: true });
@@ -120,8 +130,18 @@ mkdirSync(join(dist, "images"), { recursive: true });
 ["background.jpg", "background.webp"].forEach((file) => {
   cpSync(join(root, "images", file), join(dist, "images", file));
 });
+cpSync(join(root, "images", "projects"), join(dist, "images", "projects"), { recursive: true });
+cpSync(join(root, "projecten"), join(dist, "projecten"), { recursive: true });
 cpSync(join(root, "js"), join(dist, "js"), { recursive: true });
 cpSync(join(root, "css"), join(dist, "css"), { recursive: true });
+/* Locale-content + browser-safe i18n helpers (homepage data loaders) */
+cpSync(join(root, "content"), join(dist, "content"), { recursive: true });
+mkdirSync(join(dist, "i18n"), { recursive: true });
+["config.js", "routing.js"].forEach((file) => {
+  cpSync(join(root, "i18n", file), join(dist, "i18n", file));
+});
+cpSync(join(root, "messages"), join(dist, "messages"), { recursive: true });
+cpSync(join(root, "data"), join(dist, "data"), { recursive: true });
 
 const bundledCss = bundleCss();
 mkdirSync(join(dist, "css"), { recursive: true });
@@ -137,6 +157,16 @@ function useBundleCss(fileName) {
 
 useBundleCss("index.html");
 pageSlugs.forEach((slug) => useBundleCss(`${slug}.html`));
+caseSlugs.forEach((slug) => useBundleCss(`projecten/${slug}.html`));
+
+/* Strip large PNG sources from dist if present — keep webp/jpg only */
+for (const slug of caseSlugs) {
+  const dir = join(dist, "images", "projects", slug);
+  if (!existsSync(dir)) continue;
+  readdirSync(dir).forEach((file) => {
+    if (file.endsWith(".png")) rmSync(join(dir, file), { force: true });
+  });
+}
 
 console.log("Build completed successfully.");
 console.log(`Output: ${dist}`);
