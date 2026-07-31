@@ -1,13 +1,16 @@
 # Contactformulier
 
-Productieklare verwerking via Vercel Serverless Function + FormSubmit.
+Productieklare verwerking via Vercel Serverless Function + e-mailbezorging.
 
 ## Flow
 
 1. Client valideert (`js/lib/contact-validation.js` + `js/modules/form.js`)
 2. POST naar `/api/contact` (JSON, same-origin)
 3. Server controleert Origin/Referer, rate limit, dedupe, validatie en spamfilters
-4. E-mail via **FormSubmit** naar `info@axaweb.nl`
+4. E-mail:
+   - **Resend** (server-side) als `RESEND_API_KEY` + `CONTACT_FROM_EMAIL` gezet zijn
+   - anders **FormSubmit browser-handoff**: na servervalidatie stuurt de browser zelf naar FormSubmit  
+     (FormSubmit blokkeert serverless/Vercel-requests met Cloudflare 403)
 
 ## Environment variables
 
@@ -15,12 +18,12 @@ Zie `.env.example`:
 
 | Variabele | Doel | Standaard |
 |-----------|------|-----------|
-| `CONTACT_TO_EMAIL` | Ontvanger FormSubmit | `info@axaweb.nl` |
+| `CONTACT_TO_EMAIL` | Ontvanger | `info@axaweb.nl` |
 | `ALLOWED_ORIGINS` | Toegestane Origins (CSV) | `https://axaweb.nl,https://www.axaweb.nl` |
+| `RESEND_API_KEY` | Optioneel: Resend API-sleutel | — |
+| `CONTACT_FROM_EMAIL` | Optioneel: Resend afzender (geverifieerd domein) | — |
 
-Geen API-sleutel nodig. Optioneel overschrijven in Vercel → Environment Variables.
-
-> Let op: FormSubmit vraagt bij het eerste bericht naar een nieuw adres om activatie via e-mail.
+> FormSubmit vraagt bij het **eerste** bericht naar een nieuw adres om activatie via e-mail. Check `info@axaweb.nl` (inbox + spam) en bevestig de activatielink.
 
 ## Beveiliging
 

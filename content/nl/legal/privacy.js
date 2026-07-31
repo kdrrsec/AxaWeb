@@ -153,12 +153,6 @@ export const privacyDoc = {
           type: "ul",
           items: [
             {
-              html: "<strong>FormSubmit (formsubmit.co)</strong> — technische mailverwerker voor het bezorgen van contact- en offerteberichten naar ons e-mailadres. FormSubmit ontvangt de formuliergegevens die nodig zijn om je bericht te bezorgen.",
-            },
-            {
-              html: "<strong>Hosting / infrastructuur</strong> — onze website draait op infrastructuur van een hostingprovider (onder meer Vercel). Die partij kan technisch loggegevens verwerken die bij het hosten van websites horen.",
-            },
-            {
               html: "<strong>Google (Fonts, en optioneel Analytics)</strong> — Google Fonts voor lettertypen; Google Analytics 4 alleen na toestemming voor Statistieken.",
             },
             {

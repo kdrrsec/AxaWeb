@@ -256,6 +256,43 @@ export function initContactForm() {
         throw new Error(data.error || "request_failed");
       }
 
+      /* FormSubmit werkt niet vanaf Vercel serverless (Cloudflare). Browser-handoff. */
+      if (data.delivery === "formsubmit_browser" && data.formsubmit?.endpoint) {
+        const mailResponse = await fetch(data.formsubmit.endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(data.formsubmit.body || {}),
+        });
+
+        let mailData = {};
+        try {
+          mailData = await mailResponse.json();
+        } catch {
+          mailData = {};
+        }
+
+        if (
+          !mailResponse.ok ||
+          mailData.success === false ||
+          mailData.success === "false"
+        ) {
+          const msg = String(mailData.message || "").toLowerCase();
+          if (msg.includes("confirm") || msg.includes("activat") || msg.includes("verify")) {
+            setStatus(
+              statusEl,
+              formMessage("status.activationPending") || formMessage("status.configError"),
+              "error"
+            );
+            focusStatus(statusEl);
+            return;
+          }
+          throw new Error("formsubmit_failed");
+        }
+      }
+
       trackFormSuccess(form);
       form.reset();
       if (startedAt) startedAt.value = String(Date.now());

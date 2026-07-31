@@ -17,8 +17,13 @@ export function getAllowedOrigins() {
   const fromEnv = parseOriginList(process.env.ALLOWED_ORIGINS);
   const list = fromEnv.length ? [...fromEnv] : [...DEFAULT_ALLOWED];
 
-  if (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL) {
-    list.push(`https://${process.env.VERCEL_URL}`);
+  if (process.env.VERCEL_ENV === "preview") {
+    if (process.env.VERCEL_URL) {
+      list.push(`https://${process.env.VERCEL_URL}`);
+    }
+    if (process.env.VERCEL_BRANCH_URL) {
+      list.push(`https://${process.env.VERCEL_BRANCH_URL}`);
+    }
   }
 
   if (process.env.NODE_ENV !== "production") {

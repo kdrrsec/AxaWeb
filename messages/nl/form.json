@@ -30,7 +30,8 @@
     "success": "Bedankt! Je aanvraag is ontvangen. We nemen zo snel mogelijk contact met je op.",
     "error": "Er ging iets mis bij het verzenden. Controleer je verbinding en probeer het opnieuw, of mail naar info@axaweb.nl.",
     "rateLimited": "Je hebt zojuist al een aanvraag gestuurd. Probeer het over een paar minuten opnieuw.",
-    "configError": "Het contactformulier is tijdelijk niet beschikbaar. Mail ons gerust via info@axaweb.nl."
+    "configError": "Het contactformulier is tijdelijk niet beschikbaar. Mail ons gerust via info@axaweb.nl.",
+    "activationPending": "Bijna klaar: bevestig de activatielink van FormSubmit in de inbox van info@axaweb.nl (controleer ook spam). Daarna werkt het formulier direct."
   },
   "errors": {
     "nameRequired": "Vul je naam in.",

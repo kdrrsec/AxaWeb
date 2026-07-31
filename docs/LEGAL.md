@@ -13,9 +13,11 @@ Gedeelde bedrijfsgegevens / placeholders: `content/nl/legal/company.js`.
 
 Generatie: `scripts/generate-legal-pages.js` (aangeroepen vanuit `npm run build`).
 
-## Placeholders invullen
+## Bedrijfsgegevens in documenten
 
-Vervang in `company.js`:
+Privacy toont alleen e-mail, telefoon, website en land (geen KvK/BTW/adres).
+
+Optionele placeholders in `company.js` (alleen als `includeRegistry: true` wordt gebruikt):
 
 - `[KvK-nummer]`
 - `[BTW-nummer]`
