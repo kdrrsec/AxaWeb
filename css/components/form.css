@@ -46,6 +46,7 @@
 }
 
 .contact-form {
+  position: relative;
   display: grid;
   gap: 1rem;
   padding: clamp(1.25rem, 3vw, 1.75rem);
@@ -108,6 +109,111 @@
   background-size: 0.4rem 0.4rem, 0.4rem 0.4rem;
   background-repeat: no-repeat;
   padding-right: 2.4rem;
+}
+
+/* Custom select: dark theme, betrouwbaar in Chrome/Edge/Firefox/Safari */
+.custom-select {
+  position: relative;
+}
+
+.custom-select__native {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  appearance: none !important;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.custom-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding-right: 2.4rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.15rem) calc(50% - 0.15rem),
+    calc(100% - 0.75rem) calc(50% - 0.15rem);
+  background-size: 0.4rem 0.4rem, 0.4rem 0.4rem;
+  background-repeat: no-repeat;
+}
+
+.custom-select__trigger--placeholder {
+  color: rgba(184, 195, 209, 0.72);
+}
+
+.custom-select.is-open .custom-select__trigger {
+  border-color: rgba(35, 139, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--focus);
+}
+
+.custom-select__trigger[aria-invalid="true"] {
+  border-color: rgba(255, 120, 120, 0.85);
+}
+
+.custom-select__list {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: #0f172a;
+  box-shadow: 0 16px 36px rgba(2, 8, 18, 0.55);
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+.custom-select__option {
+  padding: 0.7rem 0.85rem;
+  border-radius: calc(var(--radius-sm) - 2px);
+  color: #f4f7fb;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.custom-select__option.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.custom-select__option.is-active,
+.custom-select__option:hover:not(.is-disabled) {
+  background: rgba(35, 139, 255, 0.22);
+  color: #fff;
+}
+
+.custom-select__option[aria-selected="true"] {
+  background: rgba(35, 139, 255, 0.35);
+  color: #fff;
+  font-weight: 600;
+}
+
+.custom-select__option[aria-selected="true"].is-active,
+.custom-select__option[aria-selected="true"]:hover {
+  background: rgba(35, 139, 255, 0.48);
+}
+
+.custom-select__option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
 }
 
 .field__control::placeholder {
@@ -174,6 +280,34 @@
 
 .form-status--info {
   color: var(--accent-hover);
+}
+
+.form-status:focus {
+  outline: none;
+}
+
+.form-status:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Honeypot: onzichtbaar voor gebruikers, wel in DOM voor bots */
+.hp-field {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.btn.is-loading {
+  opacity: 0.85;
+  cursor: wait;
 }
 
 @media (min-width: 720px) {
