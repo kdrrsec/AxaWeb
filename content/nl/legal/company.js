@@ -1,6 +1,6 @@
 /**
- * Bekende AxaWeb-gegevens + placeholders voor later invullen.
- * Geen verzonnen KvK/BTW/adres: alleen wat op de site of in docs staat.
+ * Bekende AxaWeb-gegevens voor juridische documenten.
+ * Geen KvK, BTW-nummer of bezoekadres in de publieke beleiden.
  */
 export const company = {
   brand: "AxaWeb",
@@ -11,11 +11,6 @@ export const company = {
   phoneHref: "tel:+31629127575",
   country: "Nederland",
   website: "https://axaweb.nl",
-  /** Placeholders: vervang door echte gegevens */
-  kvk: "[KvK-nummer]",
-  btw: "[BTW-nummer]",
-  addressLine: "[Bezoekadres]",
-  postalCity: "[Postcode en plaats]",
   /** Laatste inhoudelijke update van de juridische documenten */
   documentsUpdated: "31 juli 2026",
   governingLaw: "Nederlands recht",
@@ -26,24 +21,14 @@ export function companyIdentityLine() {
   return `${company.legalLabel} (${company.parentNote})`;
 }
 
-/**
- * @param {{ includeRegistry?: boolean }} [options]
- * includeRegistry: KvK/BTW/adres-placeholders (standaard false)
- */
-export function companyContactBlockHtml({ includeRegistry = false } = {}) {
-  const registry = includeRegistry
-    ? `
-      <li>KvK: ${company.kvk}</li>
-      <li>BTW: ${company.btw}</li>
-      <li>Adres: ${company.addressLine}, ${company.postalCity}</li>`
-    : "";
-
+/** Contactblok voor privacy, voorwaarden en disclaimer (geen KvK/BTW/adres). */
+export function companyContactBlockHtml() {
   return `
     <ul>
       <li>E-mail: <a href="mailto:${company.email}">${company.email}</a></li>
       <li>Telefoon: <a href="${company.phoneHref}">${company.phoneDisplay}</a></li>
       <li>Website: <a href="${company.website}">${company.website}</a></li>
-      <li>Land: ${company.country}</li>${registry}
+      <li>Land: ${company.country}</li>
     </ul>
   `.trim();
 }
