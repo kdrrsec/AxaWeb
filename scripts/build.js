@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync, rea
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { generatePages } from "./generate-pages.js";
+import { generateSitemap } from "./generate-sitemap.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "public");
@@ -37,8 +38,11 @@ const requiredFiles = [
   "index.html",
   "privacy.html",
   "algemene-voorwaarden.html",
+  "404.html",
   "robots.txt",
   "sitemap.xml",
+  "site.webmanifest",
+  "browserconfig.xml",
   "favicon.png",
   "apple-touch-icon.png",
   "logo.png",
@@ -66,13 +70,19 @@ function bundleCss() {
     .join("\n\n");
 }
 
-function validateHtml(filePath) {
+function validateHtml(filePath, { allowNoindex = false } = {}) {
   const html = readFileSync(join(root, filePath), "utf8");
   const checks = [
     [/lang="nl"/, "Missing lang=nl"],
     [/<title>.+<\/title>/, "Missing title"],
     [/meta name="description"/, "Missing meta description"],
     [/<h1[\s>]/, "Missing H1"],
+    [/rel="canonical"/, "Missing canonical"],
+    [/property="og:title"/, "Missing og:title"],
+    [/property="og:description"/, "Missing og:description"],
+    [/property="og:image"/, "Missing og:image"],
+    [/name="twitter:card"/, "Missing twitter:card"],
+    [/hreflang="nl-NL"/, "Missing hreflang nl-NL"],
   ];
 
   checks.forEach(([pattern, message]) => {
@@ -81,6 +91,10 @@ function validateHtml(filePath) {
     }
   });
 
+  if (!allowNoindex && !/content="index,\s*follow"/.test(html)) {
+    throw new Error(`${filePath}: Expected robots index, follow`);
+  }
+
   const h1Count = (html.match(/<h1[\s>]/g) || []).length;
   if (h1Count !== 1) {
     throw new Error(`${filePath}: Expected exactly one H1, found ${h1Count}`);
@@ -88,6 +102,7 @@ function validateHtml(filePath) {
 }
 
 generatePages();
+generateSitemap();
 
 requiredFiles.forEach(assertExists);
 pageSlugs.forEach((slug) => assertExists(`${slug}.html`));
@@ -100,6 +115,7 @@ caseSlugs.forEach((slug) => {
 validateHtml("index.html");
 validateHtml("privacy.html");
 validateHtml("algemene-voorwaarden.html");
+validateHtml("404.html", { allowNoindex: true });
 pageSlugs.forEach((slug) => validateHtml(`${slug}.html`));
 caseSlugs.forEach((slug) => validateHtml(`projecten/${slug}.html`));
 
@@ -113,8 +129,11 @@ const staticCopies = [
   "index.html",
   "privacy.html",
   "algemene-voorwaarden.html",
+  "404.html",
   "robots.txt",
   "sitemap.xml",
+  "site.webmanifest",
+  "browserconfig.xml",
   "favicon.png",
   "apple-touch-icon.png",
   "logo.png",
@@ -134,7 +153,6 @@ cpSync(join(root, "images", "projects"), join(dist, "images", "projects"), { rec
 cpSync(join(root, "projecten"), join(dist, "projecten"), { recursive: true });
 cpSync(join(root, "js"), join(dist, "js"), { recursive: true });
 cpSync(join(root, "css"), join(dist, "css"), { recursive: true });
-/* Locale-content + browser-safe i18n helpers (homepage data loaders) */
 cpSync(join(root, "content"), join(dist, "content"), { recursive: true });
 mkdirSync(join(dist, "i18n"), { recursive: true });
 ["config.js", "routing.js"].forEach((file) => {
@@ -156,10 +174,12 @@ function useBundleCss(fileName) {
 }
 
 useBundleCss("index.html");
+useBundleCss("404.html");
+useBundleCss("privacy.html");
+useBundleCss("algemene-voorwaarden.html");
 pageSlugs.forEach((slug) => useBundleCss(`${slug}.html`));
 caseSlugs.forEach((slug) => useBundleCss(`projecten/${slug}.html`));
 
-/* Strip large PNG sources from dist if present — keep webp/jpg only */
 for (const slug of caseSlugs) {
   const dir = join(dist, "images", "projects", slug);
   if (!existsSync(dir)) continue;

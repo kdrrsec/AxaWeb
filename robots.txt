@@ -1,4 +1,12 @@
+# AxaWeb robots.txt
 User-agent: *
 Allow: /
+
+# Interne / niet-publieke paden (build-artifacts in public)
+Disallow: /api/
+Disallow: /content/
+Disallow: /messages/
+Disallow: /data/
+Disallow: /i18n/
 
 Sitemap: https://axaweb.nl/sitemap.xml

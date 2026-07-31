@@ -24,9 +24,9 @@ export const pages = {
   diensten: {
     slug: "diensten",
     navKey: "diensten",
-    title: "Diensten | AxaWeb",
+    title: "Diensten | Websites, Webshops, Hosting & Onderhoud | AxaWeb",
     description:
-      "Websites, webshops, hosting en onderhoud. Ontdek welke dienst van AxaWeb past bij jouw bedrijf en vergelijk het aanbod in één oogopslag.",
+      "Ontdek de diensten van AxaWeb: website laten maken, webshop op maat, hosting en website onderhoud. Eén digitale partner voor jouw online groei.",
     canonical: "https://axaweb.nl/diensten",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Diensten" }],
     head: {
@@ -157,9 +157,9 @@ export const pages = {
   websites: {
     slug: "websites",
     navKey: "diensten",
-    title: "Websites op maat | AxaWeb",
+    title: "Website Laten Maken | Websites op Maat | AxaWeb",
     description:
-      "Maatwerkwebsites die vertrouwen wekken en klanten opleveren. Bekijk functionaliteiten, het proces, prijzen vanaf €395 en cases.",
+      "Website laten maken door AxaWeb? Professionele websites op maat met SEO-basis, snelle laadtijd en vaste vanafprijzen. Bekijk pakketten en cases.",
     canonical: "https://axaweb.nl/websites",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -169,8 +169,8 @@ export const pages = {
     head: {
       variant: "split",
       eyebrow: "Websites",
-      title: "Websites die vertrouwen wekken en klanten opleveren.",
-      text: "Geen standaardthema dat overal terugkomt, maar een maatwerkwebsite die jouw merk scherp neerzet en bezoekers in beweging brengt.",
+      title: "Website laten maken die vertrouwen wekt en klanten oplevert.",
+      text: "Geen standaardthema dat overal terugkomt, maar een website op maat die jouw merk scherp neerzet en bezoekers in beweging brengt.",
       actions: [
         { label: "Offerte aanvragen", href: "/offerte", style: "primary" },
         { label: "Bekijk ons werk", href: "/projecten", style: "secondary" },
@@ -306,9 +306,9 @@ export const pages = {
   webshops: {
     slug: "webshops",
     navKey: "diensten",
-    title: "Webshops laten bouwen | AxaWeb",
+    title: "Webshop Laten Maken | Conversiegerichte Shops | AxaWeb",
     description:
-      "Conversiegerichte webshops met soepele checkout, iDEAL en eenvoudig beheer. Bekijk features, integraties en cases van AxaWeb.",
+      "Webshop laten maken door AxaWeb. Conversiegerichte webshops met betalingen, voorraadbeheer en schaalbare structuur. Vraag een vrijblijvende offerte aan.",
     canonical: "https://axaweb.nl/webshops",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -318,7 +318,7 @@ export const pages = {
     head: {
       variant: "split",
       eyebrow: "Webshops",
-      title: "Een webshop die verkoopt en makkelijk te beheren is.",
+      title: "Webshop laten maken die verkoopt en makkelijk te beheren is.",
       text: "We bouwen conversiegerichte webshops die prettig werken voor klanten én voor jou als beheerder. Van eerste product tot groeiend assortiment.",
       actions: [
         { label: "Offerte aanvragen", href: "/offerte", style: "primary" },
@@ -432,9 +432,9 @@ export const pages = {
   hosting: {
     slug: "hosting",
     navKey: "diensten",
-    title: "Hosting | AxaWeb",
+    title: "Hosting | Snelle & Veilige Website Hosting | AxaWeb",
     description:
-      "Snelle en veilige hosting in Nederlandse datacenters. Vergelijk hostingpakketten vanaf €99 per jaar, met SSL, dagelijkse back-ups en persoonlijke support.",
+      "Betrouwbare website hosting bij AxaWeb: SSL, back-ups, monitoring en persoonlijke support. Stabiele hosting vanaf een vaste jaarprijs. Meer weten?",
     canonical: "https://axaweb.nl/hosting",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -525,9 +525,9 @@ export const pages = {
   onderhoud: {
     slug: "onderhoud",
     navKey: "diensten",
-    title: "Website onderhoud | AxaWeb",
+    title: "Website Onderhoud | Updates, Monitoring & Support | AxaWeb",
     description:
-      "Onderhoudsabonnementen vanaf €39 per maand: updates, monitoring en duidelijke SLA-reactietijden. Zo blijft je website snel, veilig en betrouwbaar.",
+      "Website onderhoud door AxaWeb: updates, monitoring, security en support. Houd je site veilig en actueel met een duidelijk maandabonnement. Meer info.",
     canonical: "https://axaweb.nl/onderhoud",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -633,9 +633,9 @@ export const pages = {
   pakketten: {
     slug: "pakketten",
     navKey: "pakketten",
-    title: "Pakketten en prijzen | AxaWeb",
+    title: "Pakketten & Prijzen | Websites en Abonnementen | AxaWeb",
     description:
-      "Compleet overzicht van alle AxaWeb-pakketten: webpakketten vanaf €395 (introductieprijs), hosting vanaf €99 per jaar en onderhoud vanaf €39 per maand. Exclusief 21% btw.",
+      "Bekijk AxaWeb-pakketten voor websites, Website as a Service, hosting en onderhoud. Duidelijke prijzen, geen verrassingen. Vraag vrijblijvend advies.",
     canonical: "https://axaweb.nl/pakketten",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Pakketten" }],
     head: {
@@ -679,9 +679,9 @@ export const pages = {
   projecten: {
     slug: "projecten",
     navKey: "projecten",
-    title: "Projecten | AxaWeb",
+    title: "Projecten | Bekijk Ons Werk | AxaWeb",
     description:
-      "Bekijk geselecteerd werk van AxaWeb: Bandendepot, Axanet en ViralOn. Live websites met aandacht voor structuur, uitstraling en technische kwaliteit.",
+      "Bekijk ons werk: live websites van AxaWeb zoals Bandendepot, Axanet en ViralOn. Projecten met focus op structuur, uitstraling en technische kwaliteit.",
     canonical: "https://axaweb.nl/projecten",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Projecten" }],
     head: {
@@ -708,9 +708,9 @@ export const pages = {
   contact: {
     slug: "contact",
     navKey: "contact",
-    title: "Contact | AxaWeb",
+    title: "Contact | Vraag Een Offerte Aan | AxaWeb",
     description:
-      "Neem contact op met AxaWeb voor websites, webshops, hosting of onderhoud. Je ontvangt binnen één werkdag een persoonlijke reactie.",
+      "Neem contact op met AxaWeb voor een website, webshop, hosting of onderhoud. Persoonlijke reactie binnen één werkdag. Plan vandaag nog een kennismaking.",
     canonical: "https://axaweb.nl/contact",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Contact" }],
     head: {
@@ -771,9 +771,9 @@ export const pages = {
   offerte: {
     slug: "offerte",
     navKey: "contact",
-    title: "Offerte aanvragen | AxaWeb",
+    title: "Offerte Aanvragen | Website of Webshop | AxaWeb",
     description:
-      "Vraag vrijblijvend een offerte aan bij AxaWeb voor een website, webshop, hosting of onderhoud. Duidelijke vanafprijzen en persoonlijk advies.",
+      "Vraag een vrijblijvende offerte aan bij AxaWeb voor je website of webshop. Duidelijke vanafprijzen, persoonlijk advies en snelle, heldere opvolging.",
     canonical: "https://axaweb.nl/offerte",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Offerte" }],
     head: {

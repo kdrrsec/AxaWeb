@@ -77,9 +77,9 @@ export const projects = [
       altMid: "Offerte-sectie op bandendepot.nl",
     },
     meta: {
-      title: "Bandendepot case | AxaWeb projecten",
+      title: "Bandendepot | Website Case | AxaWeb Projecten",
       description:
-        "Case: website voor Bandendepot - online warenhuis voor banden met offerteformulier, duidelijke navigatie en conversiegerichte opbouw.",
+        "Case: website ontwikkeling voor Bandendepot — online warenhuis voor banden met offerteformulier, duidelijke navigatie en conversiegerichte opbouw.",
     },
   },
   {
@@ -155,9 +155,9 @@ export const projects = [
       altMid: "Dienstenoverzicht op axanet.nl",
     },
     meta: {
-      title: "Axanet case | AxaWeb projecten",
+      title: "Axanet | Website Case | AxaWeb Projecten",
       description:
-        "Case: website voor Axanet - IT-beheer, servicedesk en Microsoft 365, met premium design en duidelijke kennismakingsflow.",
+        "Case: website op maat voor Axanet — IT-beheer, servicedesk en Microsoft 365, met premium B2B-uitstraling en een heldere kennismakingsflow online.",
     },
   },
   {
@@ -233,9 +233,9 @@ export const projects = [
       altMid: "Processectie op viralon.nl",
     },
     meta: {
-      title: "ViralOn case | AxaWeb projecten",
+      title: "ViralOn | Website Case | AxaWeb Projecten",
       description:
-        "Case: website voor ViralOn - social media marketing voor TikTok en Instagram Reels, met dark premium design en duidelijke kennismakingsflow.",
+        "Case: website laten maken voor ViralOn — social media marketing voor TikTok en Instagram Reels, met focus op merk, diensten en conversie online.",
     },
   },
 ];
