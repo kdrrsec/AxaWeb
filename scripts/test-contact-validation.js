@@ -3,7 +3,11 @@ import {
   validateContactPayload,
   PROJECT_TYPE_VALUES,
   BUDGET_VALUES,
+  isSafeSourcePage,
 } from "../js/lib/contact-validation.js";
+import { assertTrustedOrigin, getAllowedOrigins } from "../api/lib/origin.js";
+import { checkDuplicateSubmission } from "../api/lib/rate-limit.js";
+import { escapeHtml, safeUrl } from "../js/lib/escape.js";
 
 function base(overrides = {}) {
   return {
@@ -45,7 +49,43 @@ const tooFast = validateContactPayload(base({ formStartedAt: Date.now() }));
 assert.equal(tooFast.ok, false);
 assert.equal(tooFast.code, "too_fast");
 
+const missingStart = validateContactPayload(base({ formStartedAt: 0 }));
+assert.equal(missingStart.ok, false);
+assert.equal(missingStart.code, "too_fast");
+
+const tooOld = validateContactPayload(base({ formStartedAt: Date.now() - 48 * 60 * 60 * 1000 }));
+assert.equal(tooOld.ok, false);
+assert.equal(tooOld.code, "too_fast");
+
+assert.equal(isSafeSourcePage("/contact"), true);
+assert.equal(isSafeSourcePage("https://evil.test"), false);
+assert.equal(isSafeSourcePage("//evil.test"), false);
+
+const unsafeSource = validateContactPayload(base({ sourcePage: "https://evil.test" }));
+assert.equal(unsafeSource.ok, true);
+assert.equal(unsafeSource.data.sourcePage, "/");
+
 assert.ok(PROJECT_TYPE_VALUES.includes("website-as-a-service"));
 assert.ok(BUDGET_VALUES.includes("to-discuss"));
+
+/* Origin checks (non-production allows missing origin) */
+process.env.NODE_ENV = "test";
+delete process.env.VERCEL_ENV;
+assert.ok(getAllowedOrigins().includes("https://axaweb.nl"));
+assert.equal(assertTrustedOrigin({ headers: { origin: "https://evil.test" } }).ok, false);
+assert.equal(assertTrustedOrigin({ headers: { origin: "https://axaweb.nl" } }).ok, true);
+assert.equal(
+  assertTrustedOrigin({ headers: { "sec-fetch-site": "cross-site", origin: "https://axaweb.nl" } }).ok,
+  false
+);
+
+const first = checkDuplicateSubmission("test-fingerprint");
+const second = checkDuplicateSubmission("test-fingerprint");
+assert.equal(first.duplicate, false);
+assert.equal(second.duplicate, true);
+
+assert.equal(escapeHtml('<img src=x onerror=alert(1)>'), "&lt;img src=x onerror=alert(1)&gt;");
+assert.equal(safeUrl("javascript:alert(1)"), "#");
+assert.equal(safeUrl("/projecten/axanet"), "/projecten/axanet");
 
 console.log("Contact validation tests passed.");
