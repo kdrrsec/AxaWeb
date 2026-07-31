@@ -101,22 +101,22 @@ export const privacyDoc = {
           type: "ul",
           items: [
             {
-              html: "<strong>Contact en offertes afhandelen</strong> — om te reageren op je aanvraag, vragen te beantwoorden en een offerte of voorstel te doen. Rechtsgrond: gerechtvaardigd belang en/of uitvoering van precontractuele stappen op jouw verzoek (AVG art. 6 lid 1 sub b en f).",
+              html: "<strong>Contact en offertes afhandelen:</strong> om te reageren op je aanvraag, vragen te beantwoorden en een offerte of voorstel te doen. Rechtsgrond: gerechtvaardigd belang en/of uitvoering van precontractuele stappen op jouw verzoek (AVG art. 6 lid 1 sub b en f).",
             },
             {
-              html: "<strong>Overeenkomst en dienstverlening</strong> — als je klant wordt, voor uitvoering van de overeenkomst. Rechtsgrond: uitvoering overeenkomst (art. 6 lid 1 sub b).",
+              html: "<strong>Overeenkomst en dienstverlening:</strong> als je klant wordt, voor uitvoering van de overeenkomst. Rechtsgrond: uitvoering overeenkomst (art. 6 lid 1 sub b).",
             },
             {
-              html: "<strong>Beveiliging en misbruikpreventie</strong> — bijvoorbeeld rate limiting en spamfilters op formulieren. Rechtsgrond: gerechtvaardigd belang (art. 6 lid 1 sub f).",
+              html: "<strong>Beveiliging en misbruikpreventie:</strong> bijvoorbeeld rate limiting en spamfilters op formulieren. Rechtsgrond: gerechtvaardigd belang (art. 6 lid 1 sub f).",
             },
             {
-              html: "<strong>Statistieken en verbetering van de website</strong> — via Google Analytics 4 en Microsoft Clarity, alleen na toestemming voor de categorie Statistieken. Rechtsgrond: toestemming (art. 6 lid 1 sub a).",
+              html: "<strong>Statistieken en verbetering van de website:</strong> via Google Analytics 4 en Microsoft Clarity, alleen na toestemming voor de categorie Statistieken. Rechtsgrond: toestemming (art. 6 lid 1 sub a).",
             },
             {
-              html: "<strong>Noodzakelijke cookies / opslag</strong> — om de site te laten werken en je cookiekeuze te onthouden. Rechtsgrond: gerechtvaardigd belang / noodzakelijk voor de gevraagde dienst (en waar nodig toestemming volgens de cookieregels).",
+              html: "<strong>Noodzakelijke cookies / opslag:</strong> om de site te laten werken en je cookiekeuze te onthouden. Rechtsgrond: gerechtvaardigd belang / noodzakelijk voor de gevraagde dienst (en waar nodig toestemming volgens de cookieregels).",
             },
             {
-              html: "<strong>Wettelijke verplichtingen</strong> — bijvoorbeeld bewaarplichten voor administratie. Rechtsgrond: wettelijke verplichting (art. 6 lid 1 sub c).",
+              html: "<strong>Wettelijke verplichtingen:</strong> bijvoorbeeld bewaarplichten voor administratie. Rechtsgrond: wettelijke verplichting (art. 6 lid 1 sub c).",
             },
           ],
         },
@@ -153,30 +153,30 @@ export const privacyDoc = {
           type: "ul",
           items: [
             {
-              html: "<strong>Google (Fonts, en optioneel Analytics)</strong> — Google Fonts voor lettertypen; Google Analytics 4 alleen na toestemming voor Statistieken.",
+              html: "<strong>Google (Fonts, en optioneel Analytics):</strong> Google Fonts voor lettertypen; Google Analytics 4 alleen na toestemming voor Statistieken.",
             },
             {
-              html: "<strong>Microsoft Clarity</strong> — alleen na toestemming voor Statistieken, voor geaggregeerde gebruiks- en sessie-inzichten. Formuliervelden kunnen worden gemaskeerd waar dat is ingericht.",
+              html: "<strong>Microsoft Clarity:</strong> alleen na toestemming voor Statistieken, voor gebruiks- en sessie-inzichten.",
             },
           ],
         },
         {
           type: "p",
-          text: "Sommige van deze partijen kunnen gegevens (ook) buiten de EER verwerken. Waar dat het geval is, doen we dat op basis van passende waarborgen zoals standaardcontractbepalingen van de Europese Commissie, voor zover van toepassing, en — voor niet-noodzakelijke tracking — jouw toestemming.",
+          text: "Sommige van deze partijen kunnen gegevens (ook) buiten de EER verwerken. Waar dat het geval is, doen we dat op basis van passende waarborgen zoals standaardcontractbepalingen van de Europese Commissie, voor zover van toepassing, en bij niet-noodzakelijke tracking ook op basis van jouw toestemming.",
         },
       ],
     },
     {
       id: "cookies-analytics",
-      title: "6. Cookies, Consent Mode en analytics",
+      title: "6. Cookies en analytics",
       blocks: [
         {
           type: "p",
-          html: `We gebruiken een cookiebanner met categorieën: noodzakelijk, voorkeuren, statistieken en marketing. Optionele statistiekstools laden pas na toestemming. We gebruiken Google Consent Mode v2 zodat toestemmingskeuzes correct worden doorgegeven aan Google-tags. Details staan in het <a href="/cookies">cookiebeleid</a>.`,
+          html: `We gebruiken een cookiebanner met categorieën: noodzakelijk, voorkeuren, statistieken en marketing. Optionele statistiekstools laden pas na toestemming. Meer details staan in het <a href="/cookies">cookiebeleid</a>.`,
         },
         {
           type: "p",
-          text: "Gemeten gebeurtenissen (alleen bij statistiektoestemming) kunnen bijvoorbeeld betrekking hebben op formulierverzendingen, klikken op bel- of WhatsApp-links, CTA’s en interacties met prijzen of projecten. We sturen geen namen, e-mailadressen, telefoonnummers of berichtteksten mee als eventparameters.",
+          text: "Bij statistiektoestemming kunnen we anonieme gebruiksgegevens meten, zoals paginaweergaven of klikken op contactknoppen. We sturen geen namen, e-mailadressen, telefoonnummers of berichtteksten mee.",
         },
       ],
     },

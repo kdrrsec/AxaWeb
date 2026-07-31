@@ -1,6 +1,6 @@
 /**
  * Bekende AxaWeb-gegevens + placeholders voor later invullen.
- * Geen verzonnen KvK/BTW/adres — alleen wat op de site of in docs staat.
+ * Geen verzonnen KvK/BTW/adres: alleen wat op de site of in docs staat.
  */
 export const company = {
   brand: "AxaWeb",
@@ -11,7 +11,7 @@ export const company = {
   phoneHref: "tel:+31629127575",
   country: "Nederland",
   website: "https://axaweb.nl",
-  /** Placeholders — vervang door echte gegevens */
+  /** Placeholders: vervang door echte gegevens */
   kvk: "[KvK-nummer]",
   btw: "[BTW-nummer]",
   addressLine: "[Bezoekadres]",

@@ -1,6 +1,6 @@
 {
   "siteName": "AxaWeb",
-  "defaultOgImageAlt": "AxaWeb — premium berglandschap als visuele identiteit",
+  "defaultOgImageAlt": "AxaWeb: premium berglandschap als visuele identiteit",
   "organization": {
     "name": "AxaWeb",
     "legalName": "AxaWeb",
@@ -60,7 +60,7 @@
     },
     "cookies": {
       "title": "Cookiebeleid | AxaWeb",
-      "description": "Cookiebeleid van AxaWeb: categorieën, Consent Mode v2, Google Analytics, Microsoft Clarity en hoe je cookietoestemming wijzigt."
+      "description": "Cookiebeleid van AxaWeb: welke cookiecategorieën we gebruiken, Google Analytics, Microsoft Clarity en hoe je toestemming wijzigt."
     },
     "disclaimer": {
       "title": "Disclaimer | AxaWeb",

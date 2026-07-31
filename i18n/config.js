@@ -49,7 +49,7 @@ export const siteName = "AxaWeb";
 
 /** Één professionele social preview voor alle pagina's (tenzij override) */
 export const defaultOgImage = `${siteUrl}/images/background.jpg`;
-export const defaultOgImageAlt = "AxaWeb — premium berglandschap als visuele identiteit";
+export const defaultOgImageAlt = "AxaWeb: premium berglandschap als visuele identiteit";
 export const defaultOgImageWidth = 1920;
 export const defaultOgImageHeight = 1280;
 

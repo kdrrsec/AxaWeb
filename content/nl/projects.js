@@ -79,7 +79,7 @@ export const projects = [
     meta: {
       title: "Bandendepot | Website Case | AxaWeb Projecten",
       description:
-        "Case: website ontwikkeling voor Bandendepot — online warenhuis voor banden met offerteformulier, duidelijke navigatie en conversiegerichte opbouw.",
+        "Case: website ontwikkeling voor Bandendepot: online warenhuis voor banden met offerteformulier, duidelijke navigatie en conversiegerichte opbouw.",
     },
   },
   {
@@ -157,7 +157,7 @@ export const projects = [
     meta: {
       title: "Axanet | Website Case | AxaWeb Projecten",
       description:
-        "Case: website op maat voor Axanet — IT-beheer, servicedesk en Microsoft 365, met premium B2B-uitstraling en een heldere kennismakingsflow online.",
+        "Case: website op maat voor Axanet: IT-beheer, servicedesk en Microsoft 365, met premium B2B-uitstraling en een heldere kennismakingsflow online.",
     },
   },
   {
@@ -235,7 +235,7 @@ export const projects = [
     meta: {
       title: "ViralOn | Website Case | AxaWeb Projecten",
       description:
-        "Case: website laten maken voor ViralOn — social media marketing voor TikTok en Instagram Reels, met focus op merk, diensten en conversie online.",
+        "Case: website laten maken voor ViralOn: social media marketing voor TikTok en Instagram Reels, met focus op merk, diensten en conversie online.",
     },
   },
 ];

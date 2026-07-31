@@ -1,7 +1,7 @@
 import { company, companyIdentityLine } from "./company.js";
 
 /**
- * Cookiebeleid AxaWeb — afgestemd op cookie-consent + Consent Mode v2.
+ * Cookiebeleid AxaWeb, afgestemd op cookie-consent.
  */
 export const cookiesDoc = {
   pageId: "cookies",
@@ -9,7 +9,7 @@ export const cookiesDoc = {
   path: "/cookies",
   title: "Cookiebeleid | AxaWeb",
   description:
-    "Cookiebeleid van AxaWeb: categorieën, Consent Mode v2, Google Analytics, Microsoft Clarity en hoe je cookietoestemming wijzigt.",
+    "Cookiebeleid van AxaWeb: welke cookiecategorieën we gebruiken, Google Analytics, Microsoft Clarity en hoe je toestemming wijzigt.",
   h1: "Cookiebeleid",
   updatedLabel: company.documentsUpdated,
   dateIso: "2026-07-31",
@@ -31,7 +31,7 @@ export const cookiesDoc = {
       blocks: [
         {
           type: "p",
-          text: "Cookies zijn kleine tekstbestanden die je browser kan opslaan wanneer je een website bezoekt. Vergelijkbare technieken, zoals localStorage, kunnen hetzelfde doel dienen — bijvoorbeeld het onthouden van je cookietoestemming.",
+          text: "Cookies zijn kleine tekstbestanden die je browser kan opslaan wanneer je een website bezoekt. Vergelijkbare technieken, zoals lokale opslag, kunnen hetzelfde doel dienen, bijvoorbeeld het onthouden van je cookietoestemming.",
         },
       ],
     },
@@ -75,39 +75,39 @@ export const cookiesDoc = {
     },
     {
       id: "consent-mode",
-      title: "3. Toestemming en Consent Mode v2",
+      title: "3. Toestemming",
       blocks: [
         {
           type: "p",
-          text: "Bij je eerste bezoek tonen we een cookiebanner. Je kunt alles accepteren, alles weigeren (behalve noodzakelijk), of categorieën apart instellen. Je keuze wordt lokaal opgeslagen (localStorage-sleutel axaweb_consent_v1) zodat de banner niet bij elk bezoek terugkomt op hetzelfde apparaat en dezelfde browser.",
+          text: "Bij je eerste bezoek tonen we een cookiebanner. Je kunt alles accepteren, alles weigeren (behalve noodzakelijk), of categorieën apart instellen. Je keuze wordt op dit apparaat onthouden, zodat de banner niet bij elk bezoek terugkomt.",
         },
         {
           type: "p",
-          text: "Voor Google-tags gebruiken we Google Consent Mode v2. Daarmee blijven meet-tags standaard beperkt totdat je statistiektoestemming geeft. Intrek je toestemming later, dan passen we de toestemmingsstatus opnieuw aan.",
+          text: "Optionele statistiek- of marketingtools laden pas na jouw toestemming. Je kunt je keuze later wijzigen via Cookievoorkeuren in de footer.",
         },
       ],
     },
     {
       id: "welke-tools",
-      title: "4. Welke tools en opslag kunnen worden gebruikt?",
+      title: "4. Welke tools kunnen worden gebruikt?",
       blocks: [
         {
           type: "ul",
           items: [
             {
-              html: "<strong>Cookietoestemming (noodzakelijk):</strong> lokale opslag van je categoriekeuze op dit apparaat.",
+              html: "<strong>Cookietoestemming (noodzakelijk):</strong> opslag van je keuze op dit apparaat.",
             },
             {
-              html: "<strong>Google Analytics 4 (statistieken, na toestemming):</strong> meet paginaweergaven en events die we hebben ingericht (zoals formulierverzendingen of CTA-klikken), zonder namen of berichtinhoud als parameters.",
+              html: "<strong>Google Analytics 4:</strong> statistieken over websitegebruik, alleen na toestemming.",
             },
             {
-              html: "<strong>Microsoft Clarity (statistieken, na toestemming):</strong> sessie-inzichten en heatmaps. Formuliervelden kunnen worden gemaskeerd waar dat is geconfigureerd.",
+              html: "<strong>Microsoft Clarity:</strong> sessie-inzichten, alleen na toestemming.",
             },
             {
-              html: "<strong>Google Fonts:</strong> laadt het lettertype Inter. Dit is functioneel voor weergave; Google kan daarbij een IP-adres technisch verwerken.",
+              html: "<strong>Google Fonts:</strong> laadt het lettertype Inter voor weergave.",
             },
             {
-              html: "<strong>Marketingtools:</strong> momenteel niet actief geladen zonder marketingtoestemming.",
+              html: "<strong>Marketingtools:</strong> niet actief zonder marketingtoestemming.",
             },
           ],
         },
@@ -121,7 +121,7 @@ export const cookiesDoc = {
           type: "ul",
           items: [
             "Je toestemmingskeuze blijft bewaard totdat je die wist via browsergegevens of via Cookievoorkeuren wijzigt.",
-            "Cookies en identifiers van Google Analytics en Microsoft Clarity volgen de standaard- of projectinstellingen van die diensten; exacte looptijden kunnen door de leverancier worden bepaald of aangepast.",
+            "Cookies van Google Analytics en Microsoft Clarity volgen de instellingen van die diensten.",
             "Zonder toestemming voor Statistieken of Marketing plaatsen die optionele tools geen trackingcookies via onze site.",
           ],
         },
@@ -143,7 +143,7 @@ export const cookiesDoc = {
       blocks: [
         {
           type: "p",
-          text: "Externe partijen (Google, Microsoft, hostingprovider) verwerken gegevens volgens hun eigen voorwaarden en privacyverklaringen wanneer hun diensten worden geladen. Wij laden optionele trackingscripts uitsluitend na de juiste toestemming.",
+          text: "Externe partijen (Google, Microsoft) verwerken gegevens volgens hun eigen voorwaarden wanneer hun diensten worden geladen. Wij laden optionele trackingscripts uitsluitend na de juiste toestemming.",
         },
       ],
     },

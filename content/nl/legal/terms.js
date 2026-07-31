@@ -366,7 +366,7 @@ export const termsDoc = {
         },
         {
           type: "p",
-          text: "AxaWeb is niet aansprakelijk voor indirecte schade, gevolgschade, gederfde winst, gemiste besparingen, reputatieschade, dataverlies (voor zover redelijke back-upmaatregelen zijn genomen of zijn aangeboden), of schade door onjuiste of onvolledige informatie van de opdrachtgever — voor zover de wet dit toelaat.",
+          text: "AxaWeb is niet aansprakelijk voor indirecte schade, gevolgschade, gederfde winst, gemiste besparingen, reputatieschade, dataverlies (voor zover redelijke back-upmaatregelen zijn genomen of zijn aangeboden), of schade door onjuiste of onvolledige informatie van de opdrachtgever, voor zover de wet dit toelaat.",
         },
         {
           type: "p",
@@ -394,7 +394,7 @@ export const termsDoc = {
       blocks: [
         {
           type: "p",
-          text: "AxaWeb mag de overeenkomst opschorten of (gedeeltelijk) ontbinden als de opdrachtgever essentiële verplichtingen niet nakomt — waaronder betalingsverplichtingen — en na ingebrekestelling nalatig blijft, of als voortzetting in redelijkheid niet van AxaWeb kan worden gevergd.",
+          text: "AxaWeb mag de overeenkomst opschorten of (gedeeltelijk) ontbinden als de opdrachtgever essentiële verplichtingen niet nakomt (waaronder betalingsverplichtingen) en na ingebrekestelling nalatig blijft, of als voortzetting in redelijkheid niet van AxaWeb kan worden gevergd.",
         },
         {
           type: "p",

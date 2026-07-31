@@ -40,7 +40,7 @@ export const disclaimerDoc = {
       blocks: [
         {
           type: "p",
-          html: `Inhoud op deze website — inclusief de <a href="/algemene-voorwaarden">algemene voorwaarden</a>, <a href="/privacy">privacyverklaring</a> en dit document — is bedoeld als duidelijke informatie over onze dienstverlening. Het is geen persoonlijk juridisch advies. Twijfel je over jouw situatie, win dan advies in bij een deskundige.`,
+          html: `Inhoud op deze website, inclusief de <a href="/algemene-voorwaarden">algemene voorwaarden</a>, <a href="/privacy">privacyverklaring</a> en dit document, is bedoeld als duidelijke informatie over onze dienstverlening. Het is geen persoonlijk juridisch advies. Twijfel je over jouw situatie, win dan advies in bij een deskundige.`,
         },
       ],
     },
