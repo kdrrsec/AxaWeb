@@ -5,7 +5,6 @@
 export const company = {
   brand: "AxaWeb",
   legalLabel: "AxaWeb",
-  parentNote: "onderdeel van AxaNet",
   email: "info@axaweb.nl",
   phoneDisplay: "06 29 12 75 75",
   phoneHref: "tel:+31629127575",
@@ -18,7 +17,7 @@ export const company = {
 };
 
 export function companyIdentityLine() {
-  return `${company.legalLabel} (${company.parentNote})`;
+  return company.legalLabel;
 }
 
 /** Contactblok voor privacy, voorwaarden en disclaimer (geen KvK/BTW/adres). */

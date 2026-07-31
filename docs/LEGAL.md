@@ -18,6 +18,6 @@ Generatie: `scripts/generate-legal-pages.js` (aangeroepen vanuit `npm run build`
 Contactblokken tonen alleen e-mail, telefoon, website en land.
 Geen KvK-nummer, BTW-nummer of bezoekadres in de publieke beleiden.
 
-Bekend en gebruikt: `info@axaweb.nl`, `06 29 12 75 75`, Nederland, AxaWeb (onderdeel van AxaNet).
+Bekend en gebruikt: `info@axaweb.nl`, `06 29 12 75 75`, Nederland, AxaWeb.
 
 Cookiebanner-teksten blijven in `messages/nl/cookies.json` (UI); het cookiebeleid-document staat in `content/nl/legal/cookies.js`.
