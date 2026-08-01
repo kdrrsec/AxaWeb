@@ -61,7 +61,7 @@ export function saveConsent(partial) {
   try {
     localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(state));
   } catch {
-    /* private mode / quota — UI werkt nog voor deze sessie */
+    /* private mode / quota - UI werkt nog voor deze sessie */
   }
 
   if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {

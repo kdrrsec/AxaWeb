@@ -1639,11 +1639,11 @@ function generateEnHomePage() {
   }
   if (home.intro?.p1 && home.intro?.p2) {
     html = html.replace(
-      /(<div class="intro__body reveal">)([\s\S]*?)(<\/div>\s*<ul class="intro__facts)/,
+      /(<div class="intro__body reveal">)[\s\S]*?(<\/div>)/,
       `$1
             <p>${escapeHtml(home.intro.p1)}</p>
             <p>${escapeHtml(home.intro.p2)}</p>
-          $3`
+          $2`
     );
   }
   if (Array.isArray(home.intro?.facts) && home.intro.facts.length >= 3) {

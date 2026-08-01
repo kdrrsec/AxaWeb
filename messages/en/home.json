@@ -1,58 +1,58 @@
 {
   "meta": {
     "title": "AxaWeb | Professional Websites & Digital Solutions",
-    "description": "Have your website or web shop built by AxaWeb. Custom websites, hosting, and maintenance for entrepreneurs. Request free advice or a quote.",
+    "description": "AxaWeb designs and builds custom websites and web shops, with hosting, maintenance, and support for growing businesses. Request advice or a quote.",
     "ogImageAlt": "AxaWeb: premium mountain landscape as visual identity",
-    "organizationDescription": "AxaWeb is a digital partner for entrepreneurs. Professional websites, web shops, hosting, maintenance, and technical support."
+    "organizationDescription": "AxaWeb is a digital partner for growing businesses. Custom websites, web shops, hosting, maintenance, and technical support."
   },
   "hero": {
     "title": "Your digital partner for a strong online foundation.",
-    "text": "From professional websites and web shops to hosting, maintenance, and technical support. Everything under one roof, with one reliable point of contact.",
+    "text": "From websites and web shops to hosting, maintenance, and technical support. One partner - from build to ongoing care.",
     "scroll": "Scroll"
   },
   "intro": {
     "eyebrow": "AxaWeb",
-    "title": "A digital partner for entrepreneurs ready to move forward.",
-    "p1": "AxaWeb builds complete online solutions: from design and development to hosting and maintenance. Not just another vendor, but a partner who thinks with you from the first idea and stays available after launch.",
-    "p2": "We work with clear agreements, fixed starting prices, and short lines of communication. So you always know where you stand.",
+    "title": "Digital partner for ambitious businesses.",
+    "p1": "AxaWeb designs, builds, hosts, and maintains complete online platforms. We stay involved from the first conversation through launch - and long after.",
+    "p2": "Clear agreements. Transparent starting prices. Direct communication. So the process stays predictable from day one.",
     "facts": [
       {
         "title": "100% custom-built",
-        "text": "No off-the-shelf templates — a solution built for your business."
+        "text": "No templates. Every website is designed specifically for your business."
       },
       {
-        "title": "One point of contact",
-        "text": "From idea to launch and beyond, always the same person."
+        "title": "Dedicated point of contact",
+        "text": "From the first conversation to launch and beyond, you'll always work with the same person."
       },
       {
-        "title": "Response within one business day",
-        "text": "Short lines and clear communication — no waiting queues."
+        "title": "Fast response",
+        "text": "We aim to respond within one business day - with clear, direct communication."
       }
     ]
   },
   "services": {
     "eyebrow": "Our services",
-    "title": "Everything for a strong online foundation.",
-    "intro": "Four services that stand strong on their own and together form a complete online presence."
+    "title": "Everything your online presence needs.",
+    "intro": "Four focused services. Strong on their own, stronger together."
   },
   "packages": {
     "eyebrow": "Packages",
-    "title": "Clear packages, honest starting prices.",
-    "intro": "Every website starts with a fixed starting price, so you know exactly where you stand upfront."
+    "title": "Clear packages. Honest starting prices.",
+    "intro": "Every package has a fixed starting price, so expectations are clear before work begins."
   },
   "projects": {
     "eyebrow": "Selected work",
-    "title": "Digital solutions worth showing.",
-    "intro": "A selection of websites and online projects built with care for look and feel, usability, and results."
+    "title": "Work built to perform.",
+    "intro": "A selection of websites shaped with care for brand, usability, and results."
   },
   "cta": {
     "eyebrow": "Next step",
-    "title": "Ready to strengthen your business online?",
-    "text": "Tell us what you need. We'll get in touch as soon as possible to discuss your goals, timeline, and options.",
+    "title": "Ready to grow your business online?",
+    "text": "Tell us what you need. We'll come back with practical next steps, timing, and options.",
     "button": "Request a quote"
   },
   "noscript": {
     "title": "AxaWeb services",
-    "text": "Websites, web shops, hosting, and maintenance for entrepreneurs. Get in touch via info@axaweb.nl."
+    "text": "Websites, web shops, hosting, and maintenance for growing businesses. Contact us at info@axaweb.nl."
   }
 }

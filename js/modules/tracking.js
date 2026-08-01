@@ -113,7 +113,7 @@ export function initTracking() {
     });
   }
 
-  /* WaaS cards may be in a hidden panel — observe anyway; fires when visible */
+  /* WaaS cards may be in a hidden panel - observe anyway; fires when visible */
   observeWaasPackages();
 }
 

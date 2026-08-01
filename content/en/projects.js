@@ -1,6 +1,6 @@
 /*
  * Live AxaWeb projects.
- * Copy based on visible analysis of the websites — no invented KPIs.
+ * Copy based on visible analysis of the websites - no invented KPIs.
  */
 
 export const projects = [
@@ -11,18 +11,18 @@ export const projects = [
     category: "Business website",
     services: ["Website", "Conversion-focused design", "Quote form"],
     summary:
-      "A conversion-focused website for an online tyre range, with a short path to a quote and advice.",
+      "A conversion-focused website for an online tyre retailer, with a short path to a quote and advice.",
     eyebrow: "Case",
-    title: "Bandendepot — online warehouse for tyres",
+    title: "Bandendepot - online warehouse for tyres",
     intro:
-      "Bandendepot presents itself as an online warehouse for quality tyres. The website combines a clear promise, a visible product journey, and an accessible quote form for the Netherlands and Belgium.",
+      "Bandendepot positions itself as an online warehouse for quality tyres. The website combines a clear promise, a direct route from interest to enquiry, and an accessible quote form for the Netherlands and Belgium.",
     client: {
       title: "About the client",
-      text: "Bandendepot serves individuals and businesses looking for tyres for passenger cars and commercial vehicles. Fast delivery, sharp pricing, and advice sit at the centre of the site, with a phone number for direct contact.",
+      text: "Bandendepot serves individuals and businesses looking for tyres for passenger cars and commercial vehicles. Fast delivery, sharp pricing, and advice are central to the site, with a phone number for direct contact.",
     },
     challenge: {
       title: "Challenge",
-      text: "Visitors need to quickly understand what Bandendepot offers and how to take the next step — without forcing a complex product-catalogue journey. The site must build trust in a price-sensitive market and keep the path to a quote or phone advice as short as possible.",
+      text: "Visitors need to understand quickly what Bandendepot offers and how to take the next step - without a heavy catalogue flow. The site must build trust in a price-sensitive market and keep the path to a quote or telephone advice as short as possible.",
     },
     approach: {
       title: "Our approach",
@@ -62,7 +62,7 @@ export const projects = [
     },
     result: {
       title: "Result",
-      text: "Live is a complete, easy-to-understand website where Bandendepot positions itself as an online tyre partner. Visitors can explore the offer, call directly, or request a no-obligation quote through a focused form.",
+      text: "The result is a complete, easy-to-understand website where Bandendepot positions itself as an online tyre partner. Visitors can explore the offer, call directly, or request a quote through a focused form.",
     },
     images: {
       desktop: "/images/projects/bandendepot/desktop-hero.webp",
@@ -79,7 +79,7 @@ export const projects = [
     meta: {
       title: "Bandendepot | Website Case Study | AxaWeb Projects",
       description:
-        "Case study: website development for Bandendepot — an online tyre warehouse with a quote form, clear navigation, and a conversion-focused structure.",
+        "Case study: website development for Bandendepot - an online tyre warehouse with a quote form, clear navigation, and a conversion-focused structure.",
       canonical: "https://axaweb.nl/en/projects/bandendepot",
     },
   },
@@ -92,20 +92,20 @@ export const projects = [
     summary:
       "A premium B2B website for IT management and support, built around trust and a clear introduction flow.",
     eyebrow: "Case",
-    title: "Axanet — IT management and support",
+    title: "Axanet - IT management and support",
     intro:
       "Axanet positions itself as a partner for IT management, service desk, workplace management, and Microsoft 365. The website is deliberately calm: little noise, strong hierarchy, and a direct path to an introduction call.",
     client: {
       title: "About the client",
-      text: "Axanet supports organisations that expect continuity from their IT. The site communicates services around service desk, workplace management, and Microsoft 365, with fixed contacts and clear agreements.",
+      text: "Axanet supports organisations that expect continuity from their IT. The site communicates services around service desk, workplace management, and Microsoft 365, with named contacts and clear agreements.",
     },
     challenge: {
       title: "Challenge",
-      text: "IT services are abstract. The website therefore needed to explain what Axanet does, for whom, and how to take the next step — without buzzwords, and with a look that fits serious B2B service delivery.",
+      text: "IT services are abstract. The website needed to explain what Axanet does, for whom, and how to take the next step - without buzzwords, and with a look that fits serious B2B service delivery.",
     },
     approach: {
       title: "Our approach",
-      text: "We designed a compact multipage structure with a split hero, short service cards, and a clear CTA to book an introduction. Content stays factual and scannable so visitors can orient themselves quickly.",
+      text: "We designed a compact multipage structure with a split hero, short service cards, and a clear CTA to book an introduction. Content stays factual and scannable, so visitors understand the offer quickly.",
       points: [
         "Split hero with strong typography and imagery",
         "Three core services in scannable cards",
@@ -115,7 +115,7 @@ export const projects = [
     },
     design: {
       title: "Design",
-      text: "The design combines a dark header with light content planes, Inter typography, and a teal accent for checks. Generous whitespace, sharp hierarchy, and a diagonal hero transition give the site a premium corporate character.",
+      text: "The design combines a dark header with light content sections, Inter typography, and a teal accent for checks. Generous whitespace, sharp hierarchy, and a diagonal hero transition give the site a premium corporate character.",
     },
     development: {
       title: "Development",
@@ -158,7 +158,7 @@ export const projects = [
     meta: {
       title: "Axanet | Website Case Study | AxaWeb Projects",
       description:
-        "Case study: custom website for Axanet — IT management, service desk, and Microsoft 365, with a premium B2B look and a clear introduction flow.",
+        "Case study: custom website for Axanet - IT management, service desk, and Microsoft 365, with a premium B2B look and a clear introduction flow.",
       canonical: "https://axaweb.nl/en/projects/axanet",
     },
   },
@@ -171,12 +171,12 @@ export const projects = [
     summary:
       "A dark marketing website for short-form content, with strong CTAs and a clear growth process.",
     eyebrow: "Case",
-    title: "ViralOn — social media marketing",
+    title: "ViralOn - social media marketing",
     intro:
-      "ViralOn is a social media marketing agency focused on short-form content. The website translates that into a dark, premium experience with strong CTAs, a three-step process, and room for FAQ and an introduction.",
+      "ViralOn is a social media marketing agency focused on short-form content. The website turns that into a dark, premium experience with strong CTAs, a three-step process, and space for FAQs and a clear introduction route.",
     client: {
       title: "About the client",
-      text: "ViralOn helps brands grow with strategic video content for TikTok and Instagram Reels. Positioning centres on ideating, creating, publishing, and optimising content meant to increase reach and engagement.",
+      text: "ViralOn helps brands grow with strategic video content for TikTok and Instagram Reels. Positioning centres on ideating, creating, publishing, and optimising content that increases reach and engagement.",
     },
     challenge: {
       title: "Challenge",
@@ -184,9 +184,9 @@ export const projects = [
     },
     approach: {
       title: "Our approach",
-      text: "We chose a dark, full-bleed composition with gradient accents, a strong hero, and a clear three-step process. Interactive benefit cards, FAQ, and an introduction form support orientation and conversion.",
+      text: "We chose a dark, full-bleed composition with gradient accents, a strong hero, and a clear three-step process. Interactive benefit cards, FAQs, and an introduction form help visitors understand the service and take action.",
       points: [
-        "Dark premium look with purple–blue accents",
+        "Dark premium look with purple-blue accents",
         "Hero with one dominant message and CTA",
         "Process in three scannable steps",
         "FAQ and contact form at the bottom of the funnel",
@@ -194,7 +194,7 @@ export const projects = [
     },
     design: {
       title: "Design",
-      text: "Plus Jakarta, deep black as the base, and a purple-to-blue gradient on key words and buttons. Generous whitespace, a centred hero, and subtle motion give the site a modern media-agency feel — without an overcrowded UI.",
+      text: "Plus Jakarta, deep black as the base, and a purple-to-blue gradient on key words and buttons. Generous whitespace, a centred hero, and subtle motion give the site a modern media-agency feel - without an overcrowded UI.",
     },
     development: {
       title: "Development",
@@ -216,7 +216,7 @@ export const projects = [
     },
     hosting: {
       title: "Hosting and maintenance",
-      text: "The website is live as a fast marketing environment. Hosting and technical support can be included as a follow-up engagement, depending on the chosen setup.",
+      text: "The website is live as a fast marketing site. Hosting and technical support can be included as a follow-up engagement, depending on the chosen setup.",
     },
     result: {
       title: "Result",
@@ -237,7 +237,7 @@ export const projects = [
     meta: {
       title: "ViralOn | Website Case Study | AxaWeb Projects",
       description:
-        "Case study: website for ViralOn — social media marketing for TikTok and Instagram Reels, focused on brand, services, and conversion.",
+        "Case study: website for ViralOn - social media marketing for TikTok and Instagram Reels, focused on brand, services, and conversion.",
       canonical: "https://axaweb.nl/en/projects/viralon",
     },
   },

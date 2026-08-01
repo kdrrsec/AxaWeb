@@ -22,7 +22,7 @@ export function initHeader() {
     mobileNav.setAttribute("aria-hidden", String(!open));
     document.body.classList.toggle("nav-open", open);
 
-    /* Lock only the scroll pane — header stays put, no layout shift */
+    /* Lock only the scroll pane - header stays put, no layout shift */
     if (scrollRoot) {
       scrollRoot.style.overflow = open ? "hidden" : "";
     }

@@ -7,17 +7,17 @@ export const services = [
     id: "websites",
     title: "Websites",
     text: "Custom professional websites that build trust, load fast, and turn visitors into clients.",
-    benefits: ["Unique design", "Responsive", "Technically optimized"],
+    benefits: ["Unique design", "Responsive", "Technically optimised"],
     cta: "More about websites",
     href: "/websites",
     icon: "layout",
   },
   {
     id: "webshops",
-    title: "Webshops",
+    title: "Web shops",
     text: "User-friendly online stores that help businesses sell products and services with confidence.",
-    benefits: ["Conversion-focused", "Clear management", "Built to scale"],
-    cta: "More about webshops",
+    benefits: ["Conversion-focused", "Simple to manage", "Built to scale"],
+    cta: "More about web shops",
     href: "/webshops",
     icon: "cart",
   },
@@ -34,7 +34,7 @@ export const services = [
     id: "onderhoud",
     title: "Maintenance",
     text: "Updates, security, and technical support to keep your website healthy and dependable.",
-    benefits: ["Scheduled updates", "Checks per package", "A clear point of contact"],
+    benefits: ["Scheduled updates", "Plan-based checks", "A clear point of contact"],
     cta: "More about maintenance",
     href: "/maintenance",
     icon: "wrench",
@@ -42,9 +42,9 @@ export const services = [
 ];
 
 const previewCopy = {
-  start: "A professional one-page site so starters and small businesses can get online right away.",
-  business: "A custom website of up to five pages for companies ready to grow professionally online.",
-  premium: "An extensive website with custom features for growing organizations.",
+  start: "A professional one-page site for new and small businesses that need to launch quickly.",
+  business: "A custom website of up to five pages for companies that need a stronger, more credible presence online.",
+  premium: "A larger website with custom features for growing organisations.",
 };
 
 export const packagesPreview = getOneTimePlans().map((plan) => ({
