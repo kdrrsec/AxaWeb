@@ -84,25 +84,25 @@ export function renderSegmentedControl({ name, ariaLabel, terms, defaultTerm, tp
 }
 
 export function renderModelToggle(tp) {
+  const recommended = tp("badges.recommended");
   return `
         <div class="pricing-choice reveal" data-pricing-choice>
           <p class="pricing-choice__prompt" id="pricing-model-prompt">${escapeHtml(tp("modelToggle.prompt"))}</p>
           <p class="pricing-choice__text">${escapeHtml(tp("modelToggle.promptText"))}</p>
           <p class="pricing-choice__hint">${escapeHtml(tp("modelToggle.hint"))}</p>
           <div
-            class="pricing-choice__options"
+            class="pricing-choice__control"
             role="radiogroup"
             aria-labelledby="pricing-model-prompt"
             aria-label="${escapeHtml(tp("modelToggle.ariaLabel"))}"
             data-pricing-model
           >
-            <button type="button" class="pricing-choice__option" role="radio" aria-checked="false" data-model="one-time" tabindex="0">
-              <span class="pricing-choice__option-label">${escapeHtml(tp("modelToggle.oneTime"))}</span>
-              <span class="pricing-choice__option-meta">${escapeHtml(tp("modelToggle.oneTimeHint"))}</span>
+            <button type="button" class="pricing-choice__seg" role="radio" aria-checked="false" data-model="one-time" tabindex="0">
+              <span class="pricing-choice__seg-label">${escapeHtml(tp("modelToggle.oneTime"))}</span>
             </button>
-            <button type="button" class="pricing-choice__option" role="radio" aria-checked="false" data-model="waas" tabindex="0">
-              <span class="pricing-choice__option-label">${escapeHtml(tp("modelToggle.waas"))}</span>
-              <span class="pricing-choice__option-meta">${escapeHtml(tp("modelToggle.waasHint"))}</span>
+            <button type="button" class="pricing-choice__seg" role="radio" aria-checked="false" data-model="waas" tabindex="0">
+              <span class="pricing-choice__seg-label">${escapeHtml(tp("modelToggle.waas"))}</span>
+              <span class="pricing-choice__seg-badge">${escapeHtml(recommended)}</span>
             </button>
           </div>
           <p class="pricing-choice__empty" data-pricing-empty>${escapeHtml(tp("modelToggle.empty"))}</p>

@@ -6,9 +6,7 @@
     "hint": "Maak een keuze",
     "empty": "Maak een keuze om de bijbehorende pakketten te bekijken.",
     "oneTime": "Eenmalige Website",
-    "oneTimeHint": "Eenmalige investering",
-    "waas": "Website as a Service",
-    "waasHint": "Maandelijks abonnement"
+    "waas": "Website as a Service"
   },
   "labels": {
     "introPrice": "Introductieprijs",
