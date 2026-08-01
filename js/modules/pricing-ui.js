@@ -191,8 +191,11 @@ function initModelToggle(root) {
     if (scroll) scrollToPanel(activePanel);
   };
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => select(btn.getAttribute("data-model")));
+  /* Event delegation: betrouwbaarder op touch dan losse child-targets */
+  modelGroup.addEventListener("click", (event) => {
+    const btn = event.target.closest?.("[data-model]");
+    if (!btn || !modelGroup.contains(btn)) return;
+    select(btn.getAttribute("data-model"));
   });
 
   modelGroup.addEventListener("keydown", (event) => {
