@@ -25,22 +25,22 @@ export const pages = {
     slug: "services",
     navKey: "diensten",
     path: "/services",
-    title: "Services | Websites, Webshops, Hosting & Maintenance | AxaWeb",
+    title: "Services | Websites, Web Shops, Hosting & Maintenance | AxaWeb",
     description:
-      "Explore AxaWeb services: custom websites, tailored webshops, hosting, and website maintenance. One digital partner for your online growth.",
+      "Custom websites, web shops, hosting, and maintenance — from one digital partner.",
     canonical: "https://axaweb.nl/en/services",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Services" }],
     head: {
       variant: "center",
       eyebrow: "Services",
       title: "One partner for everything you need online.",
-      text: "From design and development to hosting and maintenance. Four services that stand strong on their own and together form a complete online foundation.",
+      text: "From design and development to hosting and maintenance. Four focused services — strong alone, stronger together.",
     },
     sections: [
       {
         type: "serviceRows",
         id: "overzicht",
-        eyebrow: "The offering",
+        eyebrow: "What we offer",
         title: "Four services, one point of contact.",
         rows: [
           {
@@ -51,37 +51,37 @@ export const pages = {
               "Responsive and optimised for speed",
               "SEO foundation and a clear structure",
             ],
-            link: { label: "Everything about websites", href: "/websites" },
+            link: { label: "Explore websites", href: "/websites" },
           },
           {
-            title: "Webshops",
-            text: "Conversion-focused online stores with smooth management and reliable payments.",
+            title: "Web shops",
+            text: "Conversion-focused online stores with simple management and reliable payments.",
             points: [
               "Smooth checkout with iDEAL and more",
               "Straightforward product and stock management",
               "Scalable with your catalogue and growth",
             ],
-            link: { label: "Everything about webshops", href: "/webshops" },
+            link: { label: "Explore web shops", href: "/webshops" },
           },
           {
             title: "Hosting",
-            text: "Fast, secure hosting with everything included — without the technical hassle.",
+            text: "Fast, secure hosting with everything included — without the technical overhead.",
             points: [
               "SSL and automatic backups",
               "Business email on your own domain",
               "Personal support, not a ticket queue",
             ],
-            link: { label: "Everything about hosting", href: "/hosting" },
+            link: { label: "Explore hosting", href: "/hosting" },
           },
           {
             title: "Maintenance",
-            text: "Updates, monitoring, and support that stay ahead of problems instead of fixing them after the fact.",
+            text: "Updates, monitoring, and support that stay ahead of problems — not just fix them after the fact.",
             points: [
               "Scheduled updates and checks",
               "Monitoring from the Business plan upward",
-              "Response times according to package or SLA",
+              "Response times based on your plan or SLA",
             ],
-            link: { label: "Everything about maintenance", href: "/maintenance" },
+            link: { label: "Explore maintenance", href: "/maintenance" },
           },
         ],
       },
@@ -89,9 +89,9 @@ export const pages = {
         type: "compare",
         id: "vergelijking",
         eyebrow: "Comparison",
-        title: "Which service fits your situation?",
+        title: "Which service fits your business?",
         intro:
-          "See at a glance what each service is for and what you can expect.",
+          "Compare purpose, scope, and outcome at a glance.",
         columns: ["Website", "Website as a Service", "Hosting", "Maintenance"],
         rows: [
           {
@@ -104,12 +104,12 @@ export const pages = {
             ],
           },
           {
-            label: "For whom",
+            label: "Best for",
             values: [
               "Businesses that want a custom website built",
-              "Entrepreneurs who want website, hosting, and maintenance all-inclusive",
-              "Anyone with a website or webshop",
-              "Owners who want to be online without the worry",
+              "Businesses that want website, hosting, and maintenance in one subscription",
+              "Anyone with a website or web shop",
+              "Website owners who want less technical overhead",
             ],
           },
           {
@@ -144,13 +144,13 @@ export const pages = {
             ],
           },
         ],
-        note: "Unsure, or want to combine services? We’re happy to advise on the setup that fits your situation.",
+        note: "Unsure, or looking to combine services? We’ll recommend a setup that fits.",
       },
       {
         type: "cta",
-        title: "Not sure where to start?",
-        text: "Tell us where you’re headed. We’ll recommend the setup that fits — no strings attached.",
-        button: { label: "Schedule an introduction", href: "/contact" },
+        title: "Not sure where to begin?",
+        text: "Tell us what you want to achieve. We’ll recommend a clear setup — no obligation.",
+        button: { label: "Schedule an intro call", href: "/contact" },
       },
     ],
   },
@@ -159,9 +159,9 @@ export const pages = {
     slug: "websites",
     navKey: "diensten",
     path: "/websites",
-    title: "Have a Website Built | Custom Websites | AxaWeb",
+    title: "Custom Website Design & Development | AxaWeb",
     description:
-      "Have a website built by AxaWeb? Professional custom websites with an SEO foundation, fast load times, and clear from-prices. View packages and case studies.",
+      "Custom websites by AxaWeb — with solid SEO foundations, fast load times, and clear starting prices. View packages and case studies.",
     canonical: "https://axaweb.nl/en/websites",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -172,7 +172,7 @@ export const pages = {
       variant: "split",
       eyebrow: "Websites",
       title: "A website that builds trust and brings in clients.",
-      text: "Not a generic theme you’ll see everywhere, but a custom website that positions your brand clearly and moves visitors to act.",
+      text: "A custom website that positions your brand clearly and helps visitors take the next step.",
       actions: [
         { label: "Request a quote", href: "/quote", style: "primary" },
         { label: "View our work", href: "/projects", style: "secondary" },
@@ -182,7 +182,7 @@ export const pages = {
         items: [
           "100% custom — no off-the-shelf themes",
           "Responsive on every screen",
-          "SEO and performance foundation included",
+          "SEO and performance built in from the start",
           "Packages from €395",
         ],
       },
@@ -207,7 +207,7 @@ export const pages = {
           {
             icon: "search",
             title: "SEO foundation",
-            text: "Clean semantics, metadata, and indexability as the base for discoverability.",
+            text: "Clean semantics, metadata, and indexability — built in from the start.",
           },
           {
             icon: "gauge",
@@ -221,7 +221,7 @@ export const pages = {
           },
           {
             icon: "trend",
-            title: "Ready to grow",
+            title: "Built to grow",
             text: "A scalable setup so extra pages and features are easy to add later.",
           },
         ],
@@ -231,7 +231,7 @@ export const pages = {
         id: "proces",
         eyebrow: "The process",
         title: "From introduction to launch.",
-        intro: "A clear path with fixed steps, so you always know where things stand.",
+        intro: "A clear process with fixed steps and no surprises.",
         steps: [
           {
             title: "Introduction",
@@ -240,7 +240,7 @@ export const pages = {
           },
           {
             title: "Proposal and quote",
-            text: "You receive a concrete proposal with structure, timeline, and a fixed from-price.",
+            text: "You receive a clear proposal with structure, timeline, and a fixed starting price.",
             meta: "Step 2",
           },
           {
@@ -250,7 +250,7 @@ export const pages = {
           },
           {
             title: "Development",
-            text: "We build the website responsive, fast, and technically sound — ready for the future.",
+            text: "We build a responsive, fast, and technically sound website that can grow with you.",
             meta: "Step 4",
           },
           {
@@ -276,7 +276,7 @@ export const pages = {
           {
             tag: "Bandendepot",
             title: "Conversion-focused B2C website",
-            text: "A clear website for an online tyre range, with a fast path to a quote and phone advice.",
+            text: "A clear website for an online tyre retailer, with a short path to a quote and advice.",
             results: [
               "Strong hero with a clear promise",
               "Quote form with relevant tyre fields",
@@ -298,8 +298,8 @@ export const pages = {
       },
       {
         type: "cta",
-        title: "Ready for a website that works for you?",
-        text: "Request a no-obligation quote and receive a personal reply within one business day.",
+        title: "Ready for a website that earns trust?",
+        text: "Request a quote with no obligation. You’ll hear back personally within one business day.",
         button: { label: "Request a quote", href: "/quote" },
       },
     ],
@@ -309,20 +309,20 @@ export const pages = {
     slug: "webshops",
     navKey: "diensten",
     path: "/webshops",
-    title: "Have a Webshop Built | Conversion-Focused Stores | AxaWeb",
+    title: "Custom Web Shop Development | AxaWeb",
     description:
-      "Have a webshop built by AxaWeb. Conversion-focused online stores with payments, stock management, and a scalable structure. Request a no-obligation quote.",
+      "Conversion-focused web shops by AxaWeb — with payments, inventory management, and room to scale. Request a quote.",
     canonical: "https://axaweb.nl/en/webshops",
     breadcrumb: [
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
-      { label: "Webshops" },
+      { label: "Web shops" },
     ],
     head: {
       variant: "split",
-      eyebrow: "Webshops",
-      title: "A webshop that sells — and is easy to manage.",
-      text: "We build conversion-focused online stores that work well for customers and for you as the admin. From the first product to a growing catalogue.",
+      eyebrow: "Web shops",
+      title: "A web shop that sells — and stays easy to manage.",
+      text: "We build conversion-focused online stores that feel simple for customers and easy for your team to run — from the first product to a growing catalogue.",
       actions: [
         { label: "Request a quote", href: "/quote", style: "primary" },
         { label: "View integrations", href: "#integraties", style: "secondary" },
@@ -333,7 +333,7 @@ export const pages = {
           "Smooth checkout with iDEAL",
           "Manage products and stock yourself",
           "Integrations with shipping and accounting",
-          "Built to scale with growth",
+          "Built with room to scale",
         ],
       },
     },
@@ -342,7 +342,7 @@ export const pages = {
         type: "features",
         id: "features",
         eyebrow: "Features",
-        title: "Built for selling and managing.",
+        title: "Designed to sell. Simple to manage.",
         items: [
           {
             icon: "box",
@@ -367,7 +367,7 @@ export const pages = {
           {
             icon: "chart",
             title: "Insight and reporting",
-            text: "Visibility into visitors, orders, and revenue so you can steer on numbers.",
+            text: "Clear insight into visitors, orders, and revenue — so decisions rest on real numbers.",
           },
           {
             icon: "shield",
@@ -380,9 +380,9 @@ export const pages = {
         type: "integrations",
         id: "integraties",
         eyebrow: "Integrations",
-        title: "Connects with the tools you already use.",
+        title: "Connect your web shop to the tools you already use.",
         intro:
-          "A webshop doesn’t stand alone. We connect payments, shipping, and administration so everything runs smoothly.",
+          "A web shop doesn’t stand alone. We connect payments, shipping, and admin tools so everything runs smoothly.",
         items: [
           { title: "iDEAL", text: "The standard for online payments in the Netherlands." },
           { title: "Mollie", text: "Payment provider for iDEAL, credit card, and more." },
@@ -398,7 +398,7 @@ export const pages = {
         type: "cases",
         id: "cases",
         eyebrow: "Approach",
-        title: "What we focus on in webshops.",
+        title: "What matters in an ecommerce build.",
         items: [
           {
             tag: "Conversion",
@@ -412,8 +412,8 @@ export const pages = {
           },
           {
             tag: "Management",
-            title: "Easy for the business owner to keep up",
-            text: "A webshop should also run calmly behind the scenes: products, stock, and orders without the hassle.",
+            title: "Simple for owners to manage",
+            text: "Behind the scenes, your web shop should feel organised: products, stock, and orders without friction.",
             results: [
               "Simple product management",
               "Room for shipping and payment integrations",
@@ -426,7 +426,7 @@ export const pages = {
       {
         type: "cta",
         title: "Ready to sell online?",
-        text: "Tell us what you sell. We’ll recommend the best setup for your webshop.",
+        text: "Tell us what you sell. We’ll recommend the right setup for your web shop.",
         button: { label: "Request a quote", href: "/quote" },
       },
     ],
@@ -438,7 +438,7 @@ export const pages = {
     path: "/hosting",
     title: "Hosting | Fast & Secure Website Hosting | AxaWeb",
     description:
-      "Reliable website hosting with AxaWeb: SSL, backups, monitoring, and personal support. Stable hosting from a fixed annual price. Want to know more?",
+      "Reliable website hosting with AxaWeb: SSL, backups, monitoring, and personal support. Stable hosting from a fixed annual price.",
     canonical: "https://axaweb.nl/en/hosting",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -519,8 +519,8 @@ export const pages = {
       },
       {
         type: "cta",
-        title: "Hosted without worry — usually within a day.",
-        text: "We handle the migration of your current website, almost always without a noticeable interruption.",
+        title: "Migrated and hosted — usually within a day.",
+        text: "We migrate your current website, almost always without a noticeable interruption.",
         button: { label: "Request a quote", href: "/quote" },
       },
     ],
@@ -532,7 +532,7 @@ export const pages = {
     path: "/maintenance",
     title: "Website Maintenance | Updates, Monitoring & Support | AxaWeb",
     description:
-      "Website maintenance by AxaWeb: updates, monitoring, security, and support. Keep your site safe and current with a clear monthly plan. Learn more.",
+      "Website maintenance by AxaWeb: updates, monitoring, security, and support on a clear monthly plan.",
     canonical: "https://axaweb.nl/en/maintenance",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -553,8 +553,8 @@ export const pages = {
         items: [
           "Updates without the hassle",
           "Monitoring from Business upward",
-          "Response times according to package or SLA",
-          "Cancellable after the minimum term under the Terms and Conditions",
+          "Response times based on your plan or SLA",
+          "Clear minimum terms and cancellation conditions",
         ],
       },
     },
@@ -618,7 +618,7 @@ export const pages = {
         type: "sla",
         id: "sla",
         eyebrow: "SLA",
-        title: "Clear response times, in black and white.",
+        title: "Clear response times, written into your agreement.",
         rows: [
           {
             level: "Critical",
@@ -640,8 +640,8 @@ export const pages = {
       },
       {
         type: "cta",
-        title: "Never worry about updates again?",
-        text: "Tell us which website you have. We’ll recommend the plan that fits.",
+        title: "Keep your website maintained without chasing updates.",
+        text: "Tell us about your website. We’ll recommend the right maintenance plan.",
         button: { label: "Request a quote", href: "/quote" },
       },
     ],
@@ -653,7 +653,7 @@ export const pages = {
     path: "/packages",
     title: "Packages & Pricing | Websites and Subscriptions | AxaWeb",
     description:
-      "View AxaWeb packages for websites, Website as a Service, hosting, and maintenance. Clear prices, no surprises. Request advice with no obligation.",
+      "AxaWeb packages for websites, Website as a Service, hosting, and maintenance. Clear pricing, no surprises. Request advice with no obligation.",
     canonical: "https://axaweb.nl/en/packages",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Packages" }],
     head: {
@@ -666,29 +666,29 @@ export const pages = {
       {
         type: "pricingHub",
         id: "websites",
-        footerLink: { label: "Everything about websites", href: "/websites", i18nKey: "viewWebsites" },
+        footerLink: { label: "Explore websites", href: "/websites", i18nKey: "viewWebsites" },
       },
       {
         type: "pricing",
         id: "hosting",
         catalog: "hosting",
         i18nKey: "hosting",
-        footerLink: { label: "Everything about hosting", href: "/hosting", i18nKey: "viewHosting" },
+        footerLink: { label: "Explore hosting", href: "/hosting", i18nKey: "viewHosting" },
       },
       {
         type: "pricing",
         id: "onderhoud",
         catalog: "maintenance",
         i18nKey: "maintenance",
-        footerLink: { label: "Everything about maintenance", href: "/maintenance", i18nKey: "viewMaintenance" },
+        footerLink: { label: "Explore maintenance", href: "/maintenance", i18nKey: "viewMaintenance" },
       },
       {
         type: "pricingTerms",
       },
       {
         type: "cta",
-        title: "Not sure which package fits?",
-        text: "Tell us where you stand. We’ll advise honestly on what you do — and don’t — need.",
+        title: "Not sure which package is right?",
+        text: "Tell us what you need. We’ll advise clearly on what is worth doing now — and what can wait.",
         button: { label: "Request advice", href: "/contact" },
       },
     ],
@@ -700,26 +700,26 @@ export const pages = {
     path: "/projects",
     title: "Projects | View Our Work | AxaWeb",
     description:
-      "View our work: live AxaWeb websites such as Bandendepot, Axanet, and ViralOn. Projects focused on structure, presence, and technical quality.",
+      "Live AxaWeb websites such as Bandendepot, Axanet, and ViralOn — focused on structure, presence, and technical quality.",
     canonical: "https://axaweb.nl/en/projects",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Projects" }],
     head: {
       variant: "center",
       eyebrow: "Projects",
       title: "Selected work, live in production.",
-      text: "Websites we designed and built. Each project with care for structure, presence, and technical quality.",
+      text: "Websites we designed and built. Each one shaped around clear structure, strong presence, and solid technical execution.",
     },
     sections: [
       {
         type: "portfolio",
         id: "portfolio",
-        note: "Looking for a similar level for your brand? In an introduction call we’re happy to share relevant examples.",
+        note: "Want this standard for your brand? In an intro call, we can share relevant examples.",
       },
       {
         type: "cta",
-        title: "Your project next?",
+        title: "Shall we talk about your project?",
         text: "Tell us about your plans. We’ll advise clearly on approach, timeline, and investment.",
-        button: { label: "Schedule an introduction", href: "/contact" },
+        button: { label: "Schedule an intro call", href: "/contact" },
       },
     ],
   },
@@ -730,13 +730,13 @@ export const pages = {
     path: "/contact",
     title: "Contact | Request a Quote | AxaWeb",
     description:
-      "Get in touch with AxaWeb about a website, webshop, hosting, or maintenance. Personal reply within one business day. Schedule an introduction today.",
+      "Get in touch with AxaWeb about a website, web shop, hosting, or maintenance. Personal reply within one business day.",
     canonical: "https://axaweb.nl/en/contact",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Contact" }],
     head: {
       variant: "minimal",
       eyebrow: "Contact",
-      title: "Let’s get acquainted.",
+      title: "Let’s talk about your project.",
       text: "Tell us about your project or ask your question. You’ll receive a personal reply within one business day.",
     },
     sections: [
@@ -752,7 +752,7 @@ export const pages = {
           items: [
             "A personal reply within one business day",
             "A no-obligation conversation about your needs and timeline",
-            "A clear quote with fixed from-prices",
+            "A clear quote with fixed starting prices",
           ],
         },
         sourcePage: "/contact",
@@ -761,7 +761,7 @@ export const pages = {
         type: "faq",
         id: "faq",
         eyebrow: "Frequently asked questions",
-        title: "One more thing first.",
+        title: "Questions before you get in touch?",
         items: [
           {
             question: "How quickly will I hear back?",
@@ -769,14 +769,14 @@ export const pages = {
               "You’ll receive a personal reply within one business day. We usually schedule a short introduction soon after.",
           },
           {
-            question: "What does a website or webshop cost?",
+            question: "What does a website or web shop cost?",
             answer:
               "Websites start from €395. The final investment depends on design, scope, and features. You always receive a clear quote up front.",
           },
           {
-            question: "Can I take hosting or maintenance only?",
+            question: "Can I choose only hosting or maintenance?",
             answer:
-              "Yes. Hosting and maintenance can be taken separately, including for websites we didn’t build. We first check briefly whether everything is technically transferable.",
+              "Yes. Hosting and maintenance can be taken separately, including for websites we didn’t build. We’ll first check whether the setup can be transferred safely.",
           },
           {
             question: "Do you also work with existing websites?",
@@ -792,16 +792,16 @@ export const pages = {
     slug: "quote",
     navKey: "contact",
     path: "/quote",
-    title: "Request a Quote | Website or Webshop | AxaWeb",
+    title: "Request a Quote | Website or Web Shop | AxaWeb",
     description:
-      "Request a no-obligation quote from AxaWeb for your website or webshop. Clear from-prices, personal advice, and fast, clear follow-up.",
+      "Request a quote from AxaWeb for your website or web shop. Clear starting prices, personal advice, and prompt follow-up.",
     canonical: "https://axaweb.nl/en/quote",
     breadcrumb: [{ label: "Home", href: "/" }, { label: "Quote" }],
     head: {
       variant: "minimal",
       eyebrow: "Quote",
-      title: "Request a no-obligation quote.",
-      text: "Tell us briefly about your plans. We’ll advise on approach, timeline, and investment — and send a clear quote.",
+      title: "Request a quote — no obligation.",
+      text: "Tell us briefly about your plans. We’ll advise on approach, timeline, and investment, then send a clear quote.",
     },
     sections: [
       {
@@ -816,7 +816,7 @@ export const pages = {
           items: [
             "You share your needs via the form or by phone",
             "We reply within one business day with focused questions or advice",
-            "You receive a clear, no-obligation quote",
+            "You receive a clear quote with no obligation",
           ],
         },
         sourcePage: "/quote",
@@ -845,7 +845,7 @@ export const pages = {
           {
             question: "Can I call instead?",
             answer:
-              "Of course. Call us on 06 29 12 75 75. We’re happy to think along by phone about your project.",
+              "Of course. Call us on 06 29 12 75 75. We’re happy to talk through your project by phone.",
           },
         ],
       },

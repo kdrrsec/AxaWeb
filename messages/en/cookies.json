@@ -22,10 +22,10 @@
       "title": "Preferences",
       "description": "For optional functional settings that are not strictly necessary."
     },
-    "statistics": {
-      "title": "Statistics",
-      "description": "Helps us understand how the website is used via Google Analytics 4 and Microsoft Clarity. No marketing ads."
-    },
+      "statistics": {
+        "title": "Statistics",
+        "description": "Helps us understand how the website is used via Google Analytics 4 and Microsoft Clarity. No advertising cookies."
+      },
     "marketing": {
       "title": "Marketing",
       "description": "For future marketing tools such as advertising pixels. Currently not loaded."

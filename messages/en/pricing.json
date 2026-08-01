@@ -1,10 +1,10 @@
 {
   "modelToggle": {
-    "ariaLabel": "Choose how you want to get your website",
-    "prompt": "First, choose how you want to get your website",
+    "ariaLabel": "Choose how you want to build your website",
+    "prompt": "Choose how you’d like to build your website",
     "promptText": "Select a one-time investment or a monthly subscription.",
-    "hint": "Make a choice",
-    "empty": "Packages will appear here after you choose.",
+    "hint": "Choose an option",
+    "empty": "Packages will appear once you choose a model.",
     "selected": "Selected",
     "oneTime": "One-time website",
     "waas": "Website as a Service"
@@ -39,31 +39,31 @@
   "sections": {
     "websiteHub": {
       "eyebrow": "Websites",
-      "title": "Choose the model that fits you.",
-      "intro": "One-time development or Website as a Service: you decide how you want to start."
+      "title": "Choose the model that fits.",
+      "intro": "One-time development or Website as a Service — you decide how to start."
     },
     "oneTime": {
       "eyebrow": "One-time Website",
       "title": "Websites with a fixed starting price.",
-      "intro": "A one-time investment for designing and building your website.",
+      "intro": "A one-time investment to design and build your website.",
       "note": "Introductory prices exclude 21% VAT. The final price depends on scope, features, and selected services. You always receive a clear quote in advance."
     },
     "waas": {
       "eyebrow": "Website as a Service",
-      "title": "Industry-focused websites, all-inclusive.",
-      "intro": "Website, hosting, and maintenance in one monthly subscription, tailored to your industry.",
-      "note": "Prices exclude 21% VAT. Exact scope is aligned during the intro call. Website as a Service has specific terms on ownership, transfer, and termination. See our Terms & Conditions for details."
+      "title": "Industry-specific websites, hosted and maintained for you.",
+      "intro": "Website, hosting, and maintenance in one monthly subscription — tailored to your industry.",
+      "note": "Prices exclude 21% VAT. Exact scope is agreed during the intro call. Website as a Service has specific terms on ownership, transfer, and termination. See our Terms & Conditions for details."
     },
     "hosting": {
       "eyebrow": "Hosting",
-      "title": "Yearly hosting, without the hassle.",
+      "title": "Annual hosting without the admin.",
       "intro": "Fast, secure hosting with SSL, backups, and personal support.",
       "note": "Prices exclude 21% VAT. You always receive a clear proposal in advance."
     },
     "maintenance": {
       "eyebrow": "Maintenance",
-      "title": "Maintenance as a subscription.",
-      "intro": "Ongoing care for updates, monitoring, and support.",
+      "title": "Ongoing maintenance on a clear monthly plan.",
+      "intro": "Updates, monitoring, and support — handled for you.",
       "note": "Prices exclude 21% VAT. Minimum term depends on the selected contract. Duration and cancellation terms depend on the chosen plan."
     }
   },
@@ -74,33 +74,33 @@
     },
     "business": {
       "name": "Business",
-      "audience": "For companies that want a more extensive, professional online presence."
+      "audience": "For companies that need a broader, more credible web presence."
     },
     "premium": {
       "name": "Premium",
-      "audience": "For extensive websites, custom features, and growing organizations."
+      "audience": "For larger websites, custom features, and growing organisations."
     }
   },
   "waas": {
     "business-site": {
       "name": "Business website",
-      "audience": "For service providers and businesses that want to look professional and convincing online."
+      "audience": "For service providers and businesses that need to present themselves clearly and credibly online."
     },
     "barbershop": {
       "name": "Barbershop Complete",
-      "audience": "For hairdressers and barbershops that want to combine their look, services, and appointments professionally online."
+      "audience": "For hairdressers and barbershops that want look, services, and appointments presented professionally online."
     },
     "restaurant": {
       "name": "Restaurant Complete",
-      "audience": "For restaurants that want to present their menu, atmosphere, and reservation options professionally."
+      "audience": "For restaurants that want menu, atmosphere, and reservations presented professionally online."
     },
     "gym": {
       "name": "Gym Complete",
-      "audience": "For gyms and studios that want to offer classes, memberships, and sign-ups clearly online."
+      "audience": "For gyms and studios that want classes, memberships, and sign-ups presented clearly online."
     },
     "webshop": {
       "name": "Web shop Complete",
-      "audience": "For entrepreneurs who want to sell products or services professionally and at scale online."
+      "audience": "For businesses that want to sell products or services online with room to scale."
     }
   },
   "hosting": {
@@ -110,11 +110,11 @@
     },
     "business": {
       "name": "Business",
-      "audience": "For companies where the website plays an important role."
+      "audience": "For companies where the website is central to the business."
     },
     "managed": {
       "name": "Fully managed",
-      "audience": "Hosting and maintenance fully taken care of, including updates and monitoring."
+      "audience": "Hosting and maintenance fully handled — including updates and monitoring."
     }
   },
   "maintenance": {
@@ -128,7 +128,7 @@
     },
     "custom": {
       "name": "Custom",
-      "audience": "For custom platforms and organizations with specific requirements."
+      "audience": "For custom platforms and organisations with specific requirements."
     }
   },
   "features": {
@@ -142,7 +142,7 @@
     "customDesign": "Custom design",
     "portfolio": "Portfolio or services overview",
     "maps": "Google Maps integration",
-    "performance": "Performance optimization",
+    "performance": "Performance optimisation",
     "allBusiness": "Everything in Business",
     "morePages": "More pages and content",
     "customFeatures": "Custom features",
@@ -216,9 +216,9 @@
     "chooseBasic": "Choose Basic",
     "chooseBusiness": "Choose Business",
     "discussSituation": "Discuss your situation",
-    "viewWebsites": "All about websites",
-    "viewHosting": "All about hosting",
-    "viewMaintenance": "All about maintenance"
+    "viewWebsites": "Explore websites",
+    "viewHosting": "Explore hosting",
+    "viewMaintenance": "Explore maintenance"
   },
   "termsInfo": {
     "title": "Good to know",

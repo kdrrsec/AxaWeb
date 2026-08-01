@@ -4,7 +4,7 @@
   "organization": {
     "name": "AxaWeb",
     "legalName": "AxaWeb",
-    "description": "AxaWeb is a digital partner for entrepreneurs. Professional websites, web shops, hosting, maintenance, and technical support.",
+    "description": "AxaWeb is a digital partner for ambitious businesses. Custom websites, web shops, hosting, maintenance, and technical support.",
     "email": "info@axaweb.nl",
     "telephone": "+31629127575",
     "areaServed": "Netherlands"
@@ -12,47 +12,47 @@
   "pages": {
     "home": {
       "title": "AxaWeb | Professional Websites & Digital Solutions",
-      "description": "Have your website or web shop built by AxaWeb. Custom websites, hosting, and maintenance for entrepreneurs. Request free advice or a quote."
+      "description": "AxaWeb designs and builds custom websites and web shops, with hosting, maintenance, and support for growing businesses. Request advice or a quote."
     },
     "diensten": {
       "title": "Services | Websites, Web Shops, Hosting & Maintenance | AxaWeb",
-      "description": "Discover AxaWeb's services: custom websites, tailored web shops, hosting, and website maintenance. One digital partner for your online growth."
+      "description": "Custom websites, web shops, hosting, and maintenance — from one digital partner."
     },
     "websites": {
-      "title": "Custom Website Design | Tailored Websites | AxaWeb",
-      "description": "Looking for a custom website from AxaWeb? Professional tailored sites with SEO foundations, fast load times, and fixed starting prices. View packages and cases."
+      "title": "Custom Website Design & Development | AxaWeb",
+      "description": "Custom websites by AxaWeb — with solid SEO foundations, fast load times, and clear starting prices. View packages and case studies."
     },
     "webshops": {
-      "title": "Custom Web Shop Development | Conversion-Focused Shops | AxaWeb",
-      "description": "Have a web shop built by AxaWeb. Conversion-focused online stores with payments, inventory management, and a scalable structure. Request a free quote."
+      "title": "Custom Web Shop Development | AxaWeb",
+      "description": "Conversion-focused web shops by AxaWeb — with payments, inventory management, and room to scale. Request a quote."
     },
     "hosting": {
       "title": "Hosting | Fast & Secure Website Hosting | AxaWeb",
-      "description": "Reliable website hosting with AxaWeb: SSL, backups, monitoring, and personal support. Stable hosting from a fixed annual price. Want to know more?"
+      "description": "Reliable website hosting with AxaWeb: SSL, backups, monitoring, and personal support. Stable hosting from a fixed annual price."
     },
     "onderhoud": {
       "title": "Website Maintenance | Updates, Monitoring & Support | AxaWeb",
-      "description": "Website maintenance by AxaWeb: updates, monitoring, security, and support. Keep your site safe and up to date with a clear monthly plan. Learn more."
+      "description": "Website maintenance by AxaWeb: updates, monitoring, security, and support on a clear monthly plan."
     },
     "pakketten": {
       "title": "Packages & Pricing | Websites and Subscriptions | AxaWeb",
-      "description": "Explore AxaWeb packages for websites, Website as a Service, hosting, and maintenance. Clear pricing, no surprises. Request free advice."
+      "description": "AxaWeb packages for websites, Website as a Service, hosting, and maintenance. Clear pricing, no surprises. Request advice with no obligation."
     },
     "projecten": {
       "title": "Projects | View Our Work | AxaWeb",
-      "description": "Explore our work: live AxaWeb websites such as Bandendepot, Axanet, and ViralOn. Projects focused on structure, look and feel, and technical quality."
+      "description": "Live AxaWeb websites such as Bandendepot, Axanet, and ViralOn — focused on structure, presence, and technical quality."
     },
     "contact": {
       "title": "Contact | Request a Quote | AxaWeb",
-      "description": "Get in touch with AxaWeb for a website, web shop, hosting, or maintenance. Personal response within one business day. Schedule an intro call today."
+      "description": "Get in touch with AxaWeb about a website, web shop, hosting, or maintenance. Personal reply within one business day."
     },
     "offerte": {
       "title": "Request a Quote | Website or Web Shop | AxaWeb",
-      "description": "Request a free quote from AxaWeb for your website or web shop. Clear starting prices, personal advice, and fast, clear follow-up."
+      "description": "Request a quote from AxaWeb for your website or web shop. Clear starting prices, personal advice, and prompt follow-up."
     },
     "privacy": {
       "title": "Privacy Policy | AxaWeb",
-      "description": "AxaWeb privacy policy: which data we process via forms, cookies, Analytics, and Clarity, and what rights you have."
+      "description": "AxaWeb privacy policy: what data we process via forms, cookies, Analytics, and Clarity, and which rights you have."
     },
     "terms": {
       "title": "Terms & Conditions | AxaWeb",
@@ -68,13 +68,13 @@
     },
     "notFound": {
       "title": "Page Not Found | AxaWeb",
-      "description": "This page does not exist (anymore). Return to the homepage, browse our services and projects, or contact AxaWeb for quick help."
+      "description": "This page no longer exists. Return to the homepage, browse our services and projects, or contact AxaWeb for help."
     }
   },
   "services": {
     "websites": {
       "name": "Website development",
-      "description": "Professional custom websites for entrepreneurs, with SEO foundations, fast performance, and a conversion-focused structure."
+      "description": "Custom websites for growing businesses — with SEO foundations, fast performance, and a conversion-focused structure."
     },
     "webshops": {
       "name": "Web shop development",

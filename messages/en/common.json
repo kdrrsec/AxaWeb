@@ -27,7 +27,7 @@
     "home": "Home"
   },
   "footer": {
-    "note": "Websites, web shops, hosting, and maintenance. Everything under one roof, with one dedicated contact.",
+    "note": "Websites, web shops, hosting, and maintenance — managed through one dedicated contact.",
     "servicesTitle": "Services",
     "navTitle": "Navigation",
     "contactTitle": "Contact",
@@ -42,7 +42,7 @@
     "cookieSettings": "Cookie preferences",
     "relatedTitle": "Related documents",
     "rights": "All rights reserved.",
-    "tagline": "Digital partner for entrepreneurs"
+    "tagline": "Digital partner for ambitious businesses"
   },
   "legal": {
     "relatedTitle": "Related documents"
@@ -71,13 +71,13 @@
     "nextProject": "Next project",
     "viewNamed": "View {name}",
     "nextStep": "Next step",
-    "ctaTitle": "Want a website that performs like this?",
-    "ctaLead": "Tell us about your project. We'll advise you on approach, timeline, and investment — no obligation.",
+    "ctaTitle": "Want a website built to this standard?",
+    "ctaLead": "Tell us about your project. We'll advise on approach, timeline, and investment — with no obligation.",
     "ctaButton": "Request a quote"
   },
   "directContact": {
     "title": "Need help right away?",
-    "text": "Prefer a direct conversation or want to discuss your project? Feel free to give us a call.",
+    "text": "Prefer to talk it through? Call us — we're happy to discuss your project.",
     "phoneDisplay": "06 29 12 75 75",
     "phoneHref": "tel:+31629127575",
     "phoneAria": "Call AxaWeb at 06 29 12 75 75"
