@@ -7,6 +7,7 @@ import { initPricingUI } from "./modules/pricing-ui.js";
 import { initCookieConsent } from "./modules/cookie-consent.js";
 import { initAnalytics } from "./modules/analytics.js";
 import { initTracking } from "./modules/tracking.js";
+import { initCursor } from "./modules/cursor.js";
 
 function initYear() {
   const year = document.querySelector("[data-year]");
@@ -31,6 +32,7 @@ function init() {
   initCookieConsent();
   initAnalytics();
   initTracking();
+  initCursor();
 }
 
 if (document.readyState === "loading") {

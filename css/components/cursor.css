@@ -1,0 +1,116 @@
+/* Custom cursor — alleen desktop / fine pointer via .has-custom-cursor */
+
+.axa-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease);
+}
+
+.axa-cursor.is-visible {
+  opacity: 1;
+}
+
+.axa-cursor__dot,
+.axa-cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.axa-cursor__dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  background: var(--text);
+  box-shadow: 0 0 0 1px rgba(6, 16, 29, 0.35);
+  transition:
+    width var(--dur-fast) var(--ease),
+    height var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease),
+    opacity var(--dur-fast) var(--ease);
+}
+
+.axa-cursor__ring {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid rgba(244, 247, 251, 0.42);
+  background: transparent;
+  transition:
+    width var(--dur-med) var(--ease),
+    height var(--dur-med) var(--ease),
+    border-color var(--dur-med) var(--ease),
+    background var(--dur-med) var(--ease),
+    opacity var(--dur-med) var(--ease);
+}
+
+.axa-cursor.is-hover .axa-cursor__dot {
+  width: 0.25rem;
+  height: 0.25rem;
+  background: var(--accent-hover);
+}
+
+.axa-cursor.is-hover .axa-cursor__ring {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-color: rgba(74, 160, 255, 0.7);
+  background: rgba(35, 139, 255, 0.08);
+}
+
+.axa-cursor.is-scrolling .axa-cursor__ring {
+  width: 2.125rem;
+  height: 1.375rem;
+  border-radius: 999px;
+  border-color: rgba(244, 247, 251, 0.28);
+  opacity: 0.85;
+}
+
+.axa-cursor.is-down .axa-cursor__ring {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-color: rgba(74, 160, 255, 0.8);
+  background: rgba(35, 139, 255, 0.12);
+}
+
+.axa-cursor.is-editing {
+  opacity: 0;
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+html.has-custom-cursor.has-custom-cursor--editing,
+html.has-custom-cursor.has-custom-cursor--editing * {
+  cursor: text !important;
+}
+
+html.has-custom-cursor.has-custom-cursor--editing .axa-cursor {
+  opacity: 0;
+}
+
+@media (pointer: coarse), (hover: none) {
+  .axa-cursor {
+    display: none !important;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .axa-cursor {
+    display: none !important;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: auto !important;
+  }
+}
