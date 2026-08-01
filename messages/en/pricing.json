@@ -1,234 +1,234 @@
 {
   "modelToggle": {
-    "ariaLabel": "",
-    "prompt": "",
-    "promptText": "",
-    "hint": "",
-    "empty": "",
-    "selected": "",
-    "oneTime": "",
-    "waas": ""
+    "ariaLabel": "Choose how you want to get your website",
+    "prompt": "First, choose how you want to get your website",
+    "promptText": "Select a one-time investment or a monthly subscription.",
+    "hint": "Make a choice",
+    "empty": "Packages will appear here after you choose.",
+    "selected": "Selected",
+    "oneTime": "One-time website",
+    "waas": "Website as a Service"
   },
   "labels": {
-    "introPrice": "",
-    "exclVat": "",
-    "oneTimeInvestment": "",
-    "from": "",
-    "perMonth": "",
-    "perYear": "",
-    "onRequest": "",
-    "upcoming": "",
-    "saveYear": "",
-    "saveTerm": ""
+    "introPrice": "Introductory price",
+    "exclVat": "Excl. 21% VAT",
+    "oneTimeInvestment": "One-time investment",
+    "from": "From",
+    "perMonth": "/ month",
+    "perYear": "/ year",
+    "onRequest": "On request",
+    "upcoming": "coming soon",
+    "saveYear": "Save {amount} per year",
+    "saveTerm": "Save {amount} over {months} months"
   },
   "badges": {
-    "mostChosen": "",
-    "recommended": "",
-    "bestPrice": "",
-    "popular": ""
+    "mostChosen": "Most chosen",
+    "recommended": "Recommended",
+    "bestPrice": "Best value",
+    "popular": "Popular"
   },
   "terms": {
-    "ariaLabel": "",
-    "monthly": "",
-    "12": "",
-    "24": "",
-    "yearly": "",
-    "hostingAria": "",
-    "maintenanceAria": ""
+    "ariaLabel": "Choose contract length",
+    "monthly": "Monthly",
+    "12": "12 months",
+    "24": "24 months",
+    "yearly": "Yearly",
+    "hostingAria": "Choose hosting period",
+    "maintenanceAria": "Choose maintenance period"
   },
   "sections": {
     "websiteHub": {
-      "eyebrow": "",
-      "title": "",
-      "intro": ""
+      "eyebrow": "Websites",
+      "title": "Choose the model that fits you.",
+      "intro": "One-time development or Website as a Service: you decide how you want to start."
     },
     "oneTime": {
-      "eyebrow": "",
-      "title": "",
-      "intro": "",
-      "note": ""
+      "eyebrow": "One-time Website",
+      "title": "Websites with a fixed starting price.",
+      "intro": "A one-time investment for designing and building your website.",
+      "note": "Introductory prices exclude 21% VAT. The final price depends on scope, features, and selected services. You always receive a clear quote in advance."
     },
     "waas": {
-      "eyebrow": "",
-      "title": "",
-      "intro": "",
-      "note": ""
+      "eyebrow": "Website as a Service",
+      "title": "Industry-focused websites, all-inclusive.",
+      "intro": "Website, hosting, and maintenance in one monthly subscription, tailored to your industry.",
+      "note": "Prices exclude 21% VAT. Exact scope is aligned during the intro call. Website as a Service has specific terms on ownership, transfer, and termination. See our Terms & Conditions for details."
     },
     "hosting": {
-      "eyebrow": "",
-      "title": "",
-      "intro": "",
-      "note": ""
+      "eyebrow": "Hosting",
+      "title": "Yearly hosting, without the hassle.",
+      "intro": "Fast, secure hosting with SSL, backups, and personal support.",
+      "note": "Prices exclude 21% VAT. You always receive a clear proposal in advance."
     },
     "maintenance": {
-      "eyebrow": "",
-      "title": "",
-      "intro": "",
-      "note": ""
+      "eyebrow": "Maintenance",
+      "title": "Maintenance as a subscription.",
+      "intro": "Ongoing care for updates, monitoring, and support.",
+      "note": "Prices exclude 21% VAT. Minimum term depends on the selected contract. Duration and cancellation terms depend on the chosen plan."
     }
   },
   "oneTime": {
     "start": {
-      "name": "",
-      "audience": ""
+      "name": "Start",
+      "audience": "For startups and small businesses."
     },
     "business": {
-      "name": "",
-      "audience": ""
+      "name": "Business",
+      "audience": "For companies that want a more extensive, professional online presence."
     },
     "premium": {
-      "name": "",
-      "audience": ""
+      "name": "Premium",
+      "audience": "For extensive websites, custom features, and growing organizations."
     }
   },
   "waas": {
     "business-site": {
-      "name": "",
-      "audience": ""
+      "name": "Business website",
+      "audience": "For service providers and businesses that want to look professional and convincing online."
     },
     "barbershop": {
-      "name": "",
-      "audience": ""
+      "name": "Barbershop Complete",
+      "audience": "For hairdressers and barbershops that want to combine their look, services, and appointments professionally online."
     },
     "restaurant": {
-      "name": "",
-      "audience": ""
+      "name": "Restaurant Complete",
+      "audience": "For restaurants that want to present their menu, atmosphere, and reservation options professionally."
     },
     "gym": {
-      "name": "",
-      "audience": ""
+      "name": "Gym Complete",
+      "audience": "For gyms and studios that want to offer classes, memberships, and sign-ups clearly online."
     },
     "webshop": {
-      "name": "",
-      "audience": ""
+      "name": "Web shop Complete",
+      "audience": "For entrepreneurs who want to sell products or services professionally and at scale online."
     }
   },
   "hosting": {
     "essential": {
-      "name": "",
-      "audience": ""
+      "name": "Essential",
+      "audience": "For websites that need to stay reliably online."
     },
     "business": {
-      "name": "",
-      "audience": ""
+      "name": "Business",
+      "audience": "For companies where the website plays an important role."
     },
     "managed": {
-      "name": "",
-      "audience": ""
+      "name": "Fully managed",
+      "audience": "Hosting and maintenance fully taken care of, including updates and monitoring."
     }
   },
   "maintenance": {
     "basic": {
-      "name": "",
-      "audience": ""
+      "name": "Basic",
+      "audience": "For websites that need to stay up to date and secure."
     },
     "business": {
-      "name": "",
-      "audience": ""
+      "name": "Business",
+      "audience": "For companies that need to rely on their website."
     },
     "custom": {
-      "name": "",
-      "audience": ""
+      "name": "Custom",
+      "audience": "For custom platforms and organizations with specific requirements."
     }
   },
   "features": {
-    "onepage": "",
-    "responsive": "",
-    "contactForm": "",
-    "basicSeo": "",
-    "ssl": "",
-    "delivery": "",
-    "upToFivePages": "",
-    "customDesign": "",
-    "portfolio": "",
-    "maps": "",
-    "performance": "",
-    "allBusiness": "",
-    "morePages": "",
-    "customFeatures": "",
-    "api": "",
-    "animations": "",
-    "priority": "",
-    "automaticBackups": "",
-    "businessEmail": "",
-    "ssd": "",
-    "emailSupport": "",
-    "allEssential": "",
-    "moreStorage": "",
-    "uptime": "",
-    "prioritySupport": "",
-    "yearlyCheck": "",
-    "allBusinessHosting": "",
-    "updatesIncluded": "",
-    "proactive": "",
-    "fixedContact": "",
-    "sla": "",
-    "cmsUpdates": "",
-    "backupCheck": "",
-    "healthCheck": "",
-    "allBasic": "",
-    "monitoring": "",
-    "incidentPriority": "",
-    "smallEdits": "",
-    "quarterlyReport": "",
-    "allBusinessMaint": "",
-    "slaResponse": "",
-    "devHours": "",
-    "directAdmin": "",
-    "waasCustomSite": "",
-    "waasServicesPages": "",
-    "waasContactQuoteForm": "",
-    "waasBasicSeo": "",
-    "waasHostingMaintenance": "",
-    "waasSslBackups": "",
-    "waasSmallMonthlyEdits": "",
-    "waasTreatmentsPrices": "",
-    "waasTeamOverview": "",
-    "waasPhotoGallery": "",
-    "waasWhatsapp": "",
-    "waasDigitalMenu": "",
-    "waasOpeningHours": "",
-    "waasTableReservation": "",
-    "waasAtmospherePhotos": "",
-    "waasClassSchedule": "",
-    "waasMemberships": "",
-    "waasTrainerOverview": "",
-    "waasTrialForm": "",
-    "waasCustomShop": "",
-    "waasProductCategories": "",
-    "waasOnlinePayments": "",
-    "waasCartCheckout": "",
-    "waasStockOrders": "",
-    "waasIntegrationsOnRequest": ""
+    "onepage": "Professional one-page site",
+    "responsive": "Responsive design",
+    "contactForm": "Contact form",
+    "basicSeo": "Basic SEO",
+    "ssl": "SSL certificate",
+    "delivery": "Delivery from five business days",
+    "upToFivePages": "Up to five pages",
+    "customDesign": "Custom design",
+    "portfolio": "Portfolio or services overview",
+    "maps": "Google Maps integration",
+    "performance": "Performance optimization",
+    "allBusiness": "Everything in Business",
+    "morePages": "More pages and content",
+    "customFeatures": "Custom features",
+    "api": "API integrations available",
+    "animations": "More advanced animations",
+    "priority": "Priority during development",
+    "automaticBackups": "Automatic backups",
+    "businessEmail": "Business email",
+    "ssd": "Fast SSD storage",
+    "emailSupport": "Email support",
+    "allEssential": "Everything in Essential",
+    "moreStorage": "More storage and speed",
+    "uptime": "Uptime monitoring",
+    "prioritySupport": "Priority support",
+    "yearlyCheck": "Annual performance check",
+    "allBusinessHosting": "Everything in Business",
+    "updatesIncluded": "Updates and maintenance included",
+    "proactive": "Proactive monitoring",
+    "fixedContact": "Dedicated contact person",
+    "sla": "SLA agreements available",
+    "cmsUpdates": "Periodic CMS and plugin updates",
+    "backupCheck": "Backup verification",
+    "healthCheck": "Monthly health check",
+    "allBasic": "Everything in Basic",
+    "monitoring": "Uptime and error monitoring",
+    "incidentPriority": "Priority during outages",
+    "smallEdits": "Minor maintenance and edits (1 hour per month)",
+    "quarterlyReport": "Quarterly report",
+    "allBusinessMaint": "Everything in Business",
+    "slaResponse": "Response times via SLA agreement",
+    "devHours": "Fixed number of development hours",
+    "directAdmin": "Direct contact with your administrator",
+    "waasCustomSite": "Custom website",
+    "waasServicesPages": "Services and company pages",
+    "waasContactQuoteForm": "Contact and quote form",
+    "waasBasicSeo": "Basic SEO",
+    "waasHostingMaintenance": "Hosting and maintenance",
+    "waasSslBackups": "SSL and backups",
+    "waasSmallMonthlyEdits": "Small monthly changes",
+    "waasTreatmentsPrices": "Treatments and price list",
+    "waasTeamOverview": "Team or barber overview",
+    "waasPhotoGallery": "Photo gallery",
+    "waasWhatsapp": "WhatsApp contact",
+    "waasDigitalMenu": "Digital menu",
+    "waasOpeningHours": "Opening hours",
+    "waasTableReservation": "Table reservation or booking request",
+    "waasAtmospherePhotos": "Photo and atmosphere gallery",
+    "waasClassSchedule": "Class schedule",
+    "waasMemberships": "Memberships and rates",
+    "waasTrainerOverview": "Trainer overview",
+    "waasTrialForm": "Trial class or sign-up form",
+    "waasCustomShop": "Custom web shop",
+    "waasProductCategories": "Product and category management",
+    "waasOnlinePayments": "Online payments",
+    "waasCartCheckout": "Shopping cart and checkout",
+    "waasStockOrders": "Inventory or order management",
+    "waasIntegrationsOnRequest": "Integrations on request"
   },
   "upcoming": {
-    "axabookAppointments": "",
-    "axabookRestaurants": ""
+    "axabookAppointments": "AxaBook Appointments",
+    "axabookRestaurants": "AxaBook Restaurants"
   },
   "cta": {
-    "requestQuote": "",
-    "discussWebsite": "",
-    "requestCustom": "",
-    "planIntro": "",
-    "requestEssential": "",
-    "requestBusiness": "",
-    "discussOptions": "",
-    "chooseBasic": "",
-    "chooseBusiness": "",
-    "discussSituation": "",
-    "viewWebsites": "",
-    "viewHosting": "",
-    "viewMaintenance": ""
+    "requestQuote": "Request a quote",
+    "discussWebsite": "Discuss your website",
+    "requestCustom": "Request a custom solution",
+    "planIntro": "Schedule an intro call",
+    "requestEssential": "Request Essential",
+    "requestBusiness": "Request Business",
+    "discussOptions": "Discuss the options",
+    "chooseBasic": "Choose Basic",
+    "chooseBusiness": "Choose Business",
+    "discussSituation": "Discuss your situation",
+    "viewWebsites": "All about websites",
+    "viewHosting": "All about hosting",
+    "viewMaintenance": "All about maintenance"
   },
   "termsInfo": {
-    "title": "",
+    "title": "Good to know",
     "items": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
+      "All listed prices exclude 21% VAT.",
+      "One-time websites are a one-time investment; Website as a Service is a monthly subscription.",
+      "Hosting is billed annually; maintenance according to the selected contract.",
+      "Subscriptions have a minimum term based on the chosen contract length. After that, they can be cancelled according to the terms.",
+      "The final price depends on scope, features, and selected services. You always receive a clear quote in advance.",
+      "After delivery, you receive a full walkthrough of your website."
     ]
   }
 }

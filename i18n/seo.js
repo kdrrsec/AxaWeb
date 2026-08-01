@@ -128,8 +128,11 @@ export function renderSocialMeta({
 }
 
 /** Organization + ProfessionalService node */
-export function buildOrganizationNode(seoMessages = {}) {
+export function buildOrganizationNode(seoMessages = {}, locale = defaultLocale) {
   const org = seoMessages.organization || {};
+  const languages = englishLocaleLive
+    ? ["Dutch", "English", "nl", "en"]
+    : ["Dutch", "nl"];
   return {
     "@type": ["Organization", "ProfessionalService"],
     "@id": `${siteUrl}/#organization`,
@@ -148,7 +151,7 @@ export function buildOrganizationNode(seoMessages = {}) {
     description: org.description || "",
     areaServed: {
       "@type": "Country",
-      name: org.areaServed || "Nederland",
+      name: org.areaServed || (locale === "en" ? "Netherlands" : "Nederland"),
     },
     priceRange: "€€",
     contactPoint: {
@@ -156,18 +159,18 @@ export function buildOrganizationNode(seoMessages = {}) {
       contactType: "customer service",
       email: org.email || organizationEmail,
       telephone: org.telephone || organizationTelephone,
-      availableLanguage: ["Dutch", "nl"],
+      availableLanguage: languages,
     },
   };
 }
 
-export function buildWebSiteNode(seoMessages = {}) {
+export function buildWebSiteNode(seoMessages = {}, locale = defaultLocale) {
   return {
     "@type": "WebSite",
     "@id": `${siteUrl}/#website`,
-    url: `${siteUrl}/`,
+    url: locale === "en" ? `${siteUrl}/en` : `${siteUrl}/`,
     name: seoMessages.siteName || siteName,
-    inLanguage: hreflangCode[defaultLocale] || "nl-NL",
+    inLanguage: hreflangCode[locale] || hreflangCode[defaultLocale] || "nl-NL",
     publisher: { "@id": `${siteUrl}/#organization` },
     description: seoMessages.organization?.description || "",
   };
@@ -231,12 +234,13 @@ export function buildContactPageNode(url = "/contact") {
   };
 }
 
-export function buildCreativeWorkNode(project) {
+export function buildCreativeWorkNode(project, locale = defaultLocale) {
+  const path = localizedPath(`/projecten/${project.slug}`, locale);
   return {
     "@type": "CreativeWork",
     name: project.name,
     description: project.meta.description,
-    url: `${siteUrl}/projecten/${project.slug}`,
+    url: `${siteUrl}${path === "/" ? "" : path}`,
     image: project.images.og,
     creator: { "@id": `${siteUrl}/#organization` },
     about: {
@@ -273,43 +277,70 @@ export function renderJsonLdScript(jsonLd) {
  * Sitemap-entries voor alle publieke pagina's.
  * @param {{ lastmod?: string }} options
  */
+const sitemapSeed = [
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/diensten", changefreq: "monthly", priority: "0.9" },
+  { path: "/websites", changefreq: "monthly", priority: "0.85" },
+  { path: "/webshops", changefreq: "monthly", priority: "0.85" },
+  { path: "/hosting", changefreq: "monthly", priority: "0.8" },
+  { path: "/onderhoud", changefreq: "monthly", priority: "0.8" },
+  { path: "/pakketten", changefreq: "weekly", priority: "0.9" },
+  { path: "/projecten", changefreq: "monthly", priority: "0.75" },
+  { path: "/projecten/bandendepot", changefreq: "monthly", priority: "0.65" },
+  { path: "/projecten/axanet", changefreq: "monthly", priority: "0.65" },
+  { path: "/projecten/viralon", changefreq: "monthly", priority: "0.65" },
+  { path: "/contact", changefreq: "monthly", priority: "0.85" },
+  { path: "/offerte", changefreq: "monthly", priority: "0.85" },
+  { path: "/privacy", changefreq: "yearly", priority: "0.3" },
+  { path: "/cookies", changefreq: "yearly", priority: "0.3" },
+  { path: "/algemene-voorwaarden", changefreq: "yearly", priority: "0.3" },
+  { path: "/disclaimer", changefreq: "yearly", priority: "0.3" },
+];
+
 export function getSitemapEntries({ lastmod } = {}) {
   const iso = lastmod || new Date().toISOString().slice(0, 10);
-  return [
-    { path: "/", changefreq: "weekly", priority: "1.0", lastmod: iso },
-    { path: "/diensten", changefreq: "monthly", priority: "0.9", lastmod: iso },
-    { path: "/websites", changefreq: "monthly", priority: "0.85", lastmod: iso },
-    { path: "/webshops", changefreq: "monthly", priority: "0.85", lastmod: iso },
-    { path: "/hosting", changefreq: "monthly", priority: "0.8", lastmod: iso },
-    { path: "/onderhoud", changefreq: "monthly", priority: "0.8", lastmod: iso },
-    { path: "/pakketten", changefreq: "weekly", priority: "0.9", lastmod: iso },
-    { path: "/projecten", changefreq: "monthly", priority: "0.75", lastmod: iso },
-    { path: "/projecten/bandendepot", changefreq: "monthly", priority: "0.65", lastmod: iso },
-    { path: "/projecten/axanet", changefreq: "monthly", priority: "0.65", lastmod: iso },
-    { path: "/projecten/viralon", changefreq: "monthly", priority: "0.65", lastmod: iso },
-    { path: "/contact", changefreq: "monthly", priority: "0.85", lastmod: iso },
-    { path: "/offerte", changefreq: "monthly", priority: "0.85", lastmod: iso },
-    { path: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: iso },
-    { path: "/cookies", changefreq: "yearly", priority: "0.3", lastmod: iso },
-    { path: "/algemene-voorwaarden", changefreq: "yearly", priority: "0.3", lastmod: iso },
-    { path: "/disclaimer", changefreq: "yearly", priority: "0.3", lastmod: iso },
-  ];
+  const activeLocales = englishLocaleLive ? locales : [defaultLocale];
+
+  return activeLocales.flatMap((locale) =>
+    sitemapSeed.map((entry) => ({
+      path: entry.path,
+      locale,
+      loc: canonicalUrl(entry.path, locale),
+      changefreq: entry.changefreq,
+      priority: entry.priority,
+      lastmod: iso,
+      alternates: activeLocales.map((alt) => ({
+        hreflang: hreflangCode[alt] || alt,
+        href: canonicalUrl(entry.path, alt),
+      })),
+    }))
+  );
 }
 
 export function renderSitemapXml(entries = getSitemapEntries()) {
   const urls = entries
-    .map(
-      (entry) => `  <url>
-    <loc>${canonicalUrl(entry.path)}</loc>
+    .map((entry) => {
+      const alternates = (entry.alternates || [])
+        .map(
+          (alt) =>
+            `    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`
+        )
+        .join("\n");
+      const xDefault = entry.alternates?.length
+        ? `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${canonicalUrl(entry.path, defaultLocale)}" />`
+        : "";
+      return `  <url>
+    <loc>${entry.loc || canonicalUrl(entry.path, entry.locale || defaultLocale)}</loc>
     <lastmod>${entry.lastmod}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>
-  </url>`
-    )
+${alternates}${xDefault}
+  </url>`;
+    })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
 `;

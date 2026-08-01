@@ -3,7 +3,8 @@
  * All visible copy from messages via i18n `cookies.*`.
  */
 
-import { t } from "./i18n.js";
+import { localizedPath } from "../../i18n/routing.js";
+import { getLocale, t } from "./i18n.js";
 import {
   acceptAllConsent,
   getConsent,
@@ -31,7 +32,7 @@ function buildBanner() {
         <h2 id="cookie-consent-title" class="cookie-consent__title"></h2>
         <p id="cookie-consent-text" class="cookie-consent__text"></p>
         <p class="cookie-consent__policy">
-          <a href="/cookies" class="cookie-consent__policy-link"></a>
+          <a href="${localizedPath("/cookies", getLocale())}" class="cookie-consent__policy-link"></a>
         </p>
         <div class="cookie-consent__actions">
           <button type="button" class="btn btn--primary cookie-consent__btn" data-cookie-accept-all></button>

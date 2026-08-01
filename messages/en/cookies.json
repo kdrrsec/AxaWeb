@@ -1,66 +1,71 @@
 {
   "banner": {
-    "title": "",
-    "text": "",
-    "acceptAll": "",
-    "rejectAll": "",
-    "customize": "",
-    "save": "",
-    "closePreferences": "",
-    "policyLink": "",
-    "ariaLabel": "",
-    "preferencesTitle": "",
-    "preferencesIntro": ""
+    "title": "Cookies and privacy",
+    "text": "We use necessary cookies to make the site work. With your consent, we also measure statistics to improve AxaWeb. Marketing cookies are off by default.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "customize": "Customize preferences",
+    "save": "Save selection",
+    "closePreferences": "Close",
+    "policyLink": "More about cookies",
+    "ariaLabel": "Cookie consent",
+    "preferencesTitle": "Cookie preferences",
+    "preferencesIntro": "Choose which categories you allow. Necessary cookies are always active."
   },
   "categories": {
     "necessary": {
-      "title": "",
-      "description": "",
-      "alwaysOn": ""
+      "title": "Necessary",
+      "description": "Required for basic functionality, security, and remembering your cookie choice. Always active.",
+      "alwaysOn": "Always active"
     },
     "preferences": {
-      "title": "",
-      "description": ""
+      "title": "Preferences",
+      "description": "For optional functional settings that are not strictly necessary."
     },
     "statistics": {
-      "title": "",
-      "description": ""
+      "title": "Statistics",
+      "description": "Helps us understand how the website is used via Google Analytics 4 and Microsoft Clarity. No marketing ads."
     },
     "marketing": {
-      "title": "",
-      "description": ""
+      "title": "Marketing",
+      "description": "For future marketing tools such as advertising pixels. Currently not loaded."
     }
   },
   "footer": {
-    "cookieSettings": "",
-    "cookiePolicy": ""
+    "cookieSettings": "Cookie preferences",
+    "cookiePolicy": "Cookie Policy"
   },
   "page": {
-    "title": "",
-    "description": "",
-    "h1": "",
-    "intro": "",
+    "title": "Cookie Policy | AxaWeb",
+    "description": "Learn how AxaWeb uses cookies and similar technologies, which categories exist, and how you can change your consent.",
+    "h1": "Cookie Policy",
+    "intro": "This cookie policy explains which cookies and similar technologies AxaWeb may use, why, and how you manage your choice.",
     "sections": {
       "what": {
-        "title": "",
-        "text": ""
+        "title": "What are cookies?",
+        "text": "Cookies are small text files that your browser can store. Similar technologies, such as local storage, can serve the same purpose."
       },
       "categories": {
-        "title": "",
-        "text": ""
+        "title": "Categories",
+        "text": "We distinguish between necessary cookies, preferences, statistics, and marketing. We only load optional statistics tools after your consent."
       },
       "tools": {
-        "title": "",
-        "text": "",
-        "items": ["", "", "", ""]
+        "title": "Which tools may be used?",
+        "text": "Depending on your consent, the following tools may be loaded:",
+        "items": [
+          "Necessary: storage of your cookie consent on this device.",
+          "Statistics: Google Analytics 4 (usage metrics) and Microsoft Clarity (session insights; form input masked), only after consent for Statistics.",
+          "Marketing: reserved for future tools; not loaded without marketing consent.",
+          "Preferences: reserved for optional functional settings."
+        ]
       },
       "manage": {
-        "title": "",
-        "text": ""
+        "title": "Managing consent",
+        "text": "You can accept, reject, or later change cookies via Cookie preferences in the footer. Without consent for Statistics or Marketing, those scripts are not loaded."
       },
       "privacy": {
-        "title": "",
-        "text": ""
+        "title": "Privacy",
+        "text": "You can read more about the processing of personal data in the privacy policy."
       }
     }
   }

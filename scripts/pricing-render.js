@@ -117,7 +117,7 @@ export function renderModelToggle(tp) {
  * @param {(path: string, values?: Record<string, string>) => string} tp
  * @param {(name: string, className?: string) => string} icon
  */
-export function buildPricingRenderers(tp, icon) {
+export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
   const nameOf = (group, id) => tp(`${group}.${id}.name`);
   const audienceOf = (group, id) => tp(`${group}.${id}.audience`);
 
@@ -140,7 +140,7 @@ export function buildPricingRenderers(tp, icon) {
           <ul class="pricing-card__list">
             ${featureList(plan.featureKeys, tp, icon)}
           </ul>
-          <a class="btn ${plan.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${plan.href}">${escapeHtml(cta)}</a>
+          <a class="btn ${plan.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${localizeHref(plan.href)}">${escapeHtml(cta)}</a>
         </article>`;
       })
       .join("");
@@ -186,7 +186,7 @@ export function buildPricingRenderers(tp, icon) {
             ${featureList(branch.featureKeys || [], tp, icon)}
             ${upcoming}
           </ul>
-          <a class="btn ${branch.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${pricing.waas.href}">${escapeHtml(tp(`cta.${pricing.waas.ctaKey}`))}</a>
+          <a class="btn ${branch.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${localizeHref(pricing.waas.href)}">${escapeHtml(tp(`cta.${pricing.waas.ctaKey}`))}</a>
         </article>`;
       })
       .join("");
@@ -215,7 +215,7 @@ export function buildPricingRenderers(tp, icon) {
           <ul class="pricing-card__list">
             ${featureList(plan.featureKeys, tp, icon)}
           </ul>
-          <a class="btn ${plan.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${plan.href}">${escapeHtml(tp(`cta.${plan.ctaKey}`))}</a>
+          <a class="btn ${plan.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${localizeHref(plan.href)}">${escapeHtml(tp(`cta.${plan.ctaKey}`))}</a>
         </article>`;
         }
 
@@ -250,7 +250,7 @@ export function buildPricingRenderers(tp, icon) {
           <ul class="pricing-card__list">
             ${featureList(plan.featureKeys, tp, icon)}
           </ul>
-          <a class="btn ${plan.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${plan.href}">${escapeHtml(tp(`cta.${plan.ctaKey}`))}</a>
+          <a class="btn ${plan.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${localizeHref(plan.href)}">${escapeHtml(tp(`cta.${plan.ctaKey}`))}</a>
         </article>`;
       })
       .join("");

@@ -1,31 +1,30 @@
 /**
  * Locale-configuratie (next-intl / App Router-achtig).
- * NL is standaard; EN is voorbereid maar nog niet actief in routing/UI.
+ * NL is standaard zonder prefix; EN leeft onder /en met Engelse slugs.
  */
 
 export const defaultLocale = "nl";
 
-/** Locales die in de toekomst ondersteund worden */
+/** Locales die ondersteund worden */
 export const locales = ["nl", "en"];
 
 /**
- * 'as-needed': NL zonder prefix (/), EN later onder /en
+ * 'as-needed': NL zonder prefix (/), EN onder /en
  * Zelfde strategie als next-intl localePrefix: 'as-needed'
  */
 export const localePrefix = "as-needed";
 
-/** Of de language switcher zichtbaar is (nu uit) */
-export const languageSwitcherEnabled = false;
+/** Language switcher zichtbaar in header (desktop + mobiel) */
+export const languageSwitcherEnabled = true;
 
 /**
- * Zet op true zodra /en live content heeft.
- * Beheert o.a. hreflang voor EN en switcher-links.
+ * EN-content is live: hreflang, switcher-links en /en-routes actief.
  */
-export const englishLocaleLive = false;
+export const englishLocaleLive = true;
 
 export const localeLabels = {
-  nl: "Nederlands",
-  en: "English",
+  nl: "NL",
+  en: "EN",
 };
 
 export const htmlLang = {
@@ -33,7 +32,7 @@ export const htmlLang = {
   en: "en",
 };
 
-/** BCP47 hreflang-codes (nl-NL nu; en later eenvoudig toevoegen) */
+/** BCP47 hreflang-codes */
 export const hreflangCode = {
   nl: "nl-NL",
   en: "en",
@@ -55,6 +54,27 @@ export const defaultOgImageHeight = 1280;
 
 export const organizationEmail = "info@axaweb.nl";
 export const organizationTelephone = "+31629127575";
+
+/**
+ * Logische route-id → pad per locale.
+ * NL behoudt bestaande slugs; EN gebruikt natuurlijke Engelse slugs.
+ */
+export const routePaths = {
+  home: { nl: "/", en: "/" },
+  diensten: { nl: "/diensten", en: "/services" },
+  websites: { nl: "/websites", en: "/websites" },
+  webshops: { nl: "/webshops", en: "/webshops" },
+  hosting: { nl: "/hosting", en: "/hosting" },
+  onderhoud: { nl: "/onderhoud", en: "/maintenance" },
+  pakketten: { nl: "/pakketten", en: "/packages" },
+  projecten: { nl: "/projecten", en: "/projects" },
+  contact: { nl: "/contact", en: "/contact" },
+  offerte: { nl: "/offerte", en: "/quote" },
+  privacy: { nl: "/privacy", en: "/privacy" },
+  cookies: { nl: "/cookies", en: "/cookies" },
+  terms: { nl: "/algemene-voorwaarden", en: "/terms" },
+  disclaimer: { nl: "/disclaimer", en: "/disclaimer" },
+};
 
 export function isLocale(value) {
   return locales.includes(value);

@@ -3,7 +3,7 @@
  * Iedere pagina definieert eigen secties (content/{locale}/pages.js); per sectietype
  * bestaat hier een eigen renderer. UI-chrome komt uit messages/{locale}.
  */
-import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -12,7 +12,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const { getPages, getSiteNav } = await import(pathToFileURL(join(root, "js/data/pages.js")).href);
 const { getProjects, getNextProject } = await import(pathToFileURL(join(root, "js/data/projects.js")).href);
 const { icon } = await import(pathToFileURL(join(root, "js/modules/icons.js")).href);
-const { defaultLocale, languageSwitcherEnabled, englishLocaleLive, siteUrl } = await import(
+const { defaultLocale, languageSwitcherEnabled, englishLocaleLive, siteUrl, locales } = await import(
   pathToFileURL(join(root, "i18n/config.js")).href
 );
 const { getMessages, createTranslator } = await import(pathToFileURL(join(root, "i18n/dictionary.js")).href);
@@ -40,18 +40,37 @@ const {
   renderSegmentedControl,
 } = await import(pathToFileURL(join(root, "scripts/pricing-render.js")).href);
 
-const locale = defaultLocale;
-const messages = getMessages(locale);
-const t = createTranslator(messages, "common");
-const tf = createTranslator(messages, "form");
-const tp = createTranslator(messages, "pricing");
-const seoMessages = messages.seo || {};
-const pricingView = buildPricingRenderers(tp, icon);
-const pages = getPages(locale);
-const siteNav = getSiteNav(locale);
-const projects = getProjects(locale);
+let locale = defaultLocale;
+let messages = getMessages(locale);
+let t = createTranslator(messages, "common");
+let tf = createTranslator(messages, "form");
+let tp = createTranslator(messages, "pricing");
+let seoMessages = messages.seo || {};
+let pricingView = buildPricingRenderers(tp, icon);
+let pages = getPages(locale);
+let siteNav = getSiteNav(locale);
+let projects = getProjects(locale);
 
-const servicePageKeys = new Set(["websites", "webshops", "hosting", "onderhoud"]);
+function setLocaleContext(nextLocale) {
+  locale = nextLocale;
+  messages = getMessages(locale);
+  t = createTranslator(messages, "common");
+  tf = createTranslator(messages, "form");
+  tp = createTranslator(messages, "pricing");
+  seoMessages = messages.seo || {};
+  pricingView = buildPricingRenderers(tp, icon, pathFor);
+  pages = getPages(locale);
+  siteNav = getSiteNav(locale);
+  projects = getProjects(locale);
+}
+
+const serviceSeoKeyBySlug = {
+  websites: "websites",
+  webshops: "webshops",
+  hosting: "hosting",
+  onderhoud: "onderhoud",
+  maintenance: "onderhoud",
+};
 
 function collectFaqItems(page) {
   return (page.sections || [])
@@ -60,7 +79,7 @@ function collectFaqItems(page) {
 }
 
 function buildPageJsonLd(page, pathname, _canonical) {
-  const nodes = [buildOrganizationNode(seoMessages), buildWebSiteNode(seoMessages)];
+  const nodes = [buildOrganizationNode(seoMessages, locale), buildWebSiteNode(seoMessages, locale)];
 
   if (page.breadcrumb?.length) {
     const crumbs = page.breadcrumb.map((crumb) => ({
@@ -70,12 +89,13 @@ function buildPageJsonLd(page, pathname, _canonical) {
     nodes.push(buildBreadcrumbList(crumbs, pathname));
   }
 
-  if (page.slug === "contact" || page.slug === "offerte") {
+  if (page.slug === "contact" || page.slug === "offerte" || page.slug === "quote") {
     nodes.push(buildContactPageNode(pathname));
   }
 
-  if (servicePageKeys.has(page.slug) && seoMessages.services?.[page.slug]) {
-    const service = seoMessages.services[page.slug];
+  const serviceSeoKey = serviceSeoKeyBySlug[page.slug];
+  if (serviceSeoKey && seoMessages.services?.[serviceSeoKey]) {
+    const service = seoMessages.services[serviceSeoKey];
     nodes.push(
       buildServiceNode({
         name: service.name,
@@ -86,13 +106,13 @@ function buildPageJsonLd(page, pathname, _canonical) {
     );
   }
 
-  if (page.slug === "diensten" && seoMessages.services) {
+  if ((page.slug === "diensten" || page.slug === "services") && seoMessages.services) {
     Object.entries(seoMessages.services).forEach(([key, service]) => {
       nodes.push(
         buildServiceNode({
           name: service.name,
           description: service.description,
-          url: `/${key}`,
+          url: pathFor(`/${key}`),
           seoMessages,
         })
       );
@@ -120,6 +140,16 @@ function escapeHtml(value) {
 }
 
 function pathFor(href) {
+  if (!href) return localizedPath("/", locale);
+  if (
+    href.startsWith("#") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("tel:") ||
+    href.startsWith("http://") ||
+    href.startsWith("https://")
+  ) {
+    return href;
+  }
   return localizedPath(href, locale);
 }
 
@@ -135,10 +165,14 @@ function pagePathname(page) {
 function languageSwitcherMarkup(pathname = "/") {
   const enabled = languageSwitcherEnabled ? "true" : "false";
   const enDisabled = englishLocaleLive ? "false" : "true";
-  return `<div class="language-switcher" data-language-switcher data-enabled="${enabled}" hidden aria-hidden="true">
+  const nlCurrent = locale === "nl" ? ' aria-current="true"' : "";
+  const enCurrent = locale === "en" ? ' aria-current="true"' : "";
+  const hiddenAttr = enabled === "true" ? "" : " hidden";
+  return `<div class="language-switcher" data-language-switcher data-enabled="${enabled}"${hiddenAttr} aria-hidden="${enabled === "true" ? "false" : "true"}">
         <nav aria-label="${escapeHtml(t("languageSwitcher.ariaLabel"))}">
-          <a href="${localizedPath(pathname, "nl")}" data-locale="nl" hreflang="nl" aria-current="true">${escapeHtml(t("languageSwitcher.nl"))}</a>
-          <a href="${localizedPath(pathname, "en")}" data-locale="en" hreflang="en" aria-disabled="${enDisabled}">${escapeHtml(t("languageSwitcher.en"))}</a>
+          <a href="${localizedPath(pathname, "nl")}" data-locale="nl" hreflang="nl"${nlCurrent}>${escapeHtml(t("languageSwitcher.nl"))}</a>
+          <span class="language-switcher__sep" aria-hidden="true">|</span>
+          <a href="${localizedPath(pathname, "en")}" data-locale="en" hreflang="en"${enCurrent} aria-disabled="${enDisabled}">${escapeHtml(t("languageSwitcher.en"))}</a>
         </nav>
       </div>`;
 }
@@ -241,10 +275,10 @@ function footerMarkup() {
             <li><a href="${pathFor("/pakketten")}">${escapeHtml(t("nav.pakketten"))}</a></li>
             <li><a href="${pathFor("/projecten")}">${escapeHtml(t("nav.projecten"))}</a></li>
             <li><a href="${pathFor("/contact")}">${escapeHtml(t("nav.contact"))}</a></li>
-            <li><a href="/privacy">${escapeHtml(t("footer.privacy"))}</a></li>
-            <li><a href="/cookies">${escapeHtml(t("footer.cookiePolicy"))}</a></li>
-            <li><a href="/algemene-voorwaarden">${escapeHtml(t("footer.terms"))}</a></li>
-            <li><a href="/disclaimer">${escapeHtml(t("footer.disclaimer"))}</a></li>
+            <li><a href="${pathFor("/privacy")}">${escapeHtml(t("footer.privacy"))}</a></li>
+            <li><a href="${pathFor("/cookies")}">${escapeHtml(t("footer.cookiePolicy"))}</a></li>
+            <li><a href="${pathFor("/algemene-voorwaarden")}">${escapeHtml(t("footer.terms"))}</a></li>
+            <li><a href="${pathFor("/disclaimer")}">${escapeHtml(t("footer.disclaimer"))}</a></li>
             <li><button type="button" class="site-footer__text-btn" data-open-cookie-settings>${escapeHtml(t("footer.cookieSettings"))}</button></li>
           </ul>
         </div>
@@ -270,7 +304,7 @@ function headActions(actions = []) {
   const buttons = actions
     .map(
       (action) =>
-        `<a class="btn btn--${action.style}" href="${action.href}">${escapeHtml(action.label)}</a>`
+        `<a class="btn btn--${action.style}" href="${pathFor(action.href)}">${escapeHtml(action.label)}</a>`
     )
     .join("\n          ");
   return `<div class="page-head__actions">
@@ -375,7 +409,7 @@ function renderServiceRows(section, alt) {
             <span class="service-row__num" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
             <h3 class="service-row__title">${escapeHtml(row.title)}</h3>
             <p class="service-row__text">${escapeHtml(row.text)}</p>
-            <a class="card__link" href="${row.link.href}">${escapeHtml(row.link.label)} ${icon("arrow", "icon")}</a>
+            <a class="card__link" href="${pathFor(row.link.href)}">${escapeHtml(row.link.label)} ${icon("arrow", "icon")}</a>
           </div>
           <ul class="service-row__points">
             ${row.points.map((point) => `<li>${icon("check")} <span>${escapeHtml(point)}</span></li>`).join("\n            ")}
@@ -774,7 +808,7 @@ function renderPortfolio(section, alt) {
     .map(
       (project) => `
         <article class="case-card reveal">
-          <a class="case-card__link" href="/projecten/${project.slug}" aria-label="Bekijk project ${escapeHtml(project.name)}">
+          <a class="case-card__link" href="${pathFor(`/projecten/${project.slug}`)}" aria-label="${escapeHtml(t("cta.viewProject"))} ${escapeHtml(project.name)}">
             <div class="case-card__stage">
               <div class="device device--desktop">
                 <div class="device__chrome" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -815,14 +849,14 @@ function renderPortfolio(section, alt) {
               <ul class="case-card__tags">
                 ${project.services.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("\n                ")}
               </ul>
-              <span class="case-card__cta">Bekijk project ${icon("arrow")}</span>
+              <span class="case-card__cta">${escapeHtml(t("cta.viewProject"))} ${icon("arrow")}</span>
             </div>
           </a>
         </article>`
     )
     .join("");
 
-  return `    <section class="section${alt}" id="${section.id}" aria-label="Portfolio-overzicht">
+  return `    <section class="section${alt}" id="${section.id}" aria-label="${escapeHtml(t("nav.projecten"))}">
       <div class="container">
         <div class="case-grid">${items}
         </div>
@@ -890,7 +924,7 @@ function renderContact(section, alt) {
 
   const privacyHtml = escapeHtml(tf("labels.privacy")).replace(
     "{privacyLink}",
-    `<a href="/privacy">${escapeHtml(tf("labels.privacyLink"))}</a>`
+    `<a href="${pathFor("/privacy")}">${escapeHtml(tf("labels.privacyLink"))}</a>`
   );
 
   const reqMark = `<span class="req" aria-hidden="true">${escapeHtml(tf("labels.required"))}</span>`;
@@ -1026,11 +1060,11 @@ function renderCta(section) {
       <div class="container">
         <div class="cta-banner reveal">
           <div>
-            <p class="section__eyebrow">Volgende stap</p>
+            <p class="section__eyebrow">${escapeHtml(t("case.nextStep"))}</p>
             <h2 id="cta-title" class="cta-banner__title">${escapeHtml(section.title)}</h2>
             <p class="cta-banner__text">${escapeHtml(section.text)}</p>
           </div>
-          <a class="btn btn--primary" href="${section.button.href}">${escapeHtml(section.button.label)}</a>
+          <a class="btn btn--primary" href="${pathFor(section.button.href)}">${escapeHtml(section.button.label)}</a>
         </div>
       </div>
     </section>`;
@@ -1134,7 +1168,7 @@ ${footerMarkup()}
 }
 
 function renderCaseMain(project) {
-  const next = getNextProject(project.slug);
+  const next = getNextProject(project.slug, locale);
   const block = (section, extraClass = "") => `
     <section class="section${extraClass}" aria-labelledby="${section.id}-title">
       <div class="container case-prose">
@@ -1316,7 +1350,7 @@ function buildCasePage(project) {
     ogImageAlt: project.images.altDesktop || project.meta.title,
     ogType: "article",
     breadcrumb,
-    creativeWork: buildCreativeWorkNode(project),
+    creativeWork: buildCreativeWorkNode(project, locale),
     customMain: renderCaseMain(project),
   });
 }
@@ -1469,26 +1503,330 @@ function syncIndexMessages() {
     );
   }
 
+  /* Enable language switcher on NL homepage */
+  html = html.replace(
+    /<div class="language-switcher"[\s\S]*?<\/div>/,
+    languageSwitcherMarkup("/")
+  );
+
   writeFileSync(indexPath, html, "utf8");
   console.log("Synced i18n messages and SEO head into index.html");
 }
 
+
+function generateEnHomePage() {
+  setLocaleContext("en");
+  const indexPath = join(root, "index.html");
+  let html = readFileSync(indexPath, "utf8");
+  const home = messages.home || {};
+  const seo = seoMessages.pages?.home || home.meta || {};
+  const title = seo.title || home.meta?.title || "AxaWeb";
+  const description = seo.description || home.meta?.description || "";
+  const ogAlt = seoMessages.defaultOgImageAlt || home.meta?.ogImageAlt || "";
+  const canonical = canonicalUrl("/", "en");
+
+  html = html
+    .replace(/<html[^>]*>/, '<html lang="en" data-locale="en">')
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(title)}</title>`)
+    .replace(
+      /<meta name="description" content="[^"]*"\s*\/>/,
+      `<meta name="description" content="${escapeHtml(description)}" />`
+    )
+    .replace(/<link rel="canonical" href="[^"]*"\s*\/>/, `<link rel="canonical" href="${canonical}" />`);
+
+  if (/<link rel="alternate" hreflang=/.test(html)) {
+    html = html.replace(
+      /(?:\s*<link rel="alternate" hreflang="[^"]+" href="[^"]*"\s*\/>)+/,
+      `\n  ${renderHreflangLinks("/")}`
+    );
+  }
+
+  const social = renderSocialMeta({
+    title,
+    description,
+    canonical,
+    ogImageAlt: ogAlt,
+    locale: "en",
+  });
+  if (/<meta property="og:type"/.test(html)) {
+    html = html.replace(
+      /<meta property="og:type"[\s\S]*?(?=\n\s*<link rel="preconnect")/,
+      `${social}\n`
+    );
+  }
+
+  html = html.replace(
+    /<script type="application\/json" id="i18n-messages">[\s\S]*?<\/script>/,
+    clientMessagesScript()
+  );
+
+  const homeJsonLd = buildJsonLdGraph([
+    buildOrganizationNode(seoMessages, "en"),
+    buildWebSiteNode(seoMessages, "en"),
+  ]);
+  html = html.replace(
+    /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
+    renderJsonLdScript(homeJsonLd)
+  );
+
+  /* Chrome + visible homepage copy */
+  const replacements = [
+    [">Ga naar inhoud<", `>${escapeHtml(t("skipToContent"))}<`],
+    ['aria-label="Hoofdnavigatie"', `aria-label="${escapeHtml(t("nav.ariaLabel"))}"`],
+    ['aria-label="Mobiele navigatie"', `aria-label="${escapeHtml(t("nav.mobileAriaLabel"))}"`],
+    ['aria-label="AxaWeb home"', `aria-label="${escapeHtml(t("nav.homeAria"))}"`],
+    ['aria-label="Menu openen"', `aria-label="${escapeHtml(t("nav.menuOpen"))}"`],
+    ['aria-label="Taal kiezen"', `aria-label="${escapeHtml(t("languageSwitcher.ariaLabel"))}"`],
+    [">Diensten<", `>${escapeHtml(t("nav.diensten"))}<`],
+    [">Pakketten<", `>${escapeHtml(t("nav.pakketten"))}<`],
+    [">Projecten<", `>${escapeHtml(t("nav.projecten"))}<`],
+    [">Contact<", `>${escapeHtml(t("nav.contact"))}<`],
+    [">Offerte aanvragen<", `>${escapeHtml(t("cta.requestQuote"))}<`],
+    [">Bekijk onze diensten<", `>${escapeHtml(t("cta.viewServices"))}<`],
+    [">Bekijk alle diensten<", `>${escapeHtml(t("cta.viewAllServices"))}<`],
+    [">Bekijk alle pakketten<", `>${escapeHtml(t("cta.viewAllPackages"))}<`],
+    [">Alle projecten bekijken<", `>${escapeHtml(t("cta.viewAllProjects"))}<`],
+    ['href="/diensten"', `href="${pathFor("/diensten")}"`],
+    ['href="/pakketten"', `href="${pathFor("/pakketten")}"`],
+    ['href="/projecten"', `href="${pathFor("/projecten")}"`],
+    ['href="/contact"', `href="${pathFor("/contact")}"`],
+    ['href="/offerte"', `href="${pathFor("/offerte")}"`],
+    ['href="/"', `href="${pathFor("/")}"`],
+    ['href="/privacy"', `href="${pathFor("/privacy")}"`],
+    ['href="/cookies"', `href="${pathFor("/cookies")}"`],
+    ['href="/algemene-voorwaarden"', `href="${pathFor("/algemene-voorwaarden")}"`],
+    ['href="/disclaimer"', `href="${pathFor("/disclaimer")}"`],
+    ['href="/websites"', `href="${pathFor("/websites")}"`],
+    ['href="/webshops"', `href="${pathFor("/webshops")}"`],
+    ['href="/hosting"', `href="${pathFor("/hosting")}"`],
+    ['href="/onderhoud"', `href="${pathFor("/onderhoud")}"`],
+  ];
+
+  for (const [from, to] of replacements) {
+    html = html.split(from).join(to);
+  }
+
+  /* Hero + sections from home messages */
+  if (home.hero?.title) {
+    html = html.replace(
+      /(<h1 id="hero-title"[^>]*>)([\s\S]*?)(<\/h1>)/,
+      `$1${escapeHtml(home.hero.title)}$3`
+    );
+  }
+  if (home.hero?.text) {
+    html = html.replace(
+      /(<p class="hero__text">)([\s\S]*?)(<\/p>)/,
+      `$1\n            ${escapeHtml(home.hero.text)}\n          $3`
+    );
+  }
+  if (home.hero?.scroll) {
+    html = html.replace(
+      /(<p class="hero__scroll-hint"[^>]*>)([\s\S]*?)(<\/p>)/,
+      `$1${escapeHtml(home.hero.scroll)}$3`
+    );
+  }
+  if (home.intro?.eyebrow) {
+    html = html.replace(
+      /(<section class="section section--alt" id="introductie"[\s\S]*?<p class="section__eyebrow">)([\s\S]*?)(<\/p>)/,
+      `$1${escapeHtml(home.intro.eyebrow)}$3`
+    );
+  }
+  if (home.intro?.title) {
+    html = html.replace(
+      /(<h2 id="introductie-title"[^>]*>)([\s\S]*?)(<\/h2>)/,
+      `$1${escapeHtml(home.intro.title)}$3`
+    );
+  }
+  if (home.intro?.p1 && home.intro?.p2) {
+    html = html.replace(
+      /(<div class="intro__body reveal">)([\s\S]*?)(<\/div>\s*<ul class="intro__facts)/,
+      `$1
+            <p>${escapeHtml(home.intro.p1)}</p>
+            <p>${escapeHtml(home.intro.p2)}</p>
+          $3`
+    );
+  }
+  if (Array.isArray(home.intro?.facts) && home.intro.facts.length >= 3) {
+    const factsHtml = home.intro.facts
+      .map(
+        (fact) => `          <li>
+            <span class="intro__fact-title">${escapeHtml(fact.title)}</span>
+            <span class="intro__fact-text">${escapeHtml(fact.text)}</span>
+          </li>`
+      )
+      .join("\n");
+    html = html.replace(
+      /(<ul class="intro__facts reveal">)([\s\S]*?)(<\/ul>)/,
+      `$1\n${factsHtml}\n        $3`
+    );
+  }
+  if (home.services) {
+    html = html.replace(
+      /(<section class="section" id="diensten"[\s\S]*?<p class="section__eyebrow">)([\s\S]*?)(<\/p>\s*<h2 id="diensten-title"[^>]*>)([\s\S]*?)(<\/h2>\s*<p class="section__intro">)([\s\S]*?)(<\/p>)/,
+      `$1${escapeHtml(home.services.eyebrow)}$3${escapeHtml(home.services.title)}$5${escapeHtml(home.services.intro)}$7`
+    );
+  }
+  if (home.packages) {
+    html = html.replace(
+      /(<section class="section section--alt" id="pakketten"[\s\S]*?<p class="section__eyebrow">)([\s\S]*?)(<\/p>\s*<h2 id="pakketten-title"[^>]*>)([\s\S]*?)(<\/h2>\s*<p class="section__intro">)([\s\S]*?)(<\/p>)/,
+      `$1${escapeHtml(home.packages.eyebrow)}$3${escapeHtml(home.packages.title)}$5${escapeHtml(home.packages.intro)}$7`
+    );
+  }
+  if (home.projects) {
+    html = html.replace(
+      /(<section class="section" id="projecten"[\s\S]*?<p class="section__eyebrow">)([\s\S]*?)(<\/p>\s*<h2 id="projecten-title"[^>]*>)([\s\S]*?)(<\/h2>\s*<p class="section__intro">)([\s\S]*?)(<\/p>)/,
+      `$1${escapeHtml(home.projects.eyebrow)}$3${escapeHtml(home.projects.title)}$5${escapeHtml(home.projects.intro)}$7`
+    );
+  }
+  if (home.cta) {
+    html = html.replace(
+      /(<section[^>]*id="cta"[^>]*>[\s\S]*?<p class="section__eyebrow">)([\s\S]*?)(<\/p>\s*<h2 id="cta-title"[^>]*>)([\s\S]*?)(<\/h2>\s*<p class="cta-banner__text">)([\s\S]*?)(<\/p>)/,
+      `$1${escapeHtml(home.cta.eyebrow)}$3${escapeHtml(home.cta.title)}$5${escapeHtml(home.cta.text)}$7`
+    );
+  }
+
+  /* Replace footer with locale-aware markup */
+  html = html.replace(/<footer class="site-footer">[\s\S]*?<\/footer>/, footerMarkup());
+
+  /* Noscript fallback */
+  if (home.noscript?.title && home.noscript?.text) {
+    html = html.replace(
+      /<noscript>[\s\S]*?<\/noscript>/,
+      `<noscript>
+    <div class="container section">
+      <h2>${escapeHtml(home.noscript.title)}</h2>
+      <p>${escapeHtml(home.noscript.text)}</p>
+    </div>
+  </noscript>`
+    );
+  }
+
+  /* Language switcher enabled for EN home */
+  html = html.replace(
+    /<div class="language-switcher"[\s\S]*?<\/div>/,
+    languageSwitcherMarkup("/")
+  );
+
+  /* Asset paths from /en/ */
+  html = html
+    .replaceAll('src="images/', 'src="/images/')
+    .replaceAll('srcset="images/', 'srcset="/images/')
+    .replaceAll('src="logo.png', 'src="/logo.png')
+    .replaceAll('srcset="logo.png', 'srcset="/logo.png')
+    .replaceAll('srcset="logo@2x.png', 'srcset="/logo@2x.png')
+    .replaceAll(', logo@2x.png', ', /logo@2x.png')
+    .replaceAll('href="css/', 'href="/css/')
+    .replaceAll('src="js/', 'src="/js/')
+    .replaceAll('href="js/', 'href="/js/');
+
+  mkdirSync(join(root, "en"), { recursive: true });
+  writeFileSync(join(root, "en", "index.html"), html, "utf8");
+  console.log("Generated en/index.html");
+}
+
+function generateEnNotFoundPage() {
+  setLocaleContext("en");
+  const src = join(root, "404.html");
+  if (!existsSync(src)) return;
+  let html = readFileSync(src, "utf8");
+  const seo = seoMessages.pages?.notFound || {};
+  const title = seo.title || "Page Not Found | AxaWeb";
+  const description = seo.description || "";
+  const ogAlt = seoMessages.defaultOgImageAlt || "";
+  const canonical = `${siteUrl}/en/404`;
+
+  html = html
+    .replace(/<html[^>]*>/, '<html lang="en" data-locale="en">')
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(title)}</title>`)
+    .replace(
+      /<meta name="description" content="[^"]*"\s*\/>/,
+      `<meta name="description" content="${escapeHtml(description)}" />`
+    )
+    .replace(/<link rel="canonical" href="[^"]*"\s*\/>/, `<link rel="canonical" href="${canonical}" />`)
+    .replace(
+      /(?:\s*<link rel="alternate" hreflang="[^"]+" href="[^"]*"\s*\/>)+/,
+      `
+  <link rel="alternate" hreflang="nl-NL" href="${siteUrl}/404" />
+  <link rel="alternate" hreflang="en" href="${canonical}" />
+  <link rel="alternate" hreflang="x-default" href="${siteUrl}/404" />`
+    );
+
+  const social = renderSocialMeta({
+    title,
+    description,
+    canonical,
+    ogImageAlt: ogAlt,
+    locale: "en",
+  });
+  if (/<meta property="og:type"/.test(html)) {
+    html = html.replace(
+      /<meta property="og:type"[\s\S]*?(?=\n\s*<meta name="theme-color")/,
+      `${social}\n\n  `
+    );
+  }
+
+  html = html
+    .replaceAll('href="/"', `href="${pathFor("/")}"`)
+    .replaceAll('href="/diensten"', `href="${pathFor("/diensten")}"`)
+    .replaceAll('href="/projecten"', `href="${pathFor("/projecten")}"`)
+    .replaceAll('href="/pakketten"', `href="${pathFor("/pakketten")}"`)
+    .replaceAll('href="/contact"', `href="${pathFor("/contact")}"`)
+    .replaceAll('href="/offerte"', `href="${pathFor("/offerte")}"`)
+    .replaceAll(">Offerte aanvragen<", `>${escapeHtml(t("cta.requestQuote"))}<`)
+    .replaceAll(">Contact<", `>${escapeHtml(t("nav.contact"))}<`)
+    .replaceAll(">Diensten<", `>${escapeHtml(t("nav.diensten"))}<`)
+    .replaceAll(">Projecten<", `>${escapeHtml(t("nav.projecten"))}<`)
+    .replaceAll(">Pakketten<", `>${escapeHtml(t("nav.pakketten"))}<`)
+    .replaceAll(">Ga naar inhoud<", `>${escapeHtml(t("skipToContent"))}<`)
+    .replaceAll(">Fout 404<", ">Error 404<")
+    .replaceAll(">Deze pagina bestaat niet<", ">This page does not exist<")
+    .replaceAll(
+      "De pagina die je zoekt is verplaatst of bestaat niet meer. Gebruik de links hieronder om verder te gaan.",
+      "The page you are looking for has moved or no longer exists. Use the links below to continue."
+    )
+    .replaceAll(">Naar homepage<", ">Back to homepage<")
+    .replaceAll(
+      "AxaWeb: websites, webshops, hosting en onderhoud.",
+      "AxaWeb: websites, web shops, hosting, and maintenance."
+    )
+    .replaceAll(
+      'content="AxaWeb: premium berglandschap als visuele identiteit"',
+      `content="${escapeHtml(ogAlt)}"`
+    );
+
+  writeFileSync(join(root, "en", "404.html"), html, "utf8");
+  console.log("Generated en/404.html");
+}
+
 export function generatePages() {
-  Object.values(pages).forEach((page) => {
-    const filePath = join(root, `${page.slug}.html`);
-    writeFileSync(filePath, renderPage(page), "utf8");
-    console.log(`Generated ${page.slug}.html`);
-  });
+  const activeLocales = englishLocaleLive ? locales : [defaultLocale];
 
-  const caseDir = join(root, "projecten");
-  mkdirSync(caseDir, { recursive: true });
-  projects.forEach((project) => {
-    const filePath = join(caseDir, `${project.slug}.html`);
-    writeFileSync(filePath, buildCasePage(project), "utf8");
-    console.log(`Generated projecten/${project.slug}.html`);
-  });
+  for (const nextLocale of activeLocales) {
+    setLocaleContext(nextLocale);
+    const outRoot = nextLocale === "en" ? join(root, "en") : root;
+    mkdirSync(outRoot, { recursive: true });
 
-  syncIndexMessages();
+    Object.values(pages).forEach((page) => {
+      const filePath = join(outRoot, `${page.slug}.html`);
+      writeFileSync(filePath, renderPage(page), "utf8");
+      console.log(`Generated ${nextLocale === "en" ? "en/" : ""}${page.slug}.html`);
+    });
+
+    const caseDir = nextLocale === "en" ? join(outRoot, "projects") : join(root, "projecten");
+    mkdirSync(caseDir, { recursive: true });
+    projects.forEach((project) => {
+      const filePath = join(caseDir, `${project.slug}.html`);
+      writeFileSync(filePath, buildCasePage(project), "utf8");
+      console.log(`Generated ${nextLocale === "en" ? "en/projects" : "projecten"}/${project.slug}.html`);
+    });
+
+    if (nextLocale === "nl") {
+      syncIndexMessages();
+    } else {
+      generateEnHomePage();
+      generateEnNotFoundPage();
+    }
+  }
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {

@@ -36,6 +36,20 @@ const pageSlugs = [
   "offerte",
 ];
 
+const enPageSlugs = [
+  "services",
+  "websites",
+  "webshops",
+  "hosting",
+  "maintenance",
+  "packages",
+  "projects",
+  "contact",
+  "quote",
+];
+
+const enLegalSlugs = ["privacy", "cookies", "terms", "disclaimer"];
+
 const caseSlugs = ["bandendepot", "axanet", "viralon"];
 
 const requiredFiles = [
@@ -77,10 +91,11 @@ function bundleCss() {
     .join("\n\n");
 }
 
-function validateHtml(filePath, { allowNoindex = false } = {}) {
+function validateHtml(filePath, { allowNoindex = false, lang = "nl", requireHreflang = true } = {}) {
   const html = readFileSync(join(root, filePath), "utf8");
+  const langPattern = lang === "en" ? /lang="en"/ : /lang="nl"/;
   const checks = [
-    [/lang="nl"/, "Missing lang=nl"],
+    [langPattern, `Missing lang=${lang}`],
     [/<title>.+<\/title>/, "Missing title"],
     [/meta name="description"/, "Missing meta description"],
     [/<h1[\s>]/, "Missing H1"],
@@ -89,8 +104,14 @@ function validateHtml(filePath, { allowNoindex = false } = {}) {
     [/property="og:description"/, "Missing og:description"],
     [/property="og:image"/, "Missing og:image"],
     [/name="twitter:card"/, "Missing twitter:card"],
-    [/hreflang="nl-NL"/, "Missing hreflang nl-NL"],
   ];
+
+  if (requireHreflang) {
+    checks.push(
+      [/hreflang="nl-NL"/, "Missing hreflang nl-NL"],
+      [/hreflang="en"/, "Missing hreflang en"]
+    );
+  }
 
   checks.forEach(([pattern, message]) => {
     if (!pattern.test(html)) {
@@ -116,6 +137,10 @@ generateSitemap();
 requiredFiles.forEach(assertExists);
 pageSlugs.forEach((slug) => assertExists(`${slug}.html`));
 caseSlugs.forEach((slug) => assertExists(`projecten/${slug}.html`));
+assertExists("en/index.html");
+enPageSlugs.forEach((slug) => assertExists(`en/${slug}.html`));
+enLegalSlugs.forEach((slug) => assertExists(`en/${slug}.html`));
+caseSlugs.forEach((slug) => assertExists(`en/projects/${slug}.html`));
 caseSlugs.forEach((slug) => {
   assertExists(`images/projects/${slug}/desktop-hero.webp`);
   assertExists(`images/projects/${slug}/mobile-hero.webp`);
@@ -126,9 +151,13 @@ validateHtml("privacy.html");
 validateHtml("cookies.html");
 validateHtml("algemene-voorwaarden.html");
 validateHtml("disclaimer.html");
-validateHtml("404.html", { allowNoindex: true });
+validateHtml("404.html", { allowNoindex: true, requireHreflang: false });
 pageSlugs.forEach((slug) => validateHtml(`${slug}.html`));
 caseSlugs.forEach((slug) => validateHtml(`projecten/${slug}.html`));
+validateHtml("en/index.html", { lang: "en" });
+enPageSlugs.forEach((slug) => validateHtml(`en/${slug}.html`, { lang: "en" }));
+enLegalSlugs.forEach((slug) => validateHtml(`en/${slug}.html`, { lang: "en" }));
+caseSlugs.forEach((slug) => validateHtml(`en/projects/${slug}.html`, { lang: "en" }));
 
 if (existsSync(dist)) {
   rmSync(dist, { recursive: true, force: true });
@@ -164,6 +193,7 @@ mkdirSync(join(dist, "images"), { recursive: true });
 });
 cpSync(join(root, "images", "projects"), join(dist, "images", "projects"), { recursive: true });
 cpSync(join(root, "projecten"), join(dist, "projecten"), { recursive: true });
+cpSync(join(root, "en"), join(dist, "en"), { recursive: true });
 cpSync(join(root, "js"), join(dist, "js"), { recursive: true });
 cpSync(join(root, "css"), join(dist, "css"), { recursive: true });
 cpSync(join(root, "content"), join(dist, "content"), { recursive: true });
@@ -194,6 +224,11 @@ useBundleCss("algemene-voorwaarden.html");
 useBundleCss("disclaimer.html");
 pageSlugs.forEach((slug) => useBundleCss(`${slug}.html`));
 caseSlugs.forEach((slug) => useBundleCss(`projecten/${slug}.html`));
+useBundleCss("en/index.html");
+if (existsSync(join(dist, "en/404.html"))) useBundleCss("en/404.html");
+enPageSlugs.forEach((slug) => useBundleCss(`en/${slug}.html`));
+enLegalSlugs.forEach((slug) => useBundleCss(`en/${slug}.html`));
+caseSlugs.forEach((slug) => useBundleCss(`en/projects/${slug}.html`));
 
 for (const slug of caseSlugs) {
   const dir = join(dist, "images", "projects", slug);

@@ -1,99 +1,99 @@
 {
   "aria": {
-    "form": "",
-    "contactInfo": "",
-    "sending": ""
+    "form": "Contact form",
+    "contactInfo": "Contact details",
+    "sending": "The form is being submitted"
   },
   "labels": {
-    "name": "",
-    "company": "",
-    "email": "",
-    "phone": "",
-    "projectType": "",
-    "budget": "",
-    "message": "",
-    "privacy": "",
-    "privacyLink": "",
-    "optional": "",
-    "required": ""
+    "name": "Name",
+    "company": "Company name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "projectType": "Type of enquiry",
+    "budget": "Budget indication",
+    "message": "Message",
+    "privacy": "I agree to the {privacyLink}.",
+    "privacyLink": "privacy policy",
+    "optional": "(optional)",
+    "required": "*"
   },
   "placeholders": {
-    "select": "",
-    "message": ""
+    "select": "Select an option",
+    "message": "Tell us about your project, requirements, or questions…"
   },
   "actions": {
-    "submit": "",
-    "submitting": ""
+    "submit": "Send message",
+    "submitting": "Sending message…"
   },
   "status": {
-    "sending": "",
-    "success": "",
-    "error": "",
-    "rateLimited": "",
-    "configError": "",
-    "activationPending": ""
+    "sending": "Sending message…",
+    "success": "Thank you! Your enquiry has been received. We'll get back to you as soon as possible.",
+    "error": "Something went wrong while sending. Check your connection and try again, or email info@axaweb.nl.",
+    "rateLimited": "You've just submitted an enquiry. Please try again in a few minutes.",
+    "configError": "The contact form is temporarily unavailable. Feel free to email us at info@axaweb.nl.",
+    "activationPending": "Almost ready: confirm the FormSubmit activation link in the inbox of info@axaweb.nl (check spam as well). After that, the form works immediately."
   },
   "errors": {
-    "nameRequired": "",
-    "nameTooShort": "",
-    "emailRequired": "",
-    "emailInvalid": "",
-    "phoneInvalid": "",
-    "projectRequired": "",
-    "projectInvalid": "",
-    "budgetInvalid": "",
-    "messageRequired": "",
-    "messageTooShort": "",
-    "messageTooLong": "",
-    "privacyRequired": ""
+    "nameRequired": "Please enter your name.",
+    "nameTooShort": "Please use at least 2 characters for your name.",
+    "emailRequired": "Please enter your email address.",
+    "emailInvalid": "Please enter a valid email address.",
+    "phoneInvalid": "Please enter a valid phone number (at least 10 digits).",
+    "projectRequired": "Please select a type of enquiry.",
+    "projectInvalid": "Please select a valid type of enquiry.",
+    "budgetInvalid": "Please select a valid budget indication.",
+    "messageRequired": "Please enter a message.",
+    "messageTooShort": "Please tell us a bit more about your enquiry (at least 20 characters).",
+    "messageTooLong": "Your message is too long (maximum 5,000 characters).",
+    "privacyRequired": "Please confirm that you agree to the privacy policy."
   },
   "options": {
     "projectTypes": [
-      { "value": "website", "label": "" },
-      { "value": "webshop", "label": "" },
-      { "value": "website-as-a-service", "label": "" },
-      { "value": "hosting", "label": "" },
-      { "value": "onderhoud", "label": "" },
-      { "value": "maatwerk", "label": "" },
-      { "value": "anders", "label": "" }
+      { "value": "website", "label": "Website" },
+      { "value": "webshop", "label": "Web shop" },
+      { "value": "website-as-a-service", "label": "Website as a Service" },
+      { "value": "hosting", "label": "Hosting" },
+      { "value": "onderhoud", "label": "Maintenance" },
+      { "value": "maatwerk", "label": "Custom solution" },
+      { "value": "anders", "label": "Other" }
     ],
     "budget": [
-      { "value": "under-1000", "label": "" },
-      { "value": "1000-2500", "label": "" },
-      { "value": "2500-5000", "label": "" },
-      { "value": "5000-10000", "label": "" },
-      { "value": "over-10000", "label": "" },
-      { "value": "to-discuss", "label": "" }
+      { "value": "under-1000", "label": "Less than €1,000" },
+      { "value": "1000-2500", "label": "€1,000 – €2,500" },
+      { "value": "2500-5000", "label": "€2,500 – €5,000" },
+      { "value": "5000-10000", "label": "€5,000 – €10,000" },
+      { "value": "over-10000", "label": "More than €10,000" },
+      { "value": "to-discuss", "label": "To be discussed" }
     ]
   },
   "fallbacks": {
-    "notProvided": "",
-    "unknown": ""
+    "notProvided": "Not provided",
+    "unknown": "Unknown"
   },
   "email": {
-    "subject": "",
-    "intro": "",
+    "subject": "New enquiry via AxaWeb – {identity}",
+    "intro": "A new enquiry has been submitted via the contact form on axaweb.nl.",
     "fields": {
-      "name": "",
-      "company": "",
-      "email": "",
-      "phone": "",
-      "projectType": "",
-      "budget": "",
-      "message": "",
-      "submittedAt": "",
-      "sourcePage": ""
+      "name": "Name",
+      "company": "Company name",
+      "email": "Email address",
+      "phone": "Phone number",
+      "projectType": "Type of enquiry",
+      "budget": "Budget",
+      "message": "Message",
+      "submittedAt": "Date and time",
+      "sourcePage": "Source page"
     }
   },
-  "selectPlaceholder": "",
-  "nameRequired": "",
-  "emailRequired": "",
-  "emailInvalid": "",
-  "phoneInvalid": "",
-  "projectRequired": "",
-  "messageRequired": "",
-  "privacyRequired": "",
-  "sending": "",
-  "success": "",
-  "error": ""
+  "selectPlaceholder": "Select an option",
+  "nameRequired": "Please enter your name.",
+  "emailRequired": "Please enter your email address.",
+  "emailInvalid": "Please enter a valid email address.",
+  "phoneInvalid": "Please enter a valid phone number (at least 10 digits).",
+  "projectRequired": "Please select a type of enquiry.",
+  "messageRequired": "Please enter a message.",
+  "privacyRequired": "Please confirm that you agree to the privacy policy.",
+  "sending": "Sending message…",
+  "success": "Thank you! Your enquiry has been received. We'll get back to you as soon as possible.",
+  "error": "Something went wrong while sending. Check your connection and try again, or email info@axaweb.nl."
 }

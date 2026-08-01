@@ -1,9 +1,13 @@
-import { services, packagesPreview, projects } from "../data/content.js";
+import { getHomeContent } from "../data/content.js";
 import { escapeHtml, safeUrl } from "../lib/escape.js";
+import { localizedPath } from "../../i18n/routing.js";
 import { icon } from "./icons.js";
-import { t } from "./i18n.js";
+import { getLocale, t } from "./i18n.js";
 
 export function renderPageContent() {
+  const locale = getLocale();
+  const { services, packagesPreview, projects } = getHomeContent(locale);
+  const packagesHref = localizedPath("/pakketten", locale);
   const moreInfo =
     t("common.cta.moreInfo") === "common.cta.moreInfo" ? "Meer informatie" : t("common.cta.moreInfo");
   const viewProject =
@@ -23,7 +27,7 @@ export function renderPageContent() {
           <ul class="card__list">
             ${service.benefits.map((benefit) => `<li>${escapeHtml(benefit)}</li>`).join("")}
           </ul>
-          <a class="card__link" href="${safeUrl(service.href, "/diensten")}">
+          <a class="card__link" href="${safeUrl(localizedPath(service.href, locale), packagesHref)}">
             ${escapeHtml(service.cta)}
             ${icon("arrow", "icon")}
           </a>
@@ -42,7 +46,7 @@ export function renderPageContent() {
           <h3 class="package-teaser__name">${escapeHtml(pkg.name)}</h3>
           <p class="package-teaser__price">${escapeHtml(pkg.price)}</p>
           <p class="package-teaser__text">${escapeHtml(pkg.text)}</p>
-          <a class="card__link" href="/pakketten">
+          <a class="card__link" href="${packagesHref}">
             ${escapeHtml(moreInfo)}
             ${icon("arrow", "icon")}
           </a>
@@ -74,7 +78,7 @@ export function renderPageContent() {
             <p class="project-card__category">${escapeHtml(project.category)}</p>
             <h3 class="project-card__title">${escapeHtml(project.name)}</h3>
             <p class="project-card__text">${escapeHtml(project.summary)}</p>
-            <a class="btn btn--ghost" href="${safeUrl(`/projecten/${project.slug}`, "/projecten")}">${escapeHtml(viewProject)}</a>
+            <a class="btn btn--ghost" href="${safeUrl(localizedPath(`/projecten/${project.slug}`, locale), localizedPath("/projecten", locale))}">${escapeHtml(viewProject)}</a>
           </div>
         </article>`
       )

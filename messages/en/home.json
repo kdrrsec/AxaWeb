@@ -1,58 +1,58 @@
 {
   "meta": {
-    "title": "",
-    "description": "",
-    "ogImageAlt": "",
-    "organizationDescription": ""
+    "title": "AxaWeb | Professional Websites & Digital Solutions",
+    "description": "Have your website or web shop built by AxaWeb. Custom websites, hosting, and maintenance for entrepreneurs. Request free advice or a quote.",
+    "ogImageAlt": "AxaWeb: premium mountain landscape as visual identity",
+    "organizationDescription": "AxaWeb is a digital partner for entrepreneurs. Professional websites, web shops, hosting, maintenance, and technical support."
   },
   "hero": {
-    "title": "",
-    "text": "",
-    "scroll": ""
+    "title": "Your digital partner for a strong online foundation.",
+    "text": "From professional websites and web shops to hosting, maintenance, and technical support. Everything under one roof, with one reliable point of contact.",
+    "scroll": "Scroll"
   },
   "intro": {
-    "eyebrow": "",
-    "title": "",
-    "p1": "",
-    "p2": "",
+    "eyebrow": "AxaWeb",
+    "title": "A digital partner for entrepreneurs ready to move forward.",
+    "p1": "AxaWeb builds complete online solutions: from design and development to hosting and maintenance. Not just another vendor, but a partner who thinks with you from the first idea and stays available after launch.",
+    "p2": "We work with clear agreements, fixed starting prices, and short lines of communication. So you always know where you stand.",
     "facts": [
       {
-        "title": "",
-        "text": ""
+        "title": "100% custom-built",
+        "text": "No off-the-shelf templates — a solution built for your business."
       },
       {
-        "title": "",
-        "text": ""
+        "title": "One point of contact",
+        "text": "From idea to launch and beyond, always the same person."
       },
       {
-        "title": "",
-        "text": ""
+        "title": "Response within one business day",
+        "text": "Short lines and clear communication — no waiting queues."
       }
     ]
   },
   "services": {
-    "eyebrow": "",
-    "title": "",
-    "intro": ""
+    "eyebrow": "Our services",
+    "title": "Everything for a strong online foundation.",
+    "intro": "Four services that stand strong on their own and together form a complete online presence."
   },
   "packages": {
-    "eyebrow": "",
-    "title": "",
-    "intro": ""
+    "eyebrow": "Packages",
+    "title": "Clear packages, honest starting prices.",
+    "intro": "Every website starts with a fixed starting price, so you know exactly where you stand upfront."
   },
   "projects": {
-    "eyebrow": "",
-    "title": "",
-    "intro": ""
+    "eyebrow": "Selected work",
+    "title": "Digital solutions worth showing.",
+    "intro": "A selection of websites and online projects built with care for look and feel, usability, and results."
   },
   "cta": {
-    "eyebrow": "",
-    "title": "",
-    "text": "",
-    "button": ""
+    "eyebrow": "Next step",
+    "title": "Ready to strengthen your business online?",
+    "text": "Tell us what you need. We'll get in touch as soon as possible to discuss your goals, timeline, and options.",
+    "button": "Request a quote"
   },
   "noscript": {
-    "title": "",
-    "text": ""
+    "title": "AxaWeb services",
+    "text": "Websites, web shops, hosting, and maintenance for entrepreneurs. Get in touch via info@axaweb.nl."
   }
 }
