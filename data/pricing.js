@@ -158,7 +158,7 @@ export const pricing = {
         featured: false,
         /** Jaarprijs bij 12-maanden- en 24-maandencontract */
         prices: { yearly: 99, "24": 89 },
-        featureKeys: ["ssl", "dailyBackups", "businessEmail", "ssd", "emailSupport"],
+        featureKeys: ["ssl", "automaticBackups", "businessEmail", "ssd", "emailSupport"],
         ctaKey: "requestEssential",
         href: "/offerte",
       },

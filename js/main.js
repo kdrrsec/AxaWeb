@@ -5,7 +5,6 @@ import { initLanguageSwitcher } from "./modules/language-switcher.js";
 import { initCookieConsent } from "./modules/cookie-consent.js";
 import { initAnalytics } from "./modules/analytics.js";
 import { initTracking } from "./modules/tracking.js";
-import { initCursor } from "./modules/cursor.js";
 
 function init() {
   renderPageContent();
@@ -15,7 +14,6 @@ function init() {
   initCookieConsent();
   initAnalytics();
   initTracking();
-  initCursor();
 }
 
 if (document.readyState === "loading") {

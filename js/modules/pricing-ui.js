@@ -133,6 +133,8 @@ function initModelToggle(root) {
   const modelGroup = root.querySelector("[data-pricing-model]");
   if (!modelGroup) return;
 
+  const choice = root.querySelector("[data-pricing-choice]");
+  const empty = root.querySelector("[data-pricing-empty]");
   const buttons = [...modelGroup.querySelectorAll("[data-model]")];
   const panels = {
     "one-time": root.querySelector('[data-pricing-panel="one-time"]'),
@@ -141,6 +143,9 @@ function initModelToggle(root) {
 
   const select = (model) => {
     trackPricingModelSelect(model);
+    choice?.classList.add("has-selection");
+    if (empty) empty.hidden = true;
+
     buttons.forEach((btn) => {
       const active = btn.getAttribute("data-model") === model;
       btn.classList.toggle("is-active", active);
@@ -161,6 +166,23 @@ function initModelToggle(root) {
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => select(btn.getAttribute("data-model")));
+  });
+
+  modelGroup.addEventListener("keydown", (event) => {
+    const current = buttons.indexOf(document.activeElement);
+    if (current < 0) return;
+    let next = current;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (current + 1) % buttons.length;
+    else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      next = (current - 1 + buttons.length) % buttons.length;
+    } else if (event.key === " " || event.key === "Enter") {
+      event.preventDefault();
+      select(buttons[current].getAttribute("data-model"));
+      return;
+    } else return;
+    event.preventDefault();
+    buttons[next].focus();
+    select(buttons[next].getAttribute("data-model"));
   });
 }
 

@@ -66,7 +66,7 @@ export const pages = {
             title: "Hosting",
             text: "Snelle en veilige hosting met alles erop en eraan, zonder technisch gedoe.",
             points: [
-              "SSL, dagelijkse back-ups en monitoring",
+              "SSL, automatische back-ups en monitoring",
               "Zakelijke e-mail op je eigen domein",
               "Persoonlijke support, geen ticketstraat",
             ],
@@ -445,14 +445,14 @@ export const pages = {
       variant: "stats",
       eyebrow: "Hosting",
       title: "Hosting die er gewoon staat.",
-      text: "Snelle en veilige hosting in Nederlandse datacenters, met SSL, dagelijkse back-ups en een aanspreekpunt dat je situatie kent.",
+      text: "Snelle en veilige hosting in Nederlandse datacenters, met SSL, automatische back-ups en een aanspreekpunt dat je situatie kent.",
       actions: [
         { label: "Bekijk pakketten", href: "#pakketten", style: "primary" },
         { label: "Stel een vraag", href: "/contact", style: "secondary" },
       ],
       stats: [
         { value: "99,9%", label: "uptime-doelstelling" },
-        { value: "Dagelijks", label: "automatische back-ups" },
+        { value: "Inbegrepen", label: "automatische back-ups" },
         { value: "NL", label: "datacenters" },
         { value: "SSL", label: "standaard inbegrepen" },
       ],
@@ -497,7 +497,7 @@ export const pages = {
             icon: "database",
             title: "Back-ups",
             points: [
-              "Dagelijkse automatische back-ups",
+              "Automatische back-ups",
               "Bewaard op een externe locatie",
               "Snel terug te zetten bij problemen",
             ],

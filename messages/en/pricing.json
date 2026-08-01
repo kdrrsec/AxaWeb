@@ -3,8 +3,12 @@
     "ariaLabel": "",
     "prompt": "",
     "promptText": "",
+    "hint": "",
+    "empty": "",
     "oneTime": "",
-    "waas": ""
+    "oneTimeHint": "",
+    "waas": "",
+    "waasHint": ""
   },
   "labels": {
     "introPrice": "",
@@ -146,7 +150,7 @@
     "api": "",
     "animations": "",
     "priority": "",
-    "dailyBackups": "",
+    "automaticBackups": "",
     "businessEmail": "",
     "ssd": "",
     "emailSupport": "",

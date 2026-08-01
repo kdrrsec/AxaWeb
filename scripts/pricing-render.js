@@ -85,22 +85,27 @@ export function renderSegmentedControl({ name, ariaLabel, terms, defaultTerm, tp
 
 export function renderModelToggle(tp) {
   return `
-        <div class="pricing-choice reveal">
-          <p class="pricing-choice__prompt">${escapeHtml(tp("modelToggle.prompt"))}</p>
+        <div class="pricing-choice reveal" data-pricing-choice>
+          <p class="pricing-choice__prompt" id="pricing-model-prompt">${escapeHtml(tp("modelToggle.prompt"))}</p>
           <p class="pricing-choice__text">${escapeHtml(tp("modelToggle.promptText"))}</p>
+          <p class="pricing-choice__hint">${escapeHtml(tp("modelToggle.hint"))}</p>
           <div
-            class="segmented segmented--models"
+            class="pricing-choice__options"
             role="radiogroup"
+            aria-labelledby="pricing-model-prompt"
             aria-label="${escapeHtml(tp("modelToggle.ariaLabel"))}"
             data-pricing-model
           >
-            <button type="button" class="segmented__btn" role="radio" aria-checked="false" data-model="one-time" tabindex="0">
-              <span class="segmented__label">${escapeHtml(tp("modelToggle.oneTime"))}</span>
+            <button type="button" class="pricing-choice__option" role="radio" aria-checked="false" data-model="one-time" tabindex="0">
+              <span class="pricing-choice__option-label">${escapeHtml(tp("modelToggle.oneTime"))}</span>
+              <span class="pricing-choice__option-meta">${escapeHtml(tp("modelToggle.oneTimeHint"))}</span>
             </button>
-            <button type="button" class="segmented__btn" role="radio" aria-checked="false" data-model="waas" tabindex="-1">
-              <span class="segmented__label">${escapeHtml(tp("modelToggle.waas"))}</span>
+            <button type="button" class="pricing-choice__option" role="radio" aria-checked="false" data-model="waas" tabindex="0">
+              <span class="pricing-choice__option-label">${escapeHtml(tp("modelToggle.waas"))}</span>
+              <span class="pricing-choice__option-meta">${escapeHtml(tp("modelToggle.waasHint"))}</span>
             </button>
           </div>
+          <p class="pricing-choice__empty" data-pricing-empty>${escapeHtml(tp("modelToggle.empty"))}</p>
         </div>`;
 }
 
