@@ -85,7 +85,7 @@ export const privacyDoc = {
         },
         {
           type: "p",
-          text: "Voor typografie laden we het lettertype Inter via Google Fonts. Daarbij kan Google technisch je IP-adres verwerken.",
+          text: "Voor typografie laden we het lettertype Manrope via Google Fonts. Daarbij kan Google technisch je IP-adres verwerken.",
         },
       ],
     },

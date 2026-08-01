@@ -2,6 +2,7 @@
  * Client-side pricing interactions: model toggle + contractduur selectors.
  */
 import { t } from "./i18n.js";
+import { getScrollRoot } from "./scroll-root.js";
 import { trackPricingDurationSelect, trackPricingModelSelect } from "./tracking.js";
 
 function formatEuro(amount) {
@@ -141,7 +142,29 @@ function initModelToggle(root) {
     waas: root.querySelector('[data-pricing-panel="waas"]'),
   };
 
-  const select = (model) => {
+  const preferReducedMotion = () =>
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+  const scrollToPanel = (panel) => {
+    if (!panel || preferReducedMotion()) return;
+    const isNarrow = window.matchMedia("(max-width: 768px)").matches;
+    if (!isNarrow) return;
+
+    window.requestAnimationFrame(() => {
+      const target = panel.querySelector(".section__header") || panel;
+      const root = getScrollRoot();
+      if (root && typeof target.getBoundingClientRect === "function") {
+        const rootRect = root.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const nextTop = root.scrollTop + (targetRect.top - rootRect.top) - 12;
+        root.scrollTo({ top: Math.max(0, nextTop), behavior: "smooth" });
+        return;
+      }
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  const select = (model, { scroll = true } = {}) => {
     trackPricingModelSelect(model);
     choice?.classList.add("has-selection");
     if (empty) empty.hidden = true;
@@ -153,15 +176,19 @@ function initModelToggle(root) {
       btn.tabIndex = active ? 0 : -1;
     });
 
+    let activePanel = null;
     Object.entries(panels).forEach(([key, panel]) => {
       if (!panel) return;
       const show = key === model;
       panel.hidden = !show;
       panel.classList.toggle("is-visible", show);
       if (show) {
+        activePanel = panel;
         panel.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
       }
     });
+
+    if (scroll) scrollToPanel(activePanel);
   };
 
   buttons.forEach((btn) => {

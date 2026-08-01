@@ -144,7 +144,7 @@ function renderLegalPage(doc) {
   ${renderSocialMeta({ title, description, canonical, locale: defaultLocale })}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/main.css" />
   <script src="/js/consent-default.js" defer></script>
   <script type="application/json" id="i18n-messages">${JSON.stringify({

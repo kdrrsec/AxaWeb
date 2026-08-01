@@ -85,6 +85,7 @@ export function renderSegmentedControl({ name, ariaLabel, terms, defaultTerm, tp
 
 export function renderModelToggle(tp) {
   const recommended = tp("badges.recommended");
+  const selected = tp("modelToggle.selected");
   return `
         <div class="pricing-choice reveal" data-pricing-choice>
           <p class="pricing-choice__prompt" id="pricing-model-prompt">${escapeHtml(tp("modelToggle.prompt"))}</p>
@@ -98,11 +99,23 @@ export function renderModelToggle(tp) {
             data-pricing-model
           >
             <button type="button" class="pricing-choice__seg" role="radio" aria-checked="false" data-model="one-time" tabindex="0">
-              <span class="pricing-choice__seg-label">${escapeHtml(tp("modelToggle.oneTime"))}</span>
+              <span class="pricing-choice__seg-main">
+                <span class="pricing-choice__seg-label">${escapeHtml(tp("modelToggle.oneTime"))}</span>
+              </span>
+              <span class="pricing-choice__selected" aria-hidden="true">
+                <svg class="pricing-choice__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="pricing-choice__selected-text">${escapeHtml(selected)}</span>
+              </span>
             </button>
             <button type="button" class="pricing-choice__seg" role="radio" aria-checked="false" data-model="waas" tabindex="0">
-              <span class="pricing-choice__seg-label">${escapeHtml(tp("modelToggle.waas"))}</span>
-              <span class="pricing-choice__seg-badge">${escapeHtml(recommended)}</span>
+              <span class="pricing-choice__seg-main">
+                <span class="pricing-choice__seg-label">${escapeHtml(tp("modelToggle.waas"))}</span>
+                <span class="pricing-choice__seg-badge">${escapeHtml(recommended)}</span>
+              </span>
+              <span class="pricing-choice__selected" aria-hidden="true">
+                <svg class="pricing-choice__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="pricing-choice__selected-text">${escapeHtml(selected)}</span>
+              </span>
             </button>
           </div>
           <p class="pricing-choice__empty" data-pricing-empty>${escapeHtml(tp("modelToggle.empty"))}</p>

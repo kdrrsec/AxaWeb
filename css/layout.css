@@ -92,10 +92,10 @@
 
 .section__title {
   max-width: 20ch;
-  font-size: clamp(1.85rem, 3.6vw, 2.85rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.028em;
+  line-height: 1.12;
+  letter-spacing: var(--tracking-display);
   text-wrap: balance;
 }
 
@@ -103,8 +103,8 @@
   max-width: 40rem;
   margin-top: 1rem;
   color: var(--text-secondary);
-  font-size: clamp(0.98rem, 1.35vw, 1.06rem);
-  line-height: 1.7;
+  font-size: clamp(0.96rem, 1.3vw, 1.05rem);
+  line-height: 1.68;
 }
 
 .section__header {

@@ -1,11 +1,12 @@
 {
   "modelToggle": {
     "ariaLabel": "Kies hoe je jouw website wilt afnemen",
-    "prompt": "Kies hoe je jouw website wilt afnemen",
-    "promptText": "Selecteer een eenmalige investering of een compleet maandabonnement om de bijbehorende pakketten te bekijken.",
+    "prompt": "Kies eerst hoe je jouw website wilt afnemen",
+    "promptText": "Selecteer een eenmalige investering of een maandabonnement.",
     "hint": "Maak een keuze",
-    "empty": "Maak een keuze om de bijbehorende pakketten te bekijken.",
-    "oneTime": "Eenmalige Website",
+    "empty": "De pakketten verschijnen hier na je keuze.",
+    "selected": "Geselecteerd",
+    "oneTime": "Eenmalige website",
     "waas": "Website as a Service"
   },
   "labels": {
