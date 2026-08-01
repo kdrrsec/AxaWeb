@@ -1,0 +1,85 @@
+{
+  "skipToContent": "",
+  "nav": {
+    "ariaLabel": "",
+    "mobileAriaLabel": "",
+    "diensten": "",
+    "pakketten": "",
+    "projecten": "",
+    "contact": "",
+    "homeAria": "",
+    "menuOpen": "",
+    "menuClose": ""
+  },
+  "cta": {
+    "requestQuote": "",
+    "viewServices": "",
+    "viewAllServices": "",
+    "viewAllPackages": "",
+    "viewAllProjects": "",
+    "viewProject": "",
+    "startProject": "",
+    "planIntro": "",
+    "moreInfo": ""
+  },
+  "breadcrumb": {
+    "ariaLabel": "",
+    "home": ""
+  },
+  "footer": {
+    "note": "",
+    "servicesTitle": "",
+    "navTitle": "",
+    "contactTitle": "",
+    "websites": "",
+    "webshops": "",
+    "hosting": "",
+    "onderhoud": "",
+    "privacy": "",
+    "terms": "",
+    "cookiePolicy": "",
+    "disclaimer": "",
+    "cookieSettings": "",
+    "relatedTitle": "",
+    "rights": "",
+    "tagline": ""
+  },
+  "legal": {
+    "relatedTitle": ""
+  },
+  "languageSwitcher": {
+    "ariaLabel": "",
+    "nl": "",
+    "en": ""
+  },
+  "case": {
+    "category": "",
+    "live": "",
+    "client": "",
+    "context": "",
+    "approach": "",
+    "design": "",
+    "development": "",
+    "responsive": "",
+    "tech": "",
+    "hosting": "",
+    "result": "",
+    "screenshots": "",
+    "screenshotsTitle": "",
+    "captionDesktop": "",
+    "captionMobile": "",
+    "nextProject": "",
+    "viewNamed": "",
+    "nextStep": "",
+    "ctaTitle": "",
+    "ctaLead": "",
+    "ctaButton": ""
+  },
+  "directContact": {
+    "title": "",
+    "text": "",
+    "phoneDisplay": "",
+    "phoneHref": "",
+    "phoneAria": ""
+  }
+}

@@ -1,92 +1,180 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" data-locale="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Privacyverklaring | AxaWeb</title>
-  <meta name="description" content="Privacyverklaring van AxaWeb. Lees hoe wij omgaan met persoonsgegevens." />
+  <meta name="description" content="Privacyverklaring van AxaWeb: welke gegevens we verwerken via formulieren, cookies, Analytics en Clarity, en welke rechten je hebt." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://axaweb.nl/privacy.html" />
+  
+  <link rel="canonical" href="https://axaweb.nl/privacy" />
+  <link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/privacy" />
+  <link rel="alternate" hreflang="x-default" href="https://axaweb.nl/privacy" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="nl_NL" />
+  
+  <meta property="og:site_name" content="AxaWeb" />
+  <meta property="og:title" content="Privacyverklaring | AxaWeb" />
+  <meta property="og:description" content="Privacyverklaring van AxaWeb: welke gegevens we verwerken via formulieren, cookies, Analytics en Clarity, en welke rechten je hebt." />
+  <meta property="og:url" content="https://axaweb.nl/privacy" />
+  <meta property="og:image" content="https://axaweb.nl/images/background.jpg" />
+  <meta property="og:image:alt" content="AxaWeb: premium berglandschap als visuele identiteit" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1280" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacyverklaring | AxaWeb" />
+  <meta name="twitter:description" content="Privacyverklaring van AxaWeb: welke gegevens we verwerken via formulieren, cookies, Analytics en Clarity, en welke rechten je hebt." />
+  <meta name="twitter:image" content="https://axaweb.nl/images/background.jpg" />
+  <meta name="twitter:image:alt" content="AxaWeb: premium berglandschap als visuele identiteit" />
+
   <meta name="theme-color" content="#06101D" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="msapplication-TileColor" content="#06101D" />
+  <meta name="msapplication-config" content="/browserconfig.xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/main.css" />
-  <style>
-    .legal {
-      padding: 2.5rem 0 4rem;
-    }
-    .legal__content {
-      max-width: 46rem;
-    }
-    .legal__content h1 {
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    .legal__content h2 {
-      margin-top: 2rem;
-      margin-bottom: 0.65rem;
-      font-size: 1.15rem;
-    }
-    .legal__content p,
-    .legal__content li {
-      color: var(--text-secondary);
-      line-height: 1.75;
-      margin-bottom: 0.85rem;
-    }
-    .legal__content ul {
-      padding-left: 1.2rem;
-      list-style: disc;
-      margin-bottom: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/consent-default.js" defer></script>
+  <script type="application/json" id="i18n-messages">{"locale":"nl","common":{"skipToContent":"Ga naar inhoud","nav":{"ariaLabel":"Hoofdnavigatie","mobileAriaLabel":"Mobiele navigatie","diensten":"Diensten","pakketten":"Pakketten","projecten":"Projecten","contact":"Contact","homeAria":"AxaWeb home","menuOpen":"Menu openen","menuClose":"Menu sluiten"},"cta":{"requestQuote":"Offerte aanvragen","viewServices":"Bekijk onze diensten","viewAllServices":"Bekijk alle diensten","viewAllPackages":"Bekijk alle pakketten","viewAllProjects":"Alle projecten bekijken","viewProject":"Bekijk project","startProject":"Start een project","planIntro":"Plan een kennismaking","moreInfo":"Meer informatie"},"breadcrumb":{"ariaLabel":"Broodkruimel","home":"Home"},"footer":{"note":"Websites, webshops, hosting en onderhoud. Alles onder één dak, met één vast aanspreekpunt.","servicesTitle":"Diensten","navTitle":"Navigatie","contactTitle":"Contact","websites":"Websites","webshops":"Webshops","hosting":"Hosting","onderhoud":"Onderhoud","privacy":"Privacyverklaring","terms":"Algemene voorwaarden","cookiePolicy":"Cookiebeleid","disclaimer":"Disclaimer","cookieSettings":"Cookievoorkeuren","relatedTitle":"Gerelateerde documenten","rights":"Alle rechten voorbehouden.","tagline":"Digitale partner voor ondernemers"},"legal":{"relatedTitle":"Gerelateerde documenten"},"languageSwitcher":{"ariaLabel":"Taal kiezen","nl":"Nederlands","en":"English"},"case":{"category":"Categorie","live":"Live","client":"Klant","context":"Context","approach":"Aanpak","design":"Design","development":"Ontwikkeling","responsive":"Responsive","tech":"Techniek","hosting":"Hosting","result":"Resultaat","screenshots":"Screenshots","screenshotsTitle":"Desktop en mobiel, zoals live te zien.","captionDesktop":"Desktop - detailsectie","captionMobile":"Mobiel - homepage","nextProject":"Volgende project","viewNamed":"Bekijk {name}","nextStep":"Volgende stap","ctaTitle":"Ook een website die zo overtuigt?","ctaLead":"Vertel ons over je project. We denken vrijblijvend mee over aanpak, planning en investering.","ctaButton":"Vraag een offerte aan"},"directContact":{"title":"Direct geholpen worden?","text":"Heeft u liever direct persoonlijk contact of wilt u uw project bespreken? Neem gerust telefonisch contact met ons op.","phoneDisplay":"06 29 12 75 75","phoneHref":"tel:+31629127575","phoneAria":"Bel AxaWeb op 06 29 12 75 75"}},"cookies":{"banner":{"title":"Cookies en privacy","text":"We gebruiken noodzakelijke cookies om de site te laten werken. Met jouw toestemming meten we ook statistieken om AxaWeb te verbeteren. Marketingcookies staan standaard uit.","acceptAll":"Alles accepteren","rejectAll":"Alles weigeren","customize":"Voorkeuren aanpassen","save":"Selectie opslaan","closePreferences":"Sluiten","policyLink":"Meer over cookies","ariaLabel":"Cookietoestemming","preferencesTitle":"Cookievoorkeuren","preferencesIntro":"Kies welke categorieën je toestaat. Noodzakelijke cookies zijn altijd actief."},"categories":{"necessary":{"title":"Noodzakelijk","description":"Nodig voor basiswerking, beveiliging en het onthouden van je cookiekeuze. Altijd actief.","alwaysOn":"Altijd actief"},"preferences":{"title":"Voorkeuren","description":"Voor optionele functionele instellingen die niet strikt noodzakelijk zijn."},"statistics":{"title":"Statistieken","description":"Helpt ons begrijpen hoe de website wordt gebruikt via Google Analytics 4 en Microsoft Clarity. Geen marketingadvertenties."},"marketing":{"title":"Marketing","description":"Voor toekomstige marketingtools zoals advertentiepixels. Momenteel niet actief geladen."}},"footer":{"cookieSettings":"Cookievoorkeuren","cookiePolicy":"Cookiebeleid"},"page":{"title":"Cookiebeleid | AxaWeb","description":"Lees hoe AxaWeb cookies en vergelijkbare technieken gebruikt, welke categorieën er zijn en hoe je toestemming kunt wijzigen.","h1":"Cookiebeleid","intro":"Dit cookiebeleid legt uit welke cookies en vergelijkbare technieken AxaWeb kan gebruiken, waarom, en hoe je je keuze beheert.","sections":{"what":{"title":"Wat zijn cookies?","text":"Cookies zijn kleine tekstbestanden die je browser kan opslaan. Vergelijkbare technieken, zoals lokale opslag, kunnen hetzelfde doel dienen."},"categories":{"title":"Categorieën","text":"We onderscheiden noodzakelijke cookies, voorkeuren, statistieken en marketing. Alleen na jouw toestemming laden we optionele statistiekstools."},"tools":{"title":"Welke tools kunnen worden gebruikt?","text":"Afhankelijk van je toestemming kunnen de volgende tools worden geladen:","items":["Noodzakelijk: opslag van je cookietoestemming op dit apparaat.","Statistieken: Google Analytics 4 (gebruikscijfers) en Microsoft Clarity (geanonimiseerde sessie-inzichten), alleen na toestemming voor Statistieken.","Marketing: gereserveerd voor toekomstige tools; wordt niet geladen zonder marketingtoestemming.","Voorkeuren: gereserveerd voor optionele functionele instellingen."]},"manage":{"title":"Toestemming beheren","text":"Je kunt cookies accepteren, weigeren of later wijzigen via Cookievoorkeuren in de footer. Zonder toestemming voor Statistieken of Marketing worden die scripts niet geladen."},"privacy":{"title":"Privacy","text":"Meer over verwerking van persoonsgegevens lees je in de privacyverklaring."}}}},"form":{"aria":{"form":"Contactformulier","contactInfo":"Contactgegevens","sending":"Het formulier wordt verzonden"},"labels":{"name":"Naam","company":"Bedrijfsnaam","email":"E-mailadres","phone":"Telefoonnummer","projectType":"Type aanvraag","budget":"Budgetindicatie","message":"Bericht","privacy":"Ik ga akkoord met de {privacyLink}.","privacyLink":"privacyverklaring","optional":"(optioneel)","required":"*"},"placeholders":{"select":"Selecteer een optie","message":"Vertel ons over jouw project, wensen of vragen…"},"actions":{"submit":"Verstuur bericht","submitting":"Bericht wordt verzonden…"},"status":{"sending":"Bericht wordt verzonden…","success":"Bedankt! Je aanvraag is ontvangen. We nemen zo snel mogelijk contact met je op.","error":"Er ging iets mis bij het verzenden. Controleer je verbinding en probeer het opnieuw, of mail naar info@axaweb.nl.","rateLimited":"Je hebt zojuist al een aanvraag gestuurd. Probeer het over een paar minuten opnieuw.","configError":"Het contactformulier is tijdelijk niet beschikbaar. Mail ons gerust via info@axaweb.nl.","activationPending":"Bijna klaar: bevestig de activatielink van FormSubmit in de inbox van info@axaweb.nl (controleer ook spam). Daarna werkt het formulier direct."},"errors":{"nameRequired":"Vul je naam in.","nameTooShort":"Gebruik minimaal 2 tekens voor je naam.","emailRequired":"Vul je e-mailadres in.","emailInvalid":"Vul een geldig e-mailadres in.","phoneInvalid":"Vul een geldig telefoonnummer in (minimaal 10 cijfers).","projectRequired":"Selecteer een type aanvraag.","projectInvalid":"Selecteer een geldig type aanvraag.","budgetInvalid":"Selecteer een geldige budgetindicatie.","messageRequired":"Vul een bericht in.","messageTooShort":"Schrijf iets meer over je aanvraag (minimaal 20 tekens).","messageTooLong":"Je bericht is te lang (maximaal 5000 tekens).","privacyRequired":"Bevestig dat je akkoord gaat met de privacyverklaring."},"options":{"projectTypes":[{"value":"website","label":"Website"},{"value":"webshop","label":"Webshop"},{"value":"website-as-a-service","label":"Website as a Service"},{"value":"hosting","label":"Hosting"},{"value":"onderhoud","label":"Onderhoud"},{"value":"maatwerk","label":"Maatwerkoplossing"},{"value":"anders","label":"Anders"}],"budget":[{"value":"under-1000","label":"Minder dan €1.000"},{"value":"1000-2500","label":"€1.000 – €2.500"},{"value":"2500-5000","label":"€2.500 – €5.000"},{"value":"5000-10000","label":"€5.000 – €10.000"},{"value":"over-10000","label":"Meer dan €10.000"},{"value":"to-discuss","label":"Nog te bespreken"}]},"fallbacks":{"notProvided":"Niet opgegeven","unknown":"Onbekend"},"email":{"subject":"Nieuwe aanvraag via AxaWeb – {identity}","intro":"Er is een nieuwe aanvraag binnengekomen via het contactformulier op axaweb.nl.","fields":{"name":"Naam","company":"Bedrijfsnaam","email":"E-mailadres","phone":"Telefoonnummer","projectType":"Type aanvraag","budget":"Budget","message":"Bericht","submittedAt":"Datum en tijd","sourcePage":"Bronpagina"}},"selectPlaceholder":"Selecteer een optie","nameRequired":"Vul je naam in.","emailRequired":"Vul je e-mailadres in.","emailInvalid":"Vul een geldig e-mailadres in.","phoneInvalid":"Vul een geldig telefoonnummer in (minimaal 10 cijfers).","projectRequired":"Selecteer een type aanvraag.","messageRequired":"Vul een bericht in.","privacyRequired":"Bevestig dat je akkoord gaat met de privacyverklaring.","sending":"Bericht wordt verzonden…","success":"Bedankt! Je aanvraag is ontvangen. We nemen zo snel mogelijk contact met je op.","error":"Er ging iets mis bij het verzenden. Controleer je verbinding en probeer het opnieuw, of mail naar info@axaweb.nl."},"home":{"meta":{"title":"AxaWeb | Professionele Websites & Digitale Oplossingen","description":"Laat je website of webshop maken door AxaWeb. Maatwerk websites, hosting en onderhoud voor ondernemers. Vraag vrijblijvend advies of een offerte aan.","ogImageAlt":"AxaWeb: premium berglandschap als visuele identiteit","organizationDescription":"AxaWeb is een digitale partner voor ondernemers. Professionele websites, webshops, hosting, onderhoud en technische ondersteuning."},"hero":{"title":"Jouw digitale partner voor een sterke online basis.","text":"Van professionele websites en webshops tot hosting, onderhoud en technische ondersteuning. Alles onder één dak, met één betrouwbaar aanspreekpunt.","scroll":"Scroll"},"intro":{"eyebrow":"AxaWeb","title":"Digitale partner voor ondernemers die vooruit willen.","p1":"AxaWeb bouwt complete online oplossingen: van ontwerp en ontwikkeling tot hosting en onderhoud. Geen losse leverancier, maar een partner die meedenkt vanaf het eerste idee en bereikbaar blijft na de livegang.","p2":"We werken met heldere afspraken, vaste vanafprijzen en korte lijnen. Zo weet je altijd waar je aan toe bent.","facts":[{"title":"100% maatwerk","text":"Geen standaardtemplates, maar een oplossing voor jouw bedrijf."},{"title":"Eén aanspreekpunt","text":"Van idee tot livegang en daarna, altijd dezelfde contactpersoon."},{"title":"Reactie binnen één werkdag","text":"Korte lijnen en duidelijke communicatie, zonder wachtrijen."}]},"services":{"eyebrow":"Onze diensten","title":"Alles voor een sterke online basis.","intro":"Vier diensten die los sterk zijn en samen een complete online aanwezigheid vormen."},"packages":{"eyebrow":"Pakketten","title":"Duidelijke pakketten, eerlijke vanafprijzen.","intro":"Iedere website start met een vaste vanafprijs, zodat je vooraf precies weet waar je aan toe bent."},"projects":{"eyebrow":"Geselecteerd werk","title":"Digitale oplossingen die gezien mogen worden.","intro":"Een greep uit de websites en online projecten die zijn ontwikkeld met aandacht voor uitstraling, gebruiksgemak en resultaat."},"cta":{"eyebrow":"Volgende stap","title":"Klaar om jouw bedrijf online sterker te maken?","text":"Vertel ons wat je nodig hebt. We nemen zo snel mogelijk contact op om jouw wensen, planning en mogelijkheden te bespreken.","button":"Offerte aanvragen"},"noscript":{"title":"Diensten van AxaWeb","text":"Websites, webshops, hosting en onderhoud voor ondernemers. Neem contact op via info@axaweb.nl."}},"pricing":{"modelToggle":{"ariaLabel":"Kies hoe je een website wilt afnemen","prompt":"Kies hoe je wilt starten","promptText":"Selecteer een model om de bijbehorende pakketten te bekijken.","oneTime":"Eenmalige Website","waas":"Website as a Service"},"labels":{"introPrice":"Introductieprijs","exclVat":"Excl. 21% btw","oneTimeInvestment":"Eenmalige investering","from":"Vanaf","perMonth":"/ maand","perYear":"/ jaar","onRequest":"Op aanvraag","upcoming":"binnenkort beschikbaar","saveYear":"Bespaar {amount} per jaar","saveTerm":"Bespaar {amount} over {months} maanden"},"badges":{"mostChosen":"Meest gekozen","recommended":"Aanbevolen","bestPrice":"Beste prijs","popular":"Populair"},"terms":{"12":"12 maanden","24":"24 maanden","ariaLabel":"Kies contractduur","monthly":"Maandelijks","yearly":"Jaarlijks","hostingAria":"Kies hostingperiode","maintenanceAria":"Kies onderhoudsperiode"},"sections":{"websiteHub":{"eyebrow":"Websites","title":"Kies het model dat bij je past.","intro":"Eenmalige ontwikkeling of Website as a Service: jij bepaalt hoe je wilt starten."},"oneTime":{"eyebrow":"Eenmalige Website","title":"Websites met een vaste vanafprijs.","intro":"Eenmalige investering voor het ontwerpen en bouwen van je website.","note":"Introductieprijzen zijn exclusief 21% btw. Definitieve prijs hangt af van ontwerp, omvang en functionaliteiten."},"waas":{"eyebrow":"Website as a Service","title":"Branchegerichte websites, all-inclusive.","intro":"Website, hosting en onderhoud in één maandelijks abonnement, afgestemd op jouw branche.","note":"Prijzen zijn exclusief 21% btw. Exacte scope stemmen we af tijdens de kennismaking."},"hosting":{"eyebrow":"Hosting","title":"Hosting per jaar, zonder omkijken.","intro":"Snelle, veilige hosting met SSL, back-ups en persoonlijke support.","note":"Prijzen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel."},"maintenance":{"eyebrow":"Onderhoud","title":"Onderhoud als abonnement.","intro":"Doorlopende zorg voor updates, monitoring en support.","note":"Prijzen zijn exclusief 21% btw. Minimale looptijd hangt af van het gekozen contract."}},"oneTime":{"start":{"name":"Start","audience":"Voor starters en kleine ondernemingen."},"business":{"name":"Business","audience":"Voor bedrijven die uitgebreider en professioneler online zichtbaar willen zijn."},"premium":{"name":"Premium","audience":"Voor uitgebreide websites, maatwerkfunctionaliteiten en groeiende organisaties."}},"waas":{"business-site":{"name":"Bedrijfswebsite","audience":"Voor dienstverleners en ondernemingen die professioneel en overtuigend online zichtbaar willen zijn."},"barbershop":{"name":"Barbershop Complete","audience":"Voor kappers en barbershops die hun uitstraling, diensten en afspraken professioneel online willen combineren."},"restaurant":{"name":"Restaurant Complete","audience":"Voor restaurants die hun menu, sfeer en reserveringsmogelijkheden professioneel willen presenteren."},"gym":{"name":"Sportschool Complete","audience":"Voor sportscholen en studio’s die lessen, lidmaatschappen en aanmeldingen overzichtelijk online willen aanbieden."},"webshop":{"name":"Webshop Complete","audience":"Voor ondernemers die producten of diensten professioneel en schaalbaar online willen verkopen."}},"hosting":{"essential":{"name":"Essentieel","audience":"Voor websites die betrouwbaar online moeten staan."},"business":{"name":"Zakelijk","audience":"Voor bedrijven waar de website een belangrijke rol speelt."},"managed":{"name":"Volledig beheerd","audience":"Hosting en onderhoud volledig uit handen, inclusief updates en monitoring."}},"maintenance":{"basic":{"name":"Basis","audience":"Voor websites die up-to-date en veilig moeten blijven."},"business":{"name":"Zakelijk","audience":"Voor bedrijven die op hun website moeten kunnen rekenen."},"custom":{"name":"Op maat","audience":"Voor maatwerkplatforms en organisaties met specifieke eisen."}},"features":{"onepage":"Professionele onepage","responsive":"Responsive ontwerp","contactForm":"Contactformulier","basicSeo":"Basis SEO","ssl":"SSL-certificaat","delivery":"Oplevering vanaf vijf werkdagen","upToFivePages":"Tot vijf pagina's","customDesign":"Maatwerk ontwerp","portfolio":"Portfolio- of dienstenoverzicht","maps":"Google Maps-integratie","performance":"Performance-optimalisatie","allBusiness":"Alles uit Business","morePages":"Meer pagina's en content","customFeatures":"Maatwerkfunctionaliteiten","api":"API-koppelingen mogelijk","animations":"Uitgebreidere animaties","priority":"Prioriteit tijdens ontwikkeling","dailyBackups":"Dagelijkse back-ups","businessEmail":"Zakelijke e-mail","ssd":"Snelle SSD-opslag","emailSupport":"Support via e-mail","allEssential":"Alles uit Essentieel","moreStorage":"Meer opslag en snelheid","uptime":"Uptime-monitoring","prioritySupport":"Prioriteit bij support","yearlyCheck":"Jaarlijkse performancecheck","allBusinessHosting":"Alles uit Zakelijk","updatesIncluded":"Updates en onderhoud inbegrepen","proactive":"Proactieve monitoring","fixedContact":"Vaste contactpersoon","sla":"SLA-afspraken mogelijk","cmsUpdates":"Periodieke updates van CMS en plugins","backupCheck":"Controle van back-ups","healthCheck":"Maandelijkse gezondheidscheck","allBasic":"Alles uit Basis","monitoring":"Uptime- en foutmonitoring","incidentPriority":"Prioriteit bij storingen","smallEdits":"Klein onderhoud en aanpassingen (1 uur per maand)","quarterlyReport":"Kwartaalrapportage","allBusinessMaint":"Alles uit Zakelijk","slaResponse":"SLA met vaste reactietijden","devHours":"Vast aantal ontwikkeluren","directAdmin":"Direct contact met je beheerder","waasCustomSite":"Website op maat","waasServicesPages":"Diensten- en bedrijfspagina’s","waasContactQuoteForm":"Contact- en offerteformulier","waasBasicSeo":"Basis SEO","waasHostingMaintenance":"Hosting en onderhoud","waasSslBackups":"SSL en back-ups","waasSmallMonthlyEdits":"Kleine maandelijkse wijzigingen","waasTreatmentsPrices":"Behandelingen en prijslijst","waasTeamOverview":"Team- of barberoverzicht","waasPhotoGallery":"Fotogalerij","waasWhatsapp":"WhatsApp-contact","waasDigitalMenu":"Digitaal menu","waasOpeningHours":"Openingstijden","waasTableReservation":"Tafelreservering of reserveringsaanvraag","waasAtmospherePhotos":"Foto- en sfeerimpressie","waasClassSchedule":"Lessenrooster","waasMemberships":"Lidmaatschappen en tarieven","waasTrainerOverview":"Traineroverzicht","waasTrialForm":"Proefles- of inschrijfformulier","waasCustomShop":"Webshop op maat","waasProductCategories":"Product- en categoriebeheer","waasOnlinePayments":"Online betalingen","waasCartCheckout":"Winkelwagen en checkout","waasStockOrders":"Voorraad- of orderbeheer","waasIntegrationsOnRequest":"Koppelingen op aanvraag"},"upcoming":{"axabookAppointments":"AxaBook Appointments","axabookRestaurants":"AxaBook Restaurants"},"cta":{"requestQuote":"Vraag offerte aan","discussWebsite":"Bespreek jouw website","requestCustom":"Vraag maatwerk aan","planIntro":"Plan een kennismaking","requestEssential":"Vraag Essentieel aan","requestBusiness":"Vraag Zakelijk aan","discussOptions":"Bespreek de mogelijkheden","chooseBasic":"Kies Basis","chooseBusiness":"Kies Zakelijk","discussSituation":"Bespreek jouw situatie","viewWebsites":"Alles over websites","viewHosting":"Alles over hosting","viewMaintenance":"Alles over onderhoud"},"termsInfo":{"title":"Goed om te weten","items":["Alle genoemde prijzen zijn exclusief 21% btw.","Eenmalige websites zijn een eenmalige investering; Website as a Service is een maandelijks abonnement.","Hosting wordt jaarlijks gefactureerd; onderhoud volgens het gekozen contract.","Abonnementen hebben een minimale looptijd volgens de gekozen contractduur. Daarna zijn ze opzegbaar volgens de voorwaarden.","Eventuele maatwerkfunctionaliteiten worden vooraf geoffreerd.","Na oplevering ontvang je volledige uitleg over jouw website."]}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://axaweb.nl/#organization","name":"AxaWeb","legalName":"AxaWeb","url":"https://axaweb.nl/","email":"info@axaweb.nl","telephone":"+31629127575","logo":{"@type":"ImageObject","url":"https://axaweb.nl/logo.png","width":386,"height":72},"image":"https://axaweb.nl/images/background.jpg","description":"AxaWeb is een digitale partner voor ondernemers. Professionele websites, webshops, hosting, onderhoud en technische ondersteuning.","areaServed":{"@type":"Country","name":"Nederland"},"priceRange":"€€","contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"info@axaweb.nl","telephone":"+31629127575","availableLanguage":["Dutch","nl"]}},{"@type":"WebPage","@id":"https://axaweb.nl/privacy#webpage","url":"https://axaweb.nl/privacy","name":"Privacyverklaring | AxaWeb","description":"Privacyverklaring van AxaWeb: welke gegevens we verwerken via formulieren, cookies, Analytics en Clarity, en welke rechten je hebt.","inLanguage":"nl-NL","isPartOf":{"@id":"https://axaweb.nl/#website"},"about":{"@id":"https://axaweb.nl/#organization"},"dateModified":"2026-07-31"},{"@type":"BreadcrumbList","@id":"https://axaweb.nl/privacy#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://axaweb.nl/"},{"@type":"ListItem","position":2,"name":"Privacyverklaring","item":"https://axaweb.nl/privacy"}]}]}</script>
 </head>
-<body>
+<body data-page="privacy">
+  <a class="skip-link" href="#main">Ga naar inhoud</a>
   <div class="app-shell">
   <header class="site-header is-scrolled">
     <div class="container site-header__inner">
       <a class="site-header__logo" href="/" aria-label="AxaWeb home">
-        <img src="logo.png?v=5" srcset="logo.png?v=5 1x, logo@2x.png?v=5 2x" alt="AxaWeb" width="320" height="59" />
+        <img src="/logo.png?v=5" srcset="/logo.png?v=5 1x, /logo@2x.png?v=5 2x" alt="AxaWeb" width="320" height="59" decoding="async" />
       </a>
-      <a class="btn btn--primary" href="/contact">Offerte aanvragen</a>
+      <div class="site-header__actions">
+        <a class="btn btn--primary" href="/contact">Offerte aanvragen</a>
+      </div>
     </div>
   </header>
-
   <div class="app-shell__scroll" data-scroll-root>
-  <main class="legal">
+  <main id="main" class="legal">
     <div class="container legal__content">
       <h1>Privacyverklaring</h1>
-      <p>AxaWeb, onderdeel van AxaNet, respecteert jouw privacy. In deze verklaring leggen we uit welke gegevens we verwerken wanneer je contact met ons opneemt via de website.</p>
+      <p class="legal__meta">Laatst bijgewerkt: 31 juli 2026</p>
+      <p>AxaWeb respecteert je privacy. In deze verklaring leggen we uit welke persoonsgegevens we verwerken wanneer je onze website bezoekt of contact met ons opneemt, waarom we dat doen, hoe lang we gegevens bewaren en welke rechten je hebt.</p>
+      <p>Deze verklaring geldt voor <a href="https://axaweb.nl">https://axaweb.nl</a> en bijbehorende contact- en offerteformulieren. We beschrijven alleen verwerkingen die bij AxaWeb daadwerkelijk plaatsvinden of kunnen plaatsvinden met de huidige website.</p>
+      <h2 id="verantwoordelijke">1. Verantwoordelijke</h2>
+      <p>Verantwoordelijke voor de verwerking van persoonsgegevens:</p>
+      <ul>
+      <li>E-mail: <a href="mailto:info@axaweb.nl">info@axaweb.nl</a></li>
+      <li>Telefoon: <a href="tel:+31629127575">06 29 12 75 75</a></li>
+      <li>Website: <a href="https://axaweb.nl">https://axaweb.nl</a></li>
+      <li>Land: Nederland</li>
+    </ul>
+      <p>Voor privacyvragen kun je het beste e-mailen naar het bovenstaande adres.</p>
 
-      <h2>Welke gegevens verwerken wij?</h2>
-      <p>Via het contactformulier kunnen wij de volgende gegevens ontvangen:</p>
+      <h2 id="welke-gegevens">2. Welke persoonsgegevens verwerken wij?</h2>
+      <h3>Contact- en offerteformulieren</h3>
+      <p>Wanneer je het contactformulier of het offerteformulier gebruikt, kunnen wij de volgende gegevens ontvangen:</p>
       <ul>
         <li>naam;</li>
         <li>bedrijfsnaam;</li>
         <li>e-mailadres;</li>
         <li>telefoonnummer;</li>
-        <li>projectinformatie en berichtinhoud.</li>
+        <li>project- of dienstkeuze;</li>
+        <li>berichtinhoud / projectinformatie;</li>
+        <li>technische antispamgegevens die nodig zijn om misbruik te beperken (zoals tijdstip van starten van het formulier).</li>
+      </ul>
+      <h3>Direct contact</h3>
+      <p>Neem je contact op via e-mail (<a href="mailto:info@axaweb.nl">info@axaweb.nl</a>) of telefoon (<a href="tel:+31629127575">06 29 12 75 75</a>), dan verwerken we de gegevens die je daarbij deelt, voor zover nodig om je te helpen.</p>
+      <h3>Websitegebruik en cookies</h3>
+      <p>Afhankelijk van je cookietoestemming kunnen technische en statistische gegevens worden verwerkt, zoals cookie-identifiers, apparaat- of browserinformatie, IP-adres (mogelijk ingekort), paginaweergaven en interacties. Zie het <a href="/cookies">cookiebeleid</a> voor details.</p>
+      <h3>Lettertypen</h3>
+      <p>Voor typografie laden we het lettertype Inter via Google Fonts. Daarbij kan Google technisch je IP-adres verwerken.</p>
+
+      <h2 id="doelen-grondslagen">3. Doelen en rechtsgronden</h2>
+      <p>We verwerken persoonsgegevens alleen voor duidelijke doelen:</p>
+      <ul>
+        <li><strong>Contact en offertes afhandelen:</strong> om te reageren op je aanvraag, vragen te beantwoorden en een offerte of voorstel te doen. Rechtsgrond: gerechtvaardigd belang en/of uitvoering van precontractuele stappen op jouw verzoek (AVG art. 6 lid 1 sub b en f).</li>
+        <li><strong>Overeenkomst en dienstverlening:</strong> als je klant wordt, voor uitvoering van de overeenkomst. Rechtsgrond: uitvoering overeenkomst (art. 6 lid 1 sub b).</li>
+        <li><strong>Beveiliging en misbruikpreventie:</strong> bijvoorbeeld rate limiting en spamfilters op formulieren. Rechtsgrond: gerechtvaardigd belang (art. 6 lid 1 sub f).</li>
+        <li><strong>Statistieken en verbetering van de website:</strong> via Google Analytics 4 en Microsoft Clarity, alleen na toestemming voor de categorie Statistieken. Rechtsgrond: toestemming (art. 6 lid 1 sub a).</li>
+        <li><strong>Noodzakelijke cookies / opslag:</strong> om de site te laten werken en je cookiekeuze te onthouden. Rechtsgrond: gerechtvaardigd belang / noodzakelijk voor de gevraagde dienst (en waar nodig toestemming volgens de cookieregels).</li>
+        <li><strong>Wettelijke verplichtingen:</strong> bijvoorbeeld bewaarplichten voor administratie. Rechtsgrond: wettelijke verplichting (art. 6 lid 1 sub c).</li>
+      </ul>
+      <p>Marketingcookies of advertentiepixels laden we niet zonder jouw toestemming voor Marketing. Op dit moment worden er geen aparte marketingtools actief geladen zolang die toestemming ontbreekt.</p>
+
+      <h2 id="bewaartermijnen">4. Bewaartermijnen</h2>
+      <ul>
+        <li>Contact- en offerteaanvragen bewaren we niet langer dan nodig is voor afhandeling en eventuele opvolging, doorgaans tot maximaal 24 maanden na het laatste relevante contact, tenzij een lopende samenwerking of wettelijke plicht langer bewaren vereist.</li>
+        <li>Administratieve en contractgegevens bewaren we zolang de wet dat voorschrijft (onder meer fiscale bewaartermijnen).</li>
+        <li>Cookievoorkeuren worden lokaal in je browser opgeslagen totdat je ze wist of wijzigt.</li>
+        <li>Statistische gegevens bij Google Analytics en Microsoft Clarity volgen de bewaarinstellingen van die diensten en jouw toestemming; zonder toestemming worden die scripts niet geladen.</li>
       </ul>
 
-      <h2>Waarom verwerken wij deze gegevens?</h2>
-      <p>We gebruiken deze gegevens uitsluitend om te reageren op jouw aanvraag, een offerte op te stellen of aanvullende vragen te beantwoorden.</p>
+      <h2 id="ontvangers">5. Delen met derden / verwerkers</h2>
+      <p>We verkopen je gegevens niet. We delen gegevens alleen met partijen die nodig zijn voor onze dienstverlening of waartoe we wettelijk verplicht zijn.</p>
+      <ul>
+        <li><strong>Google (Fonts, en optioneel Analytics):</strong> Google Fonts voor lettertypen; Google Analytics 4 alleen na toestemming voor Statistieken.</li>
+        <li><strong>Microsoft Clarity:</strong> alleen na toestemming voor Statistieken, voor gebruiks- en sessie-inzichten.</li>
+      </ul>
+      <p>Sommige van deze partijen kunnen gegevens (ook) buiten de EER verwerken. Waar dat het geval is, doen we dat op basis van passende waarborgen zoals standaardcontractbepalingen van de Europese Commissie, voor zover van toepassing, en bij niet-noodzakelijke tracking ook op basis van jouw toestemming.</p>
 
-      <h2>Bewaartermijn</h2>
-      <p>Contactgegevens worden niet langer bewaard dan nodig is voor de afhandeling van jouw aanvraag, tenzij een lopende samenwerking of wettelijke verplichting een langere bewaartermijn vereist.</p>
+      <h2 id="cookies-analytics">6. Cookies en analytics</h2>
+      <p>We gebruiken een cookiebanner met categorieën: noodzakelijk, voorkeuren, statistieken en marketing. Optionele statistiekstools laden pas na toestemming. Meer details staan in het <a href="/cookies">cookiebeleid</a>.</p>
+      <p>Bij statistiektoestemming kunnen we anonieme gebruiksgegevens meten, zoals paginaweergaven of klikken op contactknoppen. We sturen geen namen, e-mailadressen, telefoonnummers of berichtteksten mee.</p>
 
-      <h2>Delen met derden</h2>
-      <p>We delen jouw gegevens niet met derden, behalve wanneer dit noodzakelijk is voor de technische verwerking van formulierberichten of wanneer we daartoe wettelijk verplicht zijn.</p>
+      <h2 id="axabook">7. Toekomstige diensten (zoals AxaBook)</h2>
+      <p>Op de website kunnen toekomstige producten of modules worden genoemd (bijvoorbeeld AxaBook als “binnenkort”). Zolang zo’n dienst niet live is gekoppeld aan deze website, verwerken we daar via axaweb.nl geen aparte persoonsgegevens voor. Als dat later wel gebeurt, passen we deze verklaring aan of verwijzen we naar een aanvullende privacytoelichting.</p>
 
-      <h2>Jouw rechten</h2>
-      <p>Je kunt om inzage, correctie of verwijdering van jouw gegevens vragen via <a href="mailto:info@axaweb.nl">info@axaweb.nl</a>.</p>
+      <h2 id="beveiliging">8. Beveiliging</h2>
+      <p>We nemen passende technische en organisatorische maatregelen om persoonsgegevens te beschermen, waaronder HTTPS, beveiligingsheaders, origin-controles en spambeperkingen op het contactformulier, en toegangsbeperking tot mailboxen. Absolute veiligheid kan niemand garanderen; we verbeteren maatregelen waar nodig.</p>
 
-      <h2>Contact</h2>
-      <p>Voor vragen over deze privacyverklaring kun je contact opnemen via info@axaweb.nl.</p>
+      <h2 id="rechten">9. Jouw rechten</h2>
+      <p>Voor zover de AVG van toepassing is, heb je onder meer recht op:</p>
+      <ul>
+        <li>inzage in je persoonsgegevens;</li>
+        <li>rectificatie van onjuiste gegevens;</li>
+        <li>verwijdering (“recht op vergetelheid”) in de gevallen die de wet noemt;</li>
+        <li>beperking van de verwerking;</li>
+        <li>overdraagbaarheid van gegevens die je ons hebt verstrekt, waar van toepassing;</li>
+        <li>bezwaar tegen verwerking op basis van gerechtvaardigd belang;</li>
+        <li>intrekken van toestemming, zonder dat dit de rechtmatigheid van eerdere verwerking aantast.</li>
+      </ul>
+      <p>Je kunt een verzoek sturen naar <a href="mailto:info@axaweb.nl">info@axaweb.nl</a>. We reageren binnen de wettelijke termijnen. We kunnen om aanvullende informatie vragen om je identiteit te verifiëren.</p>
+
+      <h2 id="klachten">10. Klachten</h2>
+      <p>Heb je een klacht over hoe wij met persoonsgegevens omgaan? Neem eerst contact met ons op via <a href="mailto:info@axaweb.nl">info@axaweb.nl</a>. Je hebt ook het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens: <a href="https://www.autoriteitpersoonsgegevens.nl" rel="noopener noreferrer" target="_blank">www.autoriteitpersoonsgegevens.nl</a>.</p>
+
+      <h2 id="wijzigingen-privacy">11. Wijzigingen</h2>
+      <p>We kunnen deze privacyverklaring aanpassen als onze diensten of wetgeving wijzigen. De datum “Laatst bijgewerkt” bovenaan geeft de actuele versie aan. Bij ingrijpende wijzigingen informeren we waar dat passend is via de website.</p>
+      
+      
+      <div class="legal__related">
+        <h2>Gerelateerde documenten</h2>
+        <ul>
+        <li><a href="/cookies">Cookiebeleid</a></li>
+        <li><a href="/algemene-voorwaarden">Algemene voorwaarden</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
   </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__bottom">
+        <p>
+          <a href="/privacy">Privacyverklaring</a> ·
+          <a href="/cookies">Cookiebeleid</a> ·
+          <a href="/algemene-voorwaarden">Algemene voorwaarden</a> ·
+          <a href="/disclaimer">Disclaimer</a> ·
+          <button type="button" class="site-footer__text-btn" data-open-cookie-settings>Cookievoorkeuren</button>
+        </p>
+      </div>
+    </div>
+  </footer>
   </div>
   </div>
+  <script type="module" src="/js/page-main.js"></script>
 </body>
 </html>

@@ -1,0 +1,24 @@
+{
+  "name": "AxaWeb",
+  "short_name": "AxaWeb",
+  "description": "Professionele websites, webshops, hosting en onderhoud.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#06101D",
+  "theme_color": "#06101D",
+  "lang": "nl-NL",
+  "icons": [
+    {
+      "src": "/favicon.png?v=3",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png?v=3",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

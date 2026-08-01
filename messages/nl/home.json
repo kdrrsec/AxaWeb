@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "AxaWeb | Professionele Websites & Digitale Oplossingen",
+    "description": "Laat je website of webshop maken door AxaWeb. Maatwerk websites, hosting en onderhoud voor ondernemers. Vraag vrijblijvend advies of een offerte aan.",
+    "ogImageAlt": "AxaWeb: premium berglandschap als visuele identiteit",
+    "organizationDescription": "AxaWeb is een digitale partner voor ondernemers. Professionele websites, webshops, hosting, onderhoud en technische ondersteuning."
+  },
+  "hero": {
+    "title": "Jouw digitale partner voor een sterke online basis.",
+    "text": "Van professionele websites en webshops tot hosting, onderhoud en technische ondersteuning. Alles onder één dak, met één betrouwbaar aanspreekpunt.",
+    "scroll": "Scroll"
+  },
+  "intro": {
+    "eyebrow": "AxaWeb",
+    "title": "Digitale partner voor ondernemers die vooruit willen.",
+    "p1": "AxaWeb bouwt complete online oplossingen: van ontwerp en ontwikkeling tot hosting en onderhoud. Geen losse leverancier, maar een partner die meedenkt vanaf het eerste idee en bereikbaar blijft na de livegang.",
+    "p2": "We werken met heldere afspraken, vaste vanafprijzen en korte lijnen. Zo weet je altijd waar je aan toe bent.",
+    "facts": [
+      {
+        "title": "100% maatwerk",
+        "text": "Geen standaardtemplates, maar een oplossing voor jouw bedrijf."
+      },
+      {
+        "title": "Eén aanspreekpunt",
+        "text": "Van idee tot livegang en daarna, altijd dezelfde contactpersoon."
+      },
+      {
+        "title": "Reactie binnen één werkdag",
+        "text": "Korte lijnen en duidelijke communicatie, zonder wachtrijen."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Onze diensten",
+    "title": "Alles voor een sterke online basis.",
+    "intro": "Vier diensten die los sterk zijn en samen een complete online aanwezigheid vormen."
+  },
+  "packages": {
+    "eyebrow": "Pakketten",
+    "title": "Duidelijke pakketten, eerlijke vanafprijzen.",
+    "intro": "Iedere website start met een vaste vanafprijs, zodat je vooraf precies weet waar je aan toe bent."
+  },
+  "projects": {
+    "eyebrow": "Geselecteerd werk",
+    "title": "Digitale oplossingen die gezien mogen worden.",
+    "intro": "Een greep uit de websites en online projecten die zijn ontwikkeld met aandacht voor uitstraling, gebruiksgemak en resultaat."
+  },
+  "cta": {
+    "eyebrow": "Volgende stap",
+    "title": "Klaar om jouw bedrijf online sterker te maken?",
+    "text": "Vertel ons wat je nodig hebt. We nemen zo snel mogelijk contact op om jouw wensen, planning en mogelijkheden te bespreken.",
+    "button": "Offerte aanvragen"
+  },
+  "noscript": {
+    "title": "Diensten van AxaWeb",
+    "text": "Websites, webshops, hosting en onderhoud voor ondernemers. Neem contact op via info@axaweb.nl."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "banner": {
+    "title": "Cookies en privacy",
+    "text": "We gebruiken noodzakelijke cookies om de site te laten werken. Met jouw toestemming meten we ook statistieken om AxaWeb te verbeteren. Marketingcookies staan standaard uit.",
+    "acceptAll": "Alles accepteren",
+    "rejectAll": "Alles weigeren",
+    "customize": "Voorkeuren aanpassen",
+    "save": "Selectie opslaan",
+    "closePreferences": "Sluiten",
+    "policyLink": "Meer over cookies",
+    "ariaLabel": "Cookietoestemming",
+    "preferencesTitle": "Cookievoorkeuren",
+    "preferencesIntro": "Kies welke categorieën je toestaat. Noodzakelijke cookies zijn altijd actief."
+  },
+  "categories": {
+    "necessary": {
+      "title": "Noodzakelijk",
+      "description": "Nodig voor basiswerking, beveiliging en het onthouden van je cookiekeuze. Altijd actief.",
+      "alwaysOn": "Altijd actief"
+    },
+    "preferences": {
+      "title": "Voorkeuren",
+      "description": "Voor optionele functionele instellingen die niet strikt noodzakelijk zijn."
+    },
+    "statistics": {
+      "title": "Statistieken",
+      "description": "Helpt ons begrijpen hoe de website wordt gebruikt via Google Analytics 4 en Microsoft Clarity. Geen marketingadvertenties."
+    },
+    "marketing": {
+      "title": "Marketing",
+      "description": "Voor toekomstige marketingtools zoals advertentiepixels. Momenteel niet actief geladen."
+    }
+  },
+  "footer": {
+    "cookieSettings": "Cookievoorkeuren",
+    "cookiePolicy": "Cookiebeleid"
+  },
+  "page": {
+    "title": "Cookiebeleid | AxaWeb",
+    "description": "Lees hoe AxaWeb cookies en vergelijkbare technieken gebruikt, welke categorieën er zijn en hoe je toestemming kunt wijzigen.",
+    "h1": "Cookiebeleid",
+    "intro": "Dit cookiebeleid legt uit welke cookies en vergelijkbare technieken AxaWeb kan gebruiken, waarom, en hoe je je keuze beheert.",
+    "sections": {
+      "what": {
+        "title": "Wat zijn cookies?",
+        "text": "Cookies zijn kleine tekstbestanden die je browser kan opslaan. Vergelijkbare technieken, zoals lokale opslag, kunnen hetzelfde doel dienen."
+      },
+      "categories": {
+        "title": "Categorieën",
+        "text": "We onderscheiden noodzakelijke cookies, voorkeuren, statistieken en marketing. Alleen na jouw toestemming laden we optionele statistiekstools."
+      },
+      "tools": {
+        "title": "Welke tools kunnen worden gebruikt?",
+        "text": "Afhankelijk van je toestemming kunnen de volgende tools worden geladen:",
+        "items": [
+          "Noodzakelijk: opslag van je cookietoestemming op dit apparaat.",
+          "Statistieken: Google Analytics 4 (gebruikscijfers) en Microsoft Clarity (geanonimiseerde sessie-inzichten), alleen na toestemming voor Statistieken.",
+          "Marketing: gereserveerd voor toekomstige tools; wordt niet geladen zonder marketingtoestemming.",
+          "Voorkeuren: gereserveerd voor optionele functionele instellingen."
+        ]
+      },
+      "manage": {
+        "title": "Toestemming beheren",
+        "text": "Je kunt cookies accepteren, weigeren of later wijzigen via Cookievoorkeuren in de footer. Zonder toestemming voor Statistieken of Marketing worden die scripts niet geladen."
+      },
+      "privacy": {
+        "title": "Privacy",
+        "text": "Meer over verwerking van persoonsgegevens lees je in de privacyverklaring."
+      }
+    }
+  }
+}

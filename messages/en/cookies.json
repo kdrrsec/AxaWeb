@@ -1,0 +1,67 @@
+{
+  "banner": {
+    "title": "",
+    "text": "",
+    "acceptAll": "",
+    "rejectAll": "",
+    "customize": "",
+    "save": "",
+    "closePreferences": "",
+    "policyLink": "",
+    "ariaLabel": "",
+    "preferencesTitle": "",
+    "preferencesIntro": ""
+  },
+  "categories": {
+    "necessary": {
+      "title": "",
+      "description": "",
+      "alwaysOn": ""
+    },
+    "preferences": {
+      "title": "",
+      "description": ""
+    },
+    "statistics": {
+      "title": "",
+      "description": ""
+    },
+    "marketing": {
+      "title": "",
+      "description": ""
+    }
+  },
+  "footer": {
+    "cookieSettings": "",
+    "cookiePolicy": ""
+  },
+  "page": {
+    "title": "",
+    "description": "",
+    "h1": "",
+    "intro": "",
+    "sections": {
+      "what": {
+        "title": "",
+        "text": ""
+      },
+      "categories": {
+        "title": "",
+        "text": ""
+      },
+      "tools": {
+        "title": "",
+        "text": "",
+        "items": ["", "", "", ""]
+      },
+      "manage": {
+        "title": "",
+        "text": ""
+      },
+      "privacy": {
+        "title": "",
+        "text": ""
+      }
+    }
+  }
+}
