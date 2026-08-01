@@ -160,10 +160,7 @@ export const privacyDoc = {
               html: "<strong>Vercel:</strong> hosting van de website en de server-side API voor het contact- en offerteformulier.",
             },
             {
-              html: "<strong>Resend:</strong> e-mailverzending van formulieraanvragen wanneer deze dienst is geconfigureerd.",
-            },
-            {
-              html: "<strong>FormSubmit:</strong> alternatieve afhandeling van formulieraanvragen wanneer Resend niet is geconfigureerd; de browser kan de aanvraag dan via FormSubmit afronden.",
+              html: "<strong>Externe formulierenservice:</strong> voor het verwerken en verzenden van contact- en offerteformulieren maken wij gebruik van een externe formulierenservice. Deze dienst verwerkt uitsluitend de gegevens die nodig zijn om jouw aanvraag correct af te handelen.",
             },
             {
               html: "<strong>Google (Fonts, en optioneel Analytics):</strong> Google Fonts voor lettertypen; Google Analytics 4 alleen na toestemming voor Statistieken.",

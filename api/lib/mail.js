@@ -1,9 +1,6 @@
 /**
- * E-mailverzending voor contactaanvragen.
- *
- * Preferentie:
- * 1. Resend (server-side) wanneer RESEND_API_KEY + CONTACT_FROM_EMAIL gezet zijn
- * 2. Anders: browser-handoff naar FormSubmit (FormSubmit blokkeert serverless/Cloudflare)
+ * E-mailverzending voor contactaanvragen via FormSubmit browser-handoff.
+ * (FormSubmit blokkeert serverless/Cloudflare-verzoeken; daarom stuurt de browser zelf.)
  */
 
 import { readFileSync } from "node:fs";
@@ -97,48 +94,6 @@ export function buildContactEmail(data) {
   return { subject, text, html, formSubmitFields };
 }
 
-function hasResendConfig() {
-  return Boolean(
-    process.env.RESEND_API_KEY?.trim() &&
-      process.env.CONTACT_FROM_EMAIL?.trim() &&
-      getContactRecipient()
-  );
-}
-
-async function sendViaResend(data) {
-  const apiKey = process.env.RESEND_API_KEY.trim();
-  const to = getContactRecipient();
-  const from = process.env.CONTACT_FROM_EMAIL.trim();
-  const { subject, text, html } = buildContactEmail(data);
-
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: data.email,
-      subject,
-      text,
-      html,
-    }),
-  });
-
-  if (!response.ok) {
-    const detail = await response.text().catch(() => "");
-    const error = new Error("Resend rejected the request");
-    error.code = "PROVIDER";
-    error.status = response.status;
-    error.detail = detail.slice(0, 200);
-    throw error;
-  }
-
-  return { mode: "resend" };
-}
-
 /**
  * Bouwt FormSubmit-payload voor browser-handoff.
  * FormSubmit blokkeert verzoeken vanaf Vercel serverless (Cloudflare 403).
@@ -166,11 +121,8 @@ export function buildFormSubmitHandoff(data) {
 }
 
 /**
- * @returns {Promise<{ mode: 'resend' } | { mode: 'formsubmit_browser', endpoint: string, body: object }>}
+ * @returns {Promise<{ mode: 'formsubmit_browser', endpoint: string, body: object }>}
  */
 export async function sendContactEmail(data) {
-  if (hasResendConfig()) {
-    return sendViaResend(data);
-  }
   return buildFormSubmitHandoff(data);
 }

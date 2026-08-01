@@ -124,19 +124,14 @@ export default async function handler(req, res) {
 
     const delivery = await sendContactEmail(result.data);
 
-    if (delivery.mode === "formsubmit_browser") {
-      sendJson(res, 200, {
-        ok: true,
-        delivery: "formsubmit_browser",
-        formsubmit: {
-          endpoint: delivery.endpoint,
-          body: delivery.body,
-        },
-      });
-      return;
-    }
-
-    sendJson(res, 200, { ok: true, delivery: delivery.mode || "resend" });
+    sendJson(res, 200, {
+      ok: true,
+      delivery: "formsubmit_browser",
+      formsubmit: {
+        endpoint: delivery.endpoint,
+        body: delivery.body,
+      },
+    });
   } catch (error) {
     if (error?.code === "JSON" || error?.code === "PAYLOAD") {
       sendJson(res, 400, { ok: false, error: "invalid_request" });
