@@ -1,3 +1,5 @@
+import { initCustomSelects, focusSelectControl } from "./select.js";
+
 const messages = {
   nameRequired: "Vul je naam in.",
   emailRequired: "Vul je e-mailadres in.",
@@ -48,6 +50,8 @@ function setStatus(statusEl, message, type) {
 export function initContactForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;
+
+  initCustomSelects(form);
 
   const fields = {
     name: form.querySelector("#name"),
@@ -152,7 +156,8 @@ export function initContactForm() {
 
     if (!validate()) {
       const firstInvalid = form.querySelector("[aria-invalid='true']");
-      firstInvalid?.focus();
+      if (firstInvalid?.tagName === "SELECT") focusSelectControl(firstInvalid);
+      else firstInvalid?.focus();
       return;
     }
 

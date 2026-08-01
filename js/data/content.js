@@ -61,23 +61,4 @@ export const packagesPreview = [
   },
 ];
 
-export const projects = [
-  {
-    category: "Zakelijke website",
-    title: "Professionele bedrijfswebsite",
-    text: "Een heldere online basis met sterke uitstraling, duidelijke structuur en focus op conversie.",
-    href: "/projecten",
-  },
-  {
-    category: "Webshop",
-    title: "Online verkoopplatform",
-    text: "Een overzichtelijke webshop-ervaring, gericht op gebruiksgemak en een soepel bestelproces.",
-    href: "/projecten",
-  },
-  {
-    category: "Maatwerk platform",
-    title: "Digitale maatwerkoplossing",
-    text: "Een schaalbare oplossing met functionaliteiten die aansluiten op specifieke bedrijfsprocessen.",
-    href: "/projecten",
-  },
-];
+export { projects } from "./projects.js";

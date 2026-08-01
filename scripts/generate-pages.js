@@ -3,13 +3,14 @@
  * Iedere pagina definieert eigen secties (js/data/pages.js); per sectietype
  * bestaat hier een eigen renderer, zodat geen pagina dezelfde opbouw deelt.
  */
-import { writeFileSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 const { pages, siteNav } = await import(pathToFileURL(join(root, "js/data/pages.js")).href);
+const { projects, getNextProject } = await import(pathToFileURL(join(root, "js/data/projects.js")).href);
 const { icon } = await import(pathToFileURL(join(root, "js/modules/icons.js")).href);
 
 function escapeHtml(value) {
@@ -528,28 +529,61 @@ function renderSla(section, alt) {
 }
 
 function renderPortfolio(section, alt) {
-  const items = section.items
+  const items = projects
     .map(
-      (item, index) => `
-        <article class="portfolio-item reveal">
-          <div class="portfolio-item__media" aria-hidden="true">
-            <span class="portfolio-item__num">${String(index + 1).padStart(2, "0")}</span>
-          </div>
-          <div class="portfolio-item__body">
-            <p class="portfolio-item__category">${escapeHtml(item.category)}</p>
-            <h2 class="portfolio-item__title">${escapeHtml(item.title)}</h2>
-            <p class="portfolio-item__text">${escapeHtml(item.text)}</p>
-            <ul class="portfolio-item__tags">
-              ${item.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("\n              ")}
-            </ul>
-          </div>
+      (project) => `
+        <article class="case-card reveal">
+          <a class="case-card__link" href="/projecten/${project.slug}" aria-label="Bekijk project ${escapeHtml(project.name)}">
+            <div class="case-card__stage">
+              <div class="device device--desktop">
+                <div class="device__chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+                <div class="device__screen">
+                  <picture>
+                    <source srcset="${project.images.desktop}" type="image/webp" />
+                    <img
+                      src="${project.images.desktopJpg}"
+                      alt="${escapeHtml(project.images.altDesktop)}"
+                      width="1600"
+                      height="1000"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                </div>
+              </div>
+              <div class="device device--mobile">
+                <div class="device__screen">
+                  <picture>
+                    <source srcset="${project.images.mobile}" type="image/webp" />
+                    <img
+                      src="${project.images.mobileJpg}"
+                      alt="${escapeHtml(project.images.altMobile)}"
+                      width="780"
+                      height="1688"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__body">
+              <p class="case-card__category">${escapeHtml(project.category)}</p>
+              <h2 class="case-card__title">${escapeHtml(project.name)}</h2>
+              <p class="case-card__text">${escapeHtml(project.summary)}</p>
+              <ul class="case-card__tags">
+                ${project.services.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("\n                ")}
+              </ul>
+              <span class="case-card__cta">Bekijk project ${icon("arrow")}</span>
+            </div>
+          </a>
         </article>`
     )
     .join("");
 
   return `    <section class="section${alt}" id="${section.id}" aria-label="Portfolio-overzicht">
       <div class="container">
-        <div class="portfolio-grid">${items}
+        <div class="case-grid">${items}
         </div>
         <p class="section-note section-note--center reveal">${escapeHtml(section.note)}</p>
       </div>
@@ -784,12 +818,12 @@ function renderPage(page) {
   <meta property="og:title" content="${escapeHtml(page.title)}" />
   <meta property="og:description" content="${escapeHtml(page.description)}" />
   <meta property="og:url" content="${page.canonical}" />
-  <meta property="og:image" content="https://axaweb.nl/images/background.jpg" />
+  <meta property="og:image" content="${page.ogImage || "https://axaweb.nl/images/background.jpg"}" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(page.title)}" />
   <meta name="twitter:description" content="${escapeHtml(page.description)}" />
-  <meta name="twitter:image" content="https://axaweb.nl/images/background.jpg" />
+  <meta name="twitter:image" content="${page.ogImage || "https://axaweb.nl/images/background.jpg"}" />
 
   <meta name="theme-color" content="#06101D" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=3" />
@@ -798,6 +832,7 @@ function renderPage(page) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/main.css" />
+  ${page.jsonLd ? `<script type="application/ld+json">\n    ${page.jsonLd}\n  </script>` : ""}
 </head>
 <body data-page="${page.slug}">
   <a class="skip-link" href="#main">Ga naar inhoud</a>
@@ -805,9 +840,7 @@ function renderPage(page) {
 ${headerMarkup(page.navKey)}
 
   <main id="main">
-${renderHead(page)}
-
-${renderSections(page.sections)}
+${page.head ? `${renderHead(page)}\n\n` : ""}${page.customMain || renderSections(page.sections)}
   </main>
 
 ${footerMarkup()}
@@ -821,11 +854,216 @@ ${footerMarkup()}
 `;
 }
 
+function renderCaseMain(project) {
+  const next = getNextProject(project.slug);
+  const block = (section, extraClass = "") => `
+    <section class="section${extraClass}" aria-labelledby="${section.id}-title">
+      <div class="container case-prose">
+        <header class="section__header reveal">
+          <p class="section__eyebrow">${escapeHtml(section.eyebrow || "")}</p>
+          <h2 id="${section.id}-title" class="section__title">${escapeHtml(section.title)}</h2>
+        </header>
+        <p class="case-prose__text reveal">${escapeHtml(section.text)}</p>
+        ${
+          section.points
+            ? `<ul class="case-prose__list reveal">
+          ${section.points.map((point) => `<li>${icon("check")} <span>${escapeHtml(point)}</span></li>`).join("\n          ")}
+        </ul>`
+            : ""
+        }
+        ${
+          section.items
+            ? `<ul class="case-prose__list reveal">
+          ${section.items.map((item) => `<li>${icon("check")} <span>${escapeHtml(item)}</span></li>`).join("\n          ")}
+        </ul>`
+            : ""
+        }
+      </div>
+    </section>`;
+
+  return `    <section class="case-hero" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="page-head__breadcrumb reveal" aria-label="Broodkruimel">
+          <a href="/">Home</a><span aria-hidden="true">/</span>
+          <a href="/projecten">Projecten</a><span aria-hidden="true">/</span>
+          <span aria-current="page">${escapeHtml(project.name)}</span>
+        </nav>
+        <p class="section__eyebrow reveal">${escapeHtml(project.eyebrow)}</p>
+        <h1 id="page-title" class="case-hero__title reveal">${escapeHtml(project.title)}</h1>
+        <p class="case-hero__intro reveal">${escapeHtml(project.intro)}</p>
+        <div class="case-hero__meta reveal">
+          <p><span>Categorie</span> ${escapeHtml(project.category)}</p>
+          <p><span>Live</span> <a href="${project.url}" rel="noopener noreferrer" target="_blank">${escapeHtml(project.url.replace(/^https?:\/\//, ""))}</a></p>
+        </div>
+        <ul class="case-hero__services reveal">
+          ${project.services.map((service) => `<li>${escapeHtml(service)}</li>`).join("\n          ")}
+        </ul>
+        <div class="case-hero__devices reveal">
+          <div class="device device--desktop device--hero">
+            <div class="device__chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="device__screen">
+              <picture>
+                <source srcset="${project.images.desktop}" type="image/webp" />
+                <img
+                  src="${project.images.desktopJpg}"
+                  alt="${escapeHtml(project.images.altDesktop)}"
+                  width="1600"
+                  height="1000"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+          </div>
+          <div class="device device--mobile device--hero-mobile">
+            <div class="device__screen">
+              <picture>
+                <source srcset="${project.images.mobile}" type="image/webp" />
+                <img
+                  src="${project.images.mobileJpg}"
+                  alt="${escapeHtml(project.images.altMobile)}"
+                  width="780"
+                  height="1688"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+${block({ id: "klant", eyebrow: "Klant", ...project.client }, " section--alt")}
+
+${block({ id: "uitdaging", eyebrow: "Context", ...project.challenge })}
+
+${block({ id: "aanpak", eyebrow: "Aanpak", ...project.approach }, " section--alt")}
+
+${block({ id: "design", eyebrow: "Design", ...project.design })}
+
+${block({ id: "ontwikkeling", eyebrow: "Ontwikkeling", ...project.development }, " section--alt")}
+
+${block({ id: "responsive", eyebrow: "Responsive", ...project.responsive })}
+
+${block({ id: "techniek", eyebrow: "Techniek", ...project.tech }, " section--alt")}
+
+${project.hosting ? block({ id: "hosting", eyebrow: "Hosting", ...project.hosting }) : ""}
+
+${block({ id: "resultaat", eyebrow: "Resultaat", ...project.result }, project.hosting ? " section--alt" : "")}
+
+    <section class="section" aria-labelledby="screenshots-title">
+      <div class="container">
+        <header class="section__header section__header--center reveal">
+          <p class="section__eyebrow">Screenshots</p>
+          <h2 id="screenshots-title" class="section__title">Desktop en mobiel, zoals live te zien.</h2>
+        </header>
+        <div class="case-shots">
+          <figure class="case-shot reveal">
+            <div class="device device--desktop">
+              <div class="device__chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="device__screen">
+                <picture>
+                  <source srcset="${project.images.mid}" type="image/webp" />
+                  <img src="${project.images.midJpg}" alt="${escapeHtml(project.images.altMid)}" width="1600" height="1000" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
+            <figcaption>Desktop - detailsectie</figcaption>
+          </figure>
+          <figure class="case-shot reveal">
+            <div class="device device--mobile device--shot">
+              <div class="device__screen">
+                <picture>
+                  <source srcset="${project.images.mobile}" type="image/webp" />
+                  <img src="${project.images.mobileJpg}" alt="${escapeHtml(project.images.altMobile)}" width="780" height="1688" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
+            <figcaption>Mobiel - homepage</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="next-project-title">
+      <div class="container">
+        <article class="case-next reveal">
+          <div>
+            <p class="section__eyebrow">Volgende project</p>
+            <h2 id="next-project-title" class="case-next__title">${escapeHtml(next.name)}</h2>
+            <p class="case-next__text">${escapeHtml(next.summary)}</p>
+            <a class="btn btn--secondary" href="/projecten/${next.slug}">Bekijk ${escapeHtml(next.name)}</a>
+          </div>
+          <a class="case-next__preview" href="/projecten/${next.slug}" tabindex="-1" aria-hidden="true">
+            <picture>
+              <source srcset="${next.images.desktop}" type="image/webp" />
+              <img src="${next.images.desktopJpg}" alt="" width="800" height="500" loading="lazy" decoding="async" />
+            </picture>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <div>
+            <p class="section__eyebrow">Volgende stap</p>
+            <h2 id="cta-title" class="cta-banner__title">Ook een website die zo overtuigt?</h2>
+            <p class="cta-banner__text">Vertel ons over je project. We denken vrijblijvend mee over aanpak, planning en investering.</p>
+          </div>
+          <a class="btn btn--primary" href="/contact">Vraag een offerte aan</a>
+        </div>
+      </div>
+    </section>`;
+}
+
+function buildCasePage(project) {
+  const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.name,
+    description: project.meta.description,
+    url: `https://axaweb.nl/projecten/${project.slug}`,
+    image: project.images.og,
+    creator: {
+      "@type": "Organization",
+      name: "AxaWeb",
+      url: "https://axaweb.nl/",
+    },
+    about: {
+      "@type": "WebSite",
+      name: project.name,
+      url: project.url,
+    },
+  });
+
+  return renderPage({
+    slug: `projecten-${project.slug}`,
+    navKey: "projecten",
+    title: project.meta.title,
+    description: project.meta.description,
+    canonical: `https://axaweb.nl/projecten/${project.slug}`,
+    ogImage: project.images.og,
+    jsonLd,
+    customMain: renderCaseMain(project),
+  });
+}
+
 export function generatePages() {
   Object.values(pages).forEach((page) => {
     const filePath = join(root, `${page.slug}.html`);
     writeFileSync(filePath, renderPage(page), "utf8");
     console.log(`Generated ${page.slug}.html`);
+  });
+
+  const caseDir = join(root, "projecten");
+  mkdirSync(caseDir, { recursive: true });
+  projects.forEach((project) => {
+    const filePath = join(caseDir, `${project.slug}.html`);
+    writeFileSync(filePath, buildCasePage(project), "utf8");
+    console.log(`Generated projecten/${project.slug}.html`);
   });
 }
 
