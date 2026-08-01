@@ -16,6 +16,7 @@ const cssFiles = [
   "css/components/sections.css",
   "css/components/form.css",
   "css/components/footer.css",
+  "css/components/cursor.css",
 ];
 
 const pageSlugs = [

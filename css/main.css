@@ -7,3 +7,9 @@
 @import url("./components/sections.css");
 @import url("./components/form.css");
 @import url("./components/footer.css");
+<<<<<<< HEAD
+=======
+@import url("./components/cookie-consent.css");
+@import url("./components/legal.css");
+@import url("./components/cursor.css");
+>>>>>>> 93c4276 (Add subtle custom cursor for desktop browsing)
