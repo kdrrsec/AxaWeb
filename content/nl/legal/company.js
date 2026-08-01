@@ -11,7 +11,7 @@ export const company = {
   country: "Nederland",
   website: "https://axaweb.nl",
   /** Laatste inhoudelijke update van de juridische documenten */
-  documentsUpdated: "31 juli 2026",
+  documentsUpdated: "1 augustus 2026",
   governingLaw: "Nederlands recht",
   disputeForum: "bevoegde rechter in Nederland",
 };

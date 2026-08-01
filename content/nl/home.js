@@ -33,8 +33,8 @@ export const services = [
   {
     id: "onderhoud",
     title: "Onderhoud",
-    text: "Updates, monitoring, beveiliging en technische ondersteuning om jouw website gezond en betrouwbaar te houden.",
-    benefits: ["Periodieke updates", "Controle en monitoring", "Snel aanspreekpunt"],
+    text: "Updates, beveiliging en technische ondersteuning om jouw website gezond en betrouwbaar te houden.",
+    benefits: ["Periodieke updates", "Controles per pakket", "Snel aanspreekpunt"],
     cta: "Meer over onderhoud",
     href: "/onderhoud",
     icon: "wrench",

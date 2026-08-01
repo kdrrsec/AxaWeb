@@ -270,12 +270,14 @@ export function getOneTimeFromPrice() {
   return Math.min(...pricing.oneTime.plans.map((p) => p.price));
 }
 
+/** Laagste beschikbare hosting-vanafprijs (jaarbedrag) over alle contractduur-opties */
 export function getHostingFromPrice() {
   const priced = pricing.hosting.plans.filter((p) => !p.onRequest);
-  return Math.min(...priced.map((p) => p.prices.yearly));
+  return Math.min(...priced.flatMap((p) => Object.values(p.prices)));
 }
 
+/** Laagste beschikbare onderhouds-vanafprijs (maandbedrag) over alle contractduur-opties */
 export function getMaintenanceFromPrice() {
   const priced = pricing.maintenance.plans.filter((p) => !p.onRequest);
-  return Math.min(...priced.map((p) => p.prices.monthly));
+  return Math.min(...priced.flatMap((p) => Object.values(p.prices)));
 }

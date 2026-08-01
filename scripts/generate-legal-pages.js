@@ -166,7 +166,7 @@ function renderLegalPage(doc) {
         <img src="/logo.png?v=5" srcset="/logo.png?v=5 1x, /logo@2x.png?v=5 2x" alt="AxaWeb" width="320" height="59" decoding="async" />
       </a>
       <div class="site-header__actions">
-        <a class="btn btn--primary" href="/contact">${escapeHtml(t("cta.requestQuote"))}</a>
+        <a class="btn btn--primary" href="/offerte">${escapeHtml(t("cta.requestQuote"))}</a>
       </div>
     </div>
   </header>

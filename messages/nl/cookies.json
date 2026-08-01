@@ -54,7 +54,7 @@
         "text": "Afhankelijk van je toestemming kunnen de volgende tools worden geladen:",
         "items": [
           "Noodzakelijk: opslag van je cookietoestemming op dit apparaat.",
-          "Statistieken: Google Analytics 4 (gebruikscijfers) en Microsoft Clarity (geanonimiseerde sessie-inzichten), alleen na toestemming voor Statistieken.",
+          "Statistieken: Google Analytics 4 (gebruikscijfers) en Microsoft Clarity (sessie-inzichten; formulierinvoer gemaskeerd), alleen na toestemming voor Statistieken.",
           "Marketing: gereserveerd voor toekomstige tools; wordt niet geladen zonder marketingtoestemming.",
           "Voorkeuren: gereserveerd voor optionele functionele instellingen."
         ]

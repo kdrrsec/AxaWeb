@@ -52,7 +52,7 @@
       "eyebrow": "Website as a Service",
       "title": "Branchegerichte websites, all-inclusive.",
       "intro": "Website, hosting en onderhoud in één maandelijks abonnement, afgestemd op jouw branche.",
-      "note": "Prijzen zijn exclusief 21% btw. Exacte scope stemmen we af tijdens de kennismaking."
+      "note": "Prijzen zijn exclusief 21% btw. Exacte scope stemmen we af tijdens de kennismaking. Voor Website as a Service gelden specifieke afspraken over eigendom, overdracht en beëindiging. Bekijk hiervoor onze Algemene Voorwaarden."
     },
     "hosting": {
       "eyebrow": "Hosting",
@@ -64,7 +64,7 @@
       "eyebrow": "Onderhoud",
       "title": "Onderhoud als abonnement.",
       "intro": "Doorlopende zorg voor updates, monitoring en support.",
-      "note": "Prijzen zijn exclusief 21% btw. Minimale looptijd hangt af van het gekozen contract."
+      "note": "Prijzen zijn exclusief 21% btw. Minimale looptijd hangt af van het gekozen contract. Looptijd en opzegvoorwaarden zijn afhankelijk van het gekozen abonnement."
     }
   },
   "oneTime": {
@@ -172,7 +172,7 @@
     "smallEdits": "Klein onderhoud en aanpassingen (1 uur per maand)",
     "quarterlyReport": "Kwartaalrapportage",
     "allBusinessMaint": "Alles uit Zakelijk",
-    "slaResponse": "SLA met vaste reactietijden",
+    "slaResponse": "Reactietijden via SLA-afspraak",
     "devHours": "Vast aantal ontwikkeluren",
     "directAdmin": "Direct contact met je beheerder",
     "waasCustomSite": "Website op maat",
@@ -206,7 +206,7 @@
     "axabookRestaurants": "AxaBook Restaurants"
   },
   "cta": {
-    "requestQuote": "Vraag offerte aan",
+    "requestQuote": "Offerte aanvragen",
     "discussWebsite": "Bespreek jouw website",
     "requestCustom": "Vraag maatwerk aan",
     "planIntro": "Plan een kennismaking",

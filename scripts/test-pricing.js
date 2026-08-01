@@ -18,8 +18,8 @@ const nlPricing = JSON.parse(readFileSync(join(root, "messages/nl/pricing.json")
 assert.equal(formatEuro(1495), "€1.495");
 assert.equal(getOneTimeFromPrice(), 395);
 assert.equal(getWaasFromPrice(), 129);
-assert.equal(getHostingFromPrice(), 99);
-assert.equal(getMaintenanceFromPrice(), 39);
+assert.equal(getHostingFromPrice(), 89);
+assert.equal(getMaintenanceFromPrice(), 32);
 
 const barber = getWaasBranches().find((b) => b.id === "barbershop");
 assert.ok(barber);

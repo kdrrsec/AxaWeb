@@ -12,7 +12,7 @@ export const privacyDoc = {
     "Privacyverklaring van AxaWeb: welke gegevens we verwerken via formulieren, cookies, Analytics en Clarity, en welke rechten je hebt.",
   h1: "Privacyverklaring",
   updatedLabel: company.documentsUpdated,
-  dateIso: "2026-07-31",
+  dateIso: "2026-08-01",
   intro: [
     {
       type: "p",
@@ -55,12 +55,16 @@ export const privacyDoc = {
           type: "ul",
           items: [
             "naam;",
-            "bedrijfsnaam;",
+            "bedrijfsnaam (indien ingevuld);",
             "e-mailadres;",
-            "telefoonnummer;",
+            "telefoonnummer (indien ingevuld);",
             "project- of dienstkeuze;",
+            "budgetindicatie (indien ingevuld);",
             "berichtinhoud / projectinformatie;",
-            "technische antispamgegevens die nodig zijn om misbruik te beperken (zoals tijdstip van starten van het formulier).",
+            "bronpagina van waaruit het formulier is verzonden;",
+            "tijdstip van indiening;",
+            "technische antispamgegevens die nodig zijn om misbruik te beperken (zoals tijdstip van starten van het formulier);",
+            "IP-adres, voor rate limiting en misbruikpreventie bij het versturen van formulieren.",
           ],
         },
         {
@@ -153,10 +157,19 @@ export const privacyDoc = {
           type: "ul",
           items: [
             {
+              html: "<strong>Vercel:</strong> hosting van de website en de server-side API voor het contact- en offerteformulier.",
+            },
+            {
+              html: "<strong>Resend:</strong> e-mailverzending van formulieraanvragen wanneer deze dienst is geconfigureerd.",
+            },
+            {
+              html: "<strong>FormSubmit:</strong> alternatieve afhandeling van formulieraanvragen wanneer Resend niet is geconfigureerd; de browser kan de aanvraag dan via FormSubmit afronden.",
+            },
+            {
               html: "<strong>Google (Fonts, en optioneel Analytics):</strong> Google Fonts voor lettertypen; Google Analytics 4 alleen na toestemming voor Statistieken.",
             },
             {
-              html: "<strong>Microsoft Clarity:</strong> alleen na toestemming voor Statistieken, voor gebruiks- en sessie-inzichten.",
+              html: "<strong>Microsoft Clarity:</strong> alleen na toestemming voor Statistieken, voor gebruiks- en sessie-inzichten (inclusief sessie-opnamen).",
             },
           ],
         },
@@ -176,7 +189,11 @@ export const privacyDoc = {
         },
         {
           type: "p",
-          text: "Bij statistiektoestemming kunnen we anonieme gebruiksgegevens meten, zoals paginaweergaven of klikken op contactknoppen. We sturen geen namen, e-mailadressen, telefoonnummers of berichtteksten mee.",
+          text: "Bij statistiektoestemming kunnen Google Analytics 4 en Microsoft Clarity gebruiksgegevens meten, zoals paginaweergaven, klikken en (bij Clarity) sessiegedrag. Dat is geen volledig anonieme meting: er kunnen technische identifiers en gebruiksgegevens worden verwerkt.",
+        },
+        {
+          type: "p",
+          text: "Voor Microsoft Clarity maskeren we gevoelige formuliervelden op het contact- en offerteformulier (via data-clarity-mask), zodat namen, e-mailadressen, telefoonnummers, berichten en vergelijkbare invoer niet in Clarity-opnamen zichtbaar zijn. Overige paginatekst wordt niet standaard volledig gemaskeerd.",
         },
       ],
     },

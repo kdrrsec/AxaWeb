@@ -12,7 +12,7 @@ export const cookiesDoc = {
     "Cookiebeleid van AxaWeb: welke cookiecategorieën we gebruiken, Google Analytics, Microsoft Clarity en hoe je toestemming wijzigt.",
   h1: "Cookiebeleid",
   updatedLabel: company.documentsUpdated,
-  dateIso: "2026-07-31",
+  dateIso: "2026-08-01",
   showCookieSettingsButton: true,
   intro: [
     {
@@ -101,7 +101,7 @@ export const cookiesDoc = {
               html: "<strong>Google Analytics 4:</strong> statistieken over websitegebruik, alleen na toestemming.",
             },
             {
-              html: "<strong>Microsoft Clarity:</strong> sessie-inzichten, alleen na toestemming.",
+              html: "<strong>Microsoft Clarity:</strong> sessie-inzichten en sessie-opnamen, alleen na toestemming. Gevoelige velden op het contact- en offerteformulier worden gemaskeerd; overige paginatekst niet standaard volledig.",
             },
             {
               html: "<strong>Google Fonts:</strong> laadt het lettertype Manrope voor weergave.",

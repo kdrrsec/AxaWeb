@@ -66,7 +66,7 @@ export const pages = {
             title: "Hosting",
             text: "Snelle en veilige hosting met alles erop en eraan, zonder technisch gedoe.",
             points: [
-              "SSL, automatische back-ups en monitoring",
+              "SSL en automatische back-ups",
               "Zakelijke e-mail op je eigen domein",
               "Persoonlijke support, geen ticketstraat",
             ],
@@ -77,8 +77,8 @@ export const pages = {
             text: "Updates, monitoring en support die problemen vóór zijn in plaats van achteraf oplossen.",
             points: [
               "Periodieke updates en controles",
-              "Uptime- en foutmonitoring",
-              "Duidelijke afspraken over reactietijden",
+              "Monitoring vanaf het Zakelijk-abonnement",
+              "Reactietijden volgens pakket of SLA",
             ],
             link: { label: "Alles over onderhoud", href: "/onderhoud" },
           },
@@ -490,7 +490,7 @@ export const pages = {
             points: [
               "Firewall en actuele serversoftware",
               "SSL op iedere website",
-              "Beveiligingsmonitoring",
+              "Uptime-monitoring vanaf Zakelijk",
             ],
           },
           {
@@ -507,7 +507,7 @@ export const pages = {
             title: "Support",
             points: [
               "Persoonlijk aanspreekpunt",
-              "Reactie binnen één werkdag",
+              "Reactie streven: binnen één werkdag",
               "Hulp bij e-mail en domeinen",
             ],
           },
@@ -517,7 +517,7 @@ export const pages = {
         type: "cta",
         title: "Zorgeloos gehost, meestal binnen één dag.",
         text: "We regelen de migratie van je huidige website, vrijwel altijd zonder merkbare onderbreking.",
-        button: { label: "Vraag hosting aan", href: "/contact" },
+        button: { label: "Offerte aanvragen", href: "/offerte" },
       },
     ],
   },
@@ -547,9 +547,9 @@ export const pages = {
         title: "In het kort",
         items: [
           "Updates zonder omkijken",
-          "Monitoring met directe signalering",
-          "Vaste reactietijden via SLA",
-          "Maandelijks opzegbaar",
+          "Monitoring vanaf Zakelijk",
+          "Reactietijden volgens pakket of SLA",
+          "Na de minimale contractduur opzegbaar volgens de Algemene Voorwaarden",
         ],
       },
     },
@@ -595,7 +595,7 @@ export const pages = {
           {
             icon: "activity",
             title: "Uptime-monitoring",
-            text: "Continue controle of je website bereikbaar is, met directe signalering bij storingen.",
+            text: "Bij Zakelijk en Op maat: controle of je website bereikbaar is, met signalering bij storingen.",
           },
           {
             icon: "gauge",
@@ -605,7 +605,7 @@ export const pages = {
           {
             icon: "shield",
             title: "Beveiliging en certificaten",
-            text: "Signalering van verdachte activiteit en van verlopende SSL-certificaten of domeinen.",
+            text: "Signalering van verdachte activiteit en van verlopende SSL-certificaten of domeinen, afhankelijk van het gekozen pakket.",
           },
         ],
       },
@@ -615,17 +615,29 @@ export const pages = {
         eyebrow: "SLA",
         title: "Duidelijke reactietijden, zwart op wit.",
         rows: [
-          { level: "Kritiek", example: "Website offline of onbruikbaar", response: "Reactie binnen 4 uur" },
-          { level: "Hoog", example: "Belangrijke functie werkt niet", response: "Reactie binnen 1 werkdag" },
-          { level: "Normaal", example: "Kleine aanpassing of vraag", response: "Reactie binnen 2 werkdagen" },
+          {
+            level: "Kritiek",
+            example: "Website offline of onbruikbaar",
+            response: "Prioriteit volgens pakket of SLA",
+          },
+          {
+            level: "Hoog",
+            example: "Belangrijke functie werkt niet",
+            response: "Volgens pakket of SLA-afspraak",
+          },
+          {
+            level: "Normaal",
+            example: "Kleine aanpassing of vraag",
+            response: "Binnen een redelijke termijn op werkdagen",
+          },
         ],
-        note: "Reactietijden gelden op werkdagen en zijn onderdeel van de abonnementen Zakelijk en Op maat.",
+        note: "Reactietijden zijn afhankelijk van het gekozen onderhoudspakket of een afzonderlijke SLA-overeenkomst. Indicatief voor Zakelijk en Op maat; exacte afspraken staan in je overeenkomst.",
       },
       {
         type: "cta",
         title: "Nooit meer omkijken naar updates?",
         text: "Vertel ons welke website je hebt. We adviseren het abonnement dat daarbij past.",
-        button: { label: "Vraag onderhoud aan", href: "/contact" },
+        button: { label: "Offerte aanvragen", href: "/offerte" },
       },
     ],
   },
