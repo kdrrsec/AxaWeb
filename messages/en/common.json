@@ -27,7 +27,7 @@
     "home": "Home"
   },
   "footer": {
-    "note": "Websites, web shops, hosting, and maintenance — managed through one dedicated contact.",
+    "note": "Websites, web shops, hosting, and maintenance - managed through one dedicated contact.",
     "servicesTitle": "Services",
     "navTitle": "Navigation",
     "contactTitle": "Contact",
@@ -72,12 +72,12 @@
     "viewNamed": "View {name}",
     "nextStep": "Next step",
     "ctaTitle": "Want a website built to this standard?",
-    "ctaLead": "Tell us about your project. We'll advise on approach, timeline, and investment — with no obligation.",
+    "ctaLead": "Tell us about your project. We'll advise on approach, timeline, and investment - with no obligation.",
     "ctaButton": "Request a quote"
   },
   "directContact": {
     "title": "Need help right away?",
-    "text": "Prefer to talk it through? Call us — we're happy to discuss your project.",
+    "text": "Prefer to talk it through? Call us - we're happy to discuss your project.",
     "phoneDisplay": "06 29 12 75 75",
     "phoneHref": "tel:+31629127575",
     "phoneAria": "Call AxaWeb at 06 29 12 75 75"

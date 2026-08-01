@@ -42,7 +42,7 @@ export const pricing = {
     ],
   },
 
-  /** Website as a Service — branchepakketten */
+  /** Website as a Service - branchepakketten */
   waas: {
     id: "waas",
     defaultTerm: "12",
@@ -56,7 +56,7 @@ export const pricing = {
     /**
      * Branch-pakketten. Prijzen per contracttermijn (per maand, excl. btw).
      * featureKeys = beschikbare features; upcomingKey = optionele AxaBook-vermelding.
-     * Nieuwe branche: object toevoegen — UI volgt automatisch.
+     * Nieuwe branche: object toevoegen - UI volgt automatisch.
      */
     branches: [
       {

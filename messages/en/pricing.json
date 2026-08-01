@@ -40,7 +40,7 @@
     "websiteHub": {
       "eyebrow": "Websites",
       "title": "Choose the model that fits.",
-      "intro": "One-time development or Website as a Service — you decide how to start."
+      "intro": "One-time development or Website as a Service - you decide how to start."
     },
     "oneTime": {
       "eyebrow": "One-time Website",
@@ -51,7 +51,7 @@
     "waas": {
       "eyebrow": "Website as a Service",
       "title": "Industry-specific websites, hosted and maintained for you.",
-      "intro": "Website, hosting, and maintenance in one monthly subscription — tailored to your industry.",
+      "intro": "Website, hosting, and maintenance in one monthly subscription - tailored to your industry.",
       "note": "Prices exclude 21% VAT. Exact scope is agreed during the intro call. Website as a Service has specific terms on ownership, transfer, and termination. See our Terms & Conditions for details."
     },
     "hosting": {
@@ -63,7 +63,7 @@
     "maintenance": {
       "eyebrow": "Maintenance",
       "title": "Ongoing maintenance on a clear monthly plan.",
-      "intro": "Updates, monitoring, and support — handled for you.",
+      "intro": "Updates, monitoring, and support - handled for you.",
       "note": "Prices exclude 21% VAT. Minimum term depends on the selected contract. Duration and cancellation terms depend on the chosen plan."
     }
   },
@@ -114,7 +114,7 @@
     },
     "managed": {
       "name": "Fully managed",
-      "audience": "Hosting and maintenance fully handled — including updates and monitoring."
+      "audience": "Hosting and maintenance fully handled - including updates and monitoring."
     }
   },
   "maintenance": {

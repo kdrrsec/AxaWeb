@@ -158,7 +158,7 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
         const savingsText = savingsLabel(tp, savings);
 
         const upcoming = branch.upcomingKey
-          ? `<li class="pricing-card__upcoming"><span>${escapeHtml(tp(`upcoming.${branch.upcomingKey}`))} <em>– ${escapeHtml(tp("labels.upcoming"))}</em></span></li>`
+          ? `<li class="pricing-card__upcoming"><span>${escapeHtml(tp(`upcoming.${branch.upcomingKey}`))} <em>- ${escapeHtml(tp("labels.upcoming"))}</em></span></li>`
           : "";
 
         return `

@@ -16,15 +16,15 @@
     },
     "diensten": {
       "title": "Services | Websites, Web Shops, Hosting & Maintenance | AxaWeb",
-      "description": "Custom websites, web shops, hosting, and maintenance — from one digital partner."
+      "description": "Custom websites, web shops, hosting, and maintenance - from one digital partner."
     },
     "websites": {
       "title": "Custom Website Design & Development | AxaWeb",
-      "description": "Custom websites by AxaWeb — with solid SEO foundations, fast load times, and clear starting prices. View packages and case studies."
+      "description": "Custom websites by AxaWeb - with solid SEO foundations, fast load times, and clear starting prices. View packages and case studies."
     },
     "webshops": {
       "title": "Custom Web Shop Development | AxaWeb",
-      "description": "Conversion-focused web shops by AxaWeb — with payments, inventory management, and room to scale. Request a quote."
+      "description": "Conversion-focused web shops by AxaWeb - with payments, inventory management, and room to scale. Request a quote."
     },
     "hosting": {
       "title": "Hosting | Fast & Secure Website Hosting | AxaWeb",
@@ -40,7 +40,7 @@
     },
     "projecten": {
       "title": "Projects | View Our Work | AxaWeb",
-      "description": "Live AxaWeb websites such as Bandendepot, Axanet, and ViralOn — focused on structure, presence, and technical quality."
+      "description": "Live AxaWeb websites such as Bandendepot, Axanet, and ViralOn - focused on structure, presence, and technical quality."
     },
     "contact": {
       "title": "Contact | Request a Quote | AxaWeb",
@@ -74,7 +74,7 @@
   "services": {
     "websites": {
       "name": "Website development",
-      "description": "Custom websites for growing businesses — with SEO foundations, fast performance, and a conversion-focused structure."
+      "description": "Custom websites for growing businesses - with SEO foundations, fast performance, and a conversion-focused structure."
     },
     "webshops": {
       "name": "Web shop development",
