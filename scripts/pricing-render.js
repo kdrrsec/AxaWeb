@@ -84,23 +84,41 @@ export function renderSegmentedControl({ name, ariaLabel, terms, defaultTerm, tp
 }
 
 export function renderModelToggle(tp) {
+  const recommended = tp("badges.recommended");
+  const selected = tp("modelToggle.selected");
   return `
-        <div class="pricing-choice reveal">
-          <p class="pricing-choice__prompt">${escapeHtml(tp("modelToggle.prompt"))}</p>
+        <div class="pricing-choice reveal" data-pricing-choice>
+          <p class="pricing-choice__prompt" id="pricing-model-prompt">${escapeHtml(tp("modelToggle.prompt"))}</p>
           <p class="pricing-choice__text">${escapeHtml(tp("modelToggle.promptText"))}</p>
+          <p class="pricing-choice__hint">${escapeHtml(tp("modelToggle.hint"))}</p>
           <div
-            class="segmented segmented--models"
+            class="pricing-choice__control"
             role="radiogroup"
+            aria-labelledby="pricing-model-prompt"
             aria-label="${escapeHtml(tp("modelToggle.ariaLabel"))}"
             data-pricing-model
           >
-            <button type="button" class="segmented__btn" role="radio" aria-checked="false" data-model="one-time" tabindex="0">
-              <span class="segmented__label">${escapeHtml(tp("modelToggle.oneTime"))}</span>
+            <button type="button" class="pricing-choice__seg" role="radio" aria-checked="false" data-model="one-time" tabindex="0">
+              <span class="pricing-choice__seg-main">
+                <span class="pricing-choice__seg-label">${escapeHtml(tp("modelToggle.oneTime"))}</span>
+              </span>
+              <span class="pricing-choice__selected" aria-hidden="true">
+                <svg class="pricing-choice__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="pricing-choice__selected-text">${escapeHtml(selected)}</span>
+              </span>
             </button>
-            <button type="button" class="segmented__btn" role="radio" aria-checked="false" data-model="waas" tabindex="-1">
-              <span class="segmented__label">${escapeHtml(tp("modelToggle.waas"))}</span>
+            <button type="button" class="pricing-choice__seg" role="radio" aria-checked="false" data-model="waas" tabindex="0">
+              <span class="pricing-choice__seg-main">
+                <span class="pricing-choice__seg-label">${escapeHtml(tp("modelToggle.waas"))}</span>
+                <span class="pricing-choice__seg-badge">${escapeHtml(recommended)}</span>
+              </span>
+              <span class="pricing-choice__selected" aria-hidden="true">
+                <svg class="pricing-choice__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="pricing-choice__selected-text">${escapeHtml(selected)}</span>
+              </span>
             </button>
           </div>
+          <p class="pricing-choice__empty" data-pricing-empty>${escapeHtml(tp("modelToggle.empty"))}</p>
         </div>`;
 }
 

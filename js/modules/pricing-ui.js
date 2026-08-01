@@ -2,6 +2,7 @@
  * Client-side pricing interactions: model toggle + contractduur selectors.
  */
 import { t } from "./i18n.js";
+import { getScrollRoot } from "./scroll-root.js";
 import { trackPricingDurationSelect, trackPricingModelSelect } from "./tracking.js";
 
 function formatEuro(amount) {
@@ -133,14 +134,41 @@ function initModelToggle(root) {
   const modelGroup = root.querySelector("[data-pricing-model]");
   if (!modelGroup) return;
 
+  const choice = root.querySelector("[data-pricing-choice]");
+  const empty = root.querySelector("[data-pricing-empty]");
   const buttons = [...modelGroup.querySelectorAll("[data-model]")];
   const panels = {
     "one-time": root.querySelector('[data-pricing-panel="one-time"]'),
     waas: root.querySelector('[data-pricing-panel="waas"]'),
   };
 
-  const select = (model) => {
+  const preferReducedMotion = () =>
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+  const scrollToPanel = (panel) => {
+    if (!panel || preferReducedMotion()) return;
+    const isNarrow = window.matchMedia("(max-width: 768px)").matches;
+    if (!isNarrow) return;
+
+    window.requestAnimationFrame(() => {
+      const target = panel.querySelector(".section__header") || panel;
+      const root = getScrollRoot();
+      if (root && typeof target.getBoundingClientRect === "function") {
+        const rootRect = root.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const nextTop = root.scrollTop + (targetRect.top - rootRect.top) - 12;
+        root.scrollTo({ top: Math.max(0, nextTop), behavior: "smooth" });
+        return;
+      }
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  const select = (model, { scroll = true } = {}) => {
     trackPricingModelSelect(model);
+    choice?.classList.add("has-selection");
+    if (empty) empty.hidden = true;
+
     buttons.forEach((btn) => {
       const active = btn.getAttribute("data-model") === model;
       btn.classList.toggle("is-active", active);
@@ -148,19 +176,40 @@ function initModelToggle(root) {
       btn.tabIndex = active ? 0 : -1;
     });
 
+    let activePanel = null;
     Object.entries(panels).forEach(([key, panel]) => {
       if (!panel) return;
       const show = key === model;
       panel.hidden = !show;
       panel.classList.toggle("is-visible", show);
       if (show) {
+        activePanel = panel;
         panel.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
       }
     });
+
+    if (scroll) scrollToPanel(activePanel);
   };
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => select(btn.getAttribute("data-model")));
+  });
+
+  modelGroup.addEventListener("keydown", (event) => {
+    const current = buttons.indexOf(document.activeElement);
+    if (current < 0) return;
+    let next = current;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (current + 1) % buttons.length;
+    else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      next = (current - 1 + buttons.length) % buttons.length;
+    } else if (event.key === " " || event.key === "Enter") {
+      event.preventDefault();
+      select(buttons[current].getAttribute("data-model"));
+      return;
+    } else return;
+    event.preventDefault();
+    buttons[next].focus();
+    select(buttons[next].getAttribute("data-model"));
   });
 }
 

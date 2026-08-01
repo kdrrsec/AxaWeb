@@ -1,9 +1,12 @@
 {
   "modelToggle": {
-    "ariaLabel": "Kies hoe je een website wilt afnemen",
-    "prompt": "Kies hoe je wilt starten",
-    "promptText": "Selecteer een model om de bijbehorende pakketten te bekijken.",
-    "oneTime": "Eenmalige Website",
+    "ariaLabel": "Kies hoe je jouw website wilt afnemen",
+    "prompt": "Kies eerst hoe je jouw website wilt afnemen",
+    "promptText": "Selecteer een eenmalige investering of een maandabonnement.",
+    "hint": "Maak een keuze",
+    "empty": "De pakketten verschijnen hier na je keuze.",
+    "selected": "Geselecteerd",
+    "oneTime": "Eenmalige website",
     "waas": "Website as a Service"
   },
   "labels": {
@@ -43,7 +46,7 @@
       "eyebrow": "Eenmalige Website",
       "title": "Websites met een vaste vanafprijs.",
       "intro": "Eenmalige investering voor het ontwerpen en bouwen van je website.",
-      "note": "Introductieprijzen zijn exclusief 21% btw. Definitieve prijs hangt af van ontwerp, omvang en functionaliteiten."
+      "note": "Introductieprijzen zijn exclusief 21% btw. De definitieve prijs is afhankelijk van de omvang, functionaliteiten en gekozen dienstverlening. Je ontvangt vooraf altijd een duidelijke offerte."
     },
     "waas": {
       "eyebrow": "Website as a Service",
@@ -146,7 +149,7 @@
     "api": "API-koppelingen mogelijk",
     "animations": "Uitgebreidere animaties",
     "priority": "Prioriteit tijdens ontwikkeling",
-    "dailyBackups": "Dagelijkse back-ups",
+    "automaticBackups": "Automatische back-ups",
     "businessEmail": "Zakelijke e-mail",
     "ssd": "Snelle SSD-opslag",
     "emailSupport": "Support via e-mail",
@@ -224,7 +227,7 @@
       "Eenmalige websites zijn een eenmalige investering; Website as a Service is een maandelijks abonnement.",
       "Hosting wordt jaarlijks gefactureerd; onderhoud volgens het gekozen contract.",
       "Abonnementen hebben een minimale looptijd volgens de gekozen contractduur. Daarna zijn ze opzegbaar volgens de voorwaarden.",
-      "Eventuele maatwerkfunctionaliteiten worden vooraf geoffreerd.",
+      "De definitieve prijs is afhankelijk van de omvang, functionaliteiten en gekozen dienstverlening. Je ontvangt vooraf altijd een duidelijke offerte.",
       "Na oplevering ontvang je volledige uitleg over jouw website."
     ]
   }

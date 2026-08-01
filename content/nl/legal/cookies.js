@@ -104,7 +104,7 @@ export const cookiesDoc = {
               html: "<strong>Microsoft Clarity:</strong> sessie-inzichten, alleen na toestemming.",
             },
             {
-              html: "<strong>Google Fonts:</strong> laadt het lettertype Inter voor weergave.",
+              html: "<strong>Google Fonts:</strong> laadt het lettertype Manrope voor weergave.",
             },
             {
               html: "<strong>Marketingtools:</strong> niet actief zonder marketingtoestemming.",

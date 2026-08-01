@@ -22,7 +22,6 @@ const cssFiles = [
   "css/components/footer.css",
   "css/components/cookie-consent.css",
   "css/components/legal.css",
-  "css/components/cursor.css",
 ];
 
 const pageSlugs = [

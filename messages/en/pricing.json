@@ -3,6 +3,9 @@
     "ariaLabel": "",
     "prompt": "",
     "promptText": "",
+    "hint": "",
+    "empty": "",
+    "selected": "",
     "oneTime": "",
     "waas": ""
   },
@@ -146,7 +149,7 @@
     "api": "",
     "animations": "",
     "priority": "",
-    "dailyBackups": "",
+    "automaticBackups": "",
     "businessEmail": "",
     "ssd": "",
     "emailSupport": "",
