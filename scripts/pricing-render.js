@@ -6,6 +6,7 @@ import {
   pricing,
   formatEuro,
   calcSavings,
+  getAvailableTerms,
   getWaasBranches,
   getOneTimePlans,
   getHostingPlans,
@@ -31,25 +32,21 @@ function badgeMarkup(badgeKey, tp) {
   return `<span class="pricing-card__badge">${escapeHtml(tp(`badges.${badgeKey}`))}</span>`;
 }
 
-function savingsLabel(tp, savingsObj) {
+function savingsLabel(tp, savingsObj, locale) {
   if (!savingsObj) return "";
   if (savingsObj.months === 12) {
-    return tp("labels.saveYear", { amount: formatEuro(savingsObj.amount) });
+    return tp("labels.saveYear", { amount: formatEuro(savingsObj.amount, locale) });
   }
   return tp("labels.saveTerm", {
-    amount: formatEuro(savingsObj.amount),
+    amount: formatEuro(savingsObj.amount, locale),
     months: String(savingsObj.months),
   });
 }
 
-function hostingSavings(baseYearly, termYearly, termId) {
-  if (termId !== "24" || !baseYearly || !termYearly) return null;
-  const amount = (baseYearly - termYearly) * 2;
-  if (amount <= 0) return null;
-  return { amount, months: 24 };
-}
-
 export function renderSegmentedControl({ name, ariaLabel, terms, defaultTerm, tp }) {
+  /* Eén beschikbare looptijd: geen keuze tonen in plaats van een schijnkeuze */
+  if (!terms || terms.length < 2) return "";
+
   const options = terms
     .map((term) => {
       const selected = term.id === defaultTerm;
@@ -117,7 +114,7 @@ export function renderModelToggle(tp) {
  * @param {(path: string, values?: Record<string, string>) => string} tp
  * @param {(name: string, className?: string) => string} icon
  */
-export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
+export function buildPricingRenderers(tp, icon, localizeHref = (href) => href, locale = "nl") {
   const nameOf = (group, id) => tp(`${group}.${id}.name`);
   const audienceOf = (group, id) => tp(`${group}.${id}.audience`);
 
@@ -130,9 +127,7 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
           ${badgeMarkup(plan.badgeKey, tp)}
           <h3 class="pricing-card__name">${escapeHtml(nameOf("oneTime", plan.id))}</h3>
           <div class="pricing-card__pricing">
-            <p class="pricing-card__price-was"><s>${escapeHtml(formatEuro(plan.priceWas))}</s></p>
-            <p class="pricing-card__price">${escapeHtml(formatEuro(plan.price))}</p>
-            <p class="pricing-card__intro-label">${escapeHtml(tp("labels.introPrice"))}</p>
+            <p class="pricing-card__price">${escapeHtml(formatEuro(plan.price, locale))}</p>
             <p class="pricing-card__meta">${escapeHtml(tp("labels.oneTimeInvestment"))}</p>
             <p class="pricing-card__vat">${escapeHtml(tp("labels.exclVat"))}</p>
           </div>
@@ -155,10 +150,12 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
         const monthly = branch.prices.monthly;
         const current = branch.prices[activeTerm] ?? monthly;
         const savings = calcSavings(monthly, current, termMonths);
-        const savingsText = savingsLabel(tp, savings);
+        const savingsText = savingsLabel(tp, savings, locale);
 
-        const upcoming = branch.upcomingKey
-          ? `<li class="pricing-card__upcoming"><span>${escapeHtml(tp(`upcoming.${branch.upcomingKey}`))} <em>- ${escapeHtml(tp("labels.upcoming"))}</em></span></li>`
+        const highlight = branch.includesBooking
+          ? `<p class="pricing-card__highlight">${icon("check")} <span>${escapeHtml(
+              tp(`highlights.${branch.includesBooking}`)
+            )}</span></p>`
           : "";
 
         return `
@@ -175,16 +172,16 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
           <div class="pricing-card__pricing">
             <p class="pricing-card__from">${escapeHtml(tp("labels.from"))}</p>
             <p class="pricing-card__price">
-              <span data-price-display>${escapeHtml(formatEuro(current))}</span>
+              <span data-price-display>${escapeHtml(formatEuro(current, locale))}</span>
               <span class="pricing-card__period">${escapeHtml(tp("labels.perMonth"))}</span>
             </p>
             <p class="pricing-card__savings" data-savings ${savingsText ? "" : "hidden"}>${escapeHtml(savingsText)}</p>
             <p class="pricing-card__vat">${escapeHtml(tp("labels.exclVat"))}</p>
           </div>
           <p class="pricing-card__audience">${escapeHtml(audienceOf("waas", branch.id))}</p>
+          ${highlight}
           <ul class="pricing-card__list">
             ${featureList(branch.featureKeys || [], tp, icon)}
-            ${upcoming}
           </ul>
           <a class="btn ${branch.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${localizeHref(pricing.waas.href)}">${escapeHtml(tp(`cta.${pricing.waas.ctaKey}`))}</a>
         </article>`;
@@ -198,8 +195,8 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
     const plans = isHosting ? getHostingPlans() : getMaintenancePlans();
     const group = isHosting ? "hosting" : "maintenance";
     const periodLabel = isHosting ? tp("labels.perYear") : tp("labels.perMonth");
-    const baseKey = isHosting ? "yearly" : "monthly";
-    const terms = catalog.terms;
+    const baseKey = "monthly";
+    const terms = getAvailableTerms(catalog);
 
     return plans
       .map((plan) => {
@@ -222,10 +219,12 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
         const pricesJson = escapeHtml(JSON.stringify(plan.prices));
         const basePrice = plan.prices[baseKey];
         const current = plan.prices[defaultTerm] ?? basePrice;
-        const savingsObj = isHosting
-          ? hostingSavings(basePrice, current, defaultTerm)
-          : calcSavings(basePrice, current, terms.find((t) => t.id === defaultTerm)?.months || 1);
-        const savingsText = savingsLabel(tp, savingsObj);
+        const savingsObj = calcSavings(
+          basePrice,
+          current,
+          terms.find((t) => t.id === defaultTerm)?.months || 1
+        );
+        const savingsText = savingsLabel(tp, savingsObj, locale);
 
         return `
         <article
@@ -234,13 +233,13 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
           data-catalog="${catalogKey}"
           data-prices='${pricesJson}'
           data-base-key="${baseKey}"
-          data-monthly="${basePrice}"
+          data-monthly="${basePrice ?? ""}"
         >
           ${badgeMarkup(plan.badgeKey, tp)}
           <h3 class="pricing-card__name">${escapeHtml(nameOf(group, plan.id))}</h3>
           <div class="pricing-card__pricing">
             <p class="pricing-card__price">
-              <span data-price-display>${escapeHtml(formatEuro(current))}</span>
+              <span data-price-display>${escapeHtml(formatEuro(current, locale))}</span>
               <span class="pricing-card__period">${escapeHtml(periodLabel)}</span>
             </p>
             <p class="pricing-card__savings" data-savings ${savingsText ? "" : "hidden"}>${escapeHtml(savingsText)}</p>
@@ -263,4 +262,4 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href) {
   };
 }
 
-export { pricing, formatEuro, calcSavings, getWaasBranches };
+export { pricing, formatEuro, calcSavings, getAvailableTerms, getWaasBranches };
