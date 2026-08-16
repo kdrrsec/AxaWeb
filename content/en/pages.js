@@ -124,10 +124,10 @@ export const pages = {
           {
             label: "Investment",
             values: [
-              `From ${formatEuro(getOneTimeFromPrice())}`,
-              `From ${formatEuro(getWaasFromPrice())} / month`,
-              `From ${formatEuro(getHostingFromPrice())} / year`,
-              `From ${formatEuro(getMaintenanceFromPrice())} / month`,
+              `From ${formatEuro(getOneTimeFromPrice(), "en")}`,
+              `From ${formatEuro(getWaasFromPrice(), "en")} / month on a 12-month term`,
+              `From ${formatEuro(getHostingFromPrice(), "en")} / year on a 12-month term`,
+              `From ${formatEuro(getMaintenanceFromPrice(), "en")} / month on a 12-month term`,
             ],
           },
           {
@@ -138,7 +138,7 @@ export const pages = {
             label: "Pairs well with",
             values: [
               "Hosting and maintenance",
-              "AxaBook (coming soon)",
+              "Hosting and maintenance included",
               "Maintenance",
               "Hosting",
             ],
@@ -183,7 +183,7 @@ export const pages = {
           "100% custom - no off-the-shelf themes",
           "Responsive on every screen",
           "SEO and performance built in from the start",
-          "Packages from €395",
+          `Packages from ${formatEuro(getOneTimeFromPrice(), "en")}`,
         ],
       },
     },
@@ -660,7 +660,7 @@ export const pages = {
       variant: "center",
       eyebrow: "Packages",
       title: "All packages and prices in one place.",
-      text: "From a first website to hosting and maintenance: every package has a clear price and scope. Website packages at introductory rates; all prices exclude 21% VAT.",
+      text: "From a first website to hosting and maintenance: every package has a clear price and scope. Recurring services run monthly or on a 12-month term; all prices exclude 21% VAT.",
     },
     sections: [
       {
@@ -771,7 +771,7 @@ export const pages = {
           {
             question: "What does a website or web shop cost?",
             answer:
-              "Websites start from €395. The final investment depends on design, scope, and features. You always receive a clear quote up front.",
+              `One-time websites start from ${formatEuro(getOneTimeFromPrice(), "en")} excl. VAT. Prefer to spread the cost? Website as a Service starts from ${formatEuro(getWaasFromPrice(), "en")} per month on a 12-month term. The final investment depends on design, scope, and features.`,
           },
           {
             question: "Can I choose only hosting or maintenance?",

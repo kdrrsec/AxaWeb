@@ -1,6 +1,10 @@
 /**
  * Centrale pricing-configuratie voor AxaWeb.
- * Bedragen in hele euro's (excl. btw). Nieuwe branches: voeg toe aan `waas.branches`.
+ * Alle bedragen zijn exclusief 21% btw.
+ *
+ * Terugkerende diensten kennen uitsluitend twee looptijden: `monthly` en `12`.
+ * Waar een looptijd nog geen vastgestelde prijs heeft, staat die looptijd in
+ * `pendingTerms` en wordt hij niet in de UI aangeboden.
  */
 
 export const pricing = {
@@ -13,8 +17,7 @@ export const pricing = {
     plans: [
       {
         id: "start",
-        priceWas: 495,
-        price: 395,
+        price: 495,
         featured: false,
         featureKeys: ["onepage", "responsive", "contactForm", "basicSeo", "ssl", "delivery"],
         ctaKey: "requestQuote",
@@ -22,8 +25,7 @@ export const pricing = {
       },
       {
         id: "business",
-        priceWas: 795,
-        price: 695,
+        price: 795,
         featured: true,
         badgeKey: "mostChosen",
         featureKeys: ["upToFivePages", "customDesign", "portfolio", "maps", "basicSeo", "performance"],
@@ -32,8 +34,7 @@ export const pricing = {
       },
       {
         id: "premium",
-        priceWas: 1695,
-        price: 1495,
+        price: 1595,
         featured: false,
         featureKeys: ["allBusiness", "morePages", "customFeatures", "api", "animations", "priority"],
         ctaKey: "requestCustom",
@@ -42,28 +43,43 @@ export const pricing = {
     ],
   },
 
-  /** Website as a Service - branchepakketten */
+  /** Website as a Service - branchepakketten (maandbedragen) */
   waas: {
     id: "waas",
     defaultTerm: "12",
     terms: [
       { id: "monthly", months: 1 },
-      { id: "12", months: 12, badgeKey: "recommended" },
-      { id: "24", months: 24, badgeKey: "bestPrice" },
+      { id: "12", months: 12, badgeKey: "bestPrice" },
     ],
+    /** Maandelijks flexibel is altijd dit bedrag duurder dan het 12-maandentarief */
+    monthlySurcharge: 15,
     ctaKey: "planIntro",
     href: "/contact",
     /**
-     * Branch-pakketten. Prijzen per contracttermijn (per maand, excl. btw).
-     * featureKeys = beschikbare features; upcomingKey = optionele AxaBook-vermelding.
+     * Branchepakketten. Prijzen per contracttermijn (per maand, excl. btw).
+     * featureKeys = daadwerkelijk inbegrepen functionaliteit.
      * Nieuwe branche: object toevoegen - UI volgt automatisch.
      */
     branches: [
       {
+        id: "one-page",
+        icon: "layout",
+        featured: false,
+        prices: { monthly: 54.5, "12": 39.5 },
+        featureKeys: [
+          "waasOnePageSite",
+          "waasOnePageSections",
+          "waasContactForm",
+          "waasBasicSeo",
+          "waasHostingMaintenance",
+          "waasSslBackups",
+        ],
+      },
+      {
         id: "business-site",
         icon: "building2",
         featured: false,
-        prices: { monthly: 149, "12": 129, "24": 119 },
+        prices: { monthly: 74, "12": 59 },
         featureKeys: [
           "waasCustomSite",
           "waasServicesPages",
@@ -75,43 +91,45 @@ export const pricing = {
         ],
       },
       {
-        id: "barbershop",
+        id: "beauty-barber",
         icon: "scissors",
         featured: true,
         badgeKey: "popular",
-        prices: { monthly: 169, "12": 149, "24": 139 },
+        prices: { monthly: 94, "12": 79 },
+        /** Online afsprakensysteem is inbegrepen in dit pakket */
+        includesBooking: "appointments",
         featureKeys: [
           "waasCustomSite",
+          "waasOnlineAppointments",
           "waasTreatmentsPrices",
           "waasTeamOverview",
           "waasPhotoGallery",
-          "waasWhatsapp",
           "waasHostingMaintenance",
           "waasSslBackups",
         ],
-        upcomingKey: "axabookAppointments",
       },
       {
         id: "restaurant",
         icon: "utensils",
         featured: false,
-        prices: { monthly: 199, "12": 179, "24": 169 },
+        prices: { monthly: 104, "12": 89 },
+        /** Online reserveringssysteem is inbegrepen in dit pakket */
+        includesBooking: "reservations",
         featureKeys: [
           "waasCustomSite",
+          "waasOnlineReservations",
           "waasDigitalMenu",
           "waasOpeningHours",
-          "waasTableReservation",
           "waasAtmospherePhotos",
           "waasHostingMaintenance",
           "waasSslBackups",
         ],
-        upcomingKey: "axabookRestaurants",
       },
       {
         id: "gym",
         icon: "dumbbell",
         featured: false,
-        prices: { monthly: 199, "12": 179, "24": 169 },
+        prices: { monthly: 104, "12": 89 },
         featureKeys: [
           "waasCustomSite",
           "waasClassSchedule",
@@ -121,13 +139,12 @@ export const pricing = {
           "waasHostingMaintenance",
           "waasSslBackups",
         ],
-        upcomingKey: "axabookAppointments",
       },
       {
         id: "webshop",
         icon: "shoppingBag",
         featured: false,
-        prices: { monthly: 229, "12": 199, "24": 189 },
+        prices: { monthly: 144, "12": 129 },
         featureKeys: [
           "waasCustomShop",
           "waasProductCategories",
@@ -139,25 +156,21 @@ export const pricing = {
           "waasIntegrationsOnRequest",
         ],
       },
-      /* Voorbeelden voor latere uitbreiding (uitgeschakeld tot live):
-      { id: "dentist", icon: "shield", featured: false, prices: { monthly: 179, "12": 159, "24": 149 }, featureKeys: [], enabled: false },
-      */
     ],
   },
 
   hosting: {
     id: "hosting",
-    defaultTerm: "24",
-    terms: [
-      { id: "yearly", months: 12 },
-      { id: "24", months: 24, badgeKey: "bestPrice" },
-    ],
+    defaultTerm: "12",
+    terms: [{ id: "12", months: 12, badgeKey: "bestPrice" }],
+    /** Maandelijkse hostingtarieven zijn commercieel nog niet vastgesteld. */
+    pendingTerms: ["monthly"],
     plans: [
       {
         id: "essential",
         featured: false,
-        /** Jaarprijs bij 12-maanden- en 24-maandencontract */
-        prices: { yearly: 99, "24": 89 },
+        /** Jaarbedrag bij een looptijd van 12 maanden */
+        prices: { "12": 89 },
         featureKeys: ["ssl", "automaticBackups", "businessEmail", "ssd", "emailSupport"],
         ctaKey: "requestEssential",
         href: "/offerte",
@@ -166,7 +179,7 @@ export const pricing = {
         id: "business",
         featured: true,
         badgeKey: "mostChosen",
-        prices: { yearly: 199, "24": 179 },
+        prices: { "12": 179 },
         featureKeys: ["allEssential", "moreStorage", "uptime", "prioritySupport", "yearlyCheck"],
         ctaKey: "requestBusiness",
         href: "/offerte",
@@ -187,14 +200,13 @@ export const pricing = {
     defaultTerm: "12",
     terms: [
       { id: "monthly", months: 1 },
-      { id: "12", months: 12, badgeKey: "recommended" },
-      { id: "24", months: 24, badgeKey: "bestPrice" },
+      { id: "12", months: 12, badgeKey: "bestPrice" },
     ],
     plans: [
       {
         id: "basic",
         featured: false,
-        prices: { monthly: 39, "12": 35, "24": 32 },
+        prices: { monthly: 39, "12": 32 },
         featureKeys: ["cmsUpdates", "backupCheck", "healthCheck", "emailSupport"],
         ctaKey: "chooseBasic",
         href: "/offerte",
@@ -203,7 +215,7 @@ export const pricing = {
         id: "business",
         featured: true,
         badgeKey: "mostChosen",
-        prices: { monthly: 79, "12": 69, "24": 64 },
+        prices: { monthly: 79, "12": 64 },
         featureKeys: ["allBasic", "monitoring", "incidentPriority", "smallEdits", "quarterlyReport"],
         ctaKey: "chooseBusiness",
         href: "/offerte",
@@ -225,27 +237,39 @@ export function getWaasBranches() {
   return pricing.waas.branches.filter((branch) => branch.enabled !== false);
 }
 
+/** Cijfernotatie per taal; de bedragen zelf zijn in beide talen identiek. */
+const numberLocales = { nl: "nl-NL", en: "en-GB" };
+
 /**
- * Format bedrag als €395 / €1.495 (nl-NL, zonder spaties na €).
+ * Format bedrag als €495 / €1.595 / €39,50 (nl) of €1,595 / €39.50 (en).
+ * Decimalen alleen tonen wanneer het bedrag ze werkelijk heeft.
  */
-export function formatEuro(amount) {
+export function formatEuro(amount, locale = "nl") {
   if (amount === null || amount === undefined || Number.isNaN(Number(amount))) return "";
-  const formatted = Number(amount).toLocaleString("nl-NL", {
-    maximumFractionDigits: 0,
-    minimumFractionDigits: 0,
+  const value = Number(amount);
+  const fractionDigits = Number.isInteger(value) ? 0 : 2;
+  const formatted = value.toLocaleString(numberLocales[locale] || locale || "nl-NL", {
+    maximumFractionDigits: fractionDigits,
+    minimumFractionDigits: fractionDigits,
   });
   return `€${formatted}`;
 }
 
 /**
- * Besparing t.o.v. maandelijkse prijs.
+ * Besparing t.o.v. maandelijks flexibel betalen over de contractduur.
  * @returns {{ amount: number, months: number } | null}
  */
 export function calcSavings(monthlyPrice, termPrice, termMonths) {
   if (!monthlyPrice || !termPrice || !termMonths || termMonths <= 1) return null;
-  const amount = (monthlyPrice - termPrice) * termMonths;
+  const amount = Math.round((monthlyPrice - termPrice) * termMonths * 100) / 100;
   if (amount <= 0) return null;
   return { amount, months: termMonths };
+}
+
+/** Looptijden die daadwerkelijk een prijs hebben en dus getoond mogen worden */
+export function getAvailableTerms(catalog) {
+  const pending = new Set(catalog.pendingTerms || []);
+  return (catalog.terms || []).filter((term) => !pending.has(term.id));
 }
 
 export function getOneTimePlans() {
@@ -260,7 +284,7 @@ export function getMaintenancePlans() {
   return pricing.maintenance.plans;
 }
 
-/** Laagste WaaS-vanafprijs (12-maanden tarief) voor vergelijkingstabellen */
+/** Laagste WaaS-vanafprijs: One Page bij een looptijd van 12 maanden */
 export function getWaasFromPrice() {
   const prices = getWaasBranches().map((b) => b.prices["12"] ?? b.prices.monthly);
   return Math.min(...prices);
@@ -270,13 +294,13 @@ export function getOneTimeFromPrice() {
   return Math.min(...pricing.oneTime.plans.map((p) => p.price));
 }
 
-/** Laagste beschikbare hosting-vanafprijs (jaarbedrag) over alle contractduur-opties */
+/** Laagste hosting-vanafprijs (jaarbedrag) */
 export function getHostingFromPrice() {
   const priced = pricing.hosting.plans.filter((p) => !p.onRequest);
   return Math.min(...priced.flatMap((p) => Object.values(p.prices)));
 }
 
-/** Laagste beschikbare onderhouds-vanafprijs (maandbedrag) over alle contractduur-opties */
+/** Laagste onderhouds-vanafprijs (maandbedrag) */
 export function getMaintenanceFromPrice() {
   const priced = pricing.maintenance.plans.filter((p) => !p.onRequest);
   return Math.min(...priced.flatMap((p) => Object.values(p.prices)));

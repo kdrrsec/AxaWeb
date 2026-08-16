@@ -49,7 +49,7 @@ const previewCopy = {
 
 export const packagesPreview = getOneTimePlans().map((plan) => ({
   name: plan.id === "start" ? "Start" : plan.id === "business" ? "Business" : "Premium",
-  price: `From ${formatEuro(plan.price)}`,
+  price: `From ${formatEuro(plan.price, "en")}`,
   text: previewCopy[plan.id] || "",
   featured: Boolean(plan.featured),
   badge: plan.badgeKey === "mostChosen" ? "Most popular" : undefined,

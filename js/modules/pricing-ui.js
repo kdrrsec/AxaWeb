@@ -5,10 +5,17 @@ import { t } from "./i18n.js";
 import { getScrollRoot } from "./scroll-root.js";
 import { trackPricingDurationSelect, trackPricingModelSelect } from "./tracking.js";
 
+/** Cijfernotatie volgt de paginataal; de bedragen zijn in beide talen gelijk. */
+function numberLocale() {
+  return document.documentElement.lang === "en" ? "en-GB" : "nl-NL";
+}
+
 function formatEuro(amount) {
-  const formatted = Number(amount).toLocaleString("nl-NL", {
-    maximumFractionDigits: 0,
-    minimumFractionDigits: 0,
+  const value = Number(amount);
+  const fractionDigits = Number.isInteger(value) ? 0 : 2;
+  const formatted = value.toLocaleString(numberLocale(), {
+    maximumFractionDigits: fractionDigits,
+    minimumFractionDigits: fractionDigits,
   });
   return `€${formatted}`;
 }
@@ -20,7 +27,6 @@ function pricingMessage(path, values = {}) {
 
 function termMonths(termId) {
   if (termId === "monthly") return 1;
-  if (termId === "yearly") return 12;
   const n = Number(termId);
   return Number.isFinite(n) ? n : 1;
 }
@@ -53,29 +59,17 @@ function updateCards(scope, termId) {
     if (!savingsEl) return;
 
     let text = "";
-    if (baseKey === "yearly") {
-      if (termId === "24") {
-        const amount = (basePrice - nextPrice) * 2;
-        if (amount > 0) {
-          text = pricingMessage("labels.saveTerm", {
-            amount: formatEuro(amount),
-            months: "24",
-          });
-        }
-      }
-    } else {
-      const months = termMonths(termId);
-      if (months > 1) {
-        const amount = (basePrice - nextPrice) * months;
-        if (amount > 0) {
-          text =
-            months === 12
-              ? pricingMessage("labels.saveYear", { amount: formatEuro(amount) })
-              : pricingMessage("labels.saveTerm", {
-                  amount: formatEuro(amount),
-                  months: String(months),
-                });
-        }
+    const months = termMonths(termId);
+    if (months > 1 && basePrice > 0) {
+      const amount = Math.round((basePrice - nextPrice) * months * 100) / 100;
+      if (amount > 0) {
+        text =
+          months === 12
+            ? pricingMessage("labels.saveYear", { amount: formatEuro(amount) })
+            : pricingMessage("labels.saveTerm", {
+                amount: formatEuro(amount),
+                months: String(months),
+              });
       }
     }
 

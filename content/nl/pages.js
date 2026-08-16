@@ -124,9 +124,9 @@ export const pages = {
             label: "Investering",
             values: [
               `Vanaf ${formatEuro(getOneTimeFromPrice())}`,
-              `Vanaf ${formatEuro(getWaasFromPrice())} / maand`,
-              `Vanaf ${formatEuro(getHostingFromPrice())} / jaar`,
-              `Vanaf ${formatEuro(getMaintenanceFromPrice())} / maand`,
+              `Vanaf ${formatEuro(getWaasFromPrice())} / maand bij 12 maanden`,
+              `Vanaf ${formatEuro(getHostingFromPrice())} / jaar bij 12 maanden`,
+              `Vanaf ${formatEuro(getMaintenanceFromPrice())} / maand bij 12 maanden`,
             ],
           },
           {
@@ -137,7 +137,7 @@ export const pages = {
             label: "Combineert goed met",
             values: [
               "Hosting en onderhoud",
-              "AxaBook (binnenkort)",
+              "Onderhoud en hosting inbegrepen",
               "Onderhoud",
               "Hosting",
             ],
@@ -181,7 +181,7 @@ export const pages = {
           "100% maatwerk, geen standaardthema's",
           "Responsive op ieder scherm",
           "SEO- en performancebasis inbegrepen",
-          "Pakketten vanaf €395",
+          `Pakketten vanaf ${formatEuro(getOneTimeFromPrice())}`,
         ],
       },
     },
@@ -654,7 +654,7 @@ export const pages = {
       variant: "center",
       eyebrow: "Pakketten",
       title: "Alle pakketten en prijzen op één plek.",
-      text: "Van een eerste website tot hosting en onderhoud: ieder pakket heeft een duidelijke prijs en inhoud. Webpakketten met introductieprijs; alle prijzen exclusief 21% btw.",
+      text: "Van een eerste website tot hosting en onderhoud: ieder pakket heeft een duidelijke prijs en inhoud. Terugkerende diensten kies je maandelijks of met 12 maanden looptijd; alle prijzen exclusief 21% btw.",
     },
     sections: [
       {
@@ -763,7 +763,7 @@ export const pages = {
           {
             question: "Wat kost een website of webshop?",
             answer:
-              "Websites starten vanaf €395. De uiteindelijke investering hangt af van ontwerp, omvang en functionaliteiten. Je ontvangt altijd vooraf een duidelijke offerte.",
+              `Eenmalige websites starten vanaf ${formatEuro(getOneTimeFromPrice())} excl. btw. Liever spreiden? Website as a Service start vanaf ${formatEuro(getWaasFromPrice())} per maand bij 12 maanden. De uiteindelijke investering hangt af van ontwerp, omvang en functionaliteiten.`,
           },
           {
             question: "Kan ik ook alleen hosting of onderhoud afnemen?",

@@ -36,6 +36,7 @@ const { publicEnv } = await import(pathToFileURL(join(root, "js/config/public-en
 const {
   pricing: pricingConfig,
   buildPricingRenderers,
+  getAvailableTerms,
   renderModelToggle,
   renderSegmentedControl,
 } = await import(pathToFileURL(join(root, "scripts/pricing-render.js")).href);
@@ -46,7 +47,7 @@ let t = createTranslator(messages, "common");
 let tf = createTranslator(messages, "form");
 let tp = createTranslator(messages, "pricing");
 let seoMessages = messages.seo || {};
-let pricingView = buildPricingRenderers(tp, icon);
+let pricingView = buildPricingRenderers(tp, icon, undefined, locale);
 let pages = getPages(locale);
 let siteNav = getSiteNav(locale);
 let projects = getProjects(locale);
@@ -58,7 +59,7 @@ function setLocaleContext(nextLocale) {
   tf = createTranslator(messages, "form");
   tp = createTranslator(messages, "pricing");
   seoMessages = messages.seo || {};
-  pricingView = buildPricingRenderers(tp, icon, pathFor);
+  pricingView = buildPricingRenderers(tp, icon, pathFor, locale);
   pages = getPages(locale);
   siteNav = getSiteNav(locale);
   projects = getProjects(locale);
@@ -520,7 +521,7 @@ function renderPricing(section, alt) {
     termsMarkup = renderSegmentedControl({
       name: "hosting",
       ariaLabel: tp("terms.hostingAria"),
-      terms: pricingConfig.hosting.terms,
+      terms: getAvailableTerms(pricingConfig.hosting),
       defaultTerm: pricingConfig.hosting.defaultTerm,
       tp,
     });
@@ -529,7 +530,7 @@ function renderPricing(section, alt) {
     termsMarkup = renderSegmentedControl({
       name: "maintenance",
       ariaLabel: tp("terms.maintenanceAria"),
-      terms: pricingConfig.maintenance.terms,
+      terms: getAvailableTerms(pricingConfig.maintenance),
       defaultTerm: pricingConfig.maintenance.defaultTerm,
       tp,
     });
@@ -586,7 +587,7 @@ function renderPricingHub(section, alt) {
   const waasTerms = renderSegmentedControl({
     name: "waas",
     ariaLabel: tp("terms.ariaLabel"),
-    terms: pricingConfig.waas.terms,
+    terms: getAvailableTerms(pricingConfig.waas),
     defaultTerm: pricingConfig.waas.defaultTerm,
     tp,
   });
