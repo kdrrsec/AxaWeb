@@ -10,31 +10,31 @@
     "waas": "Website as a Service"
   },
   "labels": {
-    "introPrice": "Introductieprijs",
     "exclVat": "Excl. 21% btw",
     "oneTimeInvestment": "Eenmalige investering",
     "from": "Vanaf",
     "perMonth": "/ maand",
     "perYear": "/ jaar",
     "onRequest": "Op aanvraag",
-    "upcoming": "binnenkort beschikbaar",
     "saveYear": "Bespaar {amount} per jaar",
     "saveTerm": "Bespaar {amount} over {months} maanden"
   },
   "badges": {
     "mostChosen": "Meest gekozen",
     "recommended": "Aanbevolen",
-    "bestPrice": "Beste prijs",
+    "bestPrice": "Voordeligste keuze",
     "popular": "Populair"
   },
   "terms": {
     "ariaLabel": "Kies contractduur",
     "monthly": "Maandelijks",
     "12": "12 maanden",
-    "24": "24 maanden",
-    "yearly": "Jaarlijks",
     "hostingAria": "Kies hostingperiode",
     "maintenanceAria": "Kies onderhoudsperiode"
+  },
+  "highlights": {
+    "appointments": "Website + online afspraken in één compleet pakket",
+    "reservations": "Website + online reserveringen in één compleet pakket"
   },
   "sections": {
     "websiteHub": {
@@ -46,25 +46,25 @@
       "eyebrow": "Eenmalige Website",
       "title": "Websites met een vaste vanafprijs.",
       "intro": "Eenmalige investering voor het ontwerpen en bouwen van je website.",
-      "note": "Introductieprijzen zijn exclusief 21% btw. De definitieve prijs is afhankelijk van de omvang, functionaliteiten en gekozen dienstverlening. Je ontvangt vooraf altijd een duidelijke offerte."
+      "note": "Alle prijzen zijn exclusief 21% btw. De definitieve prijs is afhankelijk van de omvang, functionaliteiten en gekozen dienstverlening. Je ontvangt vooraf altijd een duidelijke offerte."
     },
     "waas": {
       "eyebrow": "Website as a Service",
       "title": "Branchegerichte websites, all-inclusive.",
-      "intro": "Website, hosting en onderhoud in één maandelijks abonnement, afgestemd op jouw branche.",
-      "note": "Prijzen zijn exclusief 21% btw. Exacte scope stemmen we af tijdens de kennismaking. Voor Website as a Service gelden specifieke afspraken over eigendom, overdracht en beëindiging. Bekijk hiervoor onze Algemene Voorwaarden."
+      "intro": "Website, hosting en onderhoud in één maandabonnement, afgestemd op jouw branche.",
+      "note": "Prijzen zijn per maand en exclusief 21% btw. Bij 12 maanden geldt het voordeligste tarief; maandelijks flexibel is €15 per maand hoger. Exacte scope stemmen we af tijdens de kennismaking. Voor Website as a Service gelden specifieke afspraken over eigendom, overdracht en beëindiging. Bekijk hiervoor onze Algemene Voorwaarden."
     },
     "hosting": {
       "eyebrow": "Hosting",
       "title": "Hosting per jaar, zonder omkijken.",
       "intro": "Snelle, veilige hosting met SSL, back-ups en persoonlijke support.",
-      "note": "Prijzen zijn exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel."
+      "note": "Prijzen zijn jaarbedragen bij een looptijd van 12 maanden en exclusief 21% btw. Je ontvangt altijd vooraf een duidelijk voorstel."
     },
     "maintenance": {
       "eyebrow": "Onderhoud",
       "title": "Onderhoud als abonnement.",
       "intro": "Doorlopende zorg voor updates, monitoring en support.",
-      "note": "Prijzen zijn exclusief 21% btw. Minimale looptijd hangt af van het gekozen contract. Looptijd en opzegvoorwaarden zijn afhankelijk van het gekozen abonnement."
+      "note": "Prijzen zijn per maand en exclusief 21% btw. Bij 12 maanden geldt het voordeligste tarief; maandelijks is flexibel opzegbaar volgens de voorwaarden."
     }
   },
   "oneTime": {
@@ -82,25 +82,29 @@
     }
   },
   "waas": {
+    "one-page": {
+      "name": "One Page",
+      "audience": "Voor starters en kleine bedrijven die met één professionele pagina goed online zichtbaar willen zijn. Een compacte One Page-oplossing, geen volledige bedrijfswebsite."
+    },
     "business-site": {
       "name": "Bedrijfswebsite",
-      "audience": "Voor dienstverleners en ondernemingen die professioneel en overtuigend online zichtbaar willen zijn."
+      "audience": "Complete professionele website voor bedrijven zonder branche- of boekingssysteem, zoals autobedrijven, aannemers, installateurs, verhuurbedrijven en zakelijke dienstverleners."
     },
-    "barbershop": {
-      "name": "Barbershop Complete",
-      "audience": "Voor kappers en barbershops die hun uitstraling, diensten en afspraken professioneel online willen combineren."
+    "beauty-barber": {
+      "name": "Beauty & Barber",
+      "audience": "Voor barbershops, kappers, nagelsalons, beautysalons en brow- of lashstudio's die hun uitstraling, diensten en afspraken online combineren."
     },
     "restaurant": {
-      "name": "Restaurant Complete",
-      "audience": "Voor restaurants die hun menu, sfeer en reserveringsmogelijkheden professioneel willen presenteren."
+      "name": "Restaurant",
+      "audience": "Voor restaurants die hun menu, sfeer en reserveringen professioneel online willen presenteren."
     },
     "gym": {
-      "name": "Sportschool Complete",
-      "audience": "Voor sportscholen en studio’s die lessen, lidmaatschappen en aanmeldingen overzichtelijk online willen aanbieden."
+      "name": "Sport & Fitness",
+      "audience": "Voor sportscholen, fitnessstudio's en personal training studio's die lessen, lidmaatschappen en aanmeldingen overzichtelijk online aanbieden."
     },
     "webshop": {
-      "name": "Webshop Complete",
-      "audience": "Voor ondernemers die producten of diensten professioneel en schaalbaar online willen verkopen."
+      "name": "Webshop",
+      "audience": "Voor bedrijven die producten of diensten professioneel en schaalbaar online willen verkopen."
     }
   },
   "hosting": {
@@ -175,20 +179,23 @@
     "slaResponse": "Reactietijden via SLA-afspraak",
     "devHours": "Vast aantal ontwikkeluren",
     "directAdmin": "Direct contact met je beheerder",
+    "waasOnePageSite": "Professionele one page-website",
+    "waasOnePageSections": "Alle kerninformatie op één pagina",
+    "waasContactForm": "Contactformulier",
     "waasCustomSite": "Website op maat",
-    "waasServicesPages": "Diensten- en bedrijfspagina’s",
+    "waasServicesPages": "Diensten- en bedrijfspagina's",
     "waasContactQuoteForm": "Contact- en offerteformulier",
     "waasBasicSeo": "Basis SEO",
     "waasHostingMaintenance": "Hosting en onderhoud",
     "waasSslBackups": "SSL en back-ups",
     "waasSmallMonthlyEdits": "Kleine maandelijkse wijzigingen",
+    "waasOnlineAppointments": "Online afsprakensysteem inbegrepen",
     "waasTreatmentsPrices": "Behandelingen en prijslijst",
     "waasTeamOverview": "Team- of barberoverzicht",
     "waasPhotoGallery": "Fotogalerij",
-    "waasWhatsapp": "WhatsApp-contact",
+    "waasOnlineReservations": "Online reserveringssysteem inbegrepen",
     "waasDigitalMenu": "Digitaal menu",
     "waasOpeningHours": "Openingstijden",
-    "waasTableReservation": "Tafelreservering of reserveringsaanvraag",
     "waasAtmospherePhotos": "Foto- en sfeerimpressie",
     "waasClassSchedule": "Lessenrooster",
     "waasMemberships": "Lidmaatschappen en tarieven",
@@ -200,10 +207,6 @@
     "waasCartCheckout": "Winkelwagen en checkout",
     "waasStockOrders": "Voorraad- of orderbeheer",
     "waasIntegrationsOnRequest": "Koppelingen op aanvraag"
-  },
-  "upcoming": {
-    "axabookAppointments": "AxaBook Appointments",
-    "axabookRestaurants": "AxaBook Restaurants"
   },
   "cta": {
     "requestQuote": "Offerte aanvragen",
@@ -224,9 +227,11 @@
     "title": "Goed om te weten",
     "items": [
       "Alle genoemde prijzen zijn exclusief 21% btw.",
-      "Eenmalige websites zijn een eenmalige investering; Website as a Service is een maandelijks abonnement.",
-      "Hosting wordt jaarlijks gefactureerd; onderhoud volgens het gekozen contract.",
-      "Abonnementen hebben een minimale looptijd volgens de gekozen contractduur. Daarna zijn ze opzegbaar volgens de voorwaarden.",
+      "Eenmalige websites zijn een eenmalige investering; Website as a Service is een maandabonnement.",
+      "Terugkerende diensten kies je maandelijks of met een looptijd van 12 maanden.",
+      "Bij Website as a Service is maandelijks flexibel €15 per maand hoger dan het 12-maandentarief.",
+      "Hosting wordt jaarlijks gefactureerd bij een looptijd van 12 maanden; onderhoud volgens het gekozen contract.",
+      "Abonnementen met een looptijd van 12 maanden zijn daarna opzegbaar volgens de voorwaarden.",
       "De definitieve prijs is afhankelijk van de omvang, functionaliteiten en gekozen dienstverlening. Je ontvangt vooraf altijd een duidelijke offerte.",
       "Na oplevering ontvang je volledige uitleg over jouw website."
     ]
