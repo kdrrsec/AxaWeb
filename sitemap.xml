@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://axaweb.nl/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/" />
@@ -11,7 +11,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/diensten</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/diensten" />
@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/websites</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/websites" />
@@ -29,7 +29,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/webshops</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/webshops" />
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/hosting</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/hosting" />
@@ -47,7 +47,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/onderhoud</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/onderhoud" />
@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/pakketten</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/pakketten" />
@@ -65,7 +65,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/projecten</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten" />
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/projecten/bandendepot</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/bandendepot" />
@@ -83,7 +83,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/projecten/axanet</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/axanet" />
@@ -92,7 +92,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/projecten/viralon</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/viralon" />
@@ -101,7 +101,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/contact</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/contact" />
@@ -110,7 +110,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/offerte</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/offerte" />
@@ -119,7 +119,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/privacy</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/privacy" />
@@ -128,7 +128,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/cookies</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/cookies" />
@@ -137,7 +137,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/algemene-voorwaarden</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/algemene-voorwaarden" />
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/disclaimer</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/disclaimer" />
@@ -155,7 +155,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/" />
@@ -164,7 +164,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/services</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/diensten" />
@@ -173,7 +173,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/websites</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/websites" />
@@ -182,7 +182,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/webshops</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/webshops" />
@@ -191,7 +191,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/hosting</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/hosting" />
@@ -200,7 +200,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/maintenance</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/onderhoud" />
@@ -209,7 +209,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/packages</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/pakketten" />
@@ -218,7 +218,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/projects</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten" />
@@ -227,7 +227,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/projects/bandendepot</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/bandendepot" />
@@ -236,7 +236,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/projects/axanet</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/axanet" />
@@ -245,7 +245,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/projects/viralon</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/viralon" />
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/contact</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/contact" />
@@ -263,7 +263,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/quote</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/offerte" />
@@ -272,7 +272,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/privacy</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/privacy" />
@@ -281,7 +281,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/cookies</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/cookies" />
@@ -290,7 +290,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/terms</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/algemene-voorwaarden" />
@@ -299,7 +299,7 @@
   </url>
   <url>
     <loc>https://axaweb.nl/en/disclaimer</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/disclaimer" />
