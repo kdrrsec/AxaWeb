@@ -490,14 +490,17 @@
 
 /* Branchevoorbeelden: positionering, geen prijskaarten */
 .industry-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.25rem;
-  grid-template-columns: 1fr;
+  justify-content: center;
 }
 
 .industry-card {
   display: flex;
   flex-direction: column;
+  flex: 1 1 260px;
+  max-width: 380px;
   gap: 0;
   padding: 1.5rem;
   border: 1px solid var(--border);
@@ -510,8 +513,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   margin-bottom: 1rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-strong);
@@ -529,23 +532,25 @@
 .industry-card__text {
   margin-top: 0.45rem;
   color: var(--text-secondary);
-  font-size: 0.88rem;
-  line-height: 1.6;
+  font-size: 0.87rem;
+  line-height: 1.65;
 }
 
 .industry-card__booking {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: 0.4rem;
-  margin-top: 0.9rem;
-  padding: 0.35rem 0.65rem;
+  margin-top: 1rem;
+  padding: 0.3rem 0.6rem;
   border-radius: var(--radius-sm);
-  background: rgba(35, 139, 255, 0.08);
+  background: rgba(35, 139, 255, 0.1);
   border: 1px solid rgba(35, 139, 255, 0.2);
   color: var(--text);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.4;
+  white-space: nowrap;
 }
 
 .industry-card__booking .icon {
@@ -556,12 +561,15 @@
 .industry-card__examples {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-top: 1rem;
+  gap: 0.3rem;
+  margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid var(--border);
   list-style: none;
   padding-left: 0;
+  /* Duw naar onder zodat alle kaarten gelijk hoog worden */
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  margin-top: 1rem;
 }
 
 .industry-card__examples li {
@@ -574,14 +582,16 @@
 }
 
 @media (min-width: 640px) {
-  .industry-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .industry-card {
+    flex: 1 1 calc(50% - 0.625rem);
+    max-width: calc(50% - 0.625rem);
   }
 }
 
 @media (min-width: 1024px) {
-  .industry-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .industry-card {
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
   }
 }
 

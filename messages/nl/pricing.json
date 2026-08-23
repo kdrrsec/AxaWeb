@@ -242,7 +242,7 @@
     "examplesLabel": "Bijvoorbeeld voor",
     "beauty-barber": {
       "name": "Beauty & Barber",
-      "text": "Behandelingen, prijzen en team overzichtelijk online, met het online afsprakensysteem uit Business en Premium.",
+      "text": "Afspraken, behandelingen en team op één plek. Met het online afsprakensysteem inbegrepen in Business en Premium.",
       "examples": [
         "Kappers",
         "Barbershops",
@@ -255,7 +255,7 @@
     },
     "restaurant": {
       "name": "Restaurants",
-      "text": "Professionele restaurantwebsite met menu en sfeerimpressie, en de mogelijkheid tot online reserveren.",
+      "text": "Menu, sfeer en online reserveringen in één professionele website.",
       "examples": [
         "Restaurants",
         "Bistro's",
@@ -265,7 +265,7 @@
     },
     "automotive": {
       "name": "Automotive",
-      "text": "Een zakelijke website die vakmanschap uitstraalt en bezoekers snel naar een aanvraag of afspraak leidt.",
+      "text": "Duidelijke online aanwezigheid die vakmanschap uitstraalt en aanvragen oplevert.",
       "examples": [
         "Autobedrijven",
         "Garages",
@@ -275,7 +275,7 @@
     },
     "sport-fitness": {
       "name": "Sport & Fitness",
-      "text": "Lessen, lidmaatschappen en aanmeldingen helder gepresenteerd, met online boeken vanaf Business.",
+      "text": "Lessen, tarieven en inschrijvingen overzichtelijk online. Online boeken inbegrepen vanaf Business.",
       "examples": [
         "Sportscholen",
         "Fitnessstudio's",
@@ -285,12 +285,12 @@
     },
     "professional-services": {
       "name": "Zakelijke dienstverlening",
-      "text": "Een rustige, overtuigende website die expertise laat zien en aanvragen oplevert.",
+      "text": "Rustig, overtuigend en gericht op aanvragen.",
       "examples": [
         "Consultants",
         "Administratiekantoren",
         "Zakelijke dienstverleners",
-        "Overige MKB-bedrijven"
+        "Overige MKB"
       ]
     }
   },

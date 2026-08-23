@@ -242,7 +242,7 @@
     "examplesLabel": "For example",
     "beauty-barber": {
       "name": "Beauty & Barber",
-      "text": "Treatments, prices, and team presented clearly, with the online appointment system from Business and Premium.",
+      "text": "Appointments, services, and team in one place. Online booking system included with Business and Premium.",
       "examples": [
         "Hairdressers",
         "Barbershops",
@@ -255,7 +255,7 @@
     },
     "restaurant": {
       "name": "Restaurants",
-      "text": "A professional restaurant website with menu and atmosphere, plus the option to take reservations online.",
+      "text": "Menu, atmosphere, and online reservations in one professional website.",
       "examples": [
         "Restaurants",
         "Bistros",
@@ -265,7 +265,7 @@
     },
     "automotive": {
       "name": "Automotive",
-      "text": "A business website that shows craftsmanship and moves visitors quickly to an enquiry or appointment.",
+      "text": "A clear online presence that shows craftsmanship and generates enquiries.",
       "examples": [
         "Car dealers",
         "Garages",
@@ -275,7 +275,7 @@
     },
     "sport-fitness": {
       "name": "Sport & Fitness",
-      "text": "Classes, memberships, and sign-ups presented clearly, with online booking from Business upward.",
+      "text": "Classes, rates, and sign-ups presented clearly. Online booking from Business upward.",
       "examples": [
         "Gyms",
         "Fitness studios",
@@ -285,7 +285,7 @@
     },
     "professional-services": {
       "name": "Professional services",
-      "text": "A calm, convincing website that demonstrates expertise and generates enquiries.",
+      "text": "Calm, credible, focused on generating enquiries.",
       "examples": [
         "Consultants",
         "Bookkeeping firms",
