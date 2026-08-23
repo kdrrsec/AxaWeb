@@ -288,6 +288,16 @@
   min-width: 34rem;
 }
 
+/* Vier kolommen: compacter, zodat er op mobiel minder gescrold hoeft te worden */
+.compare-table--waas {
+  min-width: 38rem;
+}
+
+.compare-table--waas th,
+.compare-table--waas td {
+  padding: 0.8rem 0.9rem;
+}
+
 .compare-table th,
 .compare-table td {
   padding: 0.95rem 1.15rem;
@@ -317,6 +327,20 @@
 
 .compare-table tbody td {
   color: var(--text-secondary);
+}
+
+.compare-table__badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(35, 139, 255, 0.14);
+  color: var(--accent-hover);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
 
 .compare-table tbody tr:last-child th,

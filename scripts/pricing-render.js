@@ -7,7 +7,9 @@ import {
   formatEuro,
   calcSavings,
   getAvailableTerms,
-  getWaasBranches,
+  getWaasPlans,
+  getWaasAddons,
+  getWaasIndustries,
   getOneTimePlans,
   getHostingPlans,
   getMaintenancePlans,
@@ -21,10 +23,39 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
-function featureList(keys, tp, icon) {
+function featureList(keys, tp, icon, values = {}) {
   return keys
-    .map((key) => `<li>${icon("check")} <span>${escapeHtml(tp(`features.${key}`))}</span></li>`)
+    .map((key) => `<li>${icon("check")} <span>${escapeHtml(tp(`features.${key}`, values))}</span></li>`)
     .join("\n            ");
+}
+
+/** Prijslabel voor een add-on: eenmalig of per maand */
+function addonPriceLabel(addon, tp, locale) {
+  const amount = formatEuro(addon.price, locale);
+  return addon.billing === "oneTime"
+    ? tp("labels.addonOneTime", { amount })
+    : tp("labels.addonPerMonth", { amount });
+}
+
+function addonList(planId, tp, icon, locale) {
+  const addons = getWaasAddons(planId);
+  if (!addons.length) return "";
+
+  const items = addons
+    .map(
+      (addon) => `<li>${icon("plus")} <span>${escapeHtml(tp(`addons.${addon.id}.name`))} <em>${escapeHtml(
+        addonPriceLabel(addon, tp, locale)
+      )}</em></span></li>`
+    )
+    .join("\n              ");
+
+  return `
+          <div class="pricing-card__addons">
+            <p class="pricing-card__addons-title">${escapeHtml(tp("labels.addonsTitle"))}</p>
+            <ul class="pricing-card__addon-list">
+              ${items}
+            </ul>
+          </div>`;
 }
 
 function badgeMarkup(badgeKey, tp) {
@@ -114,7 +145,13 @@ export function renderModelToggle(tp) {
  * @param {(path: string, values?: Record<string, string>) => string} tp
  * @param {(name: string, className?: string) => string} icon
  */
-export function buildPricingRenderers(tp, icon, localizeHref = (href) => href, locale = "nl") {
+export function buildPricingRenderers(
+  tp,
+  icon,
+  localizeHref = (href) => href,
+  locale = "nl",
+  pricingMessages = {}
+) {
   const nameOf = (group, id) => tp(`${group}.${id}.name`);
   const audienceOf = (group, id) => tp(`${group}.${id}.audience`);
 
@@ -144,31 +181,26 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href, l
   function renderWaasCards(activeTerm = pricing.waas.defaultTerm) {
     const termMonths = pricing.waas.terms.find((t) => t.id === activeTerm)?.months || 1;
 
-    return getWaasBranches()
-      .map((branch) => {
-        const pricesJson = escapeHtml(JSON.stringify(branch.prices));
-        const monthly = branch.prices.monthly;
-        const current = branch.prices[activeTerm] ?? monthly;
+    return getWaasPlans()
+      .map((plan) => {
+        const pricesJson = escapeHtml(JSON.stringify(plan.prices));
+        const monthly = plan.prices.monthly;
+        const current = plan.prices[activeTerm] ?? monthly;
         const savings = calcSavings(monthly, current, termMonths);
         const savingsText = savingsLabel(tp, savings, locale);
 
-        const highlight = branch.includesBooking
-          ? `<p class="pricing-card__highlight">${icon("check")} <span>${escapeHtml(
-              tp(`highlights.${branch.includesBooking}`)
-            )}</span></p>`
-          : "";
-
         return `
         <article
-          class="pricing-card${branch.featured ? " pricing-card--featured" : ""} reveal"
+          class="pricing-card${plan.featured ? " pricing-card--featured" : ""} reveal"
           data-pricing-card
           data-catalog="waas"
+          data-plan="${escapeHtml(plan.id)}"
           data-prices='${pricesJson}'
           data-monthly="${monthly}"
         >
-          ${badgeMarkup(branch.badgeKey, tp)}
-          <div class="pricing-card__icon" aria-hidden="true">${icon(branch.icon)}</div>
-          <h3 class="pricing-card__name">${escapeHtml(nameOf("waas", branch.id))}</h3>
+          ${badgeMarkup(plan.badgeKey, tp)}
+          <div class="pricing-card__icon" aria-hidden="true">${icon(plan.icon)}</div>
+          <h3 class="pricing-card__name">${escapeHtml(nameOf("waas", plan.id))}</h3>
           <div class="pricing-card__pricing">
             <p class="pricing-card__from">${escapeHtml(tp("labels.from"))}</p>
             <p class="pricing-card__price">
@@ -178,12 +210,120 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href, l
             <p class="pricing-card__savings" data-savings ${savingsText ? "" : "hidden"}>${escapeHtml(savingsText)}</p>
             <p class="pricing-card__vat">${escapeHtml(tp("labels.exclVat"))}</p>
           </div>
-          <p class="pricing-card__audience">${escapeHtml(audienceOf("waas", branch.id))}</p>
-          ${highlight}
+          <p class="pricing-card__audience">${escapeHtml(audienceOf("waas", plan.id))}</p>
           <ul class="pricing-card__list">
-            ${featureList(branch.featureKeys || [], tp, icon)}
-          </ul>
-          <a class="btn ${branch.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${localizeHref(pricing.waas.href)}">${escapeHtml(tp(`cta.${pricing.waas.ctaKey}`))}</a>
+            ${featureList(plan.featureKeys || [], tp, icon, { count: String(plan.mailboxes) })}
+          </ul>${addonList(plan.id, tp, icon, locale)}
+          <a class="btn ${plan.featured ? "btn--primary" : "btn--secondary"} btn--full" href="${localizeHref(pricing.waas.href)}">${escapeHtml(tp(`cta.${pricing.waas.ctaKey}`))}</a>
+        </article>`;
+      })
+      .join("");
+  }
+
+  /** Vergelijkingstabel Start | Business | Premium, gevoed vanuit de centrale data */
+  function renderWaasCompareTable() {
+    const plans = getWaasPlans();
+    const included = tp("labels.included");
+    const emailAddon = getWaasAddons("start").find((a) => a.id === "businessEmail");
+    const bookingAddon = getWaasAddons("start").find((a) => a.id === "booking");
+
+    const perMonth = (amount) => `${formatEuro(amount, locale)} ${tp("labels.perMonth")}`;
+    const valueOf = (plan, key) => tp(`compare.values.${plan.id}.${key}`);
+
+    const rows = [
+      { key: "price12", values: plans.map((p) => perMonth(p.prices["12"])) },
+      { key: "priceMonthly", values: plans.map((p) => perMonth(p.prices.monthly)) },
+      {
+        key: "pages",
+        values: plans.map((p) =>
+          p.pages === 1 ? tp("labels.pagesOne") : tp("labels.pagesUpTo", { count: String(p.pages) })
+        ),
+      },
+      { key: "responsive", values: plans.map(() => included) },
+      { key: "hosting", values: plans.map(() => included) },
+      { key: "ssl", values: plans.map(() => included) },
+      { key: "backups", values: plans.map(() => included) },
+      { key: "maintenance", values: plans.map(() => included) },
+      { key: "seo", values: plans.map(() => included) },
+      { key: "form", values: plans.map((p) => valueOf(p, "form")) },
+      {
+        key: "mailboxes",
+        values: plans.map((p) =>
+          p.mailboxes > 0
+            ? tp("labels.mailboxesIncluded", { count: String(p.mailboxes) })
+            : addonPriceLabel(emailAddon, tp, locale)
+        ),
+      },
+      {
+        key: "booking",
+        values: plans.map((p) =>
+          p.includesBooking ? included : addonPriceLabel(bookingAddon, tp, locale)
+        ),
+      },
+      { key: "content", values: plans.map((p) => valueOf(p, "content")) },
+      { key: "integrations", values: plans.map((p) => valueOf(p, "integrations")) },
+      { key: "support", values: plans.map((p) => valueOf(p, "support")) },
+    ];
+
+    const head = plans
+      .map(
+        (plan) =>
+          `<th scope="col">${escapeHtml(nameOf("waas", plan.id))}${
+            plan.featured ? ` <span class="compare-table__badge">${escapeHtml(tp(`badges.${plan.badgeKey}`))}</span>` : ""
+          }</th>`
+      )
+      .join("");
+
+    const body = rows
+      .map(
+        (row) => `
+            <tr>
+              <th scope="row">${escapeHtml(tp(`compare.rows.${row.key}`))}</th>
+              ${row.values.map((value) => `<td>${escapeHtml(value)}</td>`).join("")}
+            </tr>`
+      )
+      .join("");
+
+    return `<div class="compare-wrap reveal" role="region" aria-label="${escapeHtml(
+      tp("compare.ariaLabel")
+    )}" tabindex="0">
+          <table class="compare-table compare-table--waas">
+            <thead>
+              <tr>
+                <td></td>
+                ${head}
+              </tr>
+            </thead>
+            <tbody>${body}
+            </tbody>
+          </table>
+        </div>`;
+  }
+
+  /** Branchevoorbeelden; positionering zonder eigen prijzen */
+  function renderIndustryCards() {
+    return getWaasIndustries()
+      .map((industry) => {
+        const examples = pricingMessages.industries?.[industry.id]?.examples;
+        const pills = Array.isArray(examples) && examples.length
+          ? `
+            <ul class="industry-card__examples">
+              ${examples.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n              ")}
+            </ul>`
+          : "";
+
+        const booking = industry.bookingKey
+          ? `<p class="industry-card__booking">${icon("check")} <span>${escapeHtml(
+              tp(`highlights.${industry.bookingKey}`)
+            )}</span></p>`
+          : "";
+
+        return `
+        <article class="industry-card reveal">
+          <div class="industry-card__icon" aria-hidden="true">${icon(industry.icon)}</div>
+          <h3 class="industry-card__title">${escapeHtml(tp(`industries.${industry.id}.name`))}</h3>
+          <p class="industry-card__text">${escapeHtml(tp(`industries.${industry.id}.text`))}</p>
+          ${booking}${pills}
         </article>`;
       })
       .join("");
@@ -258,8 +398,10 @@ export function buildPricingRenderers(tp, icon, localizeHref = (href) => href, l
   return {
     renderOneTimeCards,
     renderWaasCards,
+    renderWaasCompareTable,
+    renderIndustryCards,
     renderSubscriptionCards,
   };
 }
 
-export { pricing, formatEuro, calcSavings, getAvailableTerms, getWaasBranches };
+export { pricing, formatEuro, calcSavings, getAvailableTerms, getWaasPlans };

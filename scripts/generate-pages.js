@@ -47,7 +47,7 @@ let t = createTranslator(messages, "common");
 let tf = createTranslator(messages, "form");
 let tp = createTranslator(messages, "pricing");
 let seoMessages = messages.seo || {};
-let pricingView = buildPricingRenderers(tp, icon, undefined, locale);
+let pricingView = buildPricingRenderers(tp, icon, undefined, locale, messages.pricing);
 let pages = getPages(locale);
 let siteNav = getSiteNav(locale);
 let projects = getProjects(locale);
@@ -59,7 +59,7 @@ function setLocaleContext(nextLocale) {
   tf = createTranslator(messages, "form");
   tp = createTranslator(messages, "pricing");
   seoMessages = messages.seo || {};
-  pricingView = buildPricingRenderers(tp, icon, pathFor, locale);
+  pricingView = buildPricingRenderers(tp, icon, pathFor, locale, messages.pricing);
   pages = getPages(locale);
   siteNav = getSiteNav(locale);
   projects = getProjects(locale);
@@ -633,6 +633,45 @@ function renderPricingHub(section, alt) {
     </section>`;
 }
 
+/** Vergelijking van de drie WaaS-pakketten; inhoud komt uit pricing-data + messages */
+function renderWaasCompare(section, alt) {
+  return `    <section class="section${alt}" id="${section.id}" aria-labelledby="${section.id}-title">
+      <div class="container">
+        ${sectionHeader(
+          {
+            id: section.id,
+            eyebrow: tp("compare.eyebrow"),
+            title: tp("compare.title"),
+            intro: tp("compare.intro"),
+          },
+          { center: true }
+        )}
+        ${pricingView.renderWaasCompareTable()}
+        <p class="section-note section-note--center reveal">${escapeHtml(tp("compare.note"))}</p>
+      </div>
+    </section>`;
+}
+
+/** Branchespecifieke voorbeelden - positionering, geen eigen pricing */
+function renderIndustries(section, alt) {
+  return `    <section class="section${alt}" id="${section.id}" aria-labelledby="${section.id}-title">
+      <div class="container">
+        ${sectionHeader(
+          {
+            id: section.id,
+            eyebrow: tp("industries.eyebrow"),
+            title: tp("industries.title"),
+            intro: tp("industries.intro"),
+          },
+          { center: true }
+        )}
+        <div class="industry-grid stagger">${pricingView.renderIndustryCards()}
+        </div>
+        <p class="section-note section-note--center reveal">${escapeHtml(tp("industries.note"))}</p>
+      </div>
+    </section>`;
+}
+
 function renderPricingTerms(section, alt) {
   const title = tp("termsInfo.title");
   const items = (messages.pricing.termsInfo.items || [])
@@ -1078,6 +1117,8 @@ const sectionRenderers = {
   timeline: renderTimeline,
   pricing: renderPricing,
   pricingHub: renderPricingHub,
+  waasCompare: renderWaasCompare,
+  industries: renderIndustries,
   pricingTerms: renderPricingTerms,
   cases: renderCases,
   integrations: renderIntegrations,

@@ -443,26 +443,156 @@
   min-height: 3rem;
 }
 
-/* Inbegrepen kernfunctionaliteit, zoals online afspraken of reserveringen */
-.pricing-card__highlight {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  margin-top: 0.9rem;
-  padding: 0.6rem 0.75rem;
+/* Optionele add-ons onder de featurelijst (alleen waar van toepassing) */
+.pricing-card__addons {
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 0.95rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: rgba(35, 139, 255, 0.08);
-  color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 600;
-  line-height: 1.45;
+  background: rgba(255, 255, 255, 0.02);
 }
 
-.pricing-card__highlight .icon {
+.pricing-card__addons-title {
+  margin-bottom: 0.55rem;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pricing-card__addon-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.pricing-card__addon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.pricing-card__addon-list .icon {
   flex-shrink: 0;
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
   color: var(--accent);
+}
+
+.pricing-card__addon-list em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Branchevoorbeelden: positionering, geen prijskaarten */
+.industry-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+.industry-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 260px;
+  max-width: 380px;
+  gap: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+}
+
+.industry-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: rgba(35, 139, 255, 0.08);
+  color: var(--accent-hover);
+}
+
+.industry-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.industry-card__text {
+  margin-top: 0.45rem;
+  color: var(--text-secondary);
+  font-size: 0.87rem;
+  line-height: 1.65;
+}
+
+.industry-card__booking {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: rgba(35, 139, 255, 0.1);
+  border: 1px solid rgba(35, 139, 255, 0.2);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.industry-card__booking .icon {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.industry-card__examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  list-style: none;
+  padding-left: 0;
+  /* Duw naar onder zodat alle kaarten gelijk hoog worden */
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  margin-top: 1rem;
+}
+
+.industry-card__examples li {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+  .industry-card {
+    flex: 1 1 calc(50% - 0.625rem);
+    max-width: calc(50% - 0.625rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .industry-card {
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+  }
 }
 
 .pricing-card__list {

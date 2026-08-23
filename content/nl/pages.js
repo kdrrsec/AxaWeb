@@ -106,7 +106,7 @@ export const pages = {
             label: "Voor wie",
             values: [
               "Bedrijven die een eigen website willen laten bouwen",
-              "Ondernemers die website, hosting en onderhoud all-inclusive willen",
+              "Ondernemers die website, hosting en onderhoud in één maandbedrag willen",
               "Iedereen met een website of webshop",
               "Eigenaren die zorgeloos online willen zijn",
             ],
@@ -115,7 +115,7 @@ export const pages = {
             label: "Resultaat",
             values: [
               "Professionele website op maat",
-              "Branchegerichte website met hosting en onderhoud",
+              "Website met hosting en onderhoud in één abonnement",
               "Snelle en veilige omgeving",
               "Stabiele, up-to-date website",
             ],
@@ -661,6 +661,14 @@ export const pages = {
         type: "pricingHub",
         id: "websites",
         footerLink: { label: "Alles over websites", href: "/websites", i18nKey: "viewWebsites" },
+      },
+      {
+        type: "waasCompare",
+        id: "waas-vergelijking",
+      },
+      {
+        type: "industries",
+        id: "branches",
       },
       {
         type: "pricing",
