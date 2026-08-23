@@ -305,9 +305,8 @@ export function buildPricingRenderers(
     return getWaasIndustries()
       .map((industry) => {
         const examples = pricingMessages.industries?.[industry.id]?.examples;
-        const list = Array.isArray(examples) && examples.length
+        const pills = Array.isArray(examples) && examples.length
           ? `
-            <p class="industry-card__examples-label">${escapeHtml(tp("industries.examplesLabel"))}</p>
             <ul class="industry-card__examples">
               ${examples.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n              ")}
             </ul>`
@@ -324,7 +323,7 @@ export function buildPricingRenderers(
           <div class="industry-card__icon" aria-hidden="true">${icon(industry.icon)}</div>
           <h3 class="industry-card__title">${escapeHtml(tp(`industries.${industry.id}.name`))}</h3>
           <p class="industry-card__text">${escapeHtml(tp(`industries.${industry.id}.text`))}</p>
-          ${booking}${list}
+          ${booking}${pills}
         </article>`;
       })
       .join("");

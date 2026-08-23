@@ -496,6 +496,9 @@
 }
 
 .industry-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   padding: 1.5rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -506,9 +509,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 1rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-strong);
   background: rgba(35, 139, 255, 0.08);
@@ -516,57 +520,56 @@
 }
 
 .industry-card__title {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 .industry-card__text {
-  margin-top: 0.5rem;
+  margin-top: 0.45rem;
   color: var(--text-secondary);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   line-height: 1.6;
 }
 
 .industry-card__booking {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  margin-top: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background: rgba(35, 139, 255, 0.08);
+  border: 1px solid rgba(35, 139, 255, 0.2);
   color: var(--text);
-  font-size: 0.86rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .industry-card__booking .icon {
   flex-shrink: 0;
-  margin-top: 0.1rem;
   color: var(--accent);
-}
-
-.industry-card__examples-label {
-  margin-top: 1.1rem;
-  color: var(--text-muted);
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .industry-card__examples {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.6rem;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  list-style: none;
+  padding-left: 0;
 }
 
 .industry-card__examples li {
-  padding: 0.25rem 0.6rem;
+  padding: 0.2rem 0.55rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
   line-height: 1.5;
 }
 
