@@ -43,7 +43,7 @@ export const pricing = {
     ],
   },
 
-  /** Website as a Service - branchepakketten (maandbedragen) */
+  /** Website as a Service - hoofdpakketten (maandbedragen, excl. btw) */
   waas: {
     id: "waas",
     defaultTerm: "12",
@@ -51,111 +51,97 @@ export const pricing = {
       { id: "monthly", months: 1 },
       { id: "12", months: 12, badgeKey: "bestPrice" },
     ],
-    /** Maandelijks flexibel is altijd dit bedrag duurder dan het 12-maandentarief */
+    /** Flexibel maandelijks is altijd dit bedrag duurder dan het 12-maandentarief */
     monthlySurcharge: 15,
     ctaKey: "planIntro",
     href: "/contact",
     /**
-     * Branchepakketten. Prijzen per contracttermijn (per maand, excl. btw).
-     * featureKeys = daadwerkelijk inbegrepen functionaliteit.
-     * Nieuwe branche: object toevoegen - UI volgt automatisch.
+     * Drie hoofdpakketten. `pages` is het indicatieve maximum aantal pagina's,
+     * `mailboxes` het aantal inbegrepen zakelijke mailboxen (0 = niet inbegrepen),
+     * `includesBooking` geeft aan of het BASIS boekingssysteem inbegrepen is.
      */
-    branches: [
+    plans: [
       {
-        id: "one-page",
+        id: "start",
         icon: "layout",
         featured: false,
         prices: { monthly: 54.5, "12": 39.5 },
+        pages: 1,
+        mailboxes: 0,
+        includesBooking: false,
+        addonIds: ["businessEmail", "booking"],
         featureKeys: [
-          "waasOnePageSite",
-          "waasOnePageSections",
+          "waasOnePage",
+          "waasResponsive",
+          "waasHostingSsl",
+          "waasAutomaticBackups",
+          "waasTechnicalMaintenance",
+          "waasBasicSeo",
           "waasContactForm",
-          "waasBasicSeo",
-          "waasHostingMaintenance",
-          "waasSslBackups",
+          "waasBasicSupport",
         ],
       },
       {
-        id: "business-site",
+        id: "business",
         icon: "building2",
-        featured: false,
-        prices: { monthly: 74, "12": 59 },
-        featureKeys: [
-          "waasCustomSite",
-          "waasServicesPages",
-          "waasContactQuoteForm",
-          "waasBasicSeo",
-          "waasHostingMaintenance",
-          "waasSslBackups",
-          "waasSmallMonthlyEdits",
-        ],
-      },
-      {
-        id: "beauty-barber",
-        icon: "scissors",
         featured: true,
-        badgeKey: "popular",
+        badgeKey: "mostChosen",
+        prices: { monthly: 74, "12": 59 },
+        pages: 5,
+        mailboxes: 3,
+        includesBooking: true,
+        featureKeys: [
+          "waasUpToFivePages",
+          "waasResponsive",
+          "waasHostingSsl",
+          "waasAutomaticBackups",
+          "waasTechnicalMaintenance",
+          "waasBasicSeo",
+          "waasContactQuoteForm",
+          "waasMailboxesIncluded",
+          "waasBookingIncluded",
+          "waasStandardSupport",
+          "waasSmallContentEdits",
+        ],
+      },
+      {
+        id: "premium",
+        icon: "craft",
+        featured: false,
         prices: { monthly: 94, "12": 79 },
-        /** Online afsprakensysteem is inbegrepen in dit pakket */
-        includesBooking: "appointments",
+        pages: 10,
+        mailboxes: 8,
+        includesBooking: true,
         featureKeys: [
-          "waasCustomSite",
-          "waasOnlineAppointments",
-          "waasTreatmentsPrices",
-          "waasTeamOverview",
-          "waasPhotoGallery",
-          "waasHostingMaintenance",
-          "waasSslBackups",
+          "waasUpToTenPages",
+          "waasAllBusiness",
+          "waasMailboxesIncluded",
+          "waasBookingIncluded",
+          "waasExtendedIntegrations",
+          "waasMoreContentSupport",
+          "waasPrioritySupport",
+          "waasMoreCustomisation",
         ],
       },
-      {
-        id: "restaurant",
-        icon: "utensils",
-        featured: false,
-        prices: { monthly: 104, "12": 89 },
-        /** Online reserveringssysteem is inbegrepen in dit pakket */
-        includesBooking: "reservations",
-        featureKeys: [
-          "waasCustomSite",
-          "waasOnlineReservations",
-          "waasDigitalMenu",
-          "waasOpeningHours",
-          "waasAtmospherePhotos",
-          "waasHostingMaintenance",
-          "waasSslBackups",
-        ],
-      },
-      {
-        id: "gym",
-        icon: "dumbbell",
-        featured: false,
-        prices: { monthly: 104, "12": 89 },
-        featureKeys: [
-          "waasCustomSite",
-          "waasClassSchedule",
-          "waasMemberships",
-          "waasTrainerOverview",
-          "waasTrialForm",
-          "waasHostingMaintenance",
-          "waasSslBackups",
-        ],
-      },
-      {
-        id: "webshop",
-        icon: "shoppingBag",
-        featured: false,
-        prices: { monthly: 144, "12": 129 },
-        featureKeys: [
-          "waasCustomShop",
-          "waasProductCategories",
-          "waasOnlinePayments",
-          "waasCartCheckout",
-          "waasStockOrders",
-          "waasHostingMaintenance",
-          "waasSslBackups",
-          "waasIntegrationsOnRequest",
-        ],
-      },
+    ],
+    /**
+     * Optionele add-ons. Alleen tonen bij de pakketten in `availableFor`.
+     * Nieuwe premium AxaBook-functionaliteit kan hier later worden toegevoegd.
+     */
+    addons: [
+      { id: "businessEmail", price: 7.5, billing: "oneTime", availableFor: ["start"] },
+      { id: "booking", price: 7.5, billing: "monthly", availableFor: ["start"] },
+    ],
+    /**
+     * Branchespecifieke voorbeelden. Dit is positionering, geen eigen pricing:
+     * iedere branche wordt geleverd binnen Start, Business of Premium.
+     */
+    industries: [
+      { id: "beauty-barber", icon: "scissors", bookingKey: "appointments" },
+      { id: "restaurant", icon: "utensils", bookingKey: "reservations" },
+      { id: "automotive", icon: "car" },
+      { id: "sport-fitness", icon: "dumbbell", bookingKey: "bookings" },
+      { id: "professional-services", icon: "briefcase" },
     ],
   },
 
@@ -232,9 +218,35 @@ export const pricing = {
   },
 };
 
-/** Actieve WaaS-branches (enabled !== false) */
-export function getWaasBranches() {
-  return pricing.waas.branches.filter((branch) => branch.enabled !== false);
+/** Actieve WaaS-hoofdpakketten (enabled !== false) */
+export function getWaasPlans() {
+  return pricing.waas.plans.filter((plan) => plan.enabled !== false);
+}
+
+/** Add-ons die bij een pakket getoond mogen worden */
+export function getWaasAddons(planId) {
+  return pricing.waas.addons.filter((addon) => addon.availableFor.includes(planId));
+}
+
+export function getWaasAddon(addonId) {
+  return pricing.waas.addons.find((addon) => addon.id === addonId);
+}
+
+/** Branchevoorbeelden; puur positionering, zonder eigen prijzen */
+export function getWaasIndustries() {
+  return pricing.waas.industries.filter((industry) => industry.enabled !== false);
+}
+
+/** Maandtotaal van een pakket inclusief gekozen maandelijkse add-ons */
+export function getWaasMonthlyTotal(planId, termId = pricing.waas.defaultTerm, addonIds = []) {
+  const plan = getWaasPlans().find((p) => p.id === planId);
+  if (!plan) return null;
+  const base = plan.prices[termId] ?? plan.prices.monthly;
+  const addons = addonIds
+    .map((id) => getWaasAddon(id))
+    .filter((addon) => addon && addon.billing === "monthly" && addon.availableFor.includes(planId))
+    .reduce((sum, addon) => sum + addon.price, 0);
+  return Math.round((base + addons) * 100) / 100;
 }
 
 /** Cijfernotatie per taal; de bedragen zelf zijn in beide talen identiek. */
@@ -284,9 +296,9 @@ export function getMaintenancePlans() {
   return pricing.maintenance.plans;
 }
 
-/** Laagste WaaS-vanafprijs: One Page bij een looptijd van 12 maanden */
+/** Laagste WaaS-vanafprijs: Start bij een looptijd van 12 maanden */
 export function getWaasFromPrice() {
-  const prices = getWaasBranches().map((b) => b.prices["12"] ?? b.prices.monthly);
+  const prices = getWaasPlans().map((p) => p.prices["12"] ?? p.prices.monthly);
   return Math.min(...prices);
 }
 
