@@ -116,7 +116,7 @@ export const pages = {
             label: "Outcome",
             values: [
               "A professional custom website",
-              "An industry-focused website with hosting and maintenance",
+              "A website with hosting and maintenance in one subscription",
               "A fast, secure environment",
               "A stable, up-to-date website",
             ],
@@ -667,6 +667,14 @@ export const pages = {
         type: "pricingHub",
         id: "websites",
         footerLink: { label: "Explore websites", href: "/websites", i18nKey: "viewWebsites" },
+      },
+      {
+        type: "waasCompare",
+        id: "waas-vergelijking",
+      },
+      {
+        type: "industries",
+        id: "branches",
       },
       {
         type: "pricing",

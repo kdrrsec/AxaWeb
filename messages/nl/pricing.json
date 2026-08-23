@@ -17,7 +17,15 @@
     "perYear": "/ jaar",
     "onRequest": "Op aanvraag",
     "saveYear": "Bespaar {amount} per jaar",
-    "saveTerm": "Bespaar {amount} over {months} maanden"
+    "saveTerm": "Bespaar {amount} over {months} maanden",
+    "addonOneTime": "+{amount} eenmalig",
+    "addonPerMonth": "+{amount} p/m",
+    "addonsTitle": "Optioneel uit te breiden",
+    "pagesOne": "1 pagina (One Page)",
+    "pagesUpTo": "Tot circa {count} pagina's",
+    "mailboxesIncluded": "Tot {count} inbegrepen",
+    "included": "Inbegrepen",
+    "notIncluded": "Niet inbegrepen"
   },
   "badges": {
     "mostChosen": "Meest gekozen",
@@ -27,14 +35,15 @@
   },
   "terms": {
     "ariaLabel": "Kies contractduur",
-    "monthly": "Maandelijks",
+    "monthly": "Flexibel maandelijks",
     "12": "12 maanden",
     "hostingAria": "Kies hostingperiode",
     "maintenanceAria": "Kies onderhoudsperiode"
   },
   "highlights": {
-    "appointments": "Website + online afspraken in één compleet pakket",
-    "reservations": "Website + online reserveringen in één compleet pakket"
+    "appointments": "Online afsprakensysteem inbegrepen",
+    "reservations": "Online reserveringssysteem inbegrepen",
+    "bookings": "Online boekingssysteem inbegrepen"
   },
   "sections": {
     "websiteHub": {
@@ -50,9 +59,9 @@
     },
     "waas": {
       "eyebrow": "Website as a Service",
-      "title": "Branchegerichte websites, all-inclusive.",
-      "intro": "Website, hosting en onderhoud in één maandabonnement, afgestemd op jouw branche.",
-      "note": "Prijzen zijn per maand en exclusief 21% btw. Bij 12 maanden geldt het voordeligste tarief; maandelijks flexibel is €15 per maand hoger. Exacte scope stemmen we af tijdens de kennismaking. Voor Website as a Service gelden specifieke afspraken over eigendom, overdracht en beëindiging. Bekijk hiervoor onze Algemene Voorwaarden."
+      "title": "Drie pakketten, één vast maandbedrag.",
+      "intro": "Website, hosting en onderhoud in één abonnement. Kies Start, Business of Premium.",
+      "note": "Prijzen zijn per maand en exclusief 21% btw. Bij 12 maanden geldt het voordeligste tarief; flexibel maandelijks is €15 per maand hoger. Add-ons en de exacte scope leggen we vast in de offerte. Voor Website as a Service gelden specifieke afspraken over eigendom, overdracht en beëindiging. Bekijk hiervoor onze Algemene Voorwaarden."
     },
     "hosting": {
       "eyebrow": "Hosting",
@@ -82,29 +91,17 @@
     }
   },
   "waas": {
-    "one-page": {
-      "name": "One Page",
-      "audience": "Voor starters en kleine bedrijven die met één professionele pagina goed online zichtbaar willen zijn. Een compacte One Page-oplossing, geen volledige bedrijfswebsite."
+    "start": {
+      "name": "Start",
+      "audience": "Een betaalbare professionele website voor starters, zzp'ers en kleine ondernemingen die compact maar professioneel online zichtbaar willen zijn."
     },
-    "business-site": {
-      "name": "Bedrijfswebsite",
-      "audience": "Complete professionele website voor bedrijven zonder branche- of boekingssysteem, zoals autobedrijven, aannemers, installateurs, verhuurbedrijven en zakelijke dienstverleners."
+    "business": {
+      "name": "Business",
+      "audience": "Voor bedrijven die een complete professionele website nodig hebben met meer pagina's, zakelijke e-mail en online boekingsmogelijkheden."
     },
-    "beauty-barber": {
-      "name": "Beauty & Barber",
-      "audience": "Voor barbershops, kappers, nagelsalons, beautysalons en brow- of lashstudio's die hun uitstraling, diensten en afspraken online combineren."
-    },
-    "restaurant": {
-      "name": "Restaurant",
-      "audience": "Voor restaurants die hun menu, sfeer en reserveringen professioneel online willen presenteren."
-    },
-    "gym": {
-      "name": "Sport & Fitness",
-      "audience": "Voor sportscholen, fitnessstudio's en personal training studio's die lessen, lidmaatschappen en aanmeldingen overzichtelijk online aanbieden."
-    },
-    "webshop": {
-      "name": "Webshop",
-      "audience": "Voor bedrijven die producten of diensten professioneel en schaalbaar online willen verkopen."
+    "premium": {
+      "name": "Premium",
+      "audience": "Voor bedrijven die een uitgebreidere website willen met meer pagina's, meer mailboxen, ruimere integratiemogelijkheden en prioriteit bij support."
     }
   },
   "hosting": {
@@ -179,34 +176,26 @@
     "slaResponse": "Reactietijden via SLA-afspraak",
     "devHours": "Vast aantal ontwikkeluren",
     "directAdmin": "Direct contact met je beheerder",
-    "waasOnePageSite": "Professionele one page-website",
-    "waasOnePageSections": "Alle kerninformatie op één pagina",
+    "waasOnePage": "Professionele One Page-website",
+    "waasResponsive": "Responsive voor mobiel, tablet en desktop",
+    "waasHostingSsl": "Hosting en SSL",
+    "waasAutomaticBackups": "Automatische back-ups",
+    "waasTechnicalMaintenance": "Technisch onderhoud",
+    "waasBasicSeo": "Basis technische SEO",
     "waasContactForm": "Contactformulier",
-    "waasCustomSite": "Website op maat",
-    "waasServicesPages": "Diensten- en bedrijfspagina's",
+    "waasBasicSupport": "Basis support",
+    "waasUpToFivePages": "Volledige bedrijfswebsite tot circa 5 pagina's",
     "waasContactQuoteForm": "Contact- en offerteformulier",
-    "waasBasicSeo": "Basis SEO",
-    "waasHostingMaintenance": "Hosting en onderhoud",
-    "waasSslBackups": "SSL en back-ups",
-    "waasSmallMonthlyEdits": "Kleine maandelijkse wijzigingen",
-    "waasOnlineAppointments": "Online afsprakensysteem inbegrepen",
-    "waasTreatmentsPrices": "Behandelingen en prijslijst",
-    "waasTeamOverview": "Team- of barberoverzicht",
-    "waasPhotoGallery": "Fotogalerij",
-    "waasOnlineReservations": "Online reserveringssysteem inbegrepen",
-    "waasDigitalMenu": "Digitaal menu",
-    "waasOpeningHours": "Openingstijden",
-    "waasAtmospherePhotos": "Foto- en sfeerimpressie",
-    "waasClassSchedule": "Lessenrooster",
-    "waasMemberships": "Lidmaatschappen en tarieven",
-    "waasTrainerOverview": "Traineroverzicht",
-    "waasTrialForm": "Proefles- of inschrijfformulier",
-    "waasCustomShop": "Webshop op maat",
-    "waasProductCategories": "Product- en categoriebeheer",
-    "waasOnlinePayments": "Online betalingen",
-    "waasCartCheckout": "Winkelwagen en checkout",
-    "waasStockOrders": "Voorraad- of orderbeheer",
-    "waasIntegrationsOnRequest": "Koppelingen op aanvraag"
+    "waasMailboxesIncluded": "Tot {count} zakelijke mailboxen inbegrepen",
+    "waasBookingIncluded": "Basis online boekingssysteem inbegrepen",
+    "waasStandardSupport": "Standaard support",
+    "waasSmallContentEdits": "Kleine contentwijzigingen",
+    "waasUpToTenPages": "Uitgebreidere website tot circa 10 pagina's",
+    "waasAllBusiness": "Alles uit Business waar relevant",
+    "waasExtendedIntegrations": "Uitgebreidere integratiemogelijkheden",
+    "waasMoreContentSupport": "Ruimere contentondersteuning",
+    "waasPrioritySupport": "Prioriteit bij support",
+    "waasMoreCustomisation": "Meer ruimte voor maatwerk"
   },
   "cta": {
     "requestQuote": "Offerte aanvragen",
@@ -228,12 +217,125 @@
     "items": [
       "Alle genoemde prijzen zijn exclusief 21% btw.",
       "Eenmalige websites zijn een eenmalige investering; Website as a Service is een maandabonnement.",
-      "Terugkerende diensten kies je maandelijks of met een looptijd van 12 maanden.",
-      "Bij Website as a Service is maandelijks flexibel €15 per maand hoger dan het 12-maandentarief.",
+      "Terugkerende diensten kies je flexibel maandelijks of met een looptijd van 12 maanden.",
+      "Bij Website as a Service is flexibel maandelijks €15 per maand hoger dan het 12-maandentarief.",
+      "Het basis online boekingssysteem is inbegrepen bij Business en Premium; bij Start is dit een add-on.",
       "Hosting wordt jaarlijks gefactureerd bij een looptijd van 12 maanden; onderhoud volgens het gekozen contract.",
       "Abonnementen met een looptijd van 12 maanden zijn daarna opzegbaar volgens de voorwaarden.",
       "De definitieve prijs is afhankelijk van de omvang, functionaliteiten en gekozen dienstverlening. Je ontvangt vooraf altijd een duidelijke offerte.",
       "Na oplevering ontvang je volledige uitleg over jouw website."
     ]
+  },
+  "addons": {
+    "businessEmail": {
+      "name": "Zakelijke e-mail"
+    },
+    "booking": {
+      "name": "Online boekingssysteem"
+    }
+  },
+  "industries": {
+    "eyebrow": "Branches",
+    "title": "Een oplossing voor jouw branche.",
+    "intro": "Ieder pakket wordt ingericht op jouw vakgebied. Dezelfde drie pakketten, een invulling die past bij hoe jouw klanten zoeken en boeken.",
+    "note": "Staat jouw branche er niet bij? We werken voor uiteenlopende MKB-bedrijven. Vertel ons wat je doet, dan adviseren we welk pakket past.",
+    "examplesLabel": "Bijvoorbeeld voor",
+    "beauty-barber": {
+      "name": "Beauty & Barber",
+      "text": "Behandelingen, prijzen en team overzichtelijk online, met het online afsprakensysteem uit Business en Premium.",
+      "examples": [
+        "Kappers",
+        "Barbershops",
+        "Kapsalons",
+        "Nagelsalons",
+        "Beautysalons",
+        "Brow studio's",
+        "Lash studio's"
+      ]
+    },
+    "restaurant": {
+      "name": "Restaurants",
+      "text": "Professionele restaurantwebsite met menu en sfeerimpressie, en de mogelijkheid tot online reserveren.",
+      "examples": [
+        "Restaurants",
+        "Bistro's",
+        "Lunchrooms",
+        "Cafés"
+      ]
+    },
+    "automotive": {
+      "name": "Automotive",
+      "text": "Een zakelijke website die vakmanschap uitstraalt en bezoekers snel naar een aanvraag of afspraak leidt.",
+      "examples": [
+        "Autobedrijven",
+        "Garages",
+        "Detailers",
+        "Bandenbedrijven"
+      ]
+    },
+    "sport-fitness": {
+      "name": "Sport & Fitness",
+      "text": "Lessen, lidmaatschappen en aanmeldingen helder gepresenteerd, met online boeken vanaf Business.",
+      "examples": [
+        "Sportscholen",
+        "Fitnessstudio's",
+        "Personal trainers",
+        "Sportstudio's"
+      ]
+    },
+    "professional-services": {
+      "name": "Zakelijke dienstverlening",
+      "text": "Een rustige, overtuigende website die expertise laat zien en aanvragen oplevert.",
+      "examples": [
+        "Consultants",
+        "Administratiekantoren",
+        "Zakelijke dienstverleners",
+        "Overige MKB-bedrijven"
+      ]
+    }
+  },
+  "compare": {
+    "eyebrow": "Vergelijking",
+    "title": "Start, Business of Premium?",
+    "intro": "De verschillen in één overzicht, zodat je snel ziet welk pakket past.",
+    "note": "Alle genoemde prijzen zijn exclusief 21% btw. Het aantal pagina's is indicatief; de exacte invulling leggen we vast in de offerte.",
+    "ariaLabel": "Vergelijking van Website as a Service-pakketten",
+    "rows": {
+      "price12": "Prijs bij 12 maanden",
+      "priceMonthly": "Flexibel maandelijks",
+      "pages": "Pagina's",
+      "responsive": "Responsive design",
+      "hosting": "Hosting",
+      "ssl": "SSL-certificaat",
+      "backups": "Automatische back-ups",
+      "maintenance": "Technisch onderhoud",
+      "seo": "Basis technische SEO",
+      "form": "Formulier",
+      "mailboxes": "Zakelijke mailboxen",
+      "booking": "Online boekingssysteem",
+      "content": "Contentwijzigingen",
+      "integrations": "Integraties",
+      "support": "Support"
+    },
+    "values": {
+      "start": {
+        "form": "Contactformulier",
+        "content": "Op aanvraag",
+        "integrations": "Basis",
+        "support": "Basis support"
+      },
+      "business": {
+        "form": "Contact- en offerteformulier",
+        "content": "Kleine wijzigingen inbegrepen",
+        "integrations": "Standaardintegraties",
+        "support": "Standaard support"
+      },
+      "premium": {
+        "form": "Contact- en offerteformulier",
+        "content": "Ruimere contentondersteuning",
+        "integrations": "Uitgebreidere integraties",
+        "support": "Prioriteit bij support"
+      }
+    }
   }
 }

@@ -17,7 +17,15 @@
     "perYear": "/ year",
     "onRequest": "On request",
     "saveYear": "Save {amount} per year",
-    "saveTerm": "Save {amount} over {months} months"
+    "saveTerm": "Save {amount} over {months} months",
+    "addonOneTime": "+{amount} one-off",
+    "addonPerMonth": "+{amount} / month",
+    "addonsTitle": "Optional extras",
+    "pagesOne": "1 page (One Page)",
+    "pagesUpTo": "Up to around {count} pages",
+    "mailboxesIncluded": "Up to {count} included",
+    "included": "Included",
+    "notIncluded": "Not included"
   },
   "badges": {
     "mostChosen": "Most chosen",
@@ -27,14 +35,15 @@
   },
   "terms": {
     "ariaLabel": "Choose contract length",
-    "monthly": "Monthly",
+    "monthly": "Flexible monthly",
     "12": "12 months",
     "hostingAria": "Choose hosting period",
     "maintenanceAria": "Choose maintenance period"
   },
   "highlights": {
-    "appointments": "Website + online appointments in one complete package",
-    "reservations": "Website + online reservations in one complete package"
+    "appointments": "Online appointment system included",
+    "reservations": "Online reservation system included",
+    "bookings": "Online booking system included"
   },
   "sections": {
     "websiteHub": {
@@ -50,9 +59,9 @@
     },
     "waas": {
       "eyebrow": "Website as a Service",
-      "title": "Industry-specific websites, hosted and maintained for you.",
-      "intro": "Website, hosting, and maintenance in one monthly subscription - tailored to your industry.",
-      "note": "Prices are per month and exclude 21% VAT. A 12-month term gives you the best rate; paying monthly costs €15 per month more. Exact scope is agreed during the intro call. Website as a Service has specific terms on ownership, transfer, and termination. See our Terms & Conditions for details."
+      "title": "Three packages, one fixed monthly fee.",
+      "intro": "Website, hosting, and maintenance in one subscription. Choose Start, Business, or Premium.",
+      "note": "Prices are per month and exclude 21% VAT. A 12-month term gives you the best rate; flexible monthly costs €15 per month more. Add-ons and exact scope are set out in your quote. Website as a Service has specific terms on ownership, transfer, and termination. See our Terms & Conditions for details."
     },
     "hosting": {
       "eyebrow": "Hosting",
@@ -82,29 +91,17 @@
     }
   },
   "waas": {
-    "one-page": {
-      "name": "One Page Website",
-      "audience": "For startups and small businesses that want a strong online presence on a single professional page. A compact one-page solution, not a full business website."
+    "start": {
+      "name": "Start",
+      "audience": "An affordable professional website for founders, freelancers, and small businesses that want a compact but credible presence online."
     },
-    "business-site": {
-      "name": "Business Website",
-      "audience": "A complete professional website for companies without industry or booking software - think garages, contractors, installers, rental firms, and professional services."
+    "business": {
+      "name": "Business",
+      "audience": "For companies that need a complete professional website with more pages, business email, and online bookings."
     },
-    "beauty-barber": {
-      "name": "Beauty & Barber",
-      "audience": "For barbershops, hair salons, nail studios, beauty salons, and brow or lash studios that want their look, services, and appointments online in one place."
-    },
-    "restaurant": {
-      "name": "Restaurant",
-      "audience": "For restaurants that want menu, atmosphere, and reservations presented professionally online."
-    },
-    "gym": {
-      "name": "Gym & Fitness",
-      "audience": "For gyms, fitness studios, and personal training studios that want classes, memberships, and sign-ups presented clearly online."
-    },
-    "webshop": {
-      "name": "Online Store",
-      "audience": "For businesses that want to sell products or services online with room to scale."
+    "premium": {
+      "name": "Premium",
+      "audience": "For companies that want a larger website with more pages, more mailboxes, broader integrations, and priority support."
     }
   },
   "hosting": {
@@ -179,34 +176,26 @@
     "slaResponse": "Response times via SLA agreement",
     "devHours": "Fixed number of development hours",
     "directAdmin": "Direct contact with your administrator",
-    "waasOnePageSite": "Professional one-page website",
-    "waasOnePageSections": "All key information on a single page",
+    "waasOnePage": "Professional one-page website",
+    "waasResponsive": "Responsive on mobile, tablet, and desktop",
+    "waasHostingSsl": "Hosting & SSL",
+    "waasAutomaticBackups": "Automatic backups",
+    "waasTechnicalMaintenance": "Technical maintenance",
+    "waasBasicSeo": "Basic technical SEO",
     "waasContactForm": "Contact form",
-    "waasCustomSite": "Custom website",
-    "waasServicesPages": "Services and company pages",
+    "waasBasicSupport": "Basic support",
+    "waasUpToFivePages": "Full business website of up to around 5 pages",
     "waasContactQuoteForm": "Contact and quote form",
-    "waasBasicSeo": "Basic SEO",
-    "waasHostingMaintenance": "Hosting and maintenance",
-    "waasSslBackups": "SSL and backups",
-    "waasSmallMonthlyEdits": "Small monthly changes",
-    "waasOnlineAppointments": "Online appointment system included",
-    "waasTreatmentsPrices": "Treatments and price list",
-    "waasTeamOverview": "Team or barber overview",
-    "waasPhotoGallery": "Photo gallery",
-    "waasOnlineReservations": "Online reservation system included",
-    "waasDigitalMenu": "Digital menu",
-    "waasOpeningHours": "Opening hours",
-    "waasAtmospherePhotos": "Photo and atmosphere gallery",
-    "waasClassSchedule": "Class schedule",
-    "waasMemberships": "Memberships and rates",
-    "waasTrainerOverview": "Trainer overview",
-    "waasTrialForm": "Trial class or sign-up form",
-    "waasCustomShop": "Custom web shop",
-    "waasProductCategories": "Product and category management",
-    "waasOnlinePayments": "Online payments",
-    "waasCartCheckout": "Shopping cart and checkout",
-    "waasStockOrders": "Inventory or order management",
-    "waasIntegrationsOnRequest": "Integrations on request"
+    "waasMailboxesIncluded": "Up to {count} business mailboxes included",
+    "waasBookingIncluded": "Basic online booking system included",
+    "waasStandardSupport": "Standard support",
+    "waasSmallContentEdits": "Small content changes",
+    "waasUpToTenPages": "Larger website of up to around 10 pages",
+    "waasAllBusiness": "Everything in Business where relevant",
+    "waasExtendedIntegrations": "Extended integration options",
+    "waasMoreContentSupport": "Broader content support",
+    "waasPrioritySupport": "Priority support",
+    "waasMoreCustomisation": "More room for custom work"
   },
   "cta": {
     "requestQuote": "Request a quote",
@@ -228,12 +217,125 @@
     "items": [
       "All listed prices exclude 21% VAT.",
       "One-time websites are a one-time investment; Website as a Service is a monthly subscription.",
-      "Recurring services are available monthly or on a 12-month term.",
-      "For Website as a Service, paying monthly costs €15 per month more than the 12-month rate.",
+      "Recurring services are available flexible monthly or on a 12-month term.",
+      "For Website as a Service, flexible monthly costs €15 per month more than the 12-month rate.",
+      "The basic online booking system is included with Business and Premium; with Start it is an add-on.",
       "Hosting is billed annually on a 12-month term; maintenance according to the selected contract.",
       "Subscriptions on a 12-month term can be cancelled afterwards according to the terms.",
       "The final price depends on scope, features, and selected services. You always receive a clear quote in advance.",
       "After delivery, you receive a full walkthrough of your website."
     ]
+  },
+  "addons": {
+    "businessEmail": {
+      "name": "Business email"
+    },
+    "booking": {
+      "name": "Online booking system"
+    }
+  },
+  "industries": {
+    "eyebrow": "Industries",
+    "title": "Built around your industry.",
+    "intro": "Every package is set up for your line of work. The same three packages, tailored to how your customers search and book.",
+    "note": "Don't see your industry? We work with a wide range of small and mid-sized businesses. Tell us what you do and we'll advise which package fits.",
+    "examplesLabel": "For example",
+    "beauty-barber": {
+      "name": "Beauty & Barber",
+      "text": "Treatments, prices, and team presented clearly, with the online appointment system from Business and Premium.",
+      "examples": [
+        "Hairdressers",
+        "Barbershops",
+        "Hair salons",
+        "Nail studios",
+        "Beauty salons",
+        "Brow studios",
+        "Lash studios"
+      ]
+    },
+    "restaurant": {
+      "name": "Restaurants",
+      "text": "A professional restaurant website with menu and atmosphere, plus the option to take reservations online.",
+      "examples": [
+        "Restaurants",
+        "Bistros",
+        "Lunchrooms",
+        "Cafés"
+      ]
+    },
+    "automotive": {
+      "name": "Automotive",
+      "text": "A business website that shows craftsmanship and moves visitors quickly to an enquiry or appointment.",
+      "examples": [
+        "Car dealers",
+        "Garages",
+        "Detailers",
+        "Tyre specialists"
+      ]
+    },
+    "sport-fitness": {
+      "name": "Sport & Fitness",
+      "text": "Classes, memberships, and sign-ups presented clearly, with online booking from Business upward.",
+      "examples": [
+        "Gyms",
+        "Fitness studios",
+        "Personal trainers",
+        "Sports studios"
+      ]
+    },
+    "professional-services": {
+      "name": "Professional services",
+      "text": "A calm, convincing website that demonstrates expertise and generates enquiries.",
+      "examples": [
+        "Consultants",
+        "Bookkeeping firms",
+        "Professional service providers",
+        "Other SMEs"
+      ]
+    }
+  },
+  "compare": {
+    "eyebrow": "Comparison",
+    "title": "Start, Business, or Premium?",
+    "intro": "The differences at a glance, so you can see which package fits.",
+    "note": "All listed prices exclude 21% VAT. Page counts are indicative; the exact scope is set out in your quote.",
+    "ariaLabel": "Comparison of Website as a Service packages",
+    "rows": {
+      "price12": "Price on a 12-month term",
+      "priceMonthly": "Flexible monthly",
+      "pages": "Pages",
+      "responsive": "Responsive design",
+      "hosting": "Hosting",
+      "ssl": "SSL certificate",
+      "backups": "Automatic backups",
+      "maintenance": "Technical maintenance",
+      "seo": "Basic technical SEO",
+      "form": "Form",
+      "mailboxes": "Business mailboxes",
+      "booking": "Online booking system",
+      "content": "Content changes",
+      "integrations": "Integrations",
+      "support": "Support"
+    },
+    "values": {
+      "start": {
+        "form": "Contact form",
+        "content": "On request",
+        "integrations": "Basic",
+        "support": "Basic support"
+      },
+      "business": {
+        "form": "Contact and quote form",
+        "content": "Small changes included",
+        "integrations": "Standard integrations",
+        "support": "Standard support"
+      },
+      "premium": {
+        "form": "Contact and quote form",
+        "content": "Broader content support",
+        "integrations": "Extended integrations",
+        "support": "Priority support"
+      }
+    }
   }
 }
