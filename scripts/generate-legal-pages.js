@@ -193,6 +193,10 @@ function renderLegalPage(doc, locale) {
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/main.css" />
   <script src="/js/consent-default.js" defer></script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
   <script type="application/json" id="i18n-messages">${JSON.stringify({
     locale,
     common: messages.common,

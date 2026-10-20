@@ -200,6 +200,13 @@ function consentBootstrapScript() {
   return `<script src="/js/consent-default.js" defer></script>`;
 }
 
+function vercelAnalyticsScript() {
+  return `<script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>`;
+}
+
 /* ---------- Gedeelde schil (header, footer, breadcrumb) ---------- */
 
 function navMarkup(navKey) {
@@ -1186,6 +1193,7 @@ function renderPage(page) {
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/main.css" />
   ${consentBootstrapScript()}
+  ${vercelAnalyticsScript()}
   ${renderJsonLdScript(jsonLd)}
   ${clientMessagesScript()}
 </head>
@@ -1507,6 +1515,14 @@ function syncIndexMessages() {
     html = html.replace(
       /<link rel="stylesheet" href="[^"]*css\/(?:main|bundle)\.css"\s*\/>/,
       (match) => `${match}\n  ${consentBootstrapScript()}`
+    );
+  }
+
+  /* Vercel Analytics */
+  if (!html.includes("/_vercel/insights/script.js")) {
+    html = html.replace(
+      /<script src="\/js\/consent-default\.js"[^>]*><\/script>/,
+      (match) => `${match}\n  ${vercelAnalyticsScript()}`
     );
   }
 
