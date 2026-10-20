@@ -714,7 +714,7 @@ export const pages = {
     head: {
       variant: "center",
       eyebrow: "Projects",
-      title: "Selected work, live in production.",
+      title: "Real websites for real businesses.",
       text: "Websites we designed and built. Each one shaped around clear structure, strong presence, and solid technical execution.",
     },
     sections: [

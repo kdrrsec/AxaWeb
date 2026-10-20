@@ -707,7 +707,7 @@ export const pages = {
     head: {
       variant: "center",
       eyebrow: "Projecten",
-      title: "Geselecteerd werk, live in productie.",
+      title: "Echte websites voor echte ondernemers.",
       text: "Websites die we hebben ontworpen en gebouwd. Elk project met aandacht voor structuur, uitstraling en technische kwaliteit.",
     },
     sections: [
