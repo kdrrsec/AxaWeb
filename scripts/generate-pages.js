@@ -912,27 +912,6 @@ function renderPortfolio(section, alt) {
     </section>`;
 }
 
-function renderDirectContact() {
-  const title = t("directContact.title");
-  const text = t("directContact.text");
-  const phoneDisplay = t("directContact.phoneDisplay");
-  const phoneHref = t("directContact.phoneHref");
-  const phoneAria = t("directContact.phoneAria");
-
-  return `
-          <aside class="direct-contact reveal" aria-labelledby="direct-contact-title">
-            <div class="direct-contact__icon" aria-hidden="true">${icon("phone")}</div>
-            <div class="direct-contact__body">
-              <h2 id="direct-contact-title" class="direct-contact__title">${escapeHtml(title)}</h2>
-              <p class="direct-contact__text">${escapeHtml(text)}</p>
-              <a class="direct-contact__phone" href="${escapeHtml(phoneHref)}" aria-label="${escapeHtml(phoneAria)}">
-                <span class="direct-contact__phone-icon" aria-hidden="true">${icon("phone", "icon icon--sm")}</span>
-                <span>${escapeHtml(phoneDisplay)}</span>
-              </a>
-            </div>
-          </aside>`;
-}
-
 function renderContact(section, alt) {
   const formMessages = messages.form;
   const sourcePage = section.sourcePage || "/contact";
@@ -1064,7 +1043,6 @@ function renderContact(section, alt) {
 
             <p class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></p>
           </form>
-${renderDirectContact()}
           </div>
         </div>
       </div>

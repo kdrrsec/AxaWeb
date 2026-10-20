@@ -12,7 +12,6 @@ import {
   defaultOgImageWidth,
   defaultOgImageHeight,
   organizationEmail,
-  organizationTelephone,
 } from "./config.js";
 import { localizedPath, resolveLocaleFromPath } from "./routing.js";
 
@@ -140,7 +139,6 @@ export function buildOrganizationNode(seoMessages = {}, locale = defaultLocale) 
     legalName: org.legalName || siteName,
     url: `${siteUrl}/`,
     email: org.email || organizationEmail,
-    telephone: org.telephone || organizationTelephone,
     logo: {
       "@type": "ImageObject",
       url: `${siteUrl}/logo.png`,
@@ -158,7 +156,6 @@ export function buildOrganizationNode(seoMessages = {}, locale = defaultLocale) 
       "@type": "ContactPoint",
       contactType: "customer service",
       email: org.email || organizationEmail,
-      telephone: org.telephone || organizationTelephone,
       availableLanguage: languages,
     },
   };
@@ -289,6 +286,9 @@ const sitemapSeed = [
   { path: "/projecten/bandendepot", changefreq: "monthly", priority: "0.65" },
   { path: "/projecten/axanet", changefreq: "monthly", priority: "0.65" },
   { path: "/projecten/viralon", changefreq: "monthly", priority: "0.65" },
+  { path: "/projecten/kadirs-hairstyle", changefreq: "monthly", priority: "0.65" },
+  { path: "/projecten/kapsalon-zafer", changefreq: "monthly", priority: "0.65" },
+  { path: "/projecten/autorijschool-yorulmaz", changefreq: "monthly", priority: "0.65" },
   { path: "/contact", changefreq: "monthly", priority: "0.85" },
   { path: "/offerte", changefreq: "monthly", priority: "0.85" },
   { path: "/privacy", changefreq: "yearly", priority: "0.3" },

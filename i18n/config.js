@@ -53,7 +53,6 @@ export const defaultOgImageWidth = 1920;
 export const defaultOgImageHeight = 1280;
 
 export const organizationEmail = "info@axaweb.nl";
-export const organizationTelephone = "+31629127575";
 
 /**
  * Logische route-id → pad per locale.

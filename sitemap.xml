@@ -100,6 +100,33 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axaweb.nl/projecten/viralon" />
   </url>
   <url>
+    <loc>https://axaweb.nl/projecten/kadirs-hairstyle</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/kadirs-hairstyle" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://axaweb.nl/en/projects/kadirs-hairstyle" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axaweb.nl/projecten/kadirs-hairstyle" />
+  </url>
+  <url>
+    <loc>https://axaweb.nl/projecten/kapsalon-zafer</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/kapsalon-zafer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://axaweb.nl/en/projects/kapsalon-zafer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axaweb.nl/projecten/kapsalon-zafer" />
+  </url>
+  <url>
+    <loc>https://axaweb.nl/projecten/autorijschool-yorulmaz</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/autorijschool-yorulmaz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://axaweb.nl/en/projects/autorijschool-yorulmaz" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axaweb.nl/projecten/autorijschool-yorulmaz" />
+  </url>
+  <url>
     <loc>https://axaweb.nl/contact</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -251,6 +278,33 @@
     <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/viralon" />
     <xhtml:link rel="alternate" hreflang="en" href="https://axaweb.nl/en/projects/viralon" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://axaweb.nl/projecten/viralon" />
+  </url>
+  <url>
+    <loc>https://axaweb.nl/en/projects/kadirs-hairstyle</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/kadirs-hairstyle" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://axaweb.nl/en/projects/kadirs-hairstyle" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axaweb.nl/projecten/kadirs-hairstyle" />
+  </url>
+  <url>
+    <loc>https://axaweb.nl/en/projects/kapsalon-zafer</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/kapsalon-zafer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://axaweb.nl/en/projects/kapsalon-zafer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axaweb.nl/projecten/kapsalon-zafer" />
+  </url>
+  <url>
+    <loc>https://axaweb.nl/en/projects/autorijschool-yorulmaz</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://axaweb.nl/projecten/autorijschool-yorulmaz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://axaweb.nl/en/projects/autorijschool-yorulmaz" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axaweb.nl/projecten/autorijschool-yorulmaz" />
   </url>
   <url>
     <loc>https://axaweb.nl/en/contact</loc>

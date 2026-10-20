@@ -50,7 +50,14 @@ const enPageSlugs = [
 
 const enLegalSlugs = ["privacy", "cookies", "terms", "disclaimer"];
 
-const caseSlugs = ["bandendepot", "axanet", "viralon"];
+const caseSlugs = [
+  "bandendepot",
+  "axanet",
+  "viralon",
+  "kadirs-hairstyle",
+  "kapsalon-zafer",
+  "autorijschool-yorulmaz",
+];
 
 const requiredFiles = [
   "index.html",

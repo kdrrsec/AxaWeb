@@ -238,6 +238,240 @@ export const projects = [
         "Case: website laten maken voor ViralOn: social media marketing voor TikTok en Instagram Reels, met focus op merk, diensten en conversie online.",
     },
   },
+  {
+    slug: "kadirs-hairstyle",
+    name: "Kadir's Hairstyle",
+    url: "https://kadirshairstyle.nl",
+    category: "Kapperswebsite",
+    services: ["Website", "Online afspraken", "Lokale SEO"],
+    summary:
+      "Stijlvolle website voor een herenkapper in Zutphen, met heldere prijzen en een eigen online afsprakensysteem.",
+    eyebrow: "Case",
+    title: "Kadir's Hairstyle - herenkapper in Zutphen",
+    intro:
+      "Kadir's Hairstyle is een herenkapper aan de Troelstralaan in Zutphen. De website vertaalt de belofte “Service · Quality · Good vibes” naar een warme, verzorgde uitstraling en leidt bezoekers in een paar klikken naar een online afspraak.",
+    client: {
+      title: "Over de klant",
+      text: "Kadir's Hairstyle richt zich op mannen en jongens die een kapsel willen dat echt bij hen past: strakke fades, scherpe lijnen, een verzorgde baard of een frisse kinderknipbeurt. Persoonlijke aandacht en een ontspannen sfeer staan voorop.",
+    },
+    challenge: {
+      title: "Uitdaging",
+      text: "Een kapper wordt gekozen op uitstraling, prijs en gemak. De site moest daarom direct sfeer neerzetten, de behandelingen met prijs en duur overzichtelijk tonen en het maken van een afspraak zo eenvoudig maken dat bellen niet meer nodig is.",
+    },
+    approach: {
+      title: "Onze aanpak",
+      text: "We bouwden een onepage met een sfeervolle hero, drie kernwaarden, een korte introductie en een dienstenlijst met vaste prijzen. Elke sectie eindigt bij dezelfde actie: online een afspraak maken via een eigen boekingsflow.",
+      points: [
+        "Hero met fotografie van de eigen salon",
+        "Diensten met prijs en duur in één oogopslag",
+        "Stapsgewijze online afspraakflow",
+        "Social-sectie met werk rechtstreeks uit de stoel",
+      ],
+    },
+    design: {
+      title: "Design",
+      text: "Een warm ivoorpalet met diep antraciet en een champagne-accent, Playfair Display voor koppen en Jost en Poppins voor navigatie en tekst. Ruime witruimte en ronde knoppen met subtiele hover geven de site een premium barbershop-gevoel zonder overdaad.",
+    },
+    development: {
+      title: "Ontwikkeling",
+      text: "De website is gebouwd in Next.js met lokaal gehoste lettertypen en geoptimaliseerde beelden. Het afsprakensysteem is maatwerk: bezoekers kiezen een dienst, dag en tijdslot en bevestigen met hun gegevens, terwijl de salon de afspraken overzichtelijk beheert.",
+    },
+    responsive: {
+      title: "Responsive optimalisatie",
+      text: "Op mobiel wordt de dienstenlijst een raster van compacte kaarten en schuift de social-sectie horizontaal. De afspraakknop blijft steeds binnen bereik, zodat klanten onderweg in een paar tikken hun plek in de stoel reserveren.",
+    },
+    tech: {
+      title: "Technische highlights",
+      text: "Wat technisch zichtbaar en aantoonbaar is op de live website:",
+      items: [
+        "Next.js met lokaal gehoste webfonts",
+        "Eigen online afsprakensysteem met dienst-, dag- en tijdkeuze",
+        "SEO-title en description gericht op herenkapper in Zutphen",
+        "Openingstijden, route en privacyverklaring direct vindbaar",
+      ],
+    },
+    hosting: {
+      title: "Hosting en onderhoud",
+      text: "De website en het afsprakensysteem worden gehost en onderhouden door AxaWeb (zichtbaar als “Powered by AxaWeb” in de footer).",
+    },
+    result: {
+      title: "Resultaat",
+      text: "Kadir's Hairstyle heeft een website die de sfeer van de salon laat zien en waar klanten zelf, op elk moment van de dag, een afspraak inplannen. Prijzen, openingstijden en adres zijn direct duidelijk.",
+    },
+    images: {
+      desktop: "/images/projects/kadirs-hairstyle/desktop-hero.webp",
+      desktopJpg: "/images/projects/kadirs-hairstyle/desktop-hero.jpg",
+      mobile: "/images/projects/kadirs-hairstyle/mobile-hero.webp",
+      mobileJpg: "/images/projects/kadirs-hairstyle/mobile-hero.jpg",
+      mid: "/images/projects/kadirs-hairstyle/desktop-mid.webp",
+      midJpg: "/images/projects/kadirs-hairstyle/desktop-mid.jpg",
+      og: "https://axaweb.nl/images/projects/kadirs-hairstyle/desktop-hero.jpg",
+      altDesktop: "Desktopweergave van kadirshairstyle.nl",
+      altMobile: "Mobiele weergave van kadirshairstyle.nl",
+      altMid: "Dienstenoverzicht met prijzen op kadirshairstyle.nl",
+    },
+    meta: {
+      title: "Kadir's Hairstyle | Website Case | AxaWeb Projecten",
+      description:
+        "Case: website voor Kadir's Hairstyle, herenkapper in Zutphen, met heldere prijzen, sfeervol design en een eigen online afsprakensysteem.",
+    },
+  },
+  {
+    slug: "kapsalon-zafer",
+    name: "Kapsalon Zafer",
+    url: "https://kapsalonzafer.nl",
+    category: "Kapperswebsite",
+    services: ["Website", "Lokale SEO", "Google-reviews"],
+    summary:
+      "Rustige, gastvrije website voor een kapsalon in Dieren, met reviews, openingstijden en een directe bel-CTA.",
+    eyebrow: "Case",
+    title: "Kapsalon Zafer - kapper in Dieren",
+    intro:
+      "Kapsalon Zafer is al jaren een vertrouwd adres aan het Callunaplein in Dieren, voor heren, dames en kinderen. De website laat die dorpse gastvrijheid zien en maakt het vooral makkelijk om te bellen of langs te komen.",
+    client: {
+      title: "Over de klant",
+      text: "Kapsalon Zafer knipt heren, dames en kinderen: van fades en baardverzorging tot complexe verftechnieken zoals highlights en airtouch. Veel klanten komen uit Dieren en omgeving en worden inmiddels bij naam gekend.",
+    },
+    challenge: {
+      title: "Uitdaging",
+      text: "Afspraken lopen bij deze salon via de telefoon. De site moest daarom geen complexe boekingsflow opdringen, maar vertrouwen wekken en de belangrijkste vragen direct beantwoorden: wat doen ze, wanneer zijn ze open en hoe neem je contact op.",
+    },
+    approach: {
+      title: "Onze aanpak",
+      text: "We kozen voor een compacte onepage: een sfeervolle hero, een kort verhaal over de salon, behandelingen voor heren en dames, Google-reviews en een contactblok waarin het telefoonnummer de hoofdrol speelt.",
+      points: [
+        "Behandelingen helder verdeeld over heren en dames",
+        "Google-beoordeling en reviews als social proof",
+        "Grote bel-knop met telefoonnummer",
+        "Openingstijden en kaart naast elkaar",
+      ],
+    },
+    design: {
+      title: "Design",
+      text: "Een licht papierpalet met donker espresso en een rood accent uit het logo. Playfair Display geeft de koppen een klassiek kapperskarakter, Poppins houdt de tekst rustig en leesbaar. Het resultaat voelt warm en verzorgd, passend bij een vertrouwde buurtsalon.",
+    },
+    development: {
+      title: "Ontwikkeling",
+      text: "De website is gebouwd in Next.js en vooraf gerenderd voor snelle laadtijden. Reviews lopen in een rustige, doorlopende strook die stilstaat bij hover en bij een voorkeur voor minder beweging. Een ingesloten Google Maps-kaart toont de route naar de salon.",
+    },
+    responsive: {
+      title: "Responsive optimalisatie",
+      text: "Op mobiel klapt de navigatie in tot een hamburgermenu en stapelen behandelingen, openingstijden en contact onder elkaar. De bel-knop is groot en direct aantikbaar, zodat een afspraak maken vanaf de telefoon één tik is.",
+    },
+    tech: {
+      title: "Technische highlights",
+      text: "Wat technisch zichtbaar en aantoonbaar is op de live website:",
+      items: [
+        "Next.js met vooraf gerenderde pagina",
+        "Gestructureerde data (HairSalon) met adres en openingstijden",
+        "SEO-title, description en Open Graph gericht op kapper in Dieren",
+        "Ingesloten Google Maps-kaart en klikbaar telefoonnummer",
+      ],
+    },
+    hosting: {
+      title: "Hosting en onderhoud",
+      text: "De website wordt gehost en onderhouden door AxaWeb (zichtbaar als “Powered by AxaWeb” in de footer).",
+    },
+    result: {
+      title: "Resultaat",
+      text: "Kapsalon Zafer heeft een verzorgde online visitekaart die laat zien wat de salon doet, hoe klanten erover denken en wanneer je welkom bent. Bezoekers zijn met één tik aan de lijn.",
+    },
+    images: {
+      desktop: "/images/projects/kapsalon-zafer/desktop-hero.webp",
+      desktopJpg: "/images/projects/kapsalon-zafer/desktop-hero.jpg",
+      mobile: "/images/projects/kapsalon-zafer/mobile-hero.webp",
+      mobileJpg: "/images/projects/kapsalon-zafer/mobile-hero.jpg",
+      mid: "/images/projects/kapsalon-zafer/desktop-mid.webp",
+      midJpg: "/images/projects/kapsalon-zafer/desktop-mid.jpg",
+      og: "https://axaweb.nl/images/projects/kapsalon-zafer/desktop-hero.jpg",
+      altDesktop: "Desktopweergave van kapsalonzafer.nl",
+      altMobile: "Mobiele weergave van kapsalonzafer.nl",
+      altMid: "Behandelingen voor heren en dames op kapsalonzafer.nl",
+    },
+    meta: {
+      title: "Kapsalon Zafer | Website Case | AxaWeb Projecten",
+      description:
+        "Case: website voor Kapsalon Zafer, kapper in Dieren, met behandelingen, Google-reviews, openingstijden en een directe bel-knop voor afspraken.",
+    },
+  },
+  {
+    slug: "autorijschool-yorulmaz",
+    name: "Autorijschool Yorulmaz",
+    url: "https://autorijschoolyorulmaz.nl",
+    category: "Zakelijke website",
+    services: ["Website", "Aanmeldformulier", "Lokale SEO"],
+    summary:
+      "Heldere website voor een rijschool in Giesbeek en Doesburg, met transparante tarieven, lespakketten en online aanmelden.",
+    eyebrow: "Case",
+    title: "Autorijschool Yorulmaz - met vertrouwen de weg op",
+    intro:
+      "Autorijschool Yorulmaz uit Giesbeek geeft persoonlijke rijlessen in Doesburg en omgeving. De website legt rustig uit hoe de lessen werken, wat ze kosten en hoe je je aanmeldt, met dezelfde duidelijkheid als in de lesauto.",
+    client: {
+      title: "Over de klant",
+      text: "Yorulmaz leidt leerlingen stap voor stap op naar het rijbewijs B in een herkenbare zwarte Volkswagen Polo. Rustige uitleg, flexibele lestijden en eerlijke feedback na iedere les staan centraal, met losse lessen en voordelige pakketten inclusief praktijkexamen.",
+    },
+    challenge: {
+      title: "Uitdaging",
+      text: "Wie een rijschool zoekt, vergelijkt vooral prijzen en vertrouwen. De site moest tarieven en pakketten zonder kleine lettertjes tonen, de lesopbouw begrijpelijk maken en de drempel om je aan te melden zo laag mogelijk houden.",
+    },
+    approach: {
+      title: "Onze aanpak",
+      text: "We bouwden een complete onepage met een uitgesproken hero, een lesplan in vijf stappen, twee pakketten met transparante prijsopbouw, een FAQ en een aanmeldformulier. Lokale landingspagina's maken de rijschool vindbaar in de plaatsen waar les wordt gegeven.",
+      points: [
+        "Lesopbouw in vijf heldere stappen",
+        "Pakketten met zichtbare prijsopbouw en voordeel",
+        "Aanmelden via formulier, WhatsApp of telefoon",
+        "Lokale pagina's per lesgebied",
+      ],
+    },
+    design: {
+      title: "Design",
+      text: "Diep marineblauw met een signaalrood accent, afgeleid van het logo en de bestickering van de lesauto. Archivo voor krachtige koppen en Source Sans 3 voor leesbare tekst. Een eigen rijbewijs-illustratie en de lesauto in de hero maken de site direct herkenbaar.",
+    },
+    development: {
+      title: "Ontwikkeling",
+      text: "De website is gebouwd in Next.js met Tailwind CSS. Het aanmeldformulier verstuurt aanvragen rechtstreeks naar de rijschool, met keuze voor losse lessen of een pakket. Gestructureerde data en aparte pagina's per plaats ondersteunen de lokale vindbaarheid.",
+    },
+    responsive: {
+      title: "Responsive optimalisatie",
+      text: "Op mobiel blijven de belangrijkste acties altijd binnen bereik: plan je les, WhatsApp en bellen. Pakketten, lesstappen en FAQ stapelen netjes onder elkaar, zodat leerlingen ook op hun telefoon snel vergelijken en zich aanmelden.",
+    },
+    tech: {
+      title: "Technische highlights",
+      text: "Wat technisch zichtbaar en aantoonbaar is op de live website:",
+      items: [
+        "Next.js en Tailwind CSS",
+        "Aanmeldformulier met keuze voor lessen of pakket",
+        "Lokale landingspagina's voor Doesburg, Giesbeek, Dieren, Doetinchem en Zevenaar",
+        "FAQ, WhatsApp-knop, privacyverklaring en cookiebeleid",
+      ],
+    },
+    hosting: {
+      title: "Hosting en onderhoud",
+      text: "De website wordt gehost en onderhouden door AxaWeb (zichtbaar als “Powered by AxaWeb” in de footer).",
+    },
+    result: {
+      title: "Resultaat",
+      text: "Autorijschool Yorulmaz heeft een overzichtelijke website waarop toekomstige leerlingen zien hoe de lessen verlopen, wat ze kosten en hoe ze direct starten, via het formulier, WhatsApp of telefoon.",
+    },
+    images: {
+      desktop: "/images/projects/autorijschool-yorulmaz/desktop-hero.webp",
+      desktopJpg: "/images/projects/autorijschool-yorulmaz/desktop-hero.jpg",
+      mobile: "/images/projects/autorijschool-yorulmaz/mobile-hero.webp",
+      mobileJpg: "/images/projects/autorijschool-yorulmaz/mobile-hero.jpg",
+      mid: "/images/projects/autorijschool-yorulmaz/desktop-mid.webp",
+      midJpg: "/images/projects/autorijschool-yorulmaz/desktop-mid.jpg",
+      og: "https://axaweb.nl/images/projects/autorijschool-yorulmaz/desktop-hero.jpg",
+      altDesktop: "Desktopweergave van autorijschoolyorulmaz.nl",
+      altMobile: "Mobiele weergave van autorijschoolyorulmaz.nl",
+      altMid: "Tarieven en lespakketten op autorijschoolyorulmaz.nl",
+    },
+    meta: {
+      title: "Autorijschool Yorulmaz | Website Case | AxaWeb Projecten",
+      description:
+        "Case: website voor Autorijschool Yorulmaz in Giesbeek en Doesburg, met lesplan, transparante tarieven, lespakketten en online aanmelden.",
+    },
+  },
 ];
 
 export function getProjectBySlug(slug) {
