@@ -813,7 +813,7 @@ export const pages = {
         steps: {
           title: "Hoe het werkt",
           items: [
-            "Je deelt je wensen via het formulier of telefonisch",
+            "Je deelt je wensen via het formulier of per e-mail",
             "We reageren binnen één werkdag met gerichte vragen of advies",
             "Je ontvangt een duidelijke, vrijblijvende offerte",
           ],
@@ -840,11 +840,6 @@ export const pages = {
             question: "Wat heb ik nodig om een goede aanvraag te doen?",
             answer:
               "Een korte omschrijving van je doel, gewenste pagina’s of functionaliteiten en eventueel een budgetindicatie is voldoende om te starten.",
-          },
-          {
-            question: "Kan ik liever bellen?",
-            answer:
-              "Natuurlijk. Bel ons op 06 29 12 75 75. We denken graag telefonisch mee over jouw project.",
           },
         ],
       },

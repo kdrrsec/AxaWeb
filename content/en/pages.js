@@ -822,7 +822,7 @@ export const pages = {
         steps: {
           title: "How it works",
           items: [
-            "You share your needs via the form or by phone",
+            "You share your needs via the form or by email",
             "We reply within one business day with focused questions or advice",
             "You receive a clear quote with no obligation",
           ],
@@ -849,11 +849,6 @@ export const pages = {
             question: "What do I need for a good request?",
             answer:
               "A short description of your goal, desired pages or features, and optionally a budget indication is enough to get started.",
-          },
-          {
-            question: "Can I call instead?",
-            answer:
-              "Of course. Call us on 06 29 12 75 75. We’re happy to talk through your project by phone.",
           },
         ],
       },

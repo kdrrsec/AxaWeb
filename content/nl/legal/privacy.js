@@ -73,7 +73,7 @@ export const privacyDoc = {
         },
         {
           type: "p",
-          html: `Neem je contact op via e-mail (<a href="mailto:${company.email}">${company.email}</a>) of telefoon (<a href="${company.phoneHref}">${company.phoneDisplay}</a>), dan verwerken we de gegevens die je daarbij deelt, voor zover nodig om je te helpen.`,
+          html: `Neem je contact op via e-mail (<a href="mailto:${company.email}">${company.email}</a>), dan verwerken we de gegevens die je daarbij deelt, voor zover nodig om je te helpen.`,
         },
         {
           type: "h3",

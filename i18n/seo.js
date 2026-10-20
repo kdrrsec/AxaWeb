@@ -12,7 +12,6 @@ import {
   defaultOgImageWidth,
   defaultOgImageHeight,
   organizationEmail,
-  organizationTelephone,
 } from "./config.js";
 import { localizedPath, resolveLocaleFromPath } from "./routing.js";
 
@@ -140,7 +139,6 @@ export function buildOrganizationNode(seoMessages = {}, locale = defaultLocale) 
     legalName: org.legalName || siteName,
     url: `${siteUrl}/`,
     email: org.email || organizationEmail,
-    telephone: org.telephone || organizationTelephone,
     logo: {
       "@type": "ImageObject",
       url: `${siteUrl}/logo.png`,
@@ -158,7 +156,6 @@ export function buildOrganizationNode(seoMessages = {}, locale = defaultLocale) 
       "@type": "ContactPoint",
       contactType: "customer service",
       email: org.email || organizationEmail,
-      telephone: org.telephone || organizationTelephone,
       availableLanguage: languages,
     },
   };
