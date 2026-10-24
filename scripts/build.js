@@ -22,6 +22,7 @@ const cssFiles = [
   "css/components/footer.css",
   "css/components/cookie-consent.css",
   "css/components/legal.css",
+  "css/theme-light.css",
 ];
 
 const pageSlugs = [
@@ -74,6 +75,8 @@ const requiredFiles = [
   "apple-touch-icon.png",
   "logo.png",
   "logo@2x.png",
+  "logo-dark.png",
+  "logo-dark@2x.png",
   "images/background.jpg",
   "images/background.webp",
   "js/main.js",
@@ -187,6 +190,8 @@ const staticCopies = [
   "apple-touch-icon.png",
   "logo.png",
   "logo@2x.png",
+  "logo-dark.png",
+  "logo-dark@2x.png",
   ...pageSlugs.map((slug) => `${slug}.html`),
 ];
 

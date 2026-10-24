@@ -213,7 +213,7 @@ function renderLegalPage(doc, locale) {
   <header class="site-header is-scrolled">
     <div class="container site-header__inner">
       <a class="site-header__logo" href="${homeHref}" aria-label="${escapeHtml(t("nav.homeAria"))}">
-        <img src="/logo.png?v=5" srcset="/logo.png?v=5 1x, /logo@2x.png?v=5 2x" alt="AxaWeb" width="320" height="59" decoding="async" />
+        <img src="/logo-dark.png?v=1" srcset="/logo-dark.png?v=1 1x, /logo-dark@2x.png?v=1 2x" alt="AxaWeb" width="320" height="59" decoding="async" />
       </a>
       <div class="site-header__actions">
         ${languageSwitcherMarkup(doc.path, locale, t)}
