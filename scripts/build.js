@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync, readdirSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { injectPublicEnv } from "./inject-public-env.js";
@@ -216,11 +217,15 @@ const bundledCss = bundleCss();
 mkdirSync(join(dist, "css"), { recursive: true });
 writeFileSync(join(dist, "css/bundle.css"), bundledCss, "utf8");
 
+// /css wordt een jaar gecachet (immutable): de inhoudshash in de URL zorgt
+// dat browsers na elke CSS-wijziging de nieuwe bundle ophalen.
+const cssVersion = createHash("sha256").update(bundledCss).digest("hex").slice(0, 10);
+
 function useBundleCss(fileName) {
   const htmlPath = join(dist, fileName);
   const html = readFileSync(htmlPath, "utf8")
-    .replace('href="css/main.css"', 'href="css/bundle.css"')
-    .replace('href="/css/main.css"', 'href="/css/bundle.css"');
+    .replace('href="css/main.css"', `href="css/bundle.css?v=${cssVersion}"`)
+    .replace('href="/css/main.css"', `href="/css/bundle.css?v=${cssVersion}"`);
   writeFileSync(htmlPath, html, "utf8");
 }
 
