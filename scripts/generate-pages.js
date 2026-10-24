@@ -1747,6 +1747,9 @@ function generateEnHomePage() {
   html = html
     .replaceAll('src="images/', 'src="/images/')
     .replaceAll('srcset="images/', 'srcset="/images/')
+    .replaceAll('imagesrcset="images/', 'imagesrcset="/images/')
+    .replaceAll(', images/', ', /images/')
+    .replaceAll('href="images/', 'href="/images/')
     .replaceAll('src="logo.png', 'src="/logo.png')
     .replaceAll('srcset="logo.png', 'srcset="/logo.png')
     .replaceAll('srcset="logo@2x.png', 'srcset="/logo@2x.png')

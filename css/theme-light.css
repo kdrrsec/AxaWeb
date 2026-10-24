@@ -342,19 +342,58 @@ body::after {
   color: var(--text-muted);
 }
 
-@media (max-width: 768px) {
-  .hero__media img {
-    object-position: 78% center;
+/* Mobiel en tablet: tekst bovenaan op wit, de foto daaronder volledig zichtbaar */
+@media (max-width: 959px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    padding-bottom: 0;
+    background: #ffffff;
   }
 
-  .hero__overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(255, 255, 255, 0.82) 45%,
-      rgba(255, 255, 255, 0.35) 78%,
-      rgba(255, 255, 255, 0.1) 100%
-    );
+  .hero__inner {
+    order: 1;
+    padding-bottom: 1.75rem;
+  }
+
+  .hero__media {
+    order: 2;
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .hero__media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 22%);
+    pointer-events: none;
+  }
+
+  .hero__media picture {
+    display: block;
+    height: 100%;
+  }
+
+  .hero__media img {
+    object-position: 82% 60%;
+  }
+
+  .hero__overlay,
+  .hero__scroll-hint {
+    display: none;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 959px) {
+  .hero__media {
+    aspect-ratio: 16 / 9;
   }
 }
 
