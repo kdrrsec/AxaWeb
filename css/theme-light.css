@@ -70,7 +70,6 @@ body::after {
 }
 
 .page-head__facts,
-.pricing-choice,
 .contact-form {
   background: #ffffff;
   box-shadow: var(--shadow-card);
@@ -100,13 +99,123 @@ body::after {
   background: var(--bg-secondary);
 }
 
-.segmented.segmented--choice .segmented__btn {
+.segmented__btn.is-active {
   background: #ffffff;
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(11, 26, 43, 0.1), inset 0 0 0 1px rgba(26, 126, 240, 0.35);
+}
+
+.segmented__badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* --- Modelkeuze (pakketten): rustige kaart met twee keuzetegels --- */
+.pricing-choice {
+  max-width: 40rem;
+  margin-bottom: 3.5rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(11, 26, 43, 0.06);
+}
+
+.pricing-choice__intro {
+  margin-bottom: 1.25rem;
+}
+
+.pricing-choice__text {
+  margin-bottom: 0;
+}
+
+.segmented.segmented--choice,
+.pricing-choice:not(.has-selection) .segmented.segmented--choice {
+  gap: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.segmented.segmented--choice .segmented__btn {
+  justify-content: flex-start;
+  gap: 0.7rem;
+  min-height: 3.5rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  color: var(--text);
+  font-size: 0.95rem;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease);
 }
 
 .segmented.segmented--choice .segmented__btn:hover,
 .segmented.segmented--choice .segmented__btn:active {
-  background: var(--bg-secondary);
+  border-color: rgba(26, 126, 240, 0.45);
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(11, 26, 43, 0.06);
+}
+
+.segmented.segmented--choice .segmented__btn.is-active {
+  border-color: var(--accent);
+  background: rgba(26, 126, 240, 0.05);
+  box-shadow: 0 0 0 3px rgba(26, 126, 240, 0.12);
+}
+
+.segmented.segmented--choice .segmented__label {
+  white-space: nowrap;
+}
+
+.segmented.segmented--choice .segmented__badge {
+  position: absolute;
+  top: -0.65rem;
+  right: 1rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 0.64rem;
+  box-shadow: 0 4px 10px rgba(26, 126, 240, 0.25);
+}
+
+.pricing-choice__radio {
+  border-color: rgba(11, 26, 43, 0.28);
+}
+
+.pricing-choice__empty {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .pricing-choice {
+    margin-bottom: 2.5rem;
+    padding: 1.25rem 1.1rem;
+  }
+
+  .segmented.segmented--choice {
+    gap: 0.9rem;
+  }
+
+  .segmented.segmented--choice .segmented__btn,
+  .segmented.segmented--choice .segmented__btn:hover,
+  .segmented.segmented--choice .segmented__btn:active {
+    background: #ffffff;
+  }
+
+  .segmented.segmented--choice .segmented__btn.is-active {
+    border-color: var(--accent);
+    background: rgba(26, 126, 240, 0.05);
+  }
+
+  .pricing-choice__hint {
+    background: var(--accent-soft);
+    border-color: rgba(26, 126, 240, 0.25);
+    color: var(--accent);
+  }
 }
 
 .cta-banner {
