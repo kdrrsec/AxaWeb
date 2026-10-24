@@ -78,6 +78,8 @@ const requiredFiles = [
   "logo@2x.png",
   "images/background.jpg",
   "images/background.webp",
+  "images/hero-workspace.jpg",
+  "images/hero-workspace.webp",
   "js/main.js",
   "js/page-main.js",
   "js/consent-default.js",
@@ -197,7 +199,7 @@ staticCopies.forEach((file) => {
 });
 
 mkdirSync(join(dist, "images"), { recursive: true });
-["background.jpg", "background.webp"].forEach((file) => {
+["background.jpg", "background.webp", "hero-workspace.jpg", "hero-workspace.webp"].forEach((file) => {
   cpSync(join(root, "images", file), join(dist, "images", file));
 });
 cpSync(join(root, "images", "projects"), join(dist, "images", "projects"), { recursive: true });
