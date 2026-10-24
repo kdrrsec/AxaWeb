@@ -48,13 +48,51 @@ function setStatus(statusEl, message, type) {
   if (type) statusEl.classList.add(`form-status--${type}`);
 }
 
-function setSubmitting(form, submitBtn, isSubmitting) {
+const SENT_STATE_MS = 3500;
+
+function setSubmitLabel(submitBtn, text) {
+  const label = submitBtn.querySelector("[data-submit-label]");
+  if (label) label.textContent = text;
+  else submitBtn.textContent = text;
+}
+
+/**
+ * Knopstatus: tijdens verzenden vliegt het vliegtuigje weg (is-loading);
+ * na succes wordt de knop kort groen met "Verzonden" (is-sent).
+ */
+function setSubmitting(form, submitBtn, isSubmitting, sent = false) {
   form.setAttribute("aria-busy", String(isSubmitting));
-  submitBtn.disabled = isSubmitting;
-  submitBtn.classList.toggle("is-loading", isSubmitting);
   const defaultLabel = submitBtn.dataset.labelDefault || formMessage("actions.submit");
   const loadingLabel = submitBtn.dataset.labelLoading || formMessage("actions.submitting");
-  submitBtn.textContent = isSubmitting ? loadingLabel : defaultLabel;
+  const sentLabel = submitBtn.dataset.labelSent || formMessage("actions.sent") || defaultLabel;
+
+  window.clearTimeout(submitBtn._sentTimer);
+  submitBtn.classList.toggle("is-loading", isSubmitting);
+  submitBtn.classList.toggle("is-sent", !isSubmitting && sent);
+
+  if (isSubmitting) {
+    // Breedte vastzetten zodat de knop niet verspringt bij kortere labels
+    submitBtn.style.minWidth = `${submitBtn.offsetWidth}px`;
+    submitBtn.disabled = true;
+    setSubmitLabel(submitBtn, loadingLabel);
+    return;
+  }
+
+  if (sent) {
+    submitBtn.disabled = true;
+    setSubmitLabel(submitBtn, sentLabel);
+    submitBtn._sentTimer = window.setTimeout(() => {
+      submitBtn.classList.remove("is-sent");
+      submitBtn.disabled = false;
+      submitBtn.style.minWidth = "";
+      setSubmitLabel(submitBtn, defaultLabel);
+    }, SENT_STATE_MS);
+    return;
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.style.minWidth = "";
+  setSubmitLabel(submitBtn, defaultLabel);
 }
 
 function focusStatus(statusEl) {
@@ -198,6 +236,7 @@ export function initContactForm() {
     }
 
     isSubmitting = true;
+    let sent = false;
     setSubmitting(form, submitBtn, true);
     setStatus(statusEl, formMessage("status.sending") || formMessage("sending"), "info");
 
@@ -299,6 +338,7 @@ export function initContactForm() {
       if (sourcePage && !sourcePage.value) {
         sourcePage.value = window.location.pathname || "/contact";
       }
+      sent = true;
       setStatus(statusEl, formMessage("status.success") || formMessage("success"), "success");
       focusStatus(statusEl);
     } catch {
@@ -306,7 +346,7 @@ export function initContactForm() {
       focusStatus(statusEl);
     } finally {
       isSubmitting = false;
-      setSubmitting(form, submitBtn, false);
+      setSubmitting(form, submitBtn, false, sent);
     }
   });
 }
