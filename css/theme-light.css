@@ -243,6 +243,61 @@ body::after {
   box-shadow: 0 16px 36px rgba(11, 26, 43, 0.12);
 }
 
+.field__control::placeholder,
+.custom-select__trigger--placeholder {
+  color: #8593a6;
+}
+
+.custom-select__option {
+  color: var(--text);
+}
+
+.custom-select__option.is-active,
+.custom-select__option:hover:not(.is-disabled) {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.custom-select__option[aria-selected="true"],
+.custom-select__option[aria-selected="true"].is-active,
+.custom-select__option[aria-selected="true"]:hover {
+  background: rgba(26, 126, 240, 0.14);
+  color: var(--accent-deep);
+}
+
+.custom-select.is-open .custom-select__trigger,
+.field__control:focus {
+  border-color: var(--accent);
+}
+
+.field--error .field__control,
+.field__control[aria-invalid="true"],
+.custom-select__trigger[aria-invalid="true"] {
+  border-color: #d64545;
+}
+
+.field__error,
+.form-status--error {
+  color: #c0392b;
+}
+
+.form-status--success {
+  color: #1e7a3e;
+}
+
+.form-status--info {
+  color: var(--accent-deep);
+}
+
+/* Browser-autofill: donkere tekst op een lichte achtergrond */
+.field__control:-webkit-autofill,
+.field__control:-webkit-autofill:hover,
+.field__control:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  box-shadow: 0 0 0 1000px #f2f7ff inset;
+  caret-color: var(--text);
+}
+
 /* --- Header: donker navy met het witte logo --- */
 .site-header {
   --text: #f4f7fb;
