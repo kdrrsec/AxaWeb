@@ -4,6 +4,7 @@ import { initContactForm } from "./modules/form.js";
 import { initAnimations } from "./modules/animations.js";
 import { initLanguageSwitcher } from "./modules/language-switcher.js";
 import { initPricingUI } from "./modules/pricing-ui.js";
+import { initCompareToggle } from "./modules/compare-toggle.js";
 import { initCookieConsent } from "./modules/cookie-consent.js";
 import { initAnalytics } from "./modules/analytics.js";
 import { initTracking } from "./modules/tracking.js";
@@ -23,6 +24,7 @@ function init() {
   initHeader();
   initLanguageSwitcher();
   initPricingUI();
+  initCompareToggle();
   initFaq();
   initContactForm();
   initAnimations();

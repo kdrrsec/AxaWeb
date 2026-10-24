@@ -329,6 +329,35 @@
   color: var(--text-secondary);
 }
 
+/* Inklapbare vergelijking: ingeklapt alleen de rijen met echte verschillen */
+.compare-collapsible.is-collapsed .compare-row--extra {
+  display: none;
+}
+
+.compare-toggle-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.compare-toggle {
+  gap: 0.5rem;
+}
+
+.compare-toggle__icon {
+  transition: transform var(--dur-med) var(--ease);
+}
+
+.compare-collapsible:not(.is-collapsed) .compare-toggle__icon {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compare-toggle__icon {
+    transition: none;
+  }
+}
+
 .compare-table__badge {
   display: inline-block;
   margin-left: 0.4rem;

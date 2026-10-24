@@ -274,29 +274,44 @@ export function buildPricingRenderers(
       )
       .join("");
 
+    // Ingeklapt tonen we alleen de rijen waarin de pakketten echt verschillen.
+    const summaryKeys = new Set(["price12", "priceMonthly", "pages", "mailboxes", "booking"]);
+    const extraCount = rows.filter((row) => !summaryKeys.has(row.key)).length;
+
     const body = rows
       .map(
         (row) => `
-            <tr>
+            <tr${summaryKeys.has(row.key) ? "" : ' class="compare-row--extra"'}>
               <th scope="row">${escapeHtml(tp(`compare.rows.${row.key}`))}</th>
               ${row.values.map((value) => `<td>${escapeHtml(value)}</td>`).join("")}
             </tr>`
       )
       .join("");
 
-    return `<div class="compare-wrap reveal" role="region" aria-label="${escapeHtml(
-      tp("compare.ariaLabel")
-    )}" tabindex="0">
-          <table class="compare-table compare-table--waas">
-            <thead>
-              <tr>
-                <td></td>
-                ${head}
-              </tr>
-            </thead>
-            <tbody>${body}
-            </tbody>
-          </table>
+    const showAll = tp("compare.showAll", { count: String(extraCount) });
+    const showLess = tp("compare.showLess");
+
+    return `<div class="compare-collapsible is-collapsed" data-compare-collapsible>
+          <div class="compare-wrap reveal" role="region" aria-label="${escapeHtml(
+            tp("compare.ariaLabel")
+          )}" tabindex="0">
+            <table class="compare-table compare-table--waas" id="waas-compare-table">
+              <thead>
+                <tr>
+                  <td></td>
+                  ${head}
+                </tr>
+              </thead>
+              <tbody>${body}
+              </tbody>
+            </table>
+          </div>
+          <div class="compare-toggle-row">
+            <button type="button" class="btn btn--secondary compare-toggle" data-compare-toggle aria-expanded="false" aria-controls="waas-compare-table" data-label-more="${escapeHtml(showAll)}" data-label-less="${escapeHtml(showLess)}">
+              <span data-compare-toggle-label>${escapeHtml(showAll)}</span>
+              <svg class="compare-toggle__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
         </div>`;
   }
 
