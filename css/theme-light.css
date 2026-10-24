@@ -244,9 +244,52 @@ body::after {
 }
 
 /* --- Header: licht, met donkere logo-variant --- */
-.site-header,
-.mobile-nav {
+.site-header {
   background-color: rgba(255, 255, 255, 0.96);
+}
+
+/* Mobiel menu: dekkend wit, donkere tekst en duidelijke scheiding */
+.mobile-nav {
+  gap: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  background-color: #ffffff;
+}
+
+.mobile-nav a:not(.btn) {
+  padding: 1.05rem 0.9rem;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.mobile-nav a:not(.btn):hover,
+.mobile-nav a:not(.btn):focus-visible {
+  background: var(--bg-secondary);
+}
+
+.mobile-nav a:not(.btn)[aria-current="page"] {
+  background: transparent;
+  color: var(--accent);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.mobile-nav .btn {
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mobile-nav .btn:hover,
+.mobile-nav .btn:focus-visible {
+  color: #ffffff;
 }
 
 /* --- Homepage-hero: foto blijft donker, tekst wit, onderrand vloeit naar wit --- */
