@@ -75,8 +75,6 @@ const requiredFiles = [
   "apple-touch-icon.png",
   "logo.png",
   "logo@2x.png",
-  "logo-dark.png",
-  "logo-dark@2x.png",
   "images/background.jpg",
   "images/background.webp",
   "js/main.js",
@@ -190,8 +188,6 @@ const staticCopies = [
   "apple-touch-icon.png",
   "logo.png",
   "logo@2x.png",
-  "logo-dark.png",
-  "logo-dark@2x.png",
   ...pageSlugs.map((slug) => `${slug}.html`),
 ];
 

@@ -234,7 +234,7 @@ function headerMarkup(navKey, pathname = "/") {
     <span class="scroll-progress" data-scroll-progress aria-hidden="true"></span>
     <div class="container site-header__inner">
       <a class="site-header__logo" href="${pathFor("/")}" aria-label="${escapeHtml(t("nav.homeAria"))}">
-        <img src="/logo-dark.png?v=1" srcset="/logo-dark.png?v=1 1x, /logo-dark@2x.png?v=1 2x" alt="AxaWeb" width="320" height="59" decoding="async" />
+        <img src="/logo.png?v=5" srcset="/logo.png?v=5 1x, /logo@2x.png?v=5 2x" alt="AxaWeb" width="320" height="59" decoding="async" />
       </a>
       <nav class="site-nav" aria-label="${escapeHtml(t("nav.ariaLabel"))}">
         ${navMarkup(navKey)}
@@ -1748,9 +1748,6 @@ function generateEnHomePage() {
     .replaceAll('src="images/', 'src="/images/')
     .replaceAll('srcset="images/', 'srcset="/images/')
     .replaceAll('src="logo.png', 'src="/logo.png')
-    .replaceAll('src="logo-dark.png', 'src="/logo-dark.png')
-    .replaceAll('srcset="logo-dark.png', 'srcset="/logo-dark.png')
-    .replaceAll(', logo-dark@2x.png', ', /logo-dark@2x.png')
     .replaceAll('srcset="logo.png', 'srcset="/logo.png')
     .replaceAll('srcset="logo@2x.png', 'srcset="/logo@2x.png')
     .replaceAll(', logo@2x.png', ', /logo@2x.png')
