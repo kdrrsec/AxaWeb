@@ -241,6 +241,243 @@ export const projects = [
       canonical: "https://axaweb.nl/en/projects/viralon",
     },
   },
+  {
+    slug: "kadirs-hairstyle",
+    name: "Kadir's Hairstyle",
+    url: "https://kadirshairstyle.nl",
+    category: "Barbershop website",
+    services: ["Website", "Online booking", "Local SEO"],
+    summary:
+      "A stylish website for a men's barber in Zutphen, with clear pricing and a custom online booking system.",
+    eyebrow: "Case",
+    title: "Kadir's Hairstyle - men's barber in Zutphen",
+    intro:
+      "Kadir's Hairstyle is a men's barber on the Troelstralaan in Zutphen. The website turns the promise “Service · Quality · Good vibes” into a warm, refined look and takes visitors to an online booking in just a few clicks.",
+    client: {
+      title: "About the client",
+      text: "Kadir's Hairstyle serves men and boys who want a haircut that truly suits them: sharp fades, clean lines, a well-groomed beard, or a fresh kids' cut. Personal attention and a relaxed atmosphere come first.",
+    },
+    challenge: {
+      title: "Challenge",
+      text: "People choose a barber on look, price, and convenience. The site therefore had to set the mood right away, show treatments with price and duration at a glance, and make booking so easy that calling is no longer needed.",
+    },
+    approach: {
+      title: "Our approach",
+      text: "We built a one-page site with an atmospheric hero, three core values, a short introduction, and a service list with fixed prices. Every section leads to the same action: booking online through a custom booking flow.",
+      points: [
+        "Hero featuring photography of the salon itself",
+        "Services with price and duration at a glance",
+        "Step-by-step online booking flow",
+        "Social section with work straight from the chair",
+      ],
+    },
+    design: {
+      title: "Design",
+      text: "A warm ivory palette with deep charcoal and a champagne accent, Playfair Display for headings, and Jost and Poppins for navigation and body text. Generous white space and rounded buttons with subtle hover effects give the site a premium barbershop feel without excess.",
+    },
+    development: {
+      title: "Development",
+      text: "The website is built with Next.js, using self-hosted fonts and optimised images. The booking system is custom-built: visitors choose a service, day, and time slot and confirm with their details, while the salon manages appointments in a clear overview.",
+    },
+    responsive: {
+      title: "Responsive optimisation",
+      text: "On mobile, the service list becomes a grid of compact cards and the social section scrolls horizontally. The booking button always stays within reach, so customers can reserve their spot in the chair in a few taps on the go.",
+    },
+    tech: {
+      title: "Technical highlights",
+      text: "What is technically visible and verifiable on the live website:",
+      items: [
+        "Next.js with self-hosted web fonts",
+        "Custom online booking system with service, day, and time selection",
+        "SEO title and description targeting a men's barber in Zutphen",
+        "Opening hours, directions, and privacy statement easy to find",
+      ],
+    },
+    hosting: {
+      title: "Hosting and maintenance",
+      text: "The website and booking system are hosted and maintained by AxaWeb (visible as “Powered by AxaWeb” in the footer).",
+    },
+    result: {
+      title: "Result",
+      text: "Kadir's Hairstyle has a website that shows the atmosphere of the salon and lets customers book an appointment themselves, at any time of day. Prices, opening hours, and address are clear immediately.",
+    },
+    images: {
+      desktop: "/images/projects/kadirs-hairstyle/desktop-hero.webp",
+      desktopJpg: "/images/projects/kadirs-hairstyle/desktop-hero.jpg",
+      mobile: "/images/projects/kadirs-hairstyle/mobile-hero.webp",
+      mobileJpg: "/images/projects/kadirs-hairstyle/mobile-hero.jpg",
+      mid: "/images/projects/kadirs-hairstyle/desktop-mid.webp",
+      midJpg: "/images/projects/kadirs-hairstyle/desktop-mid.jpg",
+      og: "https://axaweb.nl/images/projects/kadirs-hairstyle/desktop-hero.jpg",
+      altDesktop: "Desktop view of kadirshairstyle.nl",
+      altMobile: "Mobile view of kadirshairstyle.nl",
+      altMid: "Service overview with prices on kadirshairstyle.nl",
+    },
+    meta: {
+      title: "Kadir's Hairstyle | Website Case Study | AxaWeb Projects",
+      description:
+        "Case study: website for Kadir's Hairstyle, a men's barber in Zutphen, with clear pricing, atmospheric design, and a custom online booking system.",
+      canonical: "https://axaweb.nl/en/projects/kadirs-hairstyle",
+    },
+  },
+  {
+    slug: "kapsalon-zafer",
+    name: "Kapsalon Zafer",
+    url: "https://kapsalonzafer.nl",
+    category: "Hair salon website",
+    services: ["Website", "Local SEO", "Google reviews"],
+    summary:
+      "A calm, welcoming website for a hair salon in Dieren, with reviews, opening hours, and a direct call-to-action.",
+    eyebrow: "Case",
+    title: "Kapsalon Zafer - hair salon in Dieren",
+    intro:
+      "Kapsalon Zafer has been a trusted address on the Callunaplein in Dieren for years, serving men, women, and children. The website reflects that small-town hospitality and above all makes it easy to call or drop by.",
+    client: {
+      title: "About the client",
+      text: "Kapsalon Zafer cuts hair for men, women, and children: from fades and beard care to advanced colouring techniques such as highlights and airtouch. Many customers come from Dieren and the surrounding area and are known by name.",
+    },
+    challenge: {
+      title: "Challenge",
+      text: "This salon takes appointments by phone. Rather than forcing a complex booking flow, the site had to build trust and answer the key questions straight away: what they do, when they are open, and how to get in touch.",
+    },
+    approach: {
+      title: "Our approach",
+      text: "We chose a compact one-page site: an atmospheric hero, a short story about the salon, treatments for men and women, Google reviews, and a contact block in which the phone number takes centre stage.",
+      points: [
+        "Treatments clearly split between men and women",
+        "Google rating and reviews as social proof",
+        "Large call button with phone number",
+        "Opening hours and map side by side",
+      ],
+    },
+    design: {
+      title: "Design",
+      text: "A light paper palette with dark espresso and a red accent taken from the logo. Playfair Display gives the headings a classic salon character, while Poppins keeps the body text calm and readable. The result feels warm and polished, fitting a trusted neighbourhood salon.",
+    },
+    development: {
+      title: "Development",
+      text: "The website is built with Next.js and pre-rendered for fast loading. Reviews scroll in a calm, continuous strip that pauses on hover and respects reduced-motion preferences. An embedded Google Maps view shows the way to the salon.",
+    },
+    responsive: {
+      title: "Responsive optimisation",
+      text: "On mobile, navigation collapses into a hamburger menu and treatments, opening hours, and contact details stack vertically. The call button is large and easy to tap, so booking from a phone takes a single tap.",
+    },
+    tech: {
+      title: "Technical highlights",
+      text: "What is technically visible and verifiable on the live website:",
+      items: [
+        "Next.js with a pre-rendered page",
+        "Structured data (HairSalon) with address and opening hours",
+        "SEO title, description, and Open Graph targeting a hair salon in Dieren",
+        "Embedded Google Maps view and clickable phone number",
+      ],
+    },
+    hosting: {
+      title: "Hosting and maintenance",
+      text: "The website is hosted and maintained by AxaWeb (visible as “Powered by AxaWeb” in the footer).",
+    },
+    result: {
+      title: "Result",
+      text: "Kapsalon Zafer has a polished online business card that shows what the salon offers, what customers think of it, and when you are welcome. Visitors are one tap away from a phone call.",
+    },
+    images: {
+      desktop: "/images/projects/kapsalon-zafer/desktop-hero.webp",
+      desktopJpg: "/images/projects/kapsalon-zafer/desktop-hero.jpg",
+      mobile: "/images/projects/kapsalon-zafer/mobile-hero.webp",
+      mobileJpg: "/images/projects/kapsalon-zafer/mobile-hero.jpg",
+      mid: "/images/projects/kapsalon-zafer/desktop-mid.webp",
+      midJpg: "/images/projects/kapsalon-zafer/desktop-mid.jpg",
+      og: "https://axaweb.nl/images/projects/kapsalon-zafer/desktop-hero.jpg",
+      altDesktop: "Desktop view of kapsalonzafer.nl",
+      altMobile: "Mobile view of kapsalonzafer.nl",
+      altMid: "Treatments for men and women on kapsalonzafer.nl",
+    },
+    meta: {
+      title: "Kapsalon Zafer | Website Case Study | AxaWeb Projects",
+      description:
+        "Case study: website for Kapsalon Zafer, a hair salon in Dieren, with treatments, Google reviews, opening hours, and a direct call button for appointments.",
+      canonical: "https://axaweb.nl/en/projects/kapsalon-zafer",
+    },
+  },
+  {
+    slug: "autorijschool-yorulmaz",
+    name: "Autorijschool Yorulmaz",
+    url: "https://autorijschoolyorulmaz.nl",
+    category: "Business website",
+    services: ["Website", "Sign-up form", "Local SEO"],
+    summary:
+      "A clear website for a driving school in Giesbeek and Doesburg, with transparent rates, lesson packages, and online sign-up.",
+    eyebrow: "Case",
+    title: "Autorijschool Yorulmaz - hit the road with confidence",
+    intro:
+      "Autorijschool Yorulmaz from Giesbeek offers personal driving lessons in Doesburg and the surrounding area. The website calmly explains how the lessons work, what they cost, and how to sign up, with the same clarity you get in the lesson car.",
+    client: {
+      title: "About the client",
+      text: "Yorulmaz guides students step by step towards their category B licence in a recognisable black Volkswagen Polo. Calm explanations, flexible lesson times, and honest feedback after every lesson are central, with single lessons and good-value packages that include the practical exam.",
+    },
+    challenge: {
+      title: "Challenge",
+      text: "People looking for a driving school mainly compare prices and trust. The site had to present rates and packages without fine print, make the lesson structure easy to understand, and keep the threshold for signing up as low as possible.",
+    },
+    approach: {
+      title: "Our approach",
+      text: "We built a complete one-page site with a bold hero, a five-step lesson plan, two packages with a transparent price breakdown, an FAQ, and a sign-up form. Local landing pages make the school findable in the towns where lessons are given.",
+      points: [
+        "Lesson structure in five clear steps",
+        "Packages with a visible price breakdown and savings",
+        "Sign up via form, WhatsApp, or phone",
+        "Local pages for each teaching area",
+      ],
+    },
+    design: {
+      title: "Design",
+      text: "Deep navy with a signal-red accent, derived from the logo and the lesson car's livery. Archivo for strong headings and Source Sans 3 for readable body text. A custom driving-licence illustration and the lesson car in the hero make the site instantly recognisable.",
+    },
+    development: {
+      title: "Development",
+      text: "The website is built with Next.js and Tailwind CSS. The sign-up form sends requests straight to the driving school, with a choice between single lessons or a package. Structured data and dedicated pages per town support local visibility.",
+    },
+    responsive: {
+      title: "Responsive optimisation",
+      text: "On mobile, the key actions always stay within reach: book a lesson, WhatsApp, and call. Packages, lesson steps, and the FAQ stack neatly, so students can quickly compare and sign up on their phones too.",
+    },
+    tech: {
+      title: "Technical highlights",
+      text: "What is technically visible and verifiable on the live website:",
+      items: [
+        "Next.js and Tailwind CSS",
+        "Sign-up form with a choice of lessons or package",
+        "Local landing pages for Doesburg, Giesbeek, Dieren, Doetinchem, and Zevenaar",
+        "FAQ, WhatsApp button, privacy statement, and cookie policy",
+      ],
+    },
+    hosting: {
+      title: "Hosting and maintenance",
+      text: "The website is hosted and maintained by AxaWeb (visible as “Powered by AxaWeb” in the footer).",
+    },
+    result: {
+      title: "Result",
+      text: "Autorijschool Yorulmaz has a clear website where prospective students see how lessons work, what they cost, and how to get started right away, via the form, WhatsApp, or phone.",
+    },
+    images: {
+      desktop: "/images/projects/autorijschool-yorulmaz/desktop-hero.webp",
+      desktopJpg: "/images/projects/autorijschool-yorulmaz/desktop-hero.jpg",
+      mobile: "/images/projects/autorijschool-yorulmaz/mobile-hero.webp",
+      mobileJpg: "/images/projects/autorijschool-yorulmaz/mobile-hero.jpg",
+      mid: "/images/projects/autorijschool-yorulmaz/desktop-mid.webp",
+      midJpg: "/images/projects/autorijschool-yorulmaz/desktop-mid.jpg",
+      og: "https://axaweb.nl/images/projects/autorijschool-yorulmaz/desktop-hero.jpg",
+      altDesktop: "Desktop view of autorijschoolyorulmaz.nl",
+      altMobile: "Mobile view of autorijschoolyorulmaz.nl",
+      altMid: "Rates and lesson packages on autorijschoolyorulmaz.nl",
+    },
+    meta: {
+      title: "Autorijschool Yorulmaz | Website Case Study | AxaWeb Projects",
+      description:
+        "Case study: website for Autorijschool Yorulmaz in Giesbeek and Doesburg, with a lesson plan, transparent rates, lesson packages, and online sign-up.",
+      canonical: "https://axaweb.nl/en/projects/autorijschool-yorulmaz",
+    },
+  },
 ];
 
 export function getProjectBySlug(slug) {

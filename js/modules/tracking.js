@@ -33,7 +33,7 @@ function bindClickTracking() {
       const target = event.target;
       if (!(target instanceof Element)) return;
 
-      const phone = closestTrack(target, 'a[href^="tel:"], .direct-contact__phone');
+      const phone = closestTrack(target, 'a[href^="tel:"]');
       if (phone) {
         trackEvent("phone_click", { link_location: pageKind() });
         return;

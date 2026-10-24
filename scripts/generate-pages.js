@@ -912,27 +912,6 @@ function renderPortfolio(section, alt) {
     </section>`;
 }
 
-function renderDirectContact() {
-  const title = t("directContact.title");
-  const text = t("directContact.text");
-  const phoneDisplay = t("directContact.phoneDisplay");
-  const phoneHref = t("directContact.phoneHref");
-  const phoneAria = t("directContact.phoneAria");
-
-  return `
-          <aside class="direct-contact reveal" aria-labelledby="direct-contact-title">
-            <div class="direct-contact__icon" aria-hidden="true">${icon("phone")}</div>
-            <div class="direct-contact__body">
-              <h2 id="direct-contact-title" class="direct-contact__title">${escapeHtml(title)}</h2>
-              <p class="direct-contact__text">${escapeHtml(text)}</p>
-              <a class="direct-contact__phone" href="${escapeHtml(phoneHref)}" aria-label="${escapeHtml(phoneAria)}">
-                <span class="direct-contact__phone-icon" aria-hidden="true">${icon("phone", "icon icon--sm")}</span>
-                <span>${escapeHtml(phoneDisplay)}</span>
-              </a>
-            </div>
-          </aside>`;
-}
-
 function renderContact(section, alt) {
   const formMessages = messages.form;
   const sourcePage = section.sourcePage || "/contact";
@@ -1058,13 +1037,16 @@ function renderContact(section, alt) {
               <p class="field__error" id="privacyError" role="alert" hidden></p>
             </div>
 
-            <button type="submit" class="btn btn--primary btn--full" id="submitBtn" data-label-default="${escapeHtml(tf("actions.submit"))}" data-label-loading="${escapeHtml(tf("actions.submitting"))}">
-              ${escapeHtml(tf("actions.submit"))}
+            <button type="submit" class="btn btn--primary send-btn" id="submitBtn" data-label-default="${escapeHtml(tf("actions.submit"))}" data-label-loading="${escapeHtml(tf("actions.sending"))}" data-label-sent="${escapeHtml(tf("actions.sent"))}">
+              <span class="send-btn__icon" aria-hidden="true">
+                <svg class="send-btn__plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+                <svg class="send-btn__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <span class="send-btn__label" data-submit-label>${escapeHtml(tf("actions.submit"))}</span>
             </button>
 
             <p class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></p>
           </form>
-${renderDirectContact()}
           </div>
         </div>
       </div>
@@ -1769,6 +1751,9 @@ function generateEnHomePage() {
   html = html
     .replaceAll('src="images/', 'src="/images/')
     .replaceAll('srcset="images/', 'srcset="/images/')
+    .replaceAll('imagesrcset="images/', 'imagesrcset="/images/')
+    .replaceAll(', images/', ', /images/')
+    .replaceAll('href="images/', 'href="/images/')
     .replaceAll('src="logo.png', 'src="/logo.png')
     .replaceAll('srcset="logo.png', 'srcset="/logo.png')
     .replaceAll('srcset="logo@2x.png', 'srcset="/logo@2x.png')

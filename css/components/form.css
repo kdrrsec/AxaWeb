@@ -310,6 +310,146 @@
   cursor: wait;
 }
 
+/* Verzendknop: pill met papieren vliegtuigje; vliegt weg bij verzenden, groen bij succes */
+.send-btn {
+  position: relative;
+  justify-self: start;
+  align-self: start;
+  width: auto;
+  overflow: hidden;
+  gap: 0.7rem;
+  min-width: 15rem;
+  min-height: 3.25rem;
+  padding: 0.9rem 2.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    background-color 0.45s var(--ease),
+    box-shadow 0.45s var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.send-btn:disabled,
+.send-btn.is-loading {
+  opacity: 1;
+}
+
+.send-btn.is-loading {
+  cursor: wait;
+}
+
+.send-btn__icon {
+  position: relative;
+  display: inline-flex;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.send-btn__icon svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.send-btn__plane {
+  transition: transform var(--dur-med) var(--ease);
+}
+
+.send-btn:hover:not(:disabled) .send-btn__plane {
+  transform: translate(2px, -2px) rotate(-6deg);
+}
+
+.send-btn__check {
+  opacity: 0;
+  transform: scale(0.3);
+}
+
+.send-btn.is-loading .send-btn__plane {
+  animation: send-plane-fly 0.85s cubic-bezier(0.55, 0, 0.45, 1) forwards;
+}
+
+/* Tekst wijkt even uit terwijl het vliegtuigje erdoorheen vliegt */
+.send-btn.is-loading .send-btn__label {
+  animation: send-label-swap 0.9s var(--ease) both;
+}
+
+@keyframes send-label-swap {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  22% {
+    opacity: 0;
+    transform: translateX(0.6rem);
+  }
+  65% {
+    opacity: 0;
+    transform: translateX(-0.4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.send-btn.is-sent {
+  background: #1f9d55;
+  box-shadow: 0 10px 24px rgba(31, 157, 85, 0.28);
+}
+
+.send-btn.is-sent .send-btn__plane {
+  opacity: 0;
+  animation: none;
+}
+
+.send-btn.is-sent .send-btn__check {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.45s var(--ease-spring);
+}
+
+@keyframes send-plane-fly {
+  0% {
+    transform: translate(0, 0) rotate(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(-5px, 3px) rotate(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(18rem, -2.5rem) rotate(8deg) scale(0.75);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 719px) {
+  .send-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .send-btn.is-loading .send-btn__plane {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  .send-btn.is-loading .send-btn__label {
+    animation: none;
+  }
+
+  .send-btn.is-sent .send-btn__check {
+    transition: none;
+  }
+}
+
 @media (min-width: 720px) {
   .form-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));

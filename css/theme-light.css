@@ -1,0 +1,497 @@
+/*
+ * Licht thema: witte basis, donker navy header en footer.
+ * Overschrijft de donkere tokens en de hardgecodeerde donkere vlakken.
+ * Verwijder de import in main.css (en de regel in scripts/build.js)
+ * om terug te gaan naar het donkere thema.
+ */
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #f4f7fb;
+  --bg-elevated: #ffffff;
+  --accent: #1a7ef0;
+  --accent-hover: #1266c9;
+  --accent-deep: #0f56ab;
+  --accent-soft: rgba(26, 126, 240, 0.08);
+  --accent-glow: rgba(26, 126, 240, 0.16);
+  --text: #0b1a2b;
+  --text-secondary: #43536a;
+  --text-muted: #6b7a8f;
+  --border: rgba(11, 26, 43, 0.09);
+  --border-strong: rgba(11, 26, 43, 0.16);
+  --glass: rgba(255, 255, 255, 0.82);
+  --shadow-soft: 0 20px 48px rgba(11, 26, 43, 0.1);
+  --shadow-card: 0 2px 10px rgba(11, 26, 43, 0.05), 0 1px 2px rgba(11, 26, 43, 0.04);
+  --focus: 0 0 0 3px rgba(26, 126, 240, 0.3);
+}
+
+html {
+  color-scheme: light;
+}
+
+body::after {
+  opacity: 0;
+}
+
+/* --- Algemene vlakken --- */
+.section--alt {
+  background: var(--bg-secondary);
+}
+
+.section__index,
+.portfolio-item__num {
+  -webkit-text-stroke-color: rgba(11, 26, 43, 0.07);
+}
+
+.btn--secondary {
+  background: #ffffff;
+}
+
+.btn--secondary:hover,
+.btn--ghost:hover,
+.language-switcher a:hover,
+.menu-toggle,
+.mobile-nav a:hover,
+.mobile-nav a:focus-visible,
+.mobile-nav a[aria-current="page"],
+.segmented__btn:hover,
+.segmented.segmented--choice .segmented__btn:hover {
+  background: rgba(11, 26, 43, 0.04);
+}
+
+.btn--primary,
+.btn--primary:hover {
+  color: #ffffff;
+}
+
+.page-head {
+  background:
+    radial-gradient(70% 90% at 85% -20%, rgba(26, 126, 240, 0.08), transparent 60%),
+    var(--bg-secondary);
+}
+
+.page-head__facts,
+.contact-form {
+  background: #ffffff;
+  box-shadow: var(--shadow-card);
+}
+
+.card,
+.package-teaser,
+.pricing-card,
+.case {
+  background: var(--bg-elevated);
+}
+
+.package-teaser--featured,
+.pricing-card--featured {
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(26, 126, 240, 0.08), transparent 60%),
+    var(--bg-elevated);
+}
+
+.pricing-card__addons,
+.cookie-consent__category {
+  background: var(--bg-secondary);
+}
+
+.pricing-info,
+.segmented {
+  background: var(--bg-secondary);
+}
+
+.segmented__btn.is-active {
+  background: #ffffff;
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(11, 26, 43, 0.1), inset 0 0 0 1px rgba(26, 126, 240, 0.35);
+}
+
+.segmented__badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* --- Modelkeuze (pakketten): rustige kaart met twee keuzetegels --- */
+.pricing-choice {
+  max-width: 40rem;
+  margin-bottom: 3.5rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(11, 26, 43, 0.06);
+}
+
+.pricing-choice__intro {
+  margin-bottom: 1.25rem;
+}
+
+.pricing-choice__text {
+  margin-bottom: 0;
+}
+
+.segmented.segmented--choice,
+.pricing-choice:not(.has-selection) .segmented.segmented--choice {
+  gap: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.segmented.segmented--choice .segmented__btn {
+  justify-content: flex-start;
+  gap: 0.7rem;
+  min-height: 3.5rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  color: var(--text);
+  font-size: 0.95rem;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease);
+}
+
+.segmented.segmented--choice .segmented__btn:hover,
+.segmented.segmented--choice .segmented__btn:active {
+  border-color: rgba(26, 126, 240, 0.45);
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(11, 26, 43, 0.06);
+}
+
+.segmented.segmented--choice .segmented__btn.is-active {
+  border-color: var(--accent);
+  background: rgba(26, 126, 240, 0.05);
+  box-shadow: 0 0 0 3px rgba(26, 126, 240, 0.12);
+}
+
+.segmented.segmented--choice .segmented__label {
+  white-space: nowrap;
+}
+
+.segmented.segmented--choice .segmented__badge {
+  position: absolute;
+  top: -0.65rem;
+  right: 1rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 0.64rem;
+  box-shadow: 0 4px 10px rgba(26, 126, 240, 0.25);
+}
+
+.pricing-choice__radio {
+  border-color: rgba(11, 26, 43, 0.28);
+}
+
+.pricing-choice__empty {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .pricing-choice {
+    margin-bottom: 2.5rem;
+    padding: 1.25rem 1.1rem;
+  }
+
+  .segmented.segmented--choice {
+    gap: 0.9rem;
+  }
+
+  .segmented.segmented--choice .segmented__btn,
+  .segmented.segmented--choice .segmented__btn:hover,
+  .segmented.segmented--choice .segmented__btn:active {
+    background: #ffffff;
+  }
+
+  .segmented.segmented--choice .segmented__btn.is-active {
+    border-color: var(--accent);
+    background: rgba(26, 126, 240, 0.05);
+  }
+
+  .pricing-choice__hint {
+    background: var(--accent-soft);
+    border-color: rgba(26, 126, 240, 0.25);
+    color: var(--accent);
+  }
+}
+
+.cta-banner {
+  background:
+    radial-gradient(110% 140% at 85% 0%, rgba(26, 126, 240, 0.12), transparent 55%),
+    var(--bg-secondary);
+}
+
+/* --- Formulieren --- */
+.field__control {
+  background: #ffffff;
+}
+
+.field__control:hover {
+  border-color: rgba(11, 26, 43, 0.28);
+}
+
+.field__control:focus,
+.custom-select.is-open .custom-select__trigger {
+  background-color: #ffffff;
+}
+
+.custom-select__list {
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(11, 26, 43, 0.12);
+}
+
+.field__control::placeholder,
+.custom-select__trigger--placeholder {
+  color: #8593a6;
+}
+
+.custom-select__option {
+  color: var(--text);
+}
+
+.custom-select__option.is-active,
+.custom-select__option:hover:not(.is-disabled) {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.custom-select__option[aria-selected="true"],
+.custom-select__option[aria-selected="true"].is-active,
+.custom-select__option[aria-selected="true"]:hover {
+  background: rgba(26, 126, 240, 0.14);
+  color: var(--accent-deep);
+}
+
+.custom-select.is-open .custom-select__trigger,
+.field__control:focus {
+  border-color: var(--accent);
+}
+
+.field--error .field__control,
+.field__control[aria-invalid="true"],
+.custom-select__trigger[aria-invalid="true"] {
+  border-color: #d64545;
+}
+
+.field__error,
+.form-status--error {
+  color: #c0392b;
+}
+
+.form-status--success {
+  color: #1e7a3e;
+}
+
+.form-status--info {
+  color: var(--accent-deep);
+}
+
+/* Browser-autofill: donkere tekst op een lichte achtergrond */
+.field__control:-webkit-autofill,
+.field__control:-webkit-autofill:hover,
+.field__control:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  box-shadow: 0 0 0 1000px #f2f7ff inset;
+  caret-color: var(--text);
+}
+
+/* --- Header: donker navy met het witte logo --- */
+.site-header {
+  --text: #f4f7fb;
+  --text-secondary: #b8c3d1;
+  --text-muted: rgba(184, 195, 209, 0.72);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --accent-hover: #4aa0ff;
+  --accent-soft: rgba(35, 139, 255, 0.14);
+  background-color: #06101d;
+  color: var(--text);
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-header .language-switcher a:hover,
+.site-header .menu-toggle {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Mobiel menu: dekkend wit, donkere tekst en duidelijke scheiding */
+.mobile-nav {
+  gap: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  background-color: #ffffff;
+}
+
+.mobile-nav a:not(.btn) {
+  padding: 1.05rem 0.9rem;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.mobile-nav a:not(.btn):hover,
+.mobile-nav a:not(.btn):focus-visible {
+  background: var(--bg-secondary);
+}
+
+.mobile-nav a:not(.btn)[aria-current="page"] {
+  background: transparent;
+  color: var(--accent);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.mobile-nav .btn {
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mobile-nav .btn:hover,
+.mobile-nav .btn:focus-visible {
+  color: #ffffff;
+}
+
+/* --- Homepage-hero: lichte werkplekfoto, donkere tekst op een witte waas links --- */
+.hero {
+  color: var(--text);
+  background: #f3f4f6;
+}
+
+.hero__media img {
+  object-position: 70% center;
+}
+
+.hero__overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(255, 255, 255, 0.82) 32%,
+    rgba(255, 255, 255, 0.35) 55%,
+    rgba(255, 255, 255, 0) 72%
+  );
+}
+
+.hero__title {
+  color: var(--text);
+  text-shadow: none;
+}
+
+.hero__text {
+  color: var(--text-secondary);
+}
+
+.hero__scroll-hint {
+  color: var(--text-muted);
+}
+
+/* Mobiel en tablet: tekst bovenaan op wit, de foto daaronder volledig zichtbaar */
+@media (max-width: 959px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    padding-bottom: 0;
+    background: #ffffff;
+  }
+
+  .hero__inner {
+    order: 1;
+    padding-bottom: 1.75rem;
+  }
+
+  .hero__media {
+    order: 2;
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .hero__media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 22%);
+    pointer-events: none;
+  }
+
+  .hero__media picture {
+    display: block;
+    height: 100%;
+  }
+
+  .hero__media img {
+    object-position: 82% 60%;
+  }
+
+  .hero__overlay,
+  .hero__scroll-hint {
+    display: none;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 959px) {
+  .hero__media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* --- Projecten en devices --- */
+.case-card__stage,
+.case-hero {
+  background:
+    radial-gradient(70% 80% at 20% 0%, rgba(26, 126, 240, 0.1), transparent 60%),
+    var(--bg-secondary);
+}
+
+.project-card__media {
+  background: var(--bg-secondary);
+}
+
+.portfolio-item__media::before {
+  background:
+    radial-gradient(circle at 25% 20%, rgba(26, 126, 240, 0.14), transparent 55%),
+    linear-gradient(165deg, #eaf1fa, #f6f9fd);
+}
+
+.device {
+  border-color: rgba(11, 26, 43, 0.12);
+  box-shadow: 0 18px 40px rgba(11, 26, 43, 0.14);
+}
+
+.case-hero__meta a {
+  text-decoration-color: rgba(11, 26, 43, 0.25);
+}
+
+/* --- Cookiebanner --- */
+.cookie-consent__dialog {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 20px 48px rgba(11, 26, 43, 0.16);
+}
+
+/* --- Footer blijft donker (rustige afsluiting, wit logo) --- */
+.site-footer {
+  --text: #f4f7fb;
+  --text-secondary: #b8c3d1;
+  --text-muted: rgba(184, 195, 209, 0.72);
+  --border: rgba(255, 255, 255, 0.08);
+  --accent-hover: #4aa0ff;
+  background: #0b1a2b;
+  color: var(--text);
+}

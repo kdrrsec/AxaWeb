@@ -300,6 +300,8 @@
     "intro": "De verschillen in één overzicht, zodat je snel ziet welk pakket past.",
     "note": "Alle genoemde prijzen zijn exclusief 21% btw. Het aantal pagina's is indicatief; de exacte invulling leggen we vast in de offerte.",
     "ariaLabel": "Vergelijking van Website as a Service-pakketten",
+    "showAll": "Toon volledige vergelijking ({count} extra)",
+    "showLess": "Toon minder",
     "rows": {
       "price12": "Prijs bij 12 maanden",
       "priceMonthly": "Flexibel maandelijks",

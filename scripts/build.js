@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync, readdirSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { injectPublicEnv } from "./inject-public-env.js";
@@ -22,6 +23,7 @@ const cssFiles = [
   "css/components/footer.css",
   "css/components/cookie-consent.css",
   "css/components/legal.css",
+  "css/theme-light.css",
 ];
 
 const pageSlugs = [
@@ -50,7 +52,14 @@ const enPageSlugs = [
 
 const enLegalSlugs = ["privacy", "cookies", "terms", "disclaimer"];
 
-const caseSlugs = ["bandendepot", "axanet", "viralon"];
+const caseSlugs = [
+  "bandendepot",
+  "axanet",
+  "viralon",
+  "kadirs-hairstyle",
+  "kapsalon-zafer",
+  "autorijschool-yorulmaz",
+];
 
 const requiredFiles = [
   "index.html",
@@ -69,6 +78,9 @@ const requiredFiles = [
   "logo@2x.png",
   "images/background.jpg",
   "images/background.webp",
+  "images/hero-workspace.jpg",
+  "images/hero-workspace.webp",
+  "images/hero-workspace-1280.webp",
   "js/main.js",
   "js/page-main.js",
   "js/consent-default.js",
@@ -188,7 +200,7 @@ staticCopies.forEach((file) => {
 });
 
 mkdirSync(join(dist, "images"), { recursive: true });
-["background.jpg", "background.webp"].forEach((file) => {
+["background.jpg", "background.webp", "hero-workspace.jpg", "hero-workspace.webp", "hero-workspace-1280.webp"].forEach((file) => {
   cpSync(join(root, "images", file), join(dist, "images", file));
 });
 cpSync(join(root, "images", "projects"), join(dist, "images", "projects"), { recursive: true });
@@ -208,11 +220,15 @@ const bundledCss = bundleCss();
 mkdirSync(join(dist, "css"), { recursive: true });
 writeFileSync(join(dist, "css/bundle.css"), bundledCss, "utf8");
 
+// /css wordt een jaar gecachet (immutable): de inhoudshash in de URL zorgt
+// dat browsers na elke CSS-wijziging de nieuwe bundle ophalen.
+const cssVersion = createHash("sha256").update(bundledCss).digest("hex").slice(0, 10);
+
 function useBundleCss(fileName) {
   const htmlPath = join(dist, fileName);
   const html = readFileSync(htmlPath, "utf8")
-    .replace('href="css/main.css"', 'href="css/bundle.css"')
-    .replace('href="/css/main.css"', 'href="/css/bundle.css"');
+    .replace('href="css/main.css"', `href="css/bundle.css?v=${cssVersion}"`)
+    .replace('href="/css/main.css"', `href="/css/bundle.css?v=${cssVersion}"`);
   writeFileSync(htmlPath, html, "utf8");
 }
 

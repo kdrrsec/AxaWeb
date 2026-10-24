@@ -300,6 +300,8 @@
     "intro": "The differences at a glance, so you can see which package fits.",
     "note": "All listed prices exclude 21% VAT. Page counts are indicative; the exact scope is set out in your quote.",
     "ariaLabel": "Comparison of Website as a Service packages",
+    "showAll": "Show full comparison ({count} more)",
+    "showLess": "Show less",
     "rows": {
       "price12": "Price on a 12-month term",
       "priceMonthly": "Flexible monthly",
