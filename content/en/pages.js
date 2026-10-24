@@ -673,10 +673,6 @@ export const pages = {
         id: "waas-vergelijking",
       },
       {
-        type: "industries",
-        id: "branches",
-      },
-      {
         type: "pricing",
         id: "hosting",
         catalog: "hosting",
